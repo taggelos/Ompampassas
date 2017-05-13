@@ -1,4 +1,4 @@
-﻿#Οδηγίες για τα αρχεία του project
+﻿# Οδηγίες για τα αρχεία του project
 
 * Κάνουμε commit **ΟΛΟ** το directory **.idea** αν χρησιμοποιούμε IntelliJ IDEA (το οποίο προτείνω ανεπιφύλακτα), **ΕΚΤΟΣ** από τα αρχεία **workspace.xml** και **tasks.xml**.
 * Κάνουμε commit **ΟΛΑ** τα αρχεία ***.iml** (αυτά ειναι τα module files του IntelliJ IDEA).
