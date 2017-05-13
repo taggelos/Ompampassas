@@ -1,0 +1,35 @@
+@font-face {
+    font-family: 'Clear Sans';
+    src: url('../fonts/clear-sans/ClearSans-Regular-webfont.woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Clear Sans';
+    src: url('../fonts/clear-sans/ClearSans-Bold-webfont.woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Clear Sans';
+    src: url('../fonts/clear-sans/ClearSans-Italic-webfont.woff');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Clear Sans';
+    src: url('../fonts/clear-sans/ClearSans-BoldItalic-webfont.woff');
+    font-weight: bold;
+    font-style: italic;
+}
+
+body {
+    font-family: 'Clear Sans', sans-serif;
+
+    /* Move down content because we have a fixed navbar that is 50px tall */
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
