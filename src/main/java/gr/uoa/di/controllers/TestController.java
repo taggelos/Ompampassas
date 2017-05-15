@@ -13,4 +13,9 @@ public class TestController {
         return "index";
     }
 
+    @GetMapping("/one")
+    public String one(Map<String, Object> model) {
+        return "onetest";
+    }
+
 }
