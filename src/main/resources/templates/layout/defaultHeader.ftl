@@ -46,7 +46,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <div class="navbar-form  navbar-nav navbar-right">
-                <a class="btn btn-success" href="/one">
+                <a class="btn btn-success" href="/signup">
                     <span class="glyphicon glyphicon-user"></span> Sign Up</a>
                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#loginModal">
                     <span class="glyphicon glyphicon-log-in"></span> Login</button>
