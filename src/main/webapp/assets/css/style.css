@@ -33,3 +33,26 @@ body {
     padding-top: 50px;
     padding-bottom: 20px;
 }
+
+.jumbotron{
+    background-image: url("../images/www.png");
+
+}
+
+.slider {
+    width: 75%;
+    margin: 5px auto;
+}
+
+.slick-slide {
+    margin: 0px 20px;
+}
+
+.slick-slide img {
+    width: 100%;
+}
+
+.slick-prev:before,
+.slick-next:before {
+    color: black;
+}
