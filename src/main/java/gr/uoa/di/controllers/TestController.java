@@ -18,4 +18,8 @@ public class TestController {
         return "onetest";
     }
 
+    @GetMapping("/signup")
+    public String signup(Map<String, Object> model) {
+        return "signup";
+    }
 }
