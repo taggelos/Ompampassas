@@ -22,8 +22,9 @@
       <option name="auto-sync" value="true" />
     </driver>
     <driver id="hsqldb.local" name="HSQLDB (Local)" dialect="HSQLDB">
-      <artifact name="HSQLDB" use="true" />
+      <artifact name="HSQLDB" use="true" version="2.3.4" />
       <option name="auto-sync" value="true" />
+      <option name="auto-commit" value="true" />
     </driver>
     <driver id="derby.remote" name="Derby (Remote)" dialect="Derby">
       <artifact name="Apache Derby" use="true" />
@@ -56,8 +57,9 @@
       <property name="prompt" value="false" />
     </driver>
     <driver id="mysql" name="MySQL" dialect="MySQL">
-      <artifact name="MySQL Connector/J" use="true" />
+      <artifact name="MySQL Connector/J" use="true" version="5.1.40" />
       <option name="auto-sync" value="true" />
+      <option name="auto-commit" value="true" />
       <property name="autoReconnect" value="true" />
       <property name="zeroDateTimeBehavior" value="convertToNull" />
       <property name="tinyInt1isBit" value="false" />
