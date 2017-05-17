@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="assets/slick/slick-theme.css"/>
     <!-slick.css END-->
 
+
     <script type="text/javascript">
         function initAutocomplete() {
             // Create the autocomplete object, restricting the search to geographical
@@ -33,7 +34,9 @@
 <@layout>
 </@layout>
 
-<!-- Main jumbotron for a primary marketing message or call to action -->
+<!-- after header of defaultHeader put the slide.js -->
+<script src="assets/js/slide.js"></script>
+<!-- Main jumbotron for search area -->
 <div class="jumbotron">
     <div class="container">
         <form>

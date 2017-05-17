@@ -1,6 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<link rel="stylesheet" type="text/css" href="assets/css/signup.css"/>
+    <link rel="icon" href="assets/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="assets/css/signup.css"/>
+    <title>Ompampassas</title>
 </head>
+
+<body>
 <#include "layout/defaultHeader.ftl">
 <@layout>
 </@layout>
@@ -9,46 +15,59 @@
     <div class="row centered-form">
         <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
             <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Provider</h3>
-                </div>
+
+                <ul class="nav nav-tabs form-tabs">
+                    <li id="basic-list" class="active"><a data-toggle="tab" href="#form1">Parent</a>
+
+                    </li>
+                    <li class="" id="team_details-list"><a data-toggle="tab" href="#form2">Provider</a>
+
+                    </li>
+                </ul>
+
                 <div class="panel-body">
-                    <form role="form">
-                        <div class="row">
-                            <div class="col-xs-6 col-sm-6 col-md-6">
-                                <div class="form-group">
-                                    <input type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name">
+                    <div class="tab-content">
+                        <fieldset id="form1" class="tab-pane active">
+                            <form class="form-signin" id="form-signin">
+                                <div class="input-group">
+                                    <label for="inputEmail" class="sr-only">Email address</label>
+                                    <input type="email" id="inputEmail" class="form-control" placeholder="Email address"
+                                           required autofocus>
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                                 </div>
-                            </div>
-                            <div class="col-xs-6 col-sm-6 col-md-6">
-                                <div class="form-group">
-                                    <input type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name">
+                                <div class="input-group">
+                                    <label for="inputPassword" class="sr-only">Password</label>
+                                    <input type="password" id="inputPassword" class="form-control"
+                                           placeholder="Password" required>
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                                 </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email Address">
-                        </div>
-
-                        <div class="row">
-                            <div class="col-xs-6 col-sm-6 col-md-6">
-                                <div class="form-group">
-                                    <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" value="remember-me"> Remember me
+                                    </label>
                                 </div>
-                            </div>
-                            <div class="col-xs-6 col-sm-6 col-md-6">
-                                <div class="form-group">
-                                    <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-sm" placeholder="Confirm Password">
+                                <div class="alert alert-warning alert-dismissable fade in">
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    <strong>Warning!</strong> This alert box could indicate a warning that might need
+                                    attention.
                                 </div>
-                            </div>
-                        </div>
+                                <label class="custom-file">
+                                    <input type="file" id="file" class="custom-file-input">
+                                    <span class="custom-file-control"></span>
+                                </label>
+                                <button id="signin_button" class="btn btn-md btn-warning" type="submit">Sign in</button>
+                            </form>
+                        </fieldset>
+                        <fieldset id="form2" class="tab-pane ">
 
-                        <input type="submit" value="Register" class="btn btn-info btn-block">
-
-                    </form>
+                            provider
+                        </fieldset>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+</body>
+</html>
