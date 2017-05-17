@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="gr.uoa.di.entities.ProviderEntity" table="provider" schema="ompampassas">
+        <id name="username">
+            <column name="Username" sql-type="varchar(64)" length="64"/>
+        </id>
+        <property name="name">
+            <column name="Name" sql-type="varchar(64)" length="64"/>
+        </property>
+        <property name="surname">
+            <column name="Surname" sql-type="varchar(64)" length="64"/>
+        </property>
+        <property name="age">
+            <column name="Age" sql-type="int(11)"/>
+        </property>
+    </class>
+</hibernate-mapping>

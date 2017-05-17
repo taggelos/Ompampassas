@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="gr.uoa.di.entities.EventsEntity" table="events" schema="ompampassas">
+        <composite-id mapped="true" class="gr.uoa.di.entities.EventsEntityPK">
+            <key-property name="id">
+                <column name="Id" sql-type="int(11)"/>
+            </key-property>
+            <key-property name="placeId">
+                <column name="PlaceId" sql-type="int(11)"/>
+            </key-property>
+        </composite-id>
+        <property name="ownerId">
+            <column name="OwnerId" sql-type="varchar(64)" length="64"/>
+        </property>
+        <property name="name">
+            <column name="Name" sql-type="varchar(64)" length="64"/>
+        </property>
+        <property name="startingTime">
+            <column name="StartingTime" sql-type="time"/>
+        </property>
+        <property name="endingTime">
+            <column name="EndingTime" sql-type="time"/>
+        </property>
+        <property name="price">
+            <column name="Price" sql-type="int(11)"/>
+        </property>
+    </class>
+</hibernate-mapping>
