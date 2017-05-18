@@ -33,11 +33,16 @@ public class TestController {
 
     @PostMapping("/signup")
     public @ResponseBody
-    String addNewUser(@RequestParam String email, @RequestParam String password) {
+    String addNewUser(@RequestParam String email, @RequestParam String password,@RequestParam String kind) {
         User n = new User();
         n.setEmail(email);
         n.setPassword(password);
         userRepository.save(n);
+
+        if(kind.equals("Parent")) {
+          //  Parent p=new Parent();
+            return "parent created";
+        }
         return "Saved";
     }
 }

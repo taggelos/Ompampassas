@@ -29,6 +29,7 @@
                     <div class="tab-content">
                         <fieldset id="form1" class="tab-pane active">
                             <form class="form-signin" id="form-signin" method="POST">
+                                <input type="hidden" name="kind" value="Parent">
                                 <div class="input-group">
                                     <label for="inputName" class="sr-only">First Name</label>
                                     <input type="text" id="inputName" class="form-control" placeholder="First Name"
@@ -91,11 +92,12 @@
                                     <strong>Warning!</strong> This alert box could indicate a warning that might need
                                     attention.
                                 </div>
-                                <button id="signin_button" class="btn btn-md btn-warning" type="submit">Sign in</button>
+                                <button id="signin_button" class="btn btn-md btn-warning" type="submit">Sign Up</button>
                             </form>
                         </fieldset>
                         <fieldset id="form2" class="tab-pane ">
-                            <form class="form2-signin" id="form2-signin">
+                            <form class="form2-signin" id="form2-signin" method="POST">
+                                <input type="hidden" name="kind" value="Provider">
                                 <div class="input-group">
                                     <label for="inputName" class="sr-only">First Name</label>
                                     <input type="text" id="inputName" class="form-control" placeholder="First Name"
@@ -116,13 +118,13 @@
                                 </div>
                                 <div class="input-group">
                                     <label for="inputEmail" class="sr-only">Email address</label>
-                                    <input type="email" id="inputEmail" class="form-control" placeholder="Email address"
+                                    <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address"
                                            required autofocus>
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
                                 </div>
                                 <div class="input-group">
                                     <label for="inputPassword" class="sr-only">Password</label>
-                                    <input type="password" id="inputPassword" class="form-control"
+                                    <input type="password" id="inputPassword" class="form-control" name="password"
                                            placeholder="Password" required>
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                                 </div>
@@ -148,7 +150,7 @@
                                     <input type="file" id="file" class="custom-file-input">
                                     <span class="custom-file-control"></span>
                                 </label>
-                                <button id="signin_button" class="btn btn-md btn-warning" type="submit">Sign in</button>
+                                <button id="signin_button" class="btn btn-md btn-warning" type="submit">Sign Up</button>
                             </form>
                         </fieldset>
                     </div>
