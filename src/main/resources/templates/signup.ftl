@@ -24,7 +24,6 @@
 
                     </li>
                 </ul>
-
                 <div class="panel-body">
                     <div class="tab-content">
                         <fieldset id="form1" class="tab-pane active">
@@ -112,13 +111,15 @@
                                 </div>
                                 <div class="input-group">
                                     <label for="inputCompanyname" class="sr-only">Company Name</label>
-                                    <input type="text" id="inputCompanyname" class="form-control" placeholder="Company Name"
+                                    <input type="text" id="inputCompanyname" class="form-control"
+                                           placeholder="Company Name"
                                            required autofocus>
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
                                 </div>
                                 <div class="input-group">
                                     <label for="inputEmail" class="sr-only">Email address</label>
-                                    <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address"
+                                    <input type="email" id="inputEmail" name="email" class="form-control"
+                                           placeholder="Email address"
                                            required autofocus>
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
                                 </div>
@@ -136,7 +137,8 @@
                                 </div>
                                 <div class="input-group">
                                     <label for="inputContactPhone" class="sr-only">Contact Phone</label>
-                                    <input type="text" id="inputContactPhone" class="form-control" placeholder="Contact Phone"
+                                    <input type="text" id="inputContactPhone" class="form-control"
+                                           placeholder="Contact Phone"
                                            required autofocus>
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
                                 </div>
