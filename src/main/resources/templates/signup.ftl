@@ -28,7 +28,7 @@
                 <div class="panel-body">
                     <div class="tab-content">
                         <fieldset id="form1" class="tab-pane active">
-                            <form class="form-signin" id="form-signin">
+                            <form class="form-signin" id="form-signin" method="POST">
                                 <div class="input-group">
                                     <label for="inputName" class="sr-only">First Name</label>
                                     <input type="text" id="inputName" class="form-control" placeholder="First Name"
@@ -50,12 +50,12 @@
                                 <div class="input-group">
                                     <label for="inputEmail" class="sr-only">Email address</label>
                                     <input type="email" id="inputEmail" class="form-control" placeholder="Email address"
-                                           required autofocus>
+                                           name="email" required autofocus>
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                                 </div>
                                 <div class="input-group">
                                     <label for="inputPassword" class="sr-only">Password</label>
-                                    <input type="password" id="inputPassword" class="form-control"
+                                    <input type="password" id="inputPassword" class="form-control" name="password"
                                            placeholder="Password" required>
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                                 </div>
