@@ -7,6 +7,10 @@
         <element id="directory" name="classes">
           <element id="module-output" name="stp2" />
         </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Hibernate 5.2.9-5.2.9" />
+          <element id="library" level="project" name="Gradle: org.hibernate:hibernate-core:5.0.12.Final" />
+        </element>
       </element>
     </root>
   </artifact>
