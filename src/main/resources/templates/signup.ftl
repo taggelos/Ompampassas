@@ -87,7 +87,7 @@
                                 <button id="signin_button" class="btn btn-md btn-warning" type="submit">Sign Up</button>
                             </form>
                         </fieldset>
-                        <fieldset id="form2" class="tab-pane ">
+                        <fieldset id="form2" class="tab-pane">
                             <form class="form2-signin" id="form2-signin" method="POST">
                                 <input type="hidden" name="kind" value="Provider">
                                 <div class="input-group">
