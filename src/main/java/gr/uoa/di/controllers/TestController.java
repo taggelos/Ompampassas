@@ -1,6 +1,6 @@
 package gr.uoa.di.controllers;
 
-import gr.uoa.di.entities.User;
+import gr.uoa.di.entities.UserEntity;
 import gr.uoa.di.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,14 +33,34 @@ public class TestController {
 
     @PostMapping("/signup")
     public @ResponseBody
-    String addNewUser(@RequestParam String email, @RequestParam String password,@RequestParam String kind) {
-        User n = new User();
-        n.setEmail(email);
-        n.setPassword(password);
+    String addNewUser(@RequestParam Map<String,String> params) {
+
+        /*
+        check(params);
+
+        param.get("inputName");
+        param.get("inputSurname");
+        param.get("inputUsername");
+        param.get("inputEmail");
+        param.get("inputPassword");
+        param.get("inputConfirmPassword");
+        param.get("inputPhone");
+        param.get("inputDate");
+        param.get("inputCompanyname");
+        param.get("inputContactPhone");
+        */
+
+        UserEntity n = new UserEntity();
+
+        n.setEmail(params.get("inputEmail"));
+        n.setPassword(params.get("inputPassword"));
+        n.setName(params.get("inputName"));
+        n.setSurname(params.get("inputSurname"));
+        n.setAge(69);
+        System.out.println(params.get("inputEmail"));
         userRepository.save(n);
 
-        if(kind.equals("Parent")) {
-          //  Parent p=new Parent();
+        if("Parent".equals(params.get("kind"))) {
             return "parent created";
         }
         return "Saved";

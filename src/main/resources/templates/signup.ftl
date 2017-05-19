@@ -32,49 +32,42 @@
                                 <input type="hidden" name="kind" value="Parent">
                                 <div class="input-group">
                                     <label for="inputName" class="sr-only">First Name</label>
-                                    <input type="text" id="inputName" class="form-control" placeholder="First Name"
-                                           required autofocus>
+                                    <input type="text" name="inputName" id="inputName" class="form-control" placeholder="First Name" required autofocus>
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                                 </div>
                                 <div class="input-group">
                                     <label for="inputSurname" class="sr-only">Surname</label>
-                                    <input type="text" id="inputSurname" class="form-control" placeholder="Surname"
-                                           required autofocus>
+                                    <input type="text" name="inputSurname" id="inputSurname" class="form-control" placeholder="Surname" required autofocus>
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                                 </div>
                                 <div class="input-group">
                                     <label for="inputUsername" class="sr-only">Username</label>
-                                    <input type="text" id="inputUsername" class="form-control" placeholder="Username"
-                                           required autofocus>
+                                    <input type="text" name="inputUsername" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                                 </div>
                                 <div class="input-group">
                                     <label for="inputEmail" class="sr-only">Email address</label>
-                                    <input type="email" id="inputEmail" class="form-control" placeholder="Email address"
-                                           name="email" required autofocus>
+                                    <input type="email" name="inputEmail" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                                 </div>
                                 <div class="input-group">
                                     <label for="inputPassword" class="sr-only">Password</label>
-                                    <input type="password" id="inputPassword" class="form-control" name="password"
-                                           placeholder="Password" required>
+                                    <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Password" required autofocus>
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                                 </div>
                                 <div class="input-group">
                                     <label for="inputConfirmPassword" class="sr-only">Confirm Password</label>
-                                    <input type="password" id="inputConfirmPassword" class="form-control"
-                                           placeholder="Confirm Password" required>
+                                    <input type="password" name="inputConfirmPassword" id="inputConfirmPassword" class="form-control" placeholder="Confirm Password" required autofocus>
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                                 </div>
                                 <div class="input-group">
                                     <label for="inputPhone" class="sr-only">Phone</label>
-                                    <input type="text" id="inputPhone" class="form-control" placeholder="Phone"
-                                           required autofocus>
+                                    <input type="text" name="inputPhone" id="inputPhone" class="form-control" placeholder="Phone" required autofocus>
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
                                 </div>
                                 <div class="input-group">
-                                    <label>Date of Birth </label>
-                                    <input type="date" class="form-control" id="Date" placeholder="Date of Birth">
+                                    <label>Date of Birth</label>
+                                    <input type="date" name="inputDate" id="inputDate" class="form-control" placeholder="Date of Birth" required autofocus>
                                 </div>
                                 <div class="radio">
                                     <label>
@@ -89,8 +82,7 @@
                                 </div>
                                 <div class="alert alert-warning alert-dismissable fade in">
                                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                    <strong>Warning!</strong> This alert box could indicate a warning that might need
-                                    attention.
+                                    <strong>Warning!</strong> This alert box could indicate a warning that might need attention.
                                 </div>
                                 <button id="signin_button" class="btn btn-md btn-warning" type="submit">Sign Up</button>
                             </form>
@@ -100,57 +92,46 @@
                                 <input type="hidden" name="kind" value="Provider">
                                 <div class="input-group">
                                     <label for="inputName" class="sr-only">First Name</label>
-                                    <input type="text" id="inputName" class="form-control" placeholder="First Name"
-                                           required autofocus>
+                                    <input type="text" name="inputName" id="inputName" class="form-control" placeholder="First Name" required autofocus>
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                                 </div>
                                 <div class="input-group">
                                     <label for="inputSurname" class="sr-only">Surname</label>
-                                    <input type="text" id="inputSurname" class="form-control" placeholder="Surname"
-                                           required autofocus>
+                                    <input type="text" name="inputSurname" id="inputSurname" class="form-control" placeholder="Surname" required autofocus>
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                                 </div>
                                 <div class="input-group">
                                     <label for="inputCompanyname" class="sr-only">Company Name</label>
-                                    <input type="text" id="inputCompanyname" class="form-control"
-                                           placeholder="Company Name"
-                                           required autofocus>
+                                    <input type="text" name="inputCompanyname" id="inputCompanyname" class="form-control" placeholder="Company Name" required autofocus>
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
                                 </div>
                                 <div class="input-group">
                                     <label for="inputEmail" class="sr-only">Email address</label>
-                                    <input type="email" id="inputEmail" name="email" class="form-control"
-                                           placeholder="Email address"
-                                           required autofocus>
+                                    <input type="email" name="inputEmail" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
                                 </div>
                                 <div class="input-group">
                                     <label for="inputPassword" class="sr-only">Password</label>
-                                    <input type="password" id="inputPassword" class="form-control" name="password"
-                                           placeholder="Password" required>
+                                    <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Password" required autofocus>
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                                 </div>
                                 <div class="input-group">
                                     <label for="inputConfirmPassword" class="sr-only">Confirm Password</label>
-                                    <input type="password" id="inputConfirmPassword" class="form-control"
-                                           placeholder="Confirm Password" required>
+                                    <input type="password" name="inputConfirmPassword" id="inputConfirmPassword" class="form-control" placeholder="Confirm Password" required autofocus>
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                                 </div>
                                 <div class="input-group">
                                     <label for="inputContactPhone" class="sr-only">Contact Phone</label>
-                                    <input type="text" id="inputContactPhone" class="form-control"
-                                           placeholder="Contact Phone"
-                                           required autofocus>
+                                    <input type="text" name="inputContactPhone" id="inputContactPhone" class="form-control" placeholder="Contact Phone" required autofocus>
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
                                 </div>
                                 <div class="alert alert-warning alert-dismissable fade in">
                                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                    <strong>Warning!</strong> This alert box could indicate a warning that might need
-                                    attention.
+                                    <strong>Warning!</strong> This alert box could indicate a warning that might need attention.
                                 </div>
                                 <label class="custom-file">
                                     <label>Papers Required</label><br>
-                                    <input type="file" id="file" class="custom-file-input">
+                                    <input type="file" id="file" class="custom-file-input" required autofocus>
                                     <span class="custom-file-control"></span>
                                 </label>
                                 <button id="signin_button" class="btn btn-md btn-warning" type="submit">Sign Up</button>
