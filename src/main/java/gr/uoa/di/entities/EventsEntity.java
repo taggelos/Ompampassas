@@ -3,9 +3,6 @@ package gr.uoa.di.entities;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
-/**
- * Created by karat on 5/19/2017.
- */
 @Entity
 @Table(name = "events", schema = "ompampassas", catalog = "")
 public class EventsEntity {
@@ -18,6 +15,7 @@ public class EventsEntity {
     private int price;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     public int getId() {
         return id;
