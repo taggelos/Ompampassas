@@ -1,41 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="icon" href="assets/favicon.ico">
-    <title>Ompampassas</title>
+<#include "layout/default.ftl">
 
-    <!-slick.css START-->
-    <link rel="stylesheet" type="text/css" href="assets/slick/slick.css"/>
-    <link rel="stylesheet" type="text/css" href="assets/slick/slick-theme.css"/>
-    <!-slick.css END-->
-
-
-    <script type="text/javascript">
-        function initAutocomplete() {
-            // Create the autocomplete object, restricting the search to geographical
-            // location types.
-            var autocomplete = new google.maps.places.Autocomplete(
-                    /** @type {!HTMLInputElement} */(document.getElementById('gautofill')),
-                    {types: ['geocode']});
-
-            // When the user selects an address from the dropdown, populate the address
-            // fields in the form.
-            autocomplete.addListener('place_changed', fillInAddress);
-        }
-        function fillInAddress() {
-            // Get the place details from the autocomplete object.
-            var place = autocomplete.getPlace();
-        }
-    </script>
-</head>
-
-<body>
-<#include "layout/defaultHeader.ftl">
-<@layout>
-</@layout>
-
-<!-- after header of defaultHeader put the slide.js -->
-<script src="assets/js/slide.js"></script>
+<#macro content>
 <!-- Main jumbotron for search area -->
 <div class="jumbotron">
     <div class="container">
@@ -139,20 +104,7 @@
             <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
         </div>
     </div>
+</div>
+</#macro>
 
-    <hr>
-    <footer>
-        <p>&copy; 2017 Ompampassas, Inc.</p>
-    </footer>
-</div> <!-- /container -->
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3WqcVF0nlc5jIAw7iAXuNT7K45wA8RVs&libraries=places&callback=initAutocomplete"
-        async defer></script>
-
-
-<script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-<script type="text/javascript" src="assets/slick/slick.min.js"></script>
-
-
-</body>
-</html>
+<@display_page/>

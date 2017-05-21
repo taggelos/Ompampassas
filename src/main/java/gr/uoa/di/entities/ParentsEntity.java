@@ -1,34 +1,32 @@
 package gr.uoa.di.entities;
 
 import javax.persistence.*;
+import java.util.Collection;
 
-/**
- * Created by karat on 5/19/2017.
- */
 @Entity
-@Table(name = "parent", schema = "ompampassas", catalog = "")
-public class ParentEntity {
-    private int userId;
-    private int credits;
+@Table(name = "parents", schema = "ompampassas", catalog = "")
+public class ParentsEntity {
+    private int mUserId;
+    private int mCredits;
 
     @Id
     @Column(name = "user_id")
     public int getUserId() {
-        return userId;
+        return mUserId;
     }
 
     public void setUserId(int userId) {
-        this.userId = userId;
+        mUserId = userId;
     }
 
     @Basic
     @Column(name = "credits")
     public int getCredits() {
-        return credits;
+        return mCredits;
     }
 
     public void setCredits(int credits) {
-        this.credits = credits;
+        mCredits = credits;
     }
 
     @Override
@@ -36,18 +34,18 @@ public class ParentEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ParentEntity that = (ParentEntity) o;
+        ParentsEntity that = (ParentsEntity) o;
 
-        if (userId != that.userId) return false;
-        if (credits != that.credits) return false;
+        if (mUserId != that.mUserId) return false;
+        if (mCredits != that.mCredits) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = userId;
-        result = 31 * result + credits;
+        int result = mUserId;
+        result = 31 * result + mCredits;
         return result;
     }
 }

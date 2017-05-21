@@ -28,13 +28,12 @@
 
 body {
     font-family: 'Clear Sans', sans-serif;
-
-    /* Move down content because we have a fixed navbar that is 50px tall */
+    background: url("../images/background.jpg") repeat;
     padding-top: 50px;
     padding-bottom: 20px;
 }
 
-.jumbotron{
+.jumbotron {
     background-image: url("../images/www3.jpg");
 
 }
@@ -45,7 +44,7 @@ body {
 }
 
 .slick-slide {
-    margin: 0px 20px;
+    margin: 0 20px;
 }
 
 .slick-slide img {

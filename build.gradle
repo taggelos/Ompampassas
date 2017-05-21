@@ -26,18 +26,12 @@ targetCompatibility = 1.8
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-freemarker")
     compile("org.springframework.boot:spring-boot-starter-data-jpa")
-//    compile("org.springframework.boot:spring-boot-starter-security")
+    compile("org.springframework.boot:spring-boot-starter-security")
     compile("org.springframework.boot:spring-boot-devtools")
-    compile("mysql:mysql-connector-java")
-//    compile 'org.springframework.security:spring-security-web:4.2.2.RELEASE'
-//    testCompile("junit:junit")
 
-//    compile("org.springframework.boot:spring-boot-starter-web:1.5.1.RELEASE")
-//    compile("org.springframework.boot:spring-boot-starter-data-jpa")
-//    compile("org.springframework.boot:spring-boot-starter-security:1.5.1.RELEASE")
-//    compile("mysql:mysql-connector-java:6.0.5")
-//    compile("org.apache.commons:commons-dbcp2")
-//    providedRuntime("org.springframework.boot:spring-boot-starter-tomcat:1.5.1.RELEASE")
+    compile group: 'commons-beanutils', name: 'commons-beanutils', version: '1.9.3'
+
+    compile("mysql:mysql-connector-java")
 }
 
 task wrapper(type: Wrapper) {

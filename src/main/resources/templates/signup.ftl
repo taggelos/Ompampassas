@@ -1,148 +1,87 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="icon" href="assets/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="assets/css/signup.css"/>
-    <title>Ompampassas</title>
-</head>
+<#include "layout/default.ftl">
 
-<body>
-<#include "layout/defaultHeader.ftl">
-<@layout>
-</@layout>
+<#macro content>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Εγγραφή
+            </div>
+            <div class="panel-body">
+                <form class="form-horizontal" method="POST">
+                    <#include "partials/message_container.ftl">
 
-<div class="container">
-    <div class="row centered-form">
-        <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
-            <div class="panel panel-default">
+                    <#include "partials/csrf_token.ftl">
 
-                <ul class="nav nav-tabs form-tabs">
-                    <li id="basic-list" class="active"><a data-toggle="tab" href="#form1">Parent</a>
-
-                    </li>
-                    <li class="" id="team_details-list"><a data-toggle="tab" href="#form2">Provider</a>
-
-                    </li>
-
-                </ul>
-                <div class="panel-body">
-                    <div class="tab-content">
-                        <fieldset id="form1" class="tab-pane active">
-                            <form class="form-signin" id="form-signin" method="POST">
-                                <input type="hidden" name="kind" value="Parent">
-                                <div class="input-group">
-                                    <label for="inputName" class="sr-only">First Name</label>
-                                    <input type="text" name="inputName" id="inputName" class="form-control" placeholder="First Name" required autofocus>
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <div class="form-group">
+                        <label for="email" class="col-sm-4 control-label">Email</label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Email"
+                                       maxlength="255" value="${signupForm.getEmail()!""}">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-envelope"></i>
                                 </div>
-                                <div class="input-group">
-                                    <label for="inputSurname" class="sr-only">Surname</label>
-                                    <input type="text" name="inputSurname" id="inputSurname" class="form-control" placeholder="Surname" required autofocus>
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                </div>
-                                <div class="input-group">
-                                    <label for="inputUsername" class="sr-only">Username</label>
-                                    <input type="text" name="inputUsername" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                </div>
-                                <div class="input-group">
-                                    <label for="inputEmail" class="sr-only">Email address</label>
-                                    <input type="email" name="inputEmail" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                </div>
-                                <div class="input-group">
-                                    <label for="inputPassword" class="sr-only">Password</label>
-                                    <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Password" required autofocus>
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                </div>
-                                <div class="input-group">
-                                    <label for="inputConfirmPassword" class="sr-only">Confirm Password</label>
-                                    <input type="password" name="inputConfirmPassword" id="inputConfirmPassword" class="form-control" placeholder="Confirm Password" required autofocus>
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                </div>
-                                <div class="input-group">
-                                    <label for="inputPhone" class="sr-only">Phone</label>
-                                    <input type="text" name="inputPhone" id="inputPhone" class="form-control" placeholder="Phone" required autofocus>
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                                </div>
-                                <div class="input-group">
-                                    <label>Date of Birth</label>
-                                    <input type="date" name="inputDate" id="inputDate" class="form-control" placeholder="Date of Birth" required autofocus>
-                                </div>
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="gender" value="male" checked> Male
-                                    </label>
-                                    <label>
-                                        <input type="radio" name="gender" value="female"> Female
-                                    </label>
-                                    <label>
-                                        <input type="radio" name="gender" value="other"> Other
-                                    </label>
-                                </div>
-                                <div class="alert alert-warning alert-dismissable fade in">
-                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                    <strong>Warning!</strong> This alert box could indicate a warning that might need attention.
-                                </div>
-                                <button id="signin_button" class="btn btn-md btn-warning" type="submit">Sign Up</button>
-                            </form>
-                        </fieldset>
-                        <fieldset id="form2" class="tab-pane">
-                            <form class="form2-signin" id="form2-signin" method="POST">
-                                <input type="hidden" name="kind" value="Provider">
-                                <div class="input-group">
-                                    <label for="inputName" class="sr-only">First Name</label>
-                                    <input type="text" name="inputName" id="inputName" class="form-control" placeholder="First Name" required autofocus>
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                </div>
-                                <div class="input-group">
-                                    <label for="inputSurname" class="sr-only">Surname</label>
-                                    <input type="text" name="inputSurname" id="inputSurname" class="form-control" placeholder="Surname" required autofocus>
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                </div>
-                                <div class="input-group">
-                                    <label for="inputCompanyname" class="sr-only">Company Name</label>
-                                    <input type="text" name="inputCompanyname" id="inputCompanyname" class="form-control" placeholder="Company Name" required autofocus>
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                                </div>
-                                <div class="input-group">
-                                    <label for="inputEmail" class="sr-only">Email address</label>
-                                    <input type="email" name="inputEmail" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                                </div>
-                                <div class="input-group">
-                                    <label for="inputPassword" class="sr-only">Password</label>
-                                    <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Password" required autofocus>
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                </div>
-                                <div class="input-group">
-                                    <label for="inputConfirmPassword" class="sr-only">Confirm Password</label>
-                                    <input type="password" name="inputConfirmPassword" id="inputConfirmPassword" class="form-control" placeholder="Confirm Password" required autofocus>
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                </div>
-                                <div class="input-group">
-                                    <label for="inputContactPhone" class="sr-only">Contact Phone</label>
-                                    <input type="text" name="inputContactPhone" id="inputContactPhone" class="form-control" placeholder="Contact Phone" required autofocus>
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                                </div>
-                                <div class="alert alert-warning alert-dismissable fade in">
-                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                    <strong>Warning!</strong> This alert box could indicate a warning that might need attention.
-                                </div>
-                                <label class="custom-file">
-                                    <label>Papers Required</label><br>
-                                    <input type="file" id="file" class="custom-file-input" required autofocus>
-                                    <span class="custom-file-control"></span>
-                                </label>
-                                <button id="signin_button" class="btn btn-md btn-warning" type="submit">Sign Up</button>
-                            </form>
-                        </fieldset>
+                            </div>
+                        </div>
                     </div>
-                </div>
+
+                    <div class="form-group">
+                        <label for="password" class="col-sm-4 control-label">Κωδικός Πρόσβασης</label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="password" name="password"
+                                       placeholder="Κωδικός Πρόσβασης">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-lock"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="passwordConfirmation" class="col-sm-4 control-label">Επιβεβαίωση Κωδικού
+                            Πρόσβασης</label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="passwordConfirmation"
+                                       name="passwordConfirmation"
+                                       placeholder="Επιβεβαίωση Κωδικού Πρόσβασης">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-lock"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name" class="col-sm-4 control-label">Όνομα</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Όνομα"
+                                   maxlength="255" value="${signupForm.getName()!""}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="surname" class="col-sm-4 control-label">Επώνυμο</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="surname" name="surname" placeholder="Επώνυμο"
+                                   maxlength="255" value="${signupForm.getSurname()!""}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-4 col-sm-8">
+                            <button type="submit" class="btn btn-primary">Εγγραφή</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+    <div class="col-md-2"></div>
 </div>
+</#macro>
 
-</body>
-</html>
+<@display_page/>
