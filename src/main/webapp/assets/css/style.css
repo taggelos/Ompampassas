@@ -31,11 +31,19 @@ body {
     background: url("../images/background.jpg") repeat;
     padding-top: 50px;
     padding-bottom: 20px;
+
+}
+
+.mybody {
+    font-family: 'Clear Sans', sans-serif;
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background-color: ghostwhite;
+    background-image: none;
 }
 
 .jumbotron {
-    background-image: url("../images/www3.jpg");
-
+    background-color: transparent;
 }
 
 .slider {

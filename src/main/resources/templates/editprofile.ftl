@@ -1,6 +1,7 @@
 <#include "layout/default.ftl">
 
 <#macro content>
+<body class="mybody">
 <div class="container">
     <h1>Edit Profile</h1>
     <hr>
@@ -15,6 +16,7 @@
         </div>
 
         <!-- edit form column -->
+
         <div class="col-md-9 personal-info">
             <div class="alert alert-info alert-dismissable">
                 <a class="panel-close close" data-dismiss="alert">×</a>
@@ -72,6 +74,7 @@
         </div>
     </div>
 </div>
+</body>
 <hr>
 </#macro>
 
