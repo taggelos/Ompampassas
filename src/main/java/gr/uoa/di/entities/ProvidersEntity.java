@@ -7,6 +7,7 @@ import java.util.Collection;
 @Table(name = "providers", schema = "ompampassas", catalog = "")
 public class ProvidersEntity {
     private int mUserId;
+    private int userId;
 
     @Id
     @Column(name = "user_id")

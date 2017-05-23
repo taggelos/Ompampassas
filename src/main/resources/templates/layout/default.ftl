@@ -33,6 +33,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
 
     <script src="assets/js/google-maps-autocomplete.js"></script>
+    <script src="assets/js/Chart.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -72,12 +73,29 @@
     </div>
 </nav>
 
+<!-- Freemarker if logged in admin-->
+<div id="main-content" class="container">
+    <nav class="navbar navbar-default row" role="navigation">
+        <div class="side-menu-container">
+            <ul class="nav navbar-nav">
+                <li><a href="/admin"><span class="fa fa-address-book"></span>Dashboard</a></li>
+                <li><a href="/signup"><span class="fa fa-android"></span> Yolo </a></li>
+                <li><a href="/statistics"><span class="fa fa-cloud"></span> Statistics</a></li>
+
+                <li><a href="/"><span class="fa fa-signal"></span> View Site</a></li>
+
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </nav>
+</div>
+
 <div id="main-content" class="container">
     <@content/>
 </div>
 
-<hr>
-<footer>
+
+<footer class="navbar-fixed-bottom">
+    <hr>
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
@@ -91,8 +109,7 @@
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
 <script type="text/javascript" src="assets/vendor/slick/slick.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3WqcVF0nlc5jIAw7iAXuNT7K45wA8RVs&libraries=places&callback=initAutocomplete"
-        async defer></script>
+
 
 <script src="assets/js/scripts.js"></script>
 

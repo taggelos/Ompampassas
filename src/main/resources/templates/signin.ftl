@@ -10,6 +10,8 @@
             </div>
             <div class="panel-body">
                 <form class="form-horizontal" method="POST">
+
+                    <#include "partials/csrf_token.ftl">
                     <div class="form-group">
                         <label for="email" class="col-sm-4 control-label">Email</label>
                         <div class="col-sm-8">
