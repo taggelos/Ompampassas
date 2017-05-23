@@ -12,6 +12,11 @@ public class PlacesEntity {
     private String mAddress;
     private Time mOpeningTime;
     private Time mClosingTime;
+    private int id;
+    private String title;
+    private String address;
+    private Time openingTime;
+    private Time closingTime;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

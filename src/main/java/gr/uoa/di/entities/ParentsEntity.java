@@ -8,6 +8,8 @@ import java.util.Collection;
 public class ParentsEntity {
     private int mUserId;
     private int mCredits;
+    private int userId;
+    private int credits;
 
     @Id
     @Column(name = "user_id")

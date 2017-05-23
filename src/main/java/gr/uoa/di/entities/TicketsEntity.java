@@ -9,6 +9,10 @@ public class TicketsEntity {
     private int mParentId;
     private int mEventId;
     private int mPrice;
+    private int id;
+    private int parentId;
+    private int eventId;
+    private int price;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
