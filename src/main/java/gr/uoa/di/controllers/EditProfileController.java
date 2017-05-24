@@ -16,8 +16,7 @@ public class EditProfileController {
     }
 
     @PostMapping("/editprofile")
-    public @ResponseBody
-    String postEditProfile(@RequestParam Map<String, String> params) {
+    public String postEditProfile(@RequestParam Map<String, String> params) {
         return "editprofile";
     }
 }

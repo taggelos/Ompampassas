@@ -29,43 +29,43 @@
                 <div class="form-group">
                     <label class="col-lg-3 control-label">First name:</label>
                     <div class="col-lg-8">
-                        <input class="form-control" type="text" value="">
+                        <input class="form-control" type="text" name="name">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-3 control-label">Last name:</label>
                     <div class="col-lg-8">
-                        <input class="form-control" type="text" value="">
+                        <input class="form-control" type="text" name="surname">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-3 control-label">Email:</label>
                     <div class="col-lg-8">
-                        <input class="form-control" type="text" value="">
+                        <input class="form-control" type="text" name="email">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-3 control-label">Username:</label>
                     <div class="col-md-8">
-                        <input class="form-control" type="text" value="">
+                        <input class="form-control" type="text" name="username">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-3 control-label">Password:</label>
                     <div class="col-md-8">
-                        <input class="form-control" type="password" value="">
+                        <input class="form-control" type="password" name="password">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-3 control-label">Confirm password:</label>
                     <div class="col-md-8">
-                        <input class="form-control" type="password" value="">
+                        <input class="form-control" type="password" name="conf_password">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-3 control-label"></label>
                     <div class="col-md-8">
-                        <input type="button" class="btn btn-primary" value="Save Changes">
+                        <input type="submit" class="btn btn-primary" value="Save Changes">
                         <span></span>
                         <input type="reset" class="btn btn-default" value="Cancel">
                     </div>
