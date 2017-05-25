@@ -4,7 +4,7 @@
 <!-- Main jumbotron for search area -->
 <div class="jumbotron">
     <div class="container">
-        <form>
+        <form method="POST">
             <div class="panel panel-success">
                 <div class="panel-heading">Find an Event near you</div>
                 <div class="panel-body">
