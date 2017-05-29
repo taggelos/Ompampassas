@@ -1,4 +1,4 @@
-<#include "layout/default.ftl">
+<#include "../layout/default.ftl">
 
 <#macro content>
 <div class="row">
@@ -10,8 +10,24 @@
             </div>
             <div class="panel-body">
                 <form class="form-horizontal" method="POST">
+                    <#include "../partials/csrf_token.ftl">
 
-                    <#include "partials/csrf_token.ftl">
+                    <#if error??>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="alert alert-danger alert-dismissible">${error}</div>
+                            </div>
+                        </div>
+                    </#if>
+
+                    <#if message??>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="alert alert-info alert-dismissible">${message}</div>
+                            </div>
+                        </div>
+                    </#if>
+
                     <div class="form-group">
                         <label for="email" class="col-sm-4 control-label">Email</label>
                         <div class="col-sm-8">

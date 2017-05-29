@@ -9,15 +9,10 @@ public class UsersEntity {
     private int mId;
     private String mEmail;
     private String mPassword;
+    private String mRole;
     private String mName;
     private String mSurname;
-    private int id;
-    private Serializable role;
-    private String email;
-    private String password;
-    private String name;
-    private String surname;
-    private int age;
+    private int mEnabled;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -51,6 +46,16 @@ public class UsersEntity {
     }
 
     @Basic
+    @Column(name = "role")
+    public String getRole() {
+        return mRole;
+    }
+
+    public void setRole(String role) {
+        this.mRole = role;
+    }
+
+    @Basic
     @Column(name = "name")
     public String getName() {
         return mName;
@@ -71,52 +76,15 @@ public class UsersEntity {
     }
 
     @Basic
-    @Column(name = "role")
-    public Serializable getRole() {
-        return role;
+    @Column(name = "enabled")
+    public boolean getEnabled() {
+        return mEnabled == 1;
     }
 
-    public void setRole(Serializable role) {
-        this.role = role;
-    }
-
-    @Basic
-    @Column(name = "age")
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        UsersEntity that = (UsersEntity) o;
-
-        if (mId != that.mId) return false;
-        if (age != that.age) return false;
-        if (mEmail != null ? !mEmail.equals(that.mEmail) : that.mEmail != null) return false;
-        if (mPassword != null ? !mPassword.equals(that.mPassword) : that.mPassword != null) return false;
-        if (mName != null ? !mName.equals(that.mName) : that.mName != null) return false;
-        if (mSurname != null ? !mSurname.equals(that.mSurname) : that.mSurname != null) return false;
-        if (role != null ? !role.equals(that.role) : that.role != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = mId;
-        result = 31 * result + (role != null ? role.hashCode() : 0);
-        result = 31 * result + (mEmail != null ? mEmail.hashCode() : 0);
-        result = 31 * result + (mPassword != null ? mPassword.hashCode() : 0);
-        result = 31 * result + (mName != null ? mName.hashCode() : 0);
-        result = 31 * result + (mSurname != null ? mSurname.hashCode() : 0);
-        result = 31 * result + age;
-        return result;
+    public void setEnabled(boolean enabled) {
+        if (enabled)
+            mEnabled = 1;
+        else
+            mEnabled = 0;
     }
 }

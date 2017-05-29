@@ -23,7 +23,7 @@
     <link rel="icon" href="assets/images/favicon.ico">
 
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css">
+<#--<link rel="stylesheet" href="assets/css/bootstrap-theme.min.css">-->
     <link rel="stylesheet" href="assets/css/awesome-bootstrap-checkbox.css">
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/ie10-viewport-bug-workaround.css">
@@ -43,58 +43,59 @@
 </head>
 
 <body>
-<nav class="navbar navbar-default navbar-fixed-top" style="background-color: white;">
+<nav class="navbar navbar-default">
     <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse"
-                    aria-expanded="false" aria-controls="navbar">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">
-                <span class="glyphicon glyphicon-home"></span> Ompampassas
-            </a>
+            <a class="navbar-brand" href="/">Ompampassas</a>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <div class="navbar-form  navbar-nav navbar-right">
-                <a class="btn btn-success" href="/signup">
-                    <span class="fa fa-user"></span> Εγγραφή
-                </a>
-                <a class="btn btn-success" href="/signin">
-                    <span class="fa fa-sign-in"></span> Σύνδεση
-                </a>
-            <#--<button type="button" class="btn btn-success" data-toggle="modal" data-target="#loginModal">-->
-            <#--<span class="glyphicon glyphicon-log-in"></span> Login-->
-            <#--</button>-->
-            </div>
-        </div><!--/.navbar-collapse -->
+
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <#if currentUser??>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">${currentUser.getUsername()} <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/profile">Προφίλ</a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                <a href="/logout">Αποσύνδεση</a>
+                            </li>
+                        </ul>
+                    </li>
+                <#else>
+                    <li>
+                        <a href="/login">
+                            Σύνδεση
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/register">
+                            Εγγραφή
+                        </a>
+                    </li>
+                </#if>
+            </ul>
+        </div>
     </div>
 </nav>
-
-<!-- Freemarker if logged in admin-->
-<div id="main-content" class="container">
-    <nav class="navbar navbar-default row" role="navigation">
-        <div class="side-menu-container">
-            <ul class="nav navbar-nav">
-                <li><a href="/admin"><span class="fa fa-address-book"></span>Dashboard</a></li>
-                <li><a href="/signup"><span class="fa fa-android"></span> Yolo </a></li>
-                <li><a href="/statistics"><span class="fa fa-cloud"></span> Statistics</a></li>
-
-                <li><a href="/"><span class="fa fa-signal"></span> View Site</a></li>
-
-            </ul>
-        </div><!-- /.navbar-collapse -->
-    </nav>
-</div>
 
 <div id="main-content" class="container">
     <@content/>
 </div>
 
 
-<footer class="navbar-fixed-bottom">
+<footer>
     <hr>
     <div class="container">
         <div class="row">

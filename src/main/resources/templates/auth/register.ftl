@@ -1,4 +1,4 @@
-<#include "layout/default.ftl">
+<#include "../layout/default.ftl">
 
 <#macro content>
 <div class="row">
@@ -10,16 +10,16 @@
             </div>
             <div class="panel-body">
                 <form class="form-horizontal" method="POST">
-                    <#include "partials/message_container.ftl">
+                    <#include "../partials/message_container.ftl">
 
-                    <#include "partials/csrf_token.ftl">
+                    <#include "../partials/csrf_token.ftl">
 
                     <div class="form-group">
                         <label for="email" class="col-sm-4 control-label">Email</label>
                         <div class="col-sm-8">
                             <div class="input-group">
                                 <input type="email" class="form-control" id="email" name="email" placeholder="Email"
-                                       maxlength="255" value="${signupForm.getEmail()!""}">
+                                       maxlength="255" value="${registerForm.getEmail()!""}">
                                 <div class="input-group-addon">
                                     <i class="fa fa-envelope"></i>
                                 </div>
@@ -32,7 +32,7 @@
                         <div class="col-sm-8">
                             <div class="input-group">
                                 <input type="password" class="form-control" id="password" name="password"
-                                       placeholder="Κωδικός Πρόσβασης">
+                                       placeholder="Κωδικός Πρόσβασης" value="${registerForm.getPassword()!""}">
                                 <div class="input-group-addon">
                                     <i class="fa fa-lock"></i>
                                 </div>
@@ -47,7 +47,8 @@
                             <div class="input-group">
                                 <input type="password" class="form-control" id="passwordConfirmation"
                                        name="passwordConfirmation"
-                                       placeholder="Επιβεβαίωση Κωδικού Πρόσβασης">
+                                       placeholder="Επιβεβαίωση Κωδικού Πρόσβασης"
+                                       value="${registerForm.getPasswordConfirmation()!""}">
                                 <div class="input-group-addon">
                                     <i class="fa fa-lock"></i>
                                 </div>
@@ -59,7 +60,7 @@
                         <label for="name" class="col-sm-4 control-label">Όνομα</label>
                         <div class="col-sm-8">
                             <input type="text" class="form-control" id="name" name="name" placeholder="Όνομα"
-                                   maxlength="255" value="${signupForm.getName()!""}">
+                                   maxlength="255" value="${registerForm.getName()!""}">
                         </div>
                     </div>
 
@@ -67,7 +68,7 @@
                         <label for="surname" class="col-sm-4 control-label">Επώνυμο</label>
                         <div class="col-sm-8">
                             <input type="text" class="form-control" id="surname" name="surname" placeholder="Επώνυμο"
-                                   maxlength="255" value="${signupForm.getSurname()!""}">
+                                   maxlength="255" value="${registerForm.getSurname()!""}">
                         </div>
                     </div>
 

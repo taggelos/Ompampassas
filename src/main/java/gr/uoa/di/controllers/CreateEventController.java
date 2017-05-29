@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.Map;
 
 @Controller
-public class Create_EventController {
+public class CreateEventController {
     @GetMapping("/create_event")
     public String Create_Event() {
         return "create_event";

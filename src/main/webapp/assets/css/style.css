@@ -28,18 +28,7 @@
 
 body {
     font-family: 'Clear Sans', sans-serif;
-    background: url("../images/background.jpg") repeat;
-    padding-top: 50px;
-    padding-bottom: 20px;
-
-}
-
-.mybody {
-    font-family: 'Clear Sans', sans-serif;
-    padding-top: 50px;
-    padding-bottom: 20px;
-    background-color: ghostwhite;
-    background-image: none;
+    /*background: url("../images/background.jpg") repeat;*/
 }
 
 .jumbotron {
@@ -64,18 +53,23 @@ body {
     color: black;
 }
 
-.activity-checkbox-filter { border:2px groove #aedefb; width:200px; height: 150px; overflow-y: auto; }
+.activity-checkbox-filter {
+    border: 2px groove #aedefb;
+    width: 200px;
+    height: 150px;
+    overflow-y: auto;
+}
 
-.results-search-container1{
+.results-search-container1 {
     margin-top: 1%;
     margin-bottom: 10px;
 }
 
-.results-search-container2{
+.results-search-container2 {
     margin-bottom: 10px;
 }
 
-.sortby-container{
+.sortby-container {
     margin-top: 2%;
     margin-left: 26%;
     margin-bottom: 2px;

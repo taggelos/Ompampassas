@@ -6,7 +6,7 @@
                     aria-hidden="true">&times;</span></button>
             <ul>
                 <#list errors as error>
-                    <li>${error.getDefaultMessage()}</li>
+                    <li>${error.getMessage()}</li>
                 </#list>
             </ul>
         </div>

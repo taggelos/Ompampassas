@@ -1,14 +1,14 @@
 package gr.uoa.di.forms;
 
-import gr.uoa.di.utils.constraints.FieldMatch;
+import gr.uoa.di.utils.constraints.PasswordsMatchConstraint;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.Size;
 
-@FieldMatch(first = "password", second = "passwordConfirmation", message = "Ο Κωδικός Πρόσβασης και η Επιβεβαίωση Κωδικού Πρόσβασης πρέπει να ταυτίζονται.")
+@PasswordsMatchConstraint(message = "Ο Κωδικός Πρόσβασης και η Επιβεβαίωση Κωδικού Πρόσβασης πρέπει να ταυτίζονται.")
 
-public class SignupForm {
+public class RegisterForm {
     @NotEmpty(message = "Το Email είναι υποχρεωτικό.")
     @Email(message = "Το Email που εισάγατε δεν είναι έγκυρο.")
     @Size(max = 255, message = "Το Email δεν πρέπει να υπερβαίνει τους {max} χαρακτήρες.")
