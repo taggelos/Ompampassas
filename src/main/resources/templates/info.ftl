@@ -28,25 +28,31 @@
         fermentum massa justo sit amet risus.</p>
 </div>
 
+<style>
+    #map-container {
+        height: 300px;
+        float: right
+    }
+</style>
+
 <div class="container">
-
-    <div class="form-group has-feedback">
-        <form class="form-inline">
-            <p>Number of Tickets
-                <i class="fa fa-ticket" aria-hidden="true"></i></p>
-            <input type="number" min="1" max="100" class="form-control" data-toggle="tooltip"
-                   title="Attendees Ages"/>
-        </form>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group has-feedback">
+                <form class="form-inline">
+                    <p>Number of Tickets<i class="fa fa-ticket" aria-hidden="true"></i></p>
+                    <div class="form-group has-feedback">
+                        <input type="number" min="1" max="100" title="Number of Tickets"/>
+                    </div>
+                    <button type="submit"> Buy Tickets</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div id="map-container" class="col-md-9"></div>
+        </div>
     </div>
-    <style>
-        #map-container {
-            height: 300px;
-            float: right
-        }
-    </style>
-    </head>
 
-    <div id="map-container" class="col-md-6"></div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>

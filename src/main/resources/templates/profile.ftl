@@ -26,30 +26,32 @@
             <h3>Personal info</h3>
 
             <form class="form-horizontal" action="editprofile" method="POST">
+                <#include "partials/csrf_token.ftl">
+
                 <div class="form-group">
                     <label class="col-lg-3 control-label">First name:</label>
-                    <p class="col-lg-1 control-label">AAAAAAAAAAAAAAA</p>
+                    <p class="col-lg-1 control-label">${getName(currentUser.getUsername())}</p>
                     <div class="col-lg-8 control-label">
                         <input class="form-control" name="name" type="hidden" value="AAAAAAAAAAAAAAA">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-3 control-label">Last name:</label>
-                    <p class="col-lg-1 control-label">AAAAAAAAAAAAAAA</p>
+                    <p class="col-lg-1 control-label">AAAAAA</p>
                     <div class="col-lg-8">
                         <input class="control" name="surname" type="hidden" value="BBBBBBBBBBBBBBBBB">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-3 control-label">Email:</label>
-                    <p class="col-lg-1 control-label">AAAAAAAAAAAAAAA</p>
+                    <p class="col-lg-1 control-label">AAAAAAAAAAAA</p>
                     <div class="col-lg-8">
                         <input class="form-control" name="email" type="hidden" value="CCCCCCCCCCCCCC">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-3 control-label">Username:</label>
-                    <p class="col-lg-1 control-label">AAAAAAAAAAAAAAA</p>
+                    <p class="col-lg-1 control-label">${currentUser.getUsername()}</p>
                     <div class="col-md-8">
                         <input class="form-control" name="username" type="hidden" value="DDDDDDDDDDDDDDDDDD">
                     </div>
