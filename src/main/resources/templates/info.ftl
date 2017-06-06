@@ -1,5 +1,6 @@
 <#include "layout/default.ftl">
 
+
 <#macro content>
 
 <div class="jumbotron">
