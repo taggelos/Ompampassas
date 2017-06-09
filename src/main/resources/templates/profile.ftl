@@ -8,10 +8,29 @@
     <div class="row">
         <div class="col-md-3">
             <div class="text-center">
-                <img src="//placehold.it/100" class="avatar img-circle" alt="avatar">
+            <#--img src="//placehold.it/100" class="avatar img-circle" alt="avatar"-->
+            <#-- <#if imagedir??> -->
+                <img src="assets/imagedir/myimg.jpg"/>
+            <#--/#if-->
                 <h6>Upload a different photo...</h6>
 
-                <input type="file" class="form-control">
+                <form method="POST" enctype="multipart/form-data" action="/uploadpic">
+                    <#include "partials/csrf_token.ftl">
+                    <table>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <p>
+                                    <input id="fileInput" type="file" name="uploadingImgs" multiple>
+                                </p>
+                                <p>
+                                    <input type="submit" value="Upload NOW">
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+
             </div>
         </div>
 
@@ -30,7 +49,9 @@
 
                 <div class="form-group">
                     <label class="col-lg-3 control-label">First name:</label>
-                    <p class="col-lg-1 control-label">${getName(currentUser.getUsername())}</p>
+                    <#if email??>
+                        <p class="col-lg-1 control-label"> ${Session.curusername.email}</p>
+                    </#if>
                     <div class="col-lg-8 control-label">
                         <input class="form-control" name="name" type="hidden" value="AAAAAAAAAAAAAAA">
                     </div>
@@ -51,7 +72,8 @@
                 </div>
                 <div class="form-group">
                     <label class="col-md-3 control-label">Username:</label>
-                    <p class="col-lg-1 control-label">${currentUser.getUsername()}</p>
+                    <#if currentUser??>
+                        <p class="col-lg-1 control-label">${currentUser.getUsername()}</p> </#if>
                     <div class="col-md-8">
                         <input class="form-control" name="username" type="hidden" value="DDDDDDDDDDDDDDDDDD">
                     </div>

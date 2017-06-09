@@ -36,6 +36,10 @@
                                 <div class="input-group-addon">
                                     <i class="fa fa-envelope"></i>
                                 </div>
+                                <#if email??>
+                                ${Session.curusername.email}
+                                </#if>
+
                             </div>
                         </div>
                     </div>
