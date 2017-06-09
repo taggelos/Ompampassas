@@ -28,7 +28,8 @@
 
 body {
     font-family: 'Clear Sans', sans-serif;
-    /*background: url("../images/background.jpg") repeat;*/
+    background-size: cover;
+    background: url("../images/background.jpg") center no-repeat;
 }
 
 .jumbotron {

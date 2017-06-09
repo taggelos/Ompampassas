@@ -22,3 +22,6 @@ function initializeSlick() {
 function updateTextInput(val) {
     document.getElementById('rangeArea').value = val;
 }
+function updateTextInput2(val, price) {
+    document.getElementById('tickets').innerHTML = (val * price).toString();
+}
