@@ -1,8 +1,7 @@
 <#include "layout/default.ftl">
 
 <#macro content>
-<body class="mybody">
-<div class="container">
+<div class="container" style="background-color:lightskyblue;">
     <h1>Edit Profile</h1>
     <hr>
     <div class="row">
@@ -74,7 +73,6 @@
         </div>
     </div>
 </div>
-</body>
 <hr>
 </#macro>
 

@@ -42,8 +42,15 @@
                 <form class="form-inline">
                     <p>Number of Tickets<i class="fa fa-ticket" aria-hidden="true"></i></p>
                     <div class="form-group has-feedback">
-                        <input type="number" min="1" max="100" title="Number of Tickets"/>
+                        <input type="number" min="1" max="100" title="Number of Tickets"
+                               onchange="updateTextInput2(this.value,3);">
+
+                        </br>
+                        <label>Price</label>
+                        <p id="tickets">0</p>
+                        </br></br>
                     </div>
+                    </br>
                     <button type="submit"> Buy Tickets</button>
                 </form>
             </div>
@@ -62,7 +69,7 @@
     <script>
 
         function init_map() {
-            var var_location = new google.maps.LatLng(45.430817, 12.331516);
+            var var_location = new google.maps.LatLng(38.035152, 23.670934);
 
             var var_mapoptions = {
                 center: var_location,
