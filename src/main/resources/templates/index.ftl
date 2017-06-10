@@ -5,6 +5,7 @@
 <div class="jumbotron">
     <div class="container">
         <form method="POST">
+            <#include "partials/csrf_token.ftl">
             <div class="panel panel-success">
                 <div class="panel-heading">Find an Event near you</div>
                 <div class="panel-body">

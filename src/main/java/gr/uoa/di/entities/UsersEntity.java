@@ -1,7 +1,6 @@
 package gr.uoa.di.entities;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Table(name = "users", schema = "ompampassas", catalog = "")
