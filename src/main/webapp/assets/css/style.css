@@ -95,3 +95,14 @@ body {
 .has-feedback{
     font-size: 120%;
 }
+
+ul.user_comments{
+    list-style-type: none;
+    margin-top: 70px;
+    margin-bottom: 50px;
+    font-size: 120%;
+}
+
+li.user_comment{
+    margin-bottom: 40px;
+}
