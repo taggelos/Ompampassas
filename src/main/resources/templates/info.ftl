@@ -2,30 +2,33 @@
 
 <#macro content>
 <body>
-<div class="jumbotron">
+<div class="jumbotron_info">
     <div class="info-container">
         <div class="event-basics">
-            <h2>Event 1</h2>
-            <p>
-                <span class="glyphicon glyphicon-star"></span>
-                <span class="glyphicon glyphicon-star"></span>
-                <span class="glyphicon glyphicon-star"></span>
-                <span class="glyphicon glyphicon-star"></span>
-                <span class="glyphicon glyphicon-star"></span>
-            </p>
-            <h4> Place 102,City Y</h4>
-            <h4><a href="#">User comments & ratings</a>
+            <h1>Event 1</h1>
+            <h2>
+                <p>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star"></span>
+                </p>
+                <p> Place 102,City Y</p></h2>
+                <h3><a href="#">User comments & ratings</a>
+
         </div>
 
 
     </div>
 </div>
 <div class="panel panel-success">
-    <h2>Information</h2>
+    <h1>Information</h1>
     <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula
         porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-        ut
-        fermentum massa justo sit amet risus.</p>
+        ut fermentum massa justo sit amet risus Duis aute irure
+        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 </div>
 
 <style>
@@ -40,18 +43,17 @@
         <div class="col-md-3">
             <div class="form-group has-feedback">
                 <form class="form-inline">
-                    <p>Number of Tickets<i class="fa fa-ticket" aria-hidden="true"></i></p>
                     <div class="form-group has-feedback">
+                        <p>Number of Tickets<i class="fa fa-ticket" aria-hidden="true"></i>
                         <input type="number" min="1" max="100" title="Number of Tickets"
                                onchange="updateTextInput2(this.value,3);">
-
-                        </br>
-                        <label>Price</label>
-                        <p id="tickets">0</p>
-                        </br></br>
+                        </p>
+                        <label>Price
+                        <p id="tickets">0 $</p>
+                        </label>
                     </div>
-                    </br>
-                    <button type="submit"> Buy Tickets</button>
+                    <br>
+                    <button type="submit" class="btn btn-success  btn-lg"> Make Reservation ></button>
                 </form>
             </div>
         </div>
@@ -93,6 +95,11 @@
 
     </script>
 </div>
+
+<div class="container">
+
+</div>
+
 
 </#macro>
 
