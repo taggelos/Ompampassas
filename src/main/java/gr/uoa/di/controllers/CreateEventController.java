@@ -3,10 +3,7 @@ package gr.uoa.di.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.util.Map;
 
 @Controller
 public class CreateEventController {
@@ -17,7 +14,7 @@ public class CreateEventController {
 
     @PostMapping("/create_event")
     public @ResponseBody
-    String postCreate_Event(@RequestParam Map<String, String> params) {
+    String postCreate_Event() {
         return "create_event";
     }
 }

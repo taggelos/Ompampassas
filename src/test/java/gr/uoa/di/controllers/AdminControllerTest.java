@@ -3,9 +3,8 @@ package gr.uoa.di.controllers;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mock;
 
-import static org.junit.Assert.*;
+//import org.mockito.Mock;
 
 public class AdminControllerTest {
     //@Mock
