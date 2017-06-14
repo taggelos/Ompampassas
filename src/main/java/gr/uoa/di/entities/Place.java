@@ -2,11 +2,10 @@ package gr.uoa.di.entities;
 
 import javax.persistence.*;
 import java.sql.Time;
-import java.util.Collection;
 
 @Entity
 @Table(name = "places", schema = "ompampassas", catalog = "")
-public class PlacesEntity {
+public class Place {
     private int mId;
     private String mTitle;
     private String mAddress;
@@ -74,7 +73,7 @@ public class PlacesEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        PlacesEntity that = (PlacesEntity) o;
+        Place that = (Place) o;
 
         if (mId != that.mId) return false;
         if (mTitle != null ? !mTitle.equals(that.mTitle) : that.mTitle != null) return false;

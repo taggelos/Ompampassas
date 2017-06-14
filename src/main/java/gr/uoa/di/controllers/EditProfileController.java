@@ -1,6 +1,6 @@
 package gr.uoa.di.controllers;
 
-import gr.uoa.di.entities.UsersEntity;
+import gr.uoa.di.entities.User;
 import gr.uoa.di.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -17,7 +17,7 @@ public class EditProfileController {
 
     @GetMapping("/editprofile")
     public ModelAndView getEditprofile() {
-        UsersEntity user = new UsersEntity();
+        User user = new User();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String name = auth.getName(); //get logged in username
 

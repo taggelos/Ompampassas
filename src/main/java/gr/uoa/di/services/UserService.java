@@ -1,9 +1,9 @@
 package gr.uoa.di.services;
 
-import gr.uoa.di.entities.UsersEntity;
+import gr.uoa.di.entities.User;
 
 public interface UserService {
-    void save(UsersEntity user);
+    void save(User user);
 
-    UsersEntity findByUsername(String username);
+    User findByUsername(String username);
 }

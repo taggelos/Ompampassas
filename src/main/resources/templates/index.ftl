@@ -33,7 +33,6 @@
                             <i class="glyphicon glyphicon-sunglasses form-control-feedback"></i>
                         </div>
                     </div>
-                    </p>
                     Area Search Radius:
                     <div class="btn" disabled>
                         <input type="range" name="rangeInput" min="0" max="100" onchange="updateTextInput(this.value);">
@@ -54,7 +53,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="alert alert-success">
-                ${registered}
+                    You have successfully registered! Have fun!
                 </div>
             </div>
         </div>

@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "users", schema = "ompampassas", catalog = "")
-public class UsersEntity {
+public class User {
     private int mId;
     private String mEmail;
     private String mPassword;
@@ -25,7 +25,7 @@ public class UsersEntity {
     }
 
     @Basic
-    @Column(name = "email")
+    @Column(name = "email", unique = true)
     public String getEmail() {
         return mEmail;
     }

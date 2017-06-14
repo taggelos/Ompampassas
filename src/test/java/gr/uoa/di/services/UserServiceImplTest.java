@@ -1,23 +1,18 @@
 package gr.uoa.di.services;
 
-import gr.uoa.di.entities.UsersEntity;
+import gr.uoa.di.entities.User;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
-import static org.junit.Assert.*;
-
 
 public class UserServiceImplTest {
-    UsersEntity test;
+    User test;
 
     @Before
     public void setUp() throws Exception {
-        test = new UsersEntity();
+        test = new User();
         test.setId(Integer.parseInt("testId"));
         test.setEmail("testEmail");
         test.setPassword("testPass");

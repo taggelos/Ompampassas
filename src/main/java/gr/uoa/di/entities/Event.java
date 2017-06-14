@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 
 @Entity
 @Table(name = "events", schema = "ompampassas", catalog = "")
-public class EventsEntity {
+public class Event {
     private int id;
     private int placeId;
     private int providerId;
@@ -90,7 +90,7 @@ public class EventsEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        EventsEntity that = (EventsEntity) o;
+        Event that = (Event) o;
 
         if (id != that.id) return false;
         if (placeId != that.placeId) return false;

@@ -1,7 +1,7 @@
 package gr.uoa.di.services;
 
-import gr.uoa.di.entities.UsersEntity;
-import gr.uoa.di.repositories.UsersRepository;
+import gr.uoa.di.entities.User;
+import gr.uoa.di.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -17,12 +17,12 @@ import java.util.Set;
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
-    private UsersRepository mUsersRepository;
+    private UserRepository mUserRepository;
 
     @Override
     @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        UsersEntity user = mUsersRepository.findByEmail(email);
+        User user = mUserRepository.findByEmail(email);
 
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
         grantedAuthorities.add(new SimpleGrantedAuthority(user.getRole()));
