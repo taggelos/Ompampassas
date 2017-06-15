@@ -20,11 +20,12 @@
                             <i class="glyphicon glyphicon-search  form-control-feedback"></i>
                         </div>
                         <div class="form-group has-feedback">
-                            <input type="date" class="form-control" name="event_date" min="2016-12-31">
+                            <input type="date" class="form-control" name="event_date" min="2016-12-31"
+                                   title="Event date">
                             <i class="glyphicon glyphicon-calendar form-control-feedback"></i>
                         </div>
                         <div class="form-group has-feedback">
-                            <input type="time" name="time" class="form-control" min="2016-12-31">
+                            <input type="time" name="time" class="form-control" title="Event time">
                             <i class="glyphicon glyphicon-hourglass form-control-feedback"></i>
                         </div>
                         <div class="form-group has-feedback">
@@ -33,11 +34,12 @@
                             <i class="glyphicon glyphicon-sunglasses form-control-feedback"></i>
                         </div>
                     </div>
-                    </p>
+                    <p>
                     Area Search Radius:
                     <div class="btn" disabled>
-                        <input type="range" name="rangeInput" min="0" max="100" onchange="updateTextInput(this.value);">
-                        <input type="text" id="rangeArea" value="50">
+                        <input type="range" name="rangeInput" min="0" max="100" onchange="updateTextInput(this.value);"
+                               title="Area radius">
+                        <input type="text" id="rangeArea" value="50" title="Area radius">
                     </div>
                     <input type="submit" class="btn btn-info btn-md pull-right" value="Search Now">
                 </div>
@@ -45,7 +47,8 @@
 
         </form>
 
-        <p><a class="btn btn-primary btn-lg" href="/one" role="button">See All Events &raquo;</a></p>
+        <!-- fix href -->
+        <p><a class="btn btn-primary btn-lg" href="" role="button">See All Events &raquo;</a></p>
     </div>
 </div>
 
