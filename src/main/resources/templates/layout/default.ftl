@@ -62,7 +62,7 @@
                 <#if currentUser??>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">${currentUser.getUsername()} <span class="caret"></span></a>
+                           aria-expanded="false">${currentUser.getEmail()} <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="/profile">Προφίλ</a>

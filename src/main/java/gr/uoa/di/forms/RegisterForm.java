@@ -1,5 +1,6 @@
 package gr.uoa.di.forms;
 
+import gr.uoa.di.utils.constraints.EmailUniqueConstraint;
 import gr.uoa.di.utils.constraints.PasswordsMatchConstraint;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -7,6 +8,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 @PasswordsMatchConstraint(message = "Ο Κωδικός Πρόσβασης και η Επιβεβαίωση Κωδικού Πρόσβασης πρέπει να ταυτίζονται.")
+@EmailUniqueConstraint(message = "Το Email που εισάγατε χρησιμοποιείται ήδη. Παρακαλούμε επιλέξτε κάποιο άλλο.")
 
 public class RegisterForm {
     @NotEmpty(message = "Το Email είναι υποχρεωτικό.")

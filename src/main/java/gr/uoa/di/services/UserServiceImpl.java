@@ -1,7 +1,7 @@
 package gr.uoa.di.services;
 
-import gr.uoa.di.entities.UsersEntity;
-import gr.uoa.di.repositories.UsersRepository;
+import gr.uoa.di.entities.User;
+import gr.uoa.di.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -9,18 +9,18 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
-    private UsersRepository mUsersRepository;
+    private UserRepository mUserRepository;
     @Autowired
     private BCryptPasswordEncoder mBCryptPasswordEncoder;
 
     @Override
-    public void save(UsersEntity user) {
+    public void save(User user) {
         user.setPassword(mBCryptPasswordEncoder.encode(user.getPassword()));
-        mUsersRepository.save(user);
+        mUserRepository.save(user);
     }
 
     @Override
-    public UsersEntity findByUsername(String email) {
-        return mUsersRepository.findByEmail(email);
+    public User findByUsername(String email) {
+        return mUserRepository.findByEmail(email);
     }
 }

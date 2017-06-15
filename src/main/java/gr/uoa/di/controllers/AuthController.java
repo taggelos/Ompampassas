@@ -1,6 +1,6 @@
 package gr.uoa.di.controllers;
 
-import gr.uoa.di.entities.UsersEntity;
+import gr.uoa.di.entities.User;
 import gr.uoa.di.forms.RegisterForm;
 import gr.uoa.di.services.SecurityService;
 import gr.uoa.di.services.UserService;
@@ -16,7 +16,6 @@ import javax.validation.Validator;
 import java.util.Set;
 
 @Controller
-@SessionAttributes("curusername")
 public class AuthController {
     @Autowired
     private UserService mUserService;
@@ -60,7 +59,7 @@ public class AuthController {
             return mav;
         }
 
-        UsersEntity user = new UsersEntity();
+        User user = new User();
         user.setEmail(request.getParameter("email"));
         user.setPassword(request.getParameter("password"));
         user.setName(request.getParameter("name"));
@@ -69,12 +68,10 @@ public class AuthController {
         user.setRole("ROLE_ADMIN");
         mUserService.save(user);
 
-        mSecurityService.autologin(user.getEmail(), user.getPassword());
+        // To autologin, we need to pass the password in plain text.
+        String password = request.getParameter("password");
+        mSecurityService.autologin(user.getEmail(), password);
 
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("index");
-        mav.addObject("registered", "REGISTER OK");
-
-        return mav;
+        return new ModelAndView("redirect:/?registered=1");
     }
 }

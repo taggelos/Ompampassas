@@ -36,10 +36,6 @@
                                 <div class="input-group-addon">
                                     <i class="fa fa-envelope"></i>
                                 </div>
-                                <#if email??>
-                                ${Session.curusername.email}
-                                </#if>
-
                             </div>
                         </div>
                     </div>
@@ -74,6 +70,11 @@
                         </div>
                     </div>
                 </form>
+            </div>
+            <div class="panel-footer">
+                <p class="form-control-static">
+                    Δεν έχετε λογαριασμό; <a href="/register">Εγγραφείτε εδώ.</a>
+                </p>
             </div>
         </div>
     </div>

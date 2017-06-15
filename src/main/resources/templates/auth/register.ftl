@@ -79,6 +79,11 @@
                     </div>
                 </form>
             </div>
+            <div class="panel-footer">
+                <p class="form-control-static">
+                    Έχετε ήδη λογαριασμό; <a href="/login">Συνδεθείτε εδώ.</a>
+                </p>
+            </div>
         </div>
     </div>
     <div class="col-md-2"></div>
