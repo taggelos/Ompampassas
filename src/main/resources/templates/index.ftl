@@ -4,15 +4,14 @@
 <!-- Main jumbotron for search area -->
 <div class="jumbotron">
     <div class="search_bar_container">
-        <form method="POST">
-            <#include "partials/csrf_token.ftl">
+        <form method="GET">
             <div class="panel panel-success">
                 <div class="panel-heading">Find an Event near you</div>
                 <div class="panel-body">
-                    <div-- class="form-inline">
+                    <div class="form-inline">
                         <div class="form-group has-feedback">
-                            <label class="areasearch">Area Search:</label>
-                            <input type="text" class="form-control" placeholder="ie Zografou"/>
+                            <label for="areasearch">Area Search:</label>
+                            <input type="text" class="form-control" id="areasearch" placeholder="ie Zografou"/>
                             <!--i class="form-control-feedback glyphicon glyphicon-map-marker "></i-->
                         </div>
                         <div class="form-group has-feedback">
@@ -21,9 +20,8 @@
                             <!--i class="glyphicon glyphicon-search  form-control-feedback"></i-->
                         </div>
                         <div class="form-group has-feedback ">
-                            <label for="datesearch">Datetime:</label>
-                            <input type="text" class="form-control" id="datetimepicker" name="event_date" min="2016-12-31"
-                                   title="Event date">
+                            <label for="datetimepicker">Datetime:</label>
+                            <input type="datetime-local" class="form-control" id="datetimepicker" name="event_date"/>
                             <!--i class="glyphicon glyphicon-calendar form-control-feedback"></i-->
                         </div>
                         <!--div class="form-group has-feedback">
@@ -31,32 +29,27 @@
                             <input type="time" name="time" id="timesearch" class="form-control" title="Event time">
                             <!--i class="glyphicon glyphicon-hourglass form-control-feedback"></i>
                         </div-->
-                        <div class="form-group has-feedback">
-                            <label for="adattendeessearch">Adult Attendees:</label>
-                            <input type="number" min="1" max="100" id="attendeessearch" class="form-control" data-toggle="tooltip"
-                                   title="Adult Attendees Ages"/>
-                            <!--i class="glyphicon glyphicon-sunglasses form-control-feedback"></i-->
-                        </div>
                         <div class="form-group has-feedback ">
                             <label for="kiattendeessearch">Kid Attendees:</label>
-                            <input type="number" min="1" max="100" id="attendeessearch" class="form-control" data-toggle="tooltip"
-                                   title="Kid Attendees Ages"/>
+                            <input type="number" min="1" max="100" id="kiattendeessearch" class="form-control"/>
                             <!--i class="glyphicon glyphicon-sunglasses form-control-feedback"></i-->
                         </div>
+                        <div class="form-group has-feedback">
+                            <label for="attendeessearch">Adult Attendees:</label>
+                            <input type="number" min="1" max="100" id="attendeessearch" class="form-control"/>
+                            <!--i class="glyphicon glyphicon-sunglasses form-control-feedback"></i-->
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label for="radiussearch">Area Search Radius:</label>
+                            <input type="range" name="rangeInput" min="0" max="100" id="radiussearch"
+                                   onchange="updateTextInput(this.value);"/>
+                            <input type="text" id="rangeArea" value="50" title="Area radius"/>
+                        </div>
                     </div>
-                    <p> Area Search Radius: </p>
-                    <div class="btn" disabled>
-                        <label for="radiussearch">Area Search Radius:</label>
-                        <input type="range" name="rangeInput" min="0" max="100" id="radiussearch" onchange="updateTextInput(this.value);"
-                               title="Area radius">
-                        <input type="text" id="rangeArea" value="50" title="Area radius">
-                    </div>
-                    <input type="submit" class="btn btn-success btn-lg pull-right" value="Search Now &raquo">
+                    <input type="submit" class="btn btn-success btn-lg pull-right" value="Search Now &raquo"/>
                 </div>
-
             </div>
         </form>
-
         <!-- fix href -->
         <!--p><a class="btn btn-primary btn-lg" href="" role="button">See All Events &raquo;</a></p-->
     </div>
