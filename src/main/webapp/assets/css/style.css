@@ -29,13 +29,32 @@
 body {
     font-family: 'Clear Sans', sans-serif;
     background-size: cover;
-    background: url("../images/background.jpg") center no-repeat;
+    /*background: url("../images/background.jpg") center no-repeat;*/
 }
 
-.jumbotron {
-    background-color: transparent;
+.jumbotron{
+    background: url("../images/background.jpg");
+    padding-top: 75px;
+    height: 400px;
+    width: 100%;
+    background-size: cover;
 }
 
+.panel-heading{
+    margin-bottom: 3%;
+    font-size: large;
+}
+
+input, label {
+    display:block;
+    font-size: 70%;
+
+}
+
+.search_bar_container{
+    margin-top: 1%;
+    transform: scale(1.09);
+}
 .slider {
     width: 75%;
     margin: 5px auto;

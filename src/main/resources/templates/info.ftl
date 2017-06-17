@@ -14,7 +14,7 @@
                 <span class="glyphicon glyphicon-star"></span>
             </h2>
             <p> Place 102,City Y</p>
-            <h3><a href="#">User comments & ratings</a>
+            <h3><a href="#comment_section">User comments & ratings</a>
 
         </div>
     </div>
@@ -50,7 +50,7 @@
                         </label>
                     </div>
                     <br>
-                    <button type="submit" class="btn btn-success  btn-lg"> Make Reservation ></button>
+                    <button type="submit" class="btn btn-success  btn-lg"> Make Reservation &raquo</button>
                 </form>
             </div>
         </div>
@@ -93,7 +93,7 @@
     </script>
 </div>
 
-<div class="comment-container">
+<div class="comment-container" id="comment_section">
     <ul class="user_comments">
         <li class="user_comment clearfix">
             <div class="row">
