@@ -3,6 +3,9 @@ package gr.uoa.di.entities;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
+/**
+ * Created by e-lias on 17-Jun-17.
+ */
 @Entity
 @Table(name = "events", schema = "ompampassas", catalog = "")
 public class Event {
@@ -10,13 +13,14 @@ public class Event {
     private int placeId;
     private int providerId;
     private String title;
+    private String description;
+    private String category;
     private Timestamp startTime;
     private Timestamp endTime;
-    private int price;
+    private int numberOfTickets;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -26,7 +30,7 @@ public class Event {
     }
 
     @Basic
-    @Column(name = "place_id")
+    @Column(name = "place_id", nullable = false)
     public int getPlaceId() {
         return placeId;
     }
@@ -36,7 +40,7 @@ public class Event {
     }
 
     @Basic
-    @Column(name = "provider_id")
+    @Column(name = "provider_id", nullable = false)
     public int getProviderId() {
         return providerId;
     }
@@ -46,7 +50,7 @@ public class Event {
     }
 
     @Basic
-    @Column(name = "title")
+    @Column(name = "title", nullable = false, length = 255)
     public String getTitle() {
         return title;
     }
@@ -56,7 +60,27 @@ public class Event {
     }
 
     @Basic
-    @Column(name = "start_time")
+    @Column(name = "description", nullable = false, length = 1024)
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @Basic
+    @Column(name = "category", nullable = false, length = 255)
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    @Basic
+    @Column(name = "start_time", nullable = false)
     public Timestamp getStartTime() {
         return startTime;
     }
@@ -66,7 +90,7 @@ public class Event {
     }
 
     @Basic
-    @Column(name = "end_time")
+    @Column(name = "end_time", nullable = false)
     public Timestamp getEndTime() {
         return endTime;
     }
@@ -76,42 +100,13 @@ public class Event {
     }
 
     @Basic
-    @Column(name = "price")
-    public int getPrice() {
-        return price;
+    @Column(name = "number of tickets", nullable = false)
+    public int getNumberOfTickets() {
+        return numberOfTickets;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
+    public void setNumberOfTickets(int numberOfTickets) {
+        this.numberOfTickets = numberOfTickets;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Event that = (Event) o;
-
-        if (id != that.id) return false;
-        if (placeId != that.placeId) return false;
-        if (providerId != that.providerId) return false;
-        if (price != that.price) return false;
-        if (title != null ? !title.equals(that.title) : that.title != null) return false;
-        if (startTime != null ? !startTime.equals(that.startTime) : that.startTime != null) return false;
-        if (endTime != null ? !endTime.equals(that.endTime) : that.endTime != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + placeId;
-        result = 31 * result + providerId;
-        result = 31 * result + (title != null ? title.hashCode() : 0);
-        result = 31 * result + (startTime != null ? startTime.hashCode() : 0);
-        result = 31 * result + (endTime != null ? endTime.hashCode() : 0);
-        result = 31 * result + price;
-        return result;
-    }
 }

@@ -3,94 +3,99 @@ package gr.uoa.di.entities;
 import javax.persistence.*;
 import java.sql.Time;
 
+/**
+ * Created by e-lias on 17-Jun-17.
+ */
 @Entity
 @Table(name = "places", schema = "ompampassas", catalog = "")
 public class Place {
-    private int mId;
-    private String mTitle;
-    private String mAddress;
-    private Time mOpeningTime;
-    private Time mClosingTime;
     private int id;
     private String title;
+    private String area;
     private String address;
+    private double longitude;
+    private double latitude;
     private Time openingTime;
     private Time closingTime;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
-        return mId;
+        return id;
     }
 
     public void setId(int id) {
-        mId = id;
+        this.id = id;
     }
 
     @Basic
-    @Column(name = "title")
+    @Column(name = "title", nullable = false, length = 255)
     public String getTitle() {
-        return mTitle;
+        return title;
     }
 
     public void setTitle(String title) {
-        mTitle = title;
+        this.title = title;
     }
 
     @Basic
-    @Column(name = "address")
+    @Column(name = "area", nullable = false, length = 255)
+    public String getArea() {
+        return area;
+    }
+
+    public void setArea(String area) {
+        this.area = area;
+    }
+
+    @Basic
+    @Column(name = "address", nullable = false, length = 255)
     public String getAddress() {
-        return mAddress;
+        return address;
     }
 
     public void setAddress(String address) {
-        mAddress = address;
+        this.address = address;
     }
 
     @Basic
-    @Column(name = "opening_time")
+    @Column(name = "longitude", nullable = false, precision = 0)
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    @Basic
+    @Column(name = "latitude", nullable = false, precision = 0)
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    @Basic
+    @Column(name = "opening_time", nullable = false)
     public Time getOpeningTime() {
-        return mOpeningTime;
+        return openingTime;
     }
 
     public void setOpeningTime(Time openingTime) {
-        mOpeningTime = openingTime;
+        this.openingTime = openingTime;
     }
 
     @Basic
-    @Column(name = "closing_time")
+    @Column(name = "closing_time", nullable = false)
     public Time getClosingTime() {
-        return mClosingTime;
+        return closingTime;
     }
 
     public void setClosingTime(Time closingTime) {
-        mClosingTime = closingTime;
+        this.closingTime = closingTime;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Place that = (Place) o;
-
-        if (mId != that.mId) return false;
-        if (mTitle != null ? !mTitle.equals(that.mTitle) : that.mTitle != null) return false;
-        if (mAddress != null ? !mAddress.equals(that.mAddress) : that.mAddress != null) return false;
-        if (mOpeningTime != null ? !mOpeningTime.equals(that.mOpeningTime) : that.mOpeningTime != null) return false;
-        if (mClosingTime != null ? !mClosingTime.equals(that.mClosingTime) : that.mClosingTime != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = mId;
-        result = 31 * result + (mTitle != null ? mTitle.hashCode() : 0);
-        result = 31 * result + (mAddress != null ? mAddress.hashCode() : 0);
-        result = 31 * result + (mOpeningTime != null ? mOpeningTime.hashCode() : 0);
-        result = 31 * result + (mClosingTime != null ? mClosingTime.hashCode() : 0);
-        return result;
-    }
 }
