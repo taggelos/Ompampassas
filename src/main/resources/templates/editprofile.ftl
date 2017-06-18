@@ -25,17 +25,16 @@
             <h3>Personal info</h3>
 
             <form class="form-horizontal" method="POST">
+                <#include "partials/csrf_token.ftl">
                 <div class="form-group">
                     <label class="col-lg-3 control-label">First name:</label>
                     <div class="col-lg-8">
-                        <p class="col-lg-1 control-label"> ${user.getName()}</p>
-                        <input class="form-control" type="text" name="name" value="AAA">
+                        <input class="form-control" type="text" name="name" value="${user.getName()}">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-3 control-label">Last name:</label>
                     <div class="col-lg-8">
-
                         <input class="form-control" type="text" name="surname" value="${user.getSurname()}">
                     </div>
                 </div>
