@@ -69,6 +69,14 @@
                 </div>
             </div>
         </div>
+        <#if currentUser.getRole()=="ROLE_ADMIN">
+            <div class="form-group">
+                <label class="col-md-3 control-label"></label>
+                <div class="col-md-8">
+                    <a class="btn btn-primary" href="create_event">Create Event</a>
+                </div>
+            </div>
+        </#if>
     </div>
 </div>
 </body>

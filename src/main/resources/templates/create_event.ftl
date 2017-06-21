@@ -33,9 +33,8 @@
                 <button class="btn btn-large btn-primary btn-block" type="submit">
                     Create Event
                 </button>
+            </form>
         </div>
-
-        </form>
     </div>
 </div>
 </#macro>
