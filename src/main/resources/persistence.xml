@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="connection.url">jdbc:mysql://ompampassas.westeurope.cloudapp.azure.com:3306/test_mpampas
+        </property>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <mapping class="gr.uoa.di.entities.Event"/>
+        <mapping class="gr.uoa.di.entities.ParentMetadata"/>
+        <mapping class="gr.uoa.di.entities.Place"/>
+        <mapping class="gr.uoa.di.entities.ProviderMetadata"/>
+        <mapping class="gr.uoa.di.entities.TaxOffice"/>
+        <mapping class="gr.uoa.di.entities.User"/>
+        <mapping class="gr.uoa.di.entities.Ticket"/>
+        <!-- <property name="connection.username"/> -->
+        <!-- <property name="connection.password"/> -->
+
+        <!-- DB schema will be updated if needed -->
+        <!-- <property name="hbm2ddl.auto">update</property> -->
+    </session-factory>
+</hibernate-configuration>

@@ -14,10 +14,13 @@
           <unit-entry name="a.xml" value="a3281ea1-6275-4bcf-85a0-748a09e04378" />
           <unit-entry name="entities.xml" value="a3281ea1-6275-4bcf-85a0-748a09e04378" />
           <unit-entry name="hibernate.cfg.xml" />
+          <unit-entry name="test.xml" value="a3281ea1-6275-4bcf-85a0-748a09e04378" />
         </datasource-map>
         <naming-strategy-map />
+        <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/../../src/main/java/persistence.xml" />
         <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/../../src/main/resources/application.properties" />
         <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/../../src/main/resources/entities.xml" />
+        <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/../../src/main/resources/persistence.xml" />
       </configuration>
     </facet>
   </component>

@@ -51,7 +51,7 @@
             </div>
         </form>
         <!-- fix href -->
-        <!--p><a class="btn btn-primary btn-lg" href="" role="button">See All Events &raquo;</a></p-->
+        <!--p><a class="btn btn-primary btn-lg" href="" role="button">See Eventents &raquo;</a></p-->
     </div>
 </div>
 

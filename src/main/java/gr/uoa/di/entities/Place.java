@@ -2,12 +2,12 @@ package gr.uoa.di.entities;
 
 import javax.persistence.*;
 import java.sql.Time;
+import java.util.Collection;
 
 /**
- * Created by e-lias on 17-Jun-17.
+ * Created by karat on 6/24/2017.
  */
 @Entity
-@Table(name = "places", schema = "ompampassas", catalog = "")
 public class Place {
     private int id;
     private String title;
@@ -17,9 +17,10 @@ public class Place {
     private double latitude;
     private Time openingTime;
     private Time closingTime;
+    private Collection<Event> eventsById;
 
     @Id
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -29,7 +30,7 @@ public class Place {
     }
 
     @Basic
-    @Column(name = "title", nullable = false, length = 255)
+    @Column(name = "title")
     public String getTitle() {
         return title;
     }
@@ -39,7 +40,7 @@ public class Place {
     }
 
     @Basic
-    @Column(name = "area", nullable = false, length = 255)
+    @Column(name = "area")
     public String getArea() {
         return area;
     }
@@ -49,7 +50,7 @@ public class Place {
     }
 
     @Basic
-    @Column(name = "address", nullable = false, length = 255)
+    @Column(name = "address")
     public String getAddress() {
         return address;
     }
@@ -59,7 +60,7 @@ public class Place {
     }
 
     @Basic
-    @Column(name = "longitude", nullable = false, precision = 0)
+    @Column(name = "longitude")
     public double getLongitude() {
         return longitude;
     }
@@ -69,7 +70,7 @@ public class Place {
     }
 
     @Basic
-    @Column(name = "latitude", nullable = false, precision = 0)
+    @Column(name = "latitude")
     public double getLatitude() {
         return latitude;
     }
@@ -79,7 +80,7 @@ public class Place {
     }
 
     @Basic
-    @Column(name = "opening_time", nullable = false)
+    @Column(name = "opening_time")
     public Time getOpeningTime() {
         return openingTime;
     }
@@ -89,7 +90,7 @@ public class Place {
     }
 
     @Basic
-    @Column(name = "closing_time", nullable = false)
+    @Column(name = "closing_time")
     public Time getClosingTime() {
         return closingTime;
     }
@@ -98,4 +99,46 @@ public class Place {
         this.closingTime = closingTime;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Place place = (Place) o;
+
+        if (id != place.id) return false;
+        if (Double.compare(place.longitude, longitude) != 0) return false;
+        if (Double.compare(place.latitude, latitude) != 0) return false;
+        if (title != null ? !title.equals(place.title) : place.title != null) return false;
+        if (area != null ? !area.equals(place.area) : place.area != null) return false;
+        if (address != null ? !address.equals(place.address) : place.address != null) return false;
+        if (openingTime != null ? !openingTime.equals(place.openingTime) : place.openingTime != null) return false;
+        return closingTime != null ? closingTime.equals(place.closingTime) : place.closingTime == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        result = id;
+        result = 31 * result + (title != null ? title.hashCode() : 0);
+        result = 31 * result + (area != null ? area.hashCode() : 0);
+        result = 31 * result + (address != null ? address.hashCode() : 0);
+        temp = Double.doubleToLongBits(longitude);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(latitude);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + (openingTime != null ? openingTime.hashCode() : 0);
+        result = 31 * result + (closingTime != null ? closingTime.hashCode() : 0);
+        return result;
+    }
+
+    @OneToMany(mappedBy = "placeByPlaceId")
+    public Collection<Event> getEventsById() {
+        return eventsById;
+    }
+
+    public void setEventsById(Collection<Event> eventsById) {
+        this.eventsById = eventsById;
+    }
 }

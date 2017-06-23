@@ -45,13 +45,11 @@ public class EventController {
         String temp = auth.getName();
         User user = mUserService.findByUsername(temp);
         Event event = new Event();
-        event.setProviderId(user.getId());
+        event.setProviderMetadataByProviderId(user.getProviderMetadataById());
         event.setTitle(title);
         event.setDescription(description);
         event.setCategory(category);
         event.setNumberOfTickets(notickets);
-
-        event.setProviderId(user.getId());
 
         System.out.println("C==================3" + start);
         Timestamp x = null;
