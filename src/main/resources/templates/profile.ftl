@@ -9,11 +9,14 @@
         <div class="col-md-3">
             <div class="text-center">
             <#--img src="//placehold.it/100" class="avatar img-circle" alt="avatar"-->
-            <#-- <#if imagedir??> -->
-                <img src="assets/imagedir/myimg.jpg"/>
-            <#--/#if-->
+                <#assign x = "avatar">
+                <#if x??>
+                    <img src="assets/imagedir/${currentUser.getEmail()}/${x}" style="width: 100%; height: auto;"/>
+                <#else>
+                    <img src="assets/images/defaultprof.png" style="width: 100%; height: auto;"/>
+                </#if>
                 <h6>Upload a different photo...</h6>
-
+                <h6>Press Shift+f5 to reload</h6>
                 <form method="POST" enctype="multipart/form-data" action="/uploadpic">
                     <#include "partials/csrf_token.ftl">
                     <table>
@@ -21,16 +24,22 @@
                             <td></td>
                             <td>
                                 <p>
-                                    <input id="fileInput" type="file" name="uploadingImgs" multiple>
+                                    <input class="btn btn-warning" id="fileInput" type="file" name="uploadingImgs"
+                                           multiple>
                                 </p>
                                 <p>
-                                    <input type="submit" value="Upload NOW">
+                                    <input class="btn btn-warning" type="submit" value="Upload NOW">
                                 </p>
                             </td>
                         </tr>
                     </table>
                 </form>
-
+                <#if x??>
+                    <form method="POST" enctype="multipart/form-data" action="/deletepic">
+                        <#include "partials/csrf_token.ftl">
+                        <input class="btn btn-danger" type="submit" value="DELETE NOW">
+                    </form>
+                </#if>
             </div>
         </div>
 
@@ -82,5 +91,4 @@
 </body>
 <hr>
 </#macro>
-
 <@display_page/>

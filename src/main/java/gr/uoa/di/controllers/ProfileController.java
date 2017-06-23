@@ -7,6 +7,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -53,20 +54,37 @@ public class ProfileController {
 
     @RequestMapping(value = "/uploadpic", method = RequestMethod.POST)
     public String uploadingImg(@RequestParam("uploadingImgs") MultipartFile[] uploadingImgs) throws IOException {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName(); //get logged in username
+        File theDir = new File(imagedir + name);
+        // if the directory does not exist, create it
+        if (!theDir.exists()) {
+            try {
+                theDir.mkdir();
+            } catch (SecurityException se) {
+                System.out.println("Problem Creating Directory: " + theDir.getName());
+            }
+        }
         for (MultipartFile uploadedFile : uploadingImgs) {
-            File file = new File(imagedir + uploadedFile.getOriginalFilename());
+            //uploadedFile.getOriginalFilename()
+            File file = new File(imagedir + name + "/" + "avatar");
             uploadedFile.transferTo(file);
         }
-
-        return "redirect:/";
+        //config.setTemplateUpdateDelayMilliseconds(0);
+        return "redirect:/profile";
     }
 
+    @RequestMapping(value = "/deletepic", method = RequestMethod.POST)
+    public String deletepicImg(@ModelAttribute("model") ModelMap model) throws IOException {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName();
+        File file = new File(imagedir + name + "/" + "avatar");
+        file.delete();
+        return "redirect:/profile";
+    }
     @PostMapping("/profile")
     public @ResponseBody
     String postProfile(@RequestParam Map<String, String> params) {
-
-
-
         return "editprofile";
     }
 
