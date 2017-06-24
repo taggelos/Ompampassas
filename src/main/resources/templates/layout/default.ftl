@@ -56,7 +56,22 @@
             </button>
             <a class="navbar-brand" href="/">Ompampassas</a>
         </div>
+        <#if currentUser?? && currentUser.getRole()=="ROLE_ADMIN">
+            <div id="main-content" class="container">
+                <nav class="navbar navbar-default row" role="navigation">
+                    <div class="side-menu-container">
+                        <ul class="nav navbar-nav">
+                            <li><a href="/admin"><span class="fa fa-address-book"></span>Dashboard</a></li>
+                            <li><a href="/signup"><span class="fa fa-android"></span> Yolo </a></li>
+                            <li><a href="/statistics"><span class="fa fa-cloud"></span> Statistics</a></li>
 
+                            <li><a href="/"><span class="fa fa-signal"></span> View Site</a></li>
+
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </nav>
+            </div>
+        </#if>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
                 <#if currentUser??>

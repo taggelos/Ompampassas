@@ -14,6 +14,7 @@
           <unit-entry name="a.xml" value="a3281ea1-6275-4bcf-85a0-748a09e04378" />
           <unit-entry name="entities.xml" value="a3281ea1-6275-4bcf-85a0-748a09e04378" />
           <unit-entry name="hibernate.cfg.xml" />
+          <unit-entry name="persistence.xml" value="1a2430bf-eee7-4646-95df-32b5a4424f8e" />
           <unit-entry name="test.xml" value="a3281ea1-6275-4bcf-85a0-748a09e04378" />
         </datasource-map>
         <naming-strategy-map />

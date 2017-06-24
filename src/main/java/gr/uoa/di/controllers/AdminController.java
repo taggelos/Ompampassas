@@ -1,6 +1,7 @@
 package gr.uoa.di.controllers;
 
 import gr.uoa.di.entities.User;
+import gr.uoa.di.repositories.UserRepository;
 import gr.uoa.di.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 @Controller
@@ -18,6 +20,8 @@ public class AdminController {
     private static List<User> userList = new ArrayList<User>();
     @Autowired
     private UserService mUserService;
+    @Autowired
+    private UserRepository mUserRepository;
 
     @GetMapping("admin")
     public String index(@ModelAttribute("model") ModelMap model) {
@@ -36,6 +40,11 @@ public class AdminController {
         userList.add(user);
         ;
         userList.add(user2);
+        Iterator<User> iter;
+        iter = mUserRepository.findAll().iterator();
+        while (iter.hasNext()) {
+            userList.add(iter.next());
+        }
 
         model.addAttribute("userList", userList);
         return "admin/admin";

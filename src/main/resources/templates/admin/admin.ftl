@@ -2,17 +2,20 @@
 
 <#macro content>
 <div id="content">
-    <table>
-        <tr>
+    <table class="table">
+        <thead>
+        <tr class="warning">
             <th>Firstname</th>
             <th>Lastname</th>
         </tr>
-        <#list model["userList"] as user>
-            <tr>
+        <tbody>
+            <#list model["userList"] as user>
+            <tr class="success">
                 <td>${user.getName()}</td>
                 <td>${user.getSurname()}</td>
             </tr>
-        </#list>
+            </#list>
+        </tbody>
     </table>
 </div>
 </#macro>
