@@ -55,12 +55,6 @@
     </div>
 </div>
 
-<script type="text/javascript">
-    $(function () {
-        $('#datetimepicker').datetimepicker();
-    });
-</script>
-
 <div class="container">
     <#if registered??>
         <div class="row">
@@ -75,7 +69,7 @@
     <!-- Example row of columns -->
     <div class="slickClass slider">
         <div>
-            <img src="assets/images/slider/aaa.jpg"/>
+            <img src="/assets/images/slider/aaa.jpg"/>
             <div class="panel panel-success">
                 <h2>Heading</h2>
                 <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
@@ -86,7 +80,7 @@
             </div>
         </div>
         <div>
-            <img src="assets/images/slider/ccc.jpg"/>
+            <img src="/assets/images/slider/ccc.jpg"/>
             <div class="panel panel-success">
                 <h2>Heading</h2>
                 <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
@@ -97,7 +91,7 @@
             </div>
         </div>
         <div>
-            <img src="assets/images/slider/ddd.jpg"/>
+            <img src="/assets/images/slider/ddd.jpg"/>
             <div class="panel panel-success">
                 <h2>Heading</h2>
                 <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula
@@ -107,7 +101,7 @@
                 <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
             </div>
         </div>
-        <div><img src="assets/images/slider/eee.jpg"/>
+        <div><img src="/assets/images/slider/eee.jpg"/>
             <div class="panel panel-success">
                 <h2>Heading</h2>
                 <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
@@ -117,7 +111,7 @@
                 <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
             </div>
         </div>
-        <div><img src="assets/images/slider/sss.jpg"/>
+        <div><img src="/assets/images/slider/sss.jpg"/>
             <div class="panel panel-success">
                 <h2>Heading</h2>
                 <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
@@ -127,14 +121,14 @@
                 <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
             </div>
         </div>
-        <div><img src="assets/images/slider/ttt.jpg"/>
+        <div><img src="/assets/images/slider/ttt.jpg"/>
             <h2>Heading</h2>
             <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
                 condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis
                 euismod. Donec sed odio dui. </p>
             <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
         </div>
-        <div><img src="assets/images/slider/zzz.jpg"/>
+        <div><img src="/assets/images/slider/zzz.jpg"/>
             <h2>Heading</h2>
             <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
                 condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis

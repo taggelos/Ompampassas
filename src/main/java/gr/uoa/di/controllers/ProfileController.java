@@ -6,58 +6,52 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Map;
 
 @Controller
 
 public class ProfileController {
     public static final String imagedir = System.getProperty("user.dir") + "/src/main/webapp/assets/imagedir/";
 
-
-    /*public String getName(String username) {
-        return mUserService.findByUsername(username).getName();
-    } */
     @Autowired
     private UserService mUserService;
 
-    @GetMapping("/profile")
-    public ModelAndView getProfile() {
-        User user = new User();
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String name = auth.getName(); //get logged in username
-
-        user.setEmail(mUserService.findByUsername(name).getEmail());
-        user.setName(mUserService.findByUsername(name).getName());
-        user.setSurname(mUserService.findByUsername(name).getSurname());
-
+    @GetMapping({"/profile", "/profile/{name:.+}"})
+    public ModelAndView getProfile(@PathVariable(required = false) String name) {
         ModelAndView mav = new ModelAndView();
+        if (name == null) {
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            name = auth.getName(); //get logged in username
+        }
+        User user = mUserService.findByUsername(name);
         mav.setViewName("profile");
         mav.addObject("user", user);
-
         return mav;
     }
 
-    @RequestMapping("/uploadpic")
+    /*@GetMapping("/uploadpic")
     public String upload(Model model) {
         File file = new File(imagedir);
         model.addAttribute("files", file.listFiles());
-        return "/profile";
-    }
+        return "/profile/";
+    }*/
 
-    @RequestMapping(value = "/uploadpic", method = RequestMethod.POST)
-    public String uploadingImg(@RequestParam("uploadingImgs") MultipartFile[] uploadingImgs) throws IOException {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String name = auth.getName(); //get logged in username
-        File theDir = new File(imagedir + name);
+    @PostMapping({"/uploadpic", "/uploadpic/{urlname:.+}"})
+    public String uploadingImg(@PathVariable(required = false) String urlname, @RequestParam("uploadingImgs") MultipartFile[] uploadingImgs) throws IOException {
         // if the directory does not exist, create it
+        if (urlname == null) {
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            urlname = auth.getName(); //get logged in username
+        }
+        File theDir = new File(imagedir + urlname);
         if (!theDir.exists()) {
             try {
                 theDir.mkdir();
@@ -67,25 +61,23 @@ public class ProfileController {
         }
         for (MultipartFile uploadedFile : uploadingImgs) {
             //uploadedFile.getOriginalFilename()
-            File file = new File(imagedir + name + "/" + "avatar");
+            File file = new File(imagedir + urlname + "/" + "avatar");
             uploadedFile.transferTo(file);
         }
         //config.setTemplateUpdateDelayMilliseconds(0);
-        return "redirect:/profile";
+        return "redirect:/profile/" + urlname;
     }
 
-    @RequestMapping(value = "/deletepic", method = RequestMethod.POST)
-    public String deletepicImg(@ModelAttribute("model") ModelMap model) throws IOException {
+    @PostMapping({"/deletepic", "/deletepic/{urlname:.+}"})
+    public String deletepicImg(@PathVariable(required = false) String urlname) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String name = auth.getName();
-        File file = new File(imagedir + name + "/" + "avatar");
+        // if the directory does not exist, create it
+        if (urlname == null) {
+            urlname = auth.getName(); //get logged in username
+        }
+        File file = new File(imagedir + urlname + "/" + "avatar");
         file.delete();
-        return "redirect:/profile";
-    }
-    @PostMapping("/profile")
-    public @ResponseBody
-    String postProfile(@RequestParam Map<String, String> params) {
-        return "editprofile";
+        return "redirect:/profile/" + urlname;
     }
 
 }

@@ -1,6 +1,7 @@
 <#include "layout/default.ftl">
 
 <#macro content>
+    <#if user?? && (currentUser.getEmail() == user.getEmail() || currentUser.getRole() == "ROLE_ADMIN")>
 <body class="mybody">
 <div class="container">
     <h1>My Profile</h1>
@@ -11,13 +12,13 @@
             <#--img src="//placehold.it/100" class="avatar img-circle" alt="avatar"-->
                 <#assign x = "avatar">
                 <#if x??>
-                    <img src="assets/imagedir/${currentUser.getEmail()}/${x}" style="width: 100%; height: auto;"/>
+                    <img src="/assets/imagedir/${user.getEmail()}/${x}" style="width: 100%; height: auto;"/>
                 <#else>
-                    <img src="assets/images/defaultprof.png" style="width: 100%; height: auto;"/>
+                    <img src="/assets/images/defaultprof.png" style="width: 100%; height: auto;"/>
                 </#if>
                 <h6>Upload a different photo...</h6>
                 <h6>Press Shift+f5 to reload</h6>
-                <form method="POST" enctype="multipart/form-data" action="/uploadpic">
+                <form method="POST" enctype="multipart/form-data" action="/uploadpic/${user.getEmail()}">
                     <#include "partials/csrf_token.ftl">
                     <table>
                         <tr>
@@ -90,5 +91,6 @@
 </div>
 </body>
 <hr>
+    </#if>
 </#macro>
 <@display_page/>
