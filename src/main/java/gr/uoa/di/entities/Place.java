@@ -4,9 +4,6 @@ import javax.persistence.*;
 import java.sql.Time;
 import java.util.Collection;
 
-/**
- * Created by karat on 6/24/2017.
- */
 @Entity
 public class Place {
     private int id;

@@ -2,16 +2,13 @@ package gr.uoa.di.entities;
 
 import javax.persistence.*;
 
-/**
- * Created by karat on 6/24/2017.
- */
 @Entity
 public class Ticket {
     private int id;
     private int price;
     private int numOfTickets;
-    private Event eventByEventId;
     private ParentMetadata parentMetadataByParentId;
+    private Event eventByEventId;
 
     @Id
     @Column(name = "id")
@@ -64,16 +61,6 @@ public class Ticket {
     }
 
     @ManyToOne
-    @JoinColumn(name = "event_id", referencedColumnName = "id", nullable = false)
-    public Event getEventByEventId() {
-        return eventByEventId;
-    }
-
-    public void setEventByEventId(Event eventByEventId) {
-        this.eventByEventId = eventByEventId;
-    }
-
-    @ManyToOne
     @JoinColumn(name = "parent_id", referencedColumnName = "user_id", nullable = false)
     public ParentMetadata getParentMetadataByParentId() {
         return parentMetadataByParentId;
@@ -81,5 +68,15 @@ public class Ticket {
 
     public void setParentMetadataByParentId(ParentMetadata parentMetadataByParentId) {
         this.parentMetadataByParentId = parentMetadataByParentId;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "event_id", referencedColumnName = "id", nullable = false)
+    public Event getEventByEventId() {
+        return eventByEventId;
+    }
+
+    public void setEventByEventId(Event eventByEventId) {
+        this.eventByEventId = eventByEventId;
     }
 }

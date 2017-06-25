@@ -4,9 +4,6 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Collection;
 
-/**
- * Created by karat on 6/24/2017.
- */
 @Entity
 public class Event {
     private int id;
@@ -16,9 +13,9 @@ public class Event {
     private Timestamp startTime;
     private Timestamp endTime;
     private int numberOfTickets;
-    private Collection<Ticket> ticketByTicketId;
     private Place placeByPlaceId;
     private ProviderMetadata providerMetadataByProviderId;
+    private Collection<Ticket> ticketsById;
 
     @Id
     @Column(name = "id")
@@ -118,15 +115,6 @@ public class Event {
         return result;
     }
 
-    @OneToMany(mappedBy = "eventByEventId")
-    public Collection<Ticket> getTicketByTicketId() {
-        return ticketByTicketId;
-    }
-
-    public void setTicketByTicketId(Collection<Ticket> ticketByTicketId) {
-        this.ticketByTicketId = ticketByTicketId;
-    }
-
     @ManyToOne
     @JoinColumn(name = "place_id", referencedColumnName = "id", nullable = false)
     public Place getPlaceByPlaceId() {
@@ -145,5 +133,14 @@ public class Event {
 
     public void setProviderMetadataByProviderId(ProviderMetadata providerMetadataByProviderId) {
         this.providerMetadataByProviderId = providerMetadataByProviderId;
+    }
+
+    @OneToMany(mappedBy = "eventByEventId")
+    public Collection<Ticket> getTicketsById() {
+        return ticketsById;
+    }
+
+    public void setTicketsById(Collection<Ticket> ticketsById) {
+        this.ticketsById = ticketsById;
     }
 }

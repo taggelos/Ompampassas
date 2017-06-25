@@ -14,7 +14,7 @@
           <unit-entry name="a.xml" value="a3281ea1-6275-4bcf-85a0-748a09e04378" />
           <unit-entry name="entities.xml" value="a3281ea1-6275-4bcf-85a0-748a09e04378" />
           <unit-entry name="hibernate.cfg.xml" />
-          <unit-entry name="persistence.xml" value="1a2430bf-eee7-4646-95df-32b5a4424f8e" />
+          <unit-entry name="persistence.xml" value="75129ba6-9948-4871-bf70-ad3deda5094a" />
           <unit-entry name="test.xml" value="a3281ea1-6275-4bcf-85a0-748a09e04378" />
         </datasource-map>
         <naming-strategy-map />
@@ -39,7 +39,6 @@
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-security:1.5.2.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-devtools:1.5.2.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: commons-beanutils:commons-beanutils:1.9.3" level="project" />
-    <orderEntry type="library" name="Gradle: org.mockito:mockito-all:1.8.4" level="project" />
     <orderEntry type="library" name="Gradle: mysql:mysql-connector-java:5.1.41" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter:1.5.2.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-web:1.5.2.RELEASE" level="project" />

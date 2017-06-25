@@ -3,11 +3,8 @@ package gr.uoa.di.entities;
 import javax.persistence.*;
 import java.util.Collection;
 
-/**
- * Created by karat on 6/24/2017.
- */
 @Entity
-@Table(name = "tax_office", schema = "test_mpampas", catalog = "")
+@Table(name = "tax_offices", schema = "ompampassas")
 public class TaxOffice {
     private int id;
     private String name;
@@ -38,10 +35,10 @@ public class TaxOffice {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        TaxOffice taxOffice = (TaxOffice) o;
+        TaxOffice that = (TaxOffice) o;
 
-        if (id != taxOffice.id) return false;
-        return name != null ? name.equals(taxOffice.name) : taxOffice.name == null;
+        if (id != that.id) return false;
+        return name != null ? name.equals(that.name) : that.name == null;
     }
 
     @Override
@@ -51,7 +48,7 @@ public class TaxOffice {
         return result;
     }
 
-    @OneToMany(mappedBy = "taxOfficeByTaxOfficeId")
+    @OneToMany(mappedBy = "taxOfficesByTaxOfficeId")
     public Collection<ProviderMetadata> getProviderMetadataById() {
         return providerMetadataById;
     }

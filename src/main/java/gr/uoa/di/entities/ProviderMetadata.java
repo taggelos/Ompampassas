@@ -3,11 +3,8 @@ package gr.uoa.di.entities;
 import javax.persistence.*;
 import java.util.Collection;
 
-/**
- * Created by karat on 6/24/2017.
- */
 @Entity
-@Table(name = "provider_metadata", schema = "test_mpampas", catalog = "")
+@Table(name = "provider_metadata", schema = "ompampassas")
 public class ProviderMetadata {
     private int userId;
     private String title;
@@ -25,7 +22,7 @@ public class ProviderMetadata {
     private String longitude;
     private Collection<Event> eventsByUserId;
     private User userByUserId;
-    private TaxOffice taxOfficeByTaxOfficeId;
+    private TaxOffice taxOfficesByTaxOfficeId;
 
     @Id
     @Column(name = "user_id")
@@ -230,11 +227,11 @@ public class ProviderMetadata {
 
     @ManyToOne
     @JoinColumn(name = "tax_office_id", referencedColumnName = "id", nullable = false)
-    public TaxOffice getTaxOfficeByTaxOfficeId() {
-        return taxOfficeByTaxOfficeId;
+    public TaxOffice getTaxOfficesByTaxOfficeId() {
+        return taxOfficesByTaxOfficeId;
     }
 
-    public void setTaxOfficeByTaxOfficeId(TaxOffice taxOfficeByTaxOfficeId) {
-        this.taxOfficeByTaxOfficeId = taxOfficeByTaxOfficeId;
+    public void setTaxOfficesByTaxOfficeId(TaxOffice taxOfficesByTaxOfficeId) {
+        this.taxOfficesByTaxOfficeId = taxOfficesByTaxOfficeId;
     }
 }

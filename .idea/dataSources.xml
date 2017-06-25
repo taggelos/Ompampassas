@@ -1,28 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="ompampassas@ompampassas.westeurope.cloudapp.azure.com" uuid="a3281ea1-6275-4bcf-85a0-748a09e04378">
-      <driver-ref>mysql</driver-ref>
-      <synchronize>true</synchronize>
-      <auto-commit>false</auto-commit>
-      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://ompampassas.westeurope.cloudapp.azure.com:3306/test_mpampas</jdbc-url>
-      <driver-properties>
-        <property name="autoReconnect" value="true" />
-        <property name="zeroDateTimeBehavior" value="convertToNull" />
-        <property name="tinyInt1isBit" value="false" />
-        <property name="characterEncoding" value="utf8" />
-        <property name="characterSetResults" value="utf8" />
-        <property name="yearIsDateType" value="false" />
-      </driver-properties>
-    </data-source>
-    <data-source source="LOCAL" name="persistence.xml/Hibernate" uuid="1a2430bf-eee7-4646-95df-32b5a4424f8e">
+    <data-source source="LOCAL" name="persistence.xml/Hibernate" uuid="75129ba6-9948-4871-bf70-ad3deda5094a">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <imported>true</imported>
       <remarks>$PROJECT_DIR$/src/main/resources/persistence.xml</remarks>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://ompampassas.westeurope.cloudapp.azure.com:3306/test_mpampas</jdbc-url>
+      <jdbc-url>jdbc:mysql://ompampassas.westeurope.cloudapp.azure.com:3306/ompampassas</jdbc-url>
       <driver-properties>
         <property name="autoReconnect" value="true" />
         <property name="zeroDateTimeBehavior" value="convertToNull" />

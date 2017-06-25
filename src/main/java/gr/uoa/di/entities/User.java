@@ -2,9 +2,6 @@ package gr.uoa.di.entities;
 
 import javax.persistence.*;
 
-/**
- * Created by karat on 6/24/2017.
- */
 @Entity
 public class User {
     private int id;
