@@ -24,14 +24,14 @@ public class ProfileController {
     @Autowired
     private UserService mUserService;
 
-    @GetMapping({"/profile", "/profile/{name:.+}"})
-    public ModelAndView getProfile(@PathVariable(required = false) String name) {
+    @GetMapping({"/profile", "/profile/{urlname:.+}"})
+    public ModelAndView getProfile(@PathVariable(required = false) String urlname) {
         ModelAndView mav = new ModelAndView();
-        if (name == null) {
+        if (urlname == null) {
             Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-            name = auth.getName(); //get logged in username
+            urlname = auth.getName(); //get logged in username
         }
-        User user = mUserService.findByUsername(name);
+        User user = mUserService.findByUsername(urlname);
         mav.setViewName("profile");
         mav.addObject("user", user);
         return mav;

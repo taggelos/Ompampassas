@@ -61,11 +61,11 @@
                 <nav class="navbar navbar-default row" role="navigation">
                     <div class="side-menu-container">
                         <ul class="nav navbar-nav">
-                            <li><a href="/admin"><span class="fa fa-address-book"></span>Dashboard</a></li>
-                            <li><a href="/signup"><span class="fa fa-android"></span> Yolo </a></li>
-                            <li><a href="/statistics"><span class="fa fa-cloud"></span> Statistics</a></li>
+                            <li><a href="/admin"><span class="fa fa-address-book"></span> Πίνακες </a></li>
+                            <li><a href="/features"><span class="fa fa-android"></span> Ρυθμίσεις </a></li>
+                            <li><a href="/statistics"><span class="fa fa-cloud"></span> Στατιστικά </a></li>
 
-                            <li><a href="/"><span class="fa fa-signal"></span> View Site</a></li>
+                            <li><a href="/"><span class="fa fa-signal"></span> Πλοήγηση </a></li>
 
                         </ul>
                     </div><!-- /.navbar-collapse -->
@@ -116,7 +116,11 @@
         <div class="row">
             <div class="col-sm-12">
                 <p>&copy; 2017 Ompampassas, Inc.</p>
+                <#if contactus??>
+                    <p>Contact us @ ${contactus}</p>
+                </#if>
             </div>
+
         </div>
     </div>
 </footer>

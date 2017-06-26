@@ -8,6 +8,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,34 +20,33 @@ public class EditProfileController {
     @Autowired
     private BCryptPasswordEncoder mBCryptPasswordEncoder;
 
-    @GetMapping("/editprofile")
-    public ModelAndView getEditprofile() {
-        User user = new User();
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String name = auth.getName(); //get logged in username
-
-        user.setEmail(mUserService.findByUsername(name).getEmail());
-        user.setName(mUserService.findByUsername(name).getName());
-        user.setSurname(mUserService.findByUsername(name).getSurname());
-
+    @GetMapping({"/editprofile", "/editprofile/{urlname:.+}"})
+    public ModelAndView getEditprofile(@PathVariable(required = false) String urlname) {
         ModelAndView mav = new ModelAndView();
+        if (urlname == null) {
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            urlname = auth.getName(); //get logged in username
+        }
+        User user = mUserService.findByUsername(urlname);
         mav.setViewName("editprofile");
         mav.addObject("user", user);
-
         return mav;
     }
 
-    @PostMapping("/editprofile")
+    @PostMapping({"/editprofile", "/editprofile/{urlname:.+}"})
     public ModelAndView postEditProfile(@RequestParam(value = "email") String email,
                                         @RequestParam(value = "name") String name,
                                         @RequestParam(value = "surname") String surname,
                                         @RequestParam(value = "password") String password,
-                                        @RequestParam(value = "conf_password") String conf_password) {
+                                        @RequestParam(value = "conf_password") String conf_password,
+                                        @PathVariable(required = false) String urlname) {
 
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String temp = auth.getName(); //get logged in username
-
-        User user = mUserService.findByUsername(temp);
+        ModelAndView mav = new ModelAndView();
+        if (urlname == null) {
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            urlname = auth.getName(); //get logged in username
+        }
+        User user = mUserService.findByUsername(urlname);
         user.setName(name);
         user.setSurname(surname);
         if (!password.equals(""))
@@ -55,7 +55,6 @@ public class EditProfileController {
         user.setEmail(email);
         mUserService.update(user);
 
-        ModelAndView mav = new ModelAndView();
         mav.setViewName("profile");
         mav.addObject("user", user);
         return mav;

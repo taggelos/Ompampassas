@@ -36,7 +36,7 @@
                     </table>
                 </form>
                 <#if x??>
-                    <form method="POST" enctype="multipart/form-data" action="/deletepic">
+                    <form method="POST" enctype="multipart/form-data" action="/deletepic/${user.getEmail()}">
                         <#include "partials/csrf_token.ftl">
                         <input class="btn btn-danger" type="submit" value="DELETE NOW">
                     </form>
@@ -75,11 +75,11 @@
             <div class="form-group">
                 <label class="col-md-3 control-label"></label>
                 <div class="col-md-8">
-                    <a class="btn btn-primary" href="editprofile">Edit Profile</a>
+                    <a class="btn btn-primary" href="/editprofile/${user.getEmail()}">Edit Profile</a>
                 </div>
             </div>
         </div>
-        <#if currentUser.getRole()=="ROLE_ADMIN">
+        <#if currentUser.getRole()=="ROLE_PROVIDER">
             <div class="form-group">
                 <label class="col-md-3 control-label"></label>
                 <div class="col-md-8">
