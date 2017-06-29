@@ -29,7 +29,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/", "/assets/**").permitAll()
-                .antMatchers("/profile").access("hasRole('USER') or hasRole('ADMIN')")
+                .antMatchers("/profile").access("hasRole('PARENT') or hasRole('PROVIDER') or hasRole('ADMIN')")
                 .and().formLogin().loginPage("/login").successHandler(mCustomSuccessHandler).usernameParameter("email").passwordParameter("password")
                 .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).deleteCookies("remember-me").logoutSuccessUrl("/").permitAll()
                 .and().rememberMe().rememberMeParameter("remember")

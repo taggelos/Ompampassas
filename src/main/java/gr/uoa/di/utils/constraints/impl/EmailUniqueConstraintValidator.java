@@ -1,7 +1,7 @@
 package gr.uoa.di.utils.constraints.impl;
 
 import gr.uoa.di.entities.User;
-import gr.uoa.di.forms.RegisterForm;
+import gr.uoa.di.forms.auth.RegisterForm;
 import gr.uoa.di.repositories.UserRepository;
 import gr.uoa.di.utils.constraints.EmailUniqueConstraint;
 import org.springframework.beans.factory.annotation.Autowired;

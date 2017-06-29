@@ -3,130 +3,87 @@ package gr.uoa.di.entities;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "user", schema = "ompampassas", catalog = "")
 public class User {
-    private int id;
-    private String email;
-    private String password;
-    private String role;
-    private String name;
-    private String surname;
-    private boolean enabled;
-    private ParentMetadata parentMetadataById;
-    private ProviderMetadata providerMetadataById;
+    private int mId;
+    private String mEmail;
+    private String mPassword;
+    private String mRole;
+    private String mName;
+    private String mSurname;
+    private int mEnabled;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     public int getId() {
-        return id;
+        return mId;
     }
 
     public void setId(int id) {
-        this.id = id;
+        mId = id;
     }
 
     @Basic
-    @Column(name = "email")
+    @Column(name = "email", unique = true)
     public String getEmail() {
-        return email;
+        return mEmail;
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        mEmail = email;
     }
 
     @Basic
     @Column(name = "password")
     public String getPassword() {
-        return password;
+        return mPassword;
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        mPassword = password;
     }
 
     @Basic
     @Column(name = "role")
     public String getRole() {
-        return role;
+        return mRole;
     }
 
     public void setRole(String role) {
-        this.role = role;
+        this.mRole = role;
     }
 
     @Basic
     @Column(name = "name")
     public String getName() {
-        return name;
+        return mName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        mName = name;
     }
 
     @Basic
     @Column(name = "surname")
     public String getSurname() {
-        return surname;
+        return mSurname;
     }
 
     public void setSurname(String surname) {
-        this.surname = surname;
+        mSurname = surname;
     }
 
     @Basic
     @Column(name = "enabled")
-    public boolean isEnabled() {
-        return enabled;
+    public boolean getEnabled() {
+        return mEnabled == 1;
     }
 
     public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        User user = (User) o;
-
-        if (id != user.id) return false;
-        if (enabled != user.enabled) return false;
-        if (email != null ? !email.equals(user.email) : user.email != null) return false;
-        if (password != null ? !password.equals(user.password) : user.password != null) return false;
-        if (role != null ? !role.equals(user.role) : user.role != null) return false;
-        if (name != null ? !name.equals(user.name) : user.name != null) return false;
-        return surname != null ? surname.equals(user.surname) : user.surname == null;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (email != null ? email.hashCode() : 0);
-        result = 31 * result + (password != null ? password.hashCode() : 0);
-        result = 31 * result + (role != null ? role.hashCode() : 0);
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (surname != null ? surname.hashCode() : 0);
-        result = 31 * result + (enabled ? 1 : 0);
-        return result;
-    }
-
-    @OneToOne(mappedBy = "userByUserId")
-    public ParentMetadata getParentMetadataById() {
-        return parentMetadataById;
-    }
-
-    public void setParentMetadataById(ParentMetadata parentMetadataById) {
-        this.parentMetadataById = parentMetadataById;
-    }
-
-    @OneToOne(mappedBy = "userByUserId")
-    public ProviderMetadata getProviderMetadataById() {
-        return providerMetadataById;
-    }
-
-    public void setProviderMetadataById(ProviderMetadata providerMetadataById) {
-        this.providerMetadataById = providerMetadataById;
+        if (enabled)
+            mEnabled = 1;
+        else
+            mEnabled = 0;
     }
 }

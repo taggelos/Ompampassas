@@ -45,7 +45,7 @@ public class EventController {
         String temp = auth.getName();
         User user = mUserService.findByUsername(temp);
         Event event = new Event();
-        event.setProviderMetadataByProviderId(user.getProviderMetadataById());
+//        event.setProviderMetadataByProviderId(user.getProviderMetadataById());
         event.setTitle(title);
         event.setDescription(description);
         event.setCategory(category);

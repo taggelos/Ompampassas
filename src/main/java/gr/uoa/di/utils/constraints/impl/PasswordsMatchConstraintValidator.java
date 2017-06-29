@@ -1,6 +1,6 @@
 package gr.uoa.di.utils.constraints.impl;
 
-import gr.uoa.di.forms.RegisterForm;
+import gr.uoa.di.forms.auth.RegisterForm;
 import gr.uoa.di.utils.constraints.PasswordsMatchConstraint;
 
 import javax.validation.ConstraintValidator;

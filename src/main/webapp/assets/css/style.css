@@ -32,7 +32,7 @@ body {
     /*background: url("../images/background.jpg") center no-repeat;*/
 }
 
-.jumbotron{
+.jumbotron {
     background: url('../images/background.jpg');
     padding-top: 75px;
     height: 400px;
@@ -40,21 +40,16 @@ body {
     background-size: cover;
 }
 
-.panel-heading{
+.panel-heading {
     margin-bottom: 3%;
     font-size: large;
 }
 
-input, label {
-    display:block;
-    font-size: 70%;
-
-}
-
-.search_bar_container{
+.search_bar_container {
     margin-top: 1%;
     transform: scale(1.09);
 }
+
 .slider {
     width: 75%;
     margin: 5px auto;
@@ -95,15 +90,15 @@ input, label {
     margin-bottom: 2px;
 }
 
-.panel-success{
-    background-color: rgba(0,0,0,0);
+.panel-success {
+    background-color: rgba(0, 0, 0, 0);
     font-size: 120%;
     border: none;
     outline: none;
     margin-bottom: 50px;
 }
 
-.jumbotron_info{
+.jumbotron_info {
     margin-left: 2px;
     margin-top: 6%;
     margin-bottom: 80px;
@@ -111,18 +106,18 @@ input, label {
     width: 400px;
 }
 
-.has-feedback{
+.has-feedback {
     font-size: 120%;
 }
 
-ul.user_comments{
+ul.user_comments {
     list-style-type: none;
     margin-top: 70px;
     margin-bottom: 50px;
     font-size: 120%;
 }
 
-li.user_comment{
+li.user_comment {
     margin-bottom: 40px;
 }
 
@@ -131,4 +126,8 @@ li.user_comment{
     width: 40px;
     height: 40px;
     border: 0;
+}
+
+#register-picker {
+    margin-bottom: 15px;
 }

@@ -1,4 +1,4 @@
-package gr.uoa.di.forms;
+package gr.uoa.di.forms.auth;
 
 import gr.uoa.di.utils.constraints.EmailUniqueConstraint;
 import gr.uoa.di.utils.constraints.PasswordsMatchConstraint;
@@ -24,14 +24,6 @@ public class RegisterForm {
     @Size(min = 6, max = 30, message = "Η Επιβεβαίωση Κωδικού Πρόσβασης θα πρέπει να αποτελείται από 6 μέχρι 30 χαρακτήρες.")
     private String mPasswordConfirmation;
 
-    @NotEmpty(message = "Το Όνομα είναι υποχρεωτικό.")
-    @Size(max = 255, message = "Το Όνομα δεν πρέπει να υπερβαίνει τους {max} χαρακτήρες.")
-    private String mName;
-
-    @NotEmpty(message = "Το Επώνυμο είναι υποχρεωτικό.")
-    @Size(max = 255, message = "Το Επώνυμο δεν πρέπει να υπερβαίνει τους {max} χαρακτήρες.")
-    private String mSurname;
-
     public String getEmail() {
         return mEmail;
     }
@@ -54,21 +46,5 @@ public class RegisterForm {
 
     public void setPasswordConfirmation(String passwordConfirmation) {
         mPasswordConfirmation = passwordConfirmation;
-    }
-
-    public String getName() {
-        return mName;
-    }
-
-    public void setName(String name) {
-        mName = name;
-    }
-
-    public String getSurname() {
-        return mSurname;
-    }
-
-    public void setSurname(String surname) {
-        mSurname = surname;
     }
 }

@@ -9,6 +9,7 @@ public class ParentMetadata {
     private int userId;
     private String firstName;
     private String lastName;
+    private String phone;
     private User userByUserId;
     private Collection<Ticket> ticketsByUserId;
 
@@ -40,6 +41,16 @@ public class ParentMetadata {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    @Basic
+    @Column(name = "phone")
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     @Override

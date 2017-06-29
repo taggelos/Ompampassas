@@ -23,17 +23,14 @@
     <link rel="icon" href="/assets/images/favicon.ico">
 
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
-<#--<link rel="stylesheet" href="assets/css/bootstrap-theme.min.css">-->
+    <link rel="stylesheet" href="/assets/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="/assets/css/awesome-bootstrap-checkbox.css">
     <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="/assets/css/ie10-viewport-bug-workaround.css">
-    <link rel="stylesheet" type="text/css" href="/assets/vendor/slick/slick.css"/>
-    <link rel="stylesheet" type="text/css" href="/assets/vendor/slick/slick-theme.css"/>
+    <link rel="stylesheet" href="/assets/vendor/slick/slick.css"/>
+    <link rel="stylesheet" href="/assets/vendor/slick/slick-theme.css"/>
 
     <link rel="stylesheet" href="/assets/css/style.css">
-
-    <script src="/assets/js/google-maps-autocomplete.js"></script>
-    <script src="/assets/js/Chart.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -56,59 +53,41 @@
             </button>
             <a class="navbar-brand" href="/">Ompampassas</a>
         </div>
-        <#if currentUser?? && currentUser.getRole()=="ROLE_ADMIN">
-            <div id="main-content" class="container">
-                <nav class="navbar navbar-default row" role="navigation">
-                    <div class="side-menu-container">
-                        <ul class="nav navbar-nav">
-                            <li><a href="/admin"><span class="fa fa-address-book"></span> Πίνακες </a></li>
-                            <li><a href="/features"><span class="fa fa-android"></span> Ρυθμίσεις </a></li>
-                            <li><a href="/statistics"><span class="fa fa-cloud"></span> Στατιστικά </a></li>
 
-                            <li><a href="/"><span class="fa fa-signal"></span> Πλοήγηση </a></li>
-
-                        </ul>
-                    </div><!-- /.navbar-collapse -->
-                </nav>
-            </div>
-        </#if>
-        <div class="collapse navbar-collapse">
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/">Αρχική</a></li>
+                <#if currentUser?? && currentUser.getRole() == "ROLE_ADMIN">
+                    <li><a href="/admin"><span class="fa fa-address-book"></span> Πίνακες </a></li>
+                    <li><a href="/features"><span class="fa fa-android"></span> Ρυθμίσεις </a></li>
+                    <li><a href="/statistics"><span class="fa fa-cloud"></span> Στατιστικά </a></li>
+                    <li><a href="/"><span class="fa fa-signal"></span> Πλοήγηση </a></li>
+                </#if>
+            </ul>
             <ul class="nav navbar-nav navbar-right">
                 <#if currentUser??>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false">${currentUser.getEmail()} <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li>
-                                <a href="/profile">Προφίλ</a>
-                            </li>
+                            <li><a href="/profile">Προφίλ</a></li>
                             <li role="separator" class="divider"></li>
-                            <li>
-                                <a href="/logout">Αποσύνδεση</a>
-                            </li>
+                            <li><a href=/logout>Αποσύνδεση</a></li>
                         </ul>
                     </li>
                 <#else>
-                    <li>
-                        <a href="/login">
-                            Σύνδεση
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/register">
-                            Εγγραφή
-                        </a>
-                    </li>
+                    <li><a href="/login">Σύνδεση</a></li>
+                    <li><a href="/register/parent">Εγγραφή</a></li>
                 </#if>
             </ul>
-        </div>
+        </div><!-- /.navbar-collapse -->
     </div>
 </nav>
 
 <div id="main-content" class="container">
     <@content/>
 </div>
-
 
 <footer>
     <hr>
@@ -127,13 +106,12 @@
 
 <script src="/assets/js/jquery-3.2.1.min.js"></script>
 <script src="/assets/js/ie10-viewport-bug-workaround.js"></script>
-<script type="text/javascript" src="/assets/vendor/slick/slick.js"></script>
-
+<script src="/assets/js/bootstrap.min.js"></script>
+<script src="/assets/vendor/slick/slick.js"></script>
+<script src="/assets/js/google-maps-autocomplete.js"></script>
+<script src="/assets/js/Chart.js"></script>
 
 <script src="/assets/js/scripts.js"></script>
-
-<#--<#include "../partials/signin_modal.ftl">-->
-<#--<#include "../partials/signin_modal_js.ftl">-->
 
     <@end_of_body/>
 </body>
