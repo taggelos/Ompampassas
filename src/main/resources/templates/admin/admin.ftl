@@ -10,7 +10,6 @@
             <option class="btn btn-info" value="admins">Διαχειριστές</option>
             <option class="btn btn-info" value="providers">Πάροχοι</option>
             <option class="btn btn-info" value="parents">Γονείς</option>
-            </optgroup>
         </select>
     </form>
     <br>
@@ -20,26 +19,26 @@
             <hr>
         </#if>
         <#if model["userList"]??>
-    <table class="table">
-        <thead>
-        <tr class="warning">
-            <th>Email</th>
-            <th>Firstname</th>
-            <th>Lastname</th>
-        </tr>
-        <tbody>
-            <#list model["userList"] as user>
-            <tr class="success">
-                <td><a href="/profile/${user.getEmail()}">${user.getEmail()}</a></td>
-                <td>${user.getName()}</td>
-                <td>${user.getSurname()}</td>
-            <#--td>
-                <form class="form-horizontal" method="POST"><#include "partials/csrf_token.ftl"><input type="submit" class="deletebtn"></form>
-            </td-->
-            </tr>
-            </#list>
-        </tbody>
-    </table>
+            <table class="table">
+                <thead>
+                <tr class="warning">
+                    <th>Email</th>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                </tr>
+                <tbody>
+                    <#list model["userList"] as user>
+                    <tr class="success">
+                        <td><a href="/profile/${user.getEmail()}">${user.getEmail()}</a></td>
+                        <td>${user.getName()}</td>
+                        <td>${user.getSurname()}</td>
+                    <#--td>
+                        <form class="form-horizontal" method="POST"><#include "partials/csrf_token.ftl"><input type="submit" class="deletebtn"></form>
+                    </td-->
+                    </tr>
+                    </#list>
+                </tbody>
+            </table>
         </#if>
     <#else>
         <h2> Δεν έχει επιλεχθεί πίνακας! </h2>

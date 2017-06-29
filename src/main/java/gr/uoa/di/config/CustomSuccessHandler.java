@@ -50,7 +50,10 @@ public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
         if (isAdmin(roles)) {
             url = "/profile";
         }
-        else if (isUser(roles)) {
+        else if (isParent(roles)) {
+            url = "/profile";
+        }
+        else if (isProvider(roles)) {
             url = "/profile";
         }
         else {
@@ -60,8 +63,12 @@ public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
         return url;
     }
 
-    private boolean isUser(List<String> roles) {
-        return roles.contains("ROLE_USER");
+    private boolean isParent(List<String> roles) {
+        return roles.contains("ROLE_PARENT");
+    }
+
+    private boolean isProvider(List<String> roles) {
+        return roles.contains("ROLE_PROVIDER");
     }
 
     private boolean isAdmin(List<String> roles) {

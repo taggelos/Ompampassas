@@ -52,19 +52,21 @@ public class ParentRegisterController {
         }
 
         User user = new User();
+        ParentMetadata metadata = new ParentMetadata();
+
         user.setEmail(registerForm.getEmail());
         user.setPassword(registerForm.getPassword());
         user.setName(registerForm.getName());
         user.setSurname(registerForm.getSurname());
         user.setEnabled(true);
         user.setRole("ROLE_PARENT");
-        mUserService.save(user);
 
-        ParentMetadata metadata = new ParentMetadata();
         metadata.setUserByUserId(user);
         metadata.setFirstName(registerForm.getName());
         metadata.setLastName(registerForm.getSurname());
         metadata.setPhone(registerForm.getPhone());
+
+        mUserService.save(user);
         mParentMetadataService.save(metadata);
 
         // To autologin, we need to pass the password in plain text.
