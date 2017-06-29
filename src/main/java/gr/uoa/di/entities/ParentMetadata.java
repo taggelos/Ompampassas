@@ -62,7 +62,8 @@ public class ParentMetadata {
 
         if (userId != that.userId) return false;
         if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
-        return lastName != null ? lastName.equals(that.lastName) : that.lastName == null;
+        if (lastName != null ? !lastName.equals(that.lastName) : that.lastName != null) return false;
+        return phone != null ? phone.equals(that.phone) : that.phone == null;
     }
 
     @Override
@@ -70,6 +71,7 @@ public class ParentMetadata {
         int result = userId;
         result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+        result = 31 * result + (phone != null ? phone.hashCode() : 0);
         return result;
     }
 

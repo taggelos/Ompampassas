@@ -11,7 +11,7 @@ public class EventServiceImpl implements EventService {
     private EventRepository mEventRepository;
 
     @Override
-    public void save(Event event) {
-        mEventRepository.save(event);
+    public Event save(Event event) {
+        return mEventRepository.save(event);
     }
 }

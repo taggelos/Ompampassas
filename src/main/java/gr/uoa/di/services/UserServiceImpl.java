@@ -14,15 +14,16 @@ public class UserServiceImpl implements UserService {
     private BCryptPasswordEncoder mBCryptPasswordEncoder;
 
     @Override
-    public void save(User user) {
+    public User save(User user) {
         user.setPassword(mBCryptPasswordEncoder.encode(user.getPassword()));
-        mUserRepository.save(user);
+        return mUserRepository.save(user);
     }
 
     @Override
-    public void update(User user) {
-        mUserRepository.save(user);
+    public User update(User user) {
+        return mUserRepository.save(user);
     }
+
     @Override
     public User findByUsername(String email) {
         return mUserRepository.findByEmail(email);

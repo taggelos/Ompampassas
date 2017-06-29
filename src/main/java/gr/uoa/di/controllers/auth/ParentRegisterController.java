@@ -3,6 +3,7 @@ package gr.uoa.di.controllers.auth;
 import gr.uoa.di.entities.ParentMetadata;
 import gr.uoa.di.entities.User;
 import gr.uoa.di.forms.auth.ParentRegisterForm;
+import gr.uoa.di.repositories.UserRepository;
 import gr.uoa.di.services.ParentMetadataService;
 import gr.uoa.di.services.SecurityService;
 import gr.uoa.di.services.UserService;
@@ -23,6 +24,9 @@ import java.util.Set;
 public class ParentRegisterController {
     @Autowired
     private UserService mUserService;
+
+    @Autowired
+    private UserRepository repo;
 
     @Autowired
     private ParentMetadataService mParentMetadataService;
@@ -52,27 +56,26 @@ public class ParentRegisterController {
         }
 
         User user = new User();
-        ParentMetadata metadata = new ParentMetadata();
-
         user.setEmail(registerForm.getEmail());
         user.setPassword(registerForm.getPassword());
         user.setName(registerForm.getName());
         user.setSurname(registerForm.getSurname());
         user.setEnabled(true);
         user.setRole("ROLE_PARENT");
+        user = mUserService.save(user);
 
-        metadata.setUserByUserId(user);
+        ParentMetadata metadata = new ParentMetadata();
+        metadata.setUserId(user.getId());
         metadata.setFirstName(registerForm.getName());
         metadata.setLastName(registerForm.getSurname());
         metadata.setPhone(registerForm.getPhone());
-
-        mUserService.save(user);
         mParentMetadataService.save(metadata);
 
         // To autologin, we need to pass the password in plain text.
         String password = registerForm.getPassword();
         mSecurityService.autologin(user.getEmail(), password);
 
+        // registered = 1? Is registered ever 0?
         return new ModelAndView("redirect:/?registered=1");
     }
 }

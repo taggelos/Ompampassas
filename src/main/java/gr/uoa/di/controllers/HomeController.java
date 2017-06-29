@@ -13,9 +13,12 @@ public class HomeController {
     public ModelAndView index(HttpServletRequest request) {
         ModelAndView mav = new ModelAndView("index");
 
+        // TODO: What up with this?
         if (request.getParameter("registered") != null &&
                 request.getParameter("registered").equals("1"))
             mav.addObject("registered", true);
+        // ???
+
         String contactus = "axne@gmail.com";//δυναμικα
         mav.addObject("contactus", contactus);
         return mav;

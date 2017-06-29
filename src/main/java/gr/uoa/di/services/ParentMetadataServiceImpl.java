@@ -11,7 +11,7 @@ public class ParentMetadataServiceImpl implements ParentMetadataService {
     private ParentMetadataRepository mParentMetadataRepository;
 
     @Override
-    public void save(ParentMetadata metadata) {
-        mParentMetadataRepository.save(metadata);
+    public ParentMetadata save(ParentMetadata metadata) {
+        return mParentMetadataRepository.save(metadata);
     }
 }

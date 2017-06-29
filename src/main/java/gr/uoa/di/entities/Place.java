@@ -17,6 +17,7 @@ public class Place {
     private Collection<Event> eventsById;
 
     @Id
+    @GeneratedValue
     @Column(name = "id")
     public int getId() {
         return id;

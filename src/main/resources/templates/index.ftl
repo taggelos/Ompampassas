@@ -56,6 +56,7 @@
 </div>
 
 <div class="container">
+    <!-- WHAT UP WITH THIS? -->
     <#if registered??>
         <div class="row">
             <div class="col-sm-12">
@@ -65,6 +66,7 @@
             </div>
         </div>
     </#if>
+    <!--  -->
 
     <!-- Example row of columns -->
     <div class="slickClass slider">

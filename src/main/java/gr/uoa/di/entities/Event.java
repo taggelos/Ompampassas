@@ -18,6 +18,7 @@ public class Event {
     private Collection<Ticket> ticketsById;
 
     @Id
+    @GeneratedValue
     @Column(name = "id")
     public int getId() {
         return id;

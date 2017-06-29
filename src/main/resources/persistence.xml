@@ -7,15 +7,15 @@
         <property name="connection.url">jdbc:mysql://ompampassas.westeurope.cloudapp.azure.com:3306/ompampassas
         </property>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-
         <mapping class="gr.uoa.di.entities.Event"/>
         <mapping class="gr.uoa.di.entities.ParentMetadata"/>
         <mapping class="gr.uoa.di.entities.Place"/>
         <mapping class="gr.uoa.di.entities.ProviderMetadata"/>
-        <mapping class="gr.uoa.di.entities.User"/>
+        <mapping class="gr.uoa.di.entities.TaxOffice"/>
         <mapping class="gr.uoa.di.entities.Ticket"/>
-        <mapping class="gr.uoa.di.entities.TaxOffice"/>
-        <mapping class="gr.uoa.di.entities.TaxOffice"/>
+        <mapping class="gr.uoa.di.entities.User"/>
+        <!-- <property name="connection.username"/> -->
+        <!-- <property name="connection.password"/> -->
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->

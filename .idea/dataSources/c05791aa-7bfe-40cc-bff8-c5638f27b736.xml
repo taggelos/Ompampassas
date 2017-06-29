@@ -120,6 +120,8 @@
       <RefSchemaName>ompampassas</RefSchemaName>
       <RefTableName>user</RefTableName>
       <RefColNames>id</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
     </foreign-key>
     <column id="36" parent="10" name="id">
       <Position>1</Position>

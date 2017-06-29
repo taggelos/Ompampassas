@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="persistence.xml/Hibernate" uuid="75129ba6-9948-4871-bf70-ad3deda5094a">
+    <data-source source="LOCAL" name="persistence.xml/Hibernate" uuid="c05791aa-7bfe-40cc-bff8-c5638f27b736">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <imported>true</imported>

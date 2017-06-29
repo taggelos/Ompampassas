@@ -11,6 +11,7 @@ public class Ticket {
     private Event eventByEventId;
 
     @Id
+    @GeneratedValue
     @Column(name = "id")
     public int getId() {
         return id;
