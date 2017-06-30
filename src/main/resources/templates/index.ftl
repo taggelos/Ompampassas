@@ -4,24 +4,24 @@
 <!-- Main jumbotron for search area -->
 <div class="jumbotron">
     <div class="search_bar_container">
-        <form method="GET">
+        <form method="GET" action="/search">
             <div class="panel panel-success">
                 <div class="panel-heading">Find an Event near you</div>
                 <div class="panel-body">
                     <div class="form-inline">
                         <div class="form-group has-feedback">
                             <label for="areasearch">Area Search:</label>
-                            <input type="text" class="form-control" id="areasearch" placeholder="ie Zografou"/>
+                            <input type="text" class="form-control" name="area" id="areasearch" placeholder="ie Zografou"/>
                             <!--i class="form-control-feedback glyphicon glyphicon-map-marker "></i-->
                         </div>
                         <div class="form-group has-feedback">
                             <label for="keywordsearch">Keywords:</label>
-                            <input type="text" class="form-control" id="keywordsearch" placeholder="ie Playground"/>
+                            <input type="text" class="form-control" name="keyword" id="keywordsearch" placeholder="ie Playground"/>
                             <!--i class="glyphicon glyphicon-search  form-control-feedback"></i-->
                         </div>
                         <div class="form-group has-feedback ">
                             <label for="datetimepicker">Datetime:</label>
-                            <input type="datetime-local" class="form-control" id="datetimepicker" name="event_date"/>
+                            <input type="datetime-local" class="form-control"  name="datetimepick" id="datetimepicker" name="event_date"/>
                             <!--i class="glyphicon glyphicon-calendar form-control-feedback"></i-->
                         </div>
                         <!--div class="form-group has-feedback">
@@ -31,20 +31,20 @@
                         </div-->
                         <div class="form-group has-feedback ">
                             <label for="kiattendeessearch">Kid Attendees:</label>
-                            <input type="number" min="1" max="100" id="kiattendeessearch" class="form-control"/>
+                            <input type="number" min="1" max="100" name="nofk" id="kiattendeessearch" class="form-control"/>
                             <!--i class="glyphicon glyphicon-sunglasses form-control-feedback"></i-->
                         </div>
                         <div class="form-group has-feedback">
                             <label for="attendeessearch">Adult Attendees:</label>
-                            <input type="number" min="1" max="100" id="attendeessearch" class="form-control"/>
+                            <input type="number" min="1" max="100" name="nofa" id="attendeessearch" class="form-control"/>
                             <!--i class="glyphicon glyphicon-sunglasses form-control-feedback"></i-->
                         </div>
-                        <div class="form-group has-feedback">
+                        <!--div class="form-group has-feedback">
                             <label for="radiussearch">Area Search Radius:</label>
                             <input type="range" name="rangeInput" min="0" max="100" id="radiussearch"
                                    onchange="updateTextInput(this.value);"/>
                             <input type="text" id="rangeArea" value="50" title="Area radius"/>
-                        </div>
+                        </div-->
                     </div>
                     <input type="submit" class="btn btn-success btn-lg pull-right" value="Search Now &raquo"/>
                 </div>
