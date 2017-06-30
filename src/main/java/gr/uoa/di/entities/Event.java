@@ -79,7 +79,7 @@ public class Event {
     }
 
     @Basic
-    @Column(name = "number of tickets")
+    @Column(name = "number_of_tickets")
     public int getNumberOfTickets() {
         return numberOfTickets;
     }

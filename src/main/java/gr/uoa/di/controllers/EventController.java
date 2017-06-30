@@ -1,8 +1,10 @@
 package gr.uoa.di.controllers;
 
 import gr.uoa.di.entities.Event;
+import gr.uoa.di.entities.Place;
 import gr.uoa.di.entities.User;
 import gr.uoa.di.services.EventService;
+import gr.uoa.di.services.PlaceService;
 import gr.uoa.di.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -19,13 +21,15 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+
 @Controller
 public class EventController {
     @Autowired
     private EventService mEventService;
     @Autowired
     private UserService mUserService;
-
+    @Autowired
+    private PlaceService mPlaceService;
     @GetMapping("/create_event")
     public String getCreate_event() {
         return "create_event";
@@ -38,6 +42,10 @@ public class EventController {
                                          @RequestParam(value = "start") String start,
                                          @RequestParam(value = "end") String end,
                                          @RequestParam(value = "price") int price,
+                                         @RequestParam(value = "area") String area,
+                                         @RequestParam(value = "place_title") String place_title,
+                                         @RequestParam(value = "longitude") String longitude,
+                                         @RequestParam(value = "latitude") String latitude,
                                          @RequestParam(value = "notickets") int notickets) {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -45,13 +53,20 @@ public class EventController {
         String temp = auth.getName();
         User user = mUserService.findByUsername(temp);
         Event event = new Event();
-//        event.setProviderMetadataByProviderId(user.getProviderMetadataById());
+        Place place = new Place();
+        place.setTitle(place_title);
+        place.setAddress(area);
+        place.setLatitude(Float.valueOf(latitude));
+        place.setLongitude(Float.valueOf(longitude));
+        place = mPlaceService.save(place);
+
+        event.setProviderMetadataByProviderId(user.getProviderMetadataById());
         event.setTitle(title);
         event.setDescription(description);
         event.setCategory(category);
         event.setNumberOfTickets(notickets);
 
-        System.out.println("C==================3" + start);
+
         Timestamp x = null;
         Timestamp y = null;
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm");
@@ -64,16 +79,15 @@ public class EventController {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        System.out.println("C==================3" + x);
 
         event.setStartTime(x);
         event.setEndTime(y);
-
-        //event.setPlaceId();
+        event.setPlaceByPlaceId(place);
         mEventService.save(event);
         ModelAndView mav = new ModelAndView();
         mav.setViewName("profile");
         mav.addObject("user", user);
         return mav;
     }
+
 }

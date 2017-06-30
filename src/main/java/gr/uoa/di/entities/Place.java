@@ -1,19 +1,15 @@
 package gr.uoa.di.entities;
 
 import javax.persistence.*;
-import java.sql.Time;
 import java.util.Collection;
 
 @Entity
 public class Place {
     private int id;
     private String title;
-    private String area;
     private String address;
     private double longitude;
     private double latitude;
-    private Time openingTime;
-    private Time closingTime;
     private Collection<Event> eventsById;
 
     @Id
@@ -37,15 +33,7 @@ public class Place {
         this.title = title;
     }
 
-    @Basic
-    @Column(name = "area")
-    public String getArea() {
-        return area;
-    }
 
-    public void setArea(String area) {
-        this.area = area;
-    }
 
     @Basic
     @Column(name = "address")
@@ -77,25 +65,6 @@ public class Place {
         this.latitude = latitude;
     }
 
-    @Basic
-    @Column(name = "opening_time")
-    public Time getOpeningTime() {
-        return openingTime;
-    }
-
-    public void setOpeningTime(Time openingTime) {
-        this.openingTime = openingTime;
-    }
-
-    @Basic
-    @Column(name = "closing_time")
-    public Time getClosingTime() {
-        return closingTime;
-    }
-
-    public void setClosingTime(Time closingTime) {
-        this.closingTime = closingTime;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -108,10 +77,7 @@ public class Place {
         if (Double.compare(place.longitude, longitude) != 0) return false;
         if (Double.compare(place.latitude, latitude) != 0) return false;
         if (title != null ? !title.equals(place.title) : place.title != null) return false;
-        if (area != null ? !area.equals(place.area) : place.area != null) return false;
-        if (address != null ? !address.equals(place.address) : place.address != null) return false;
-        if (openingTime != null ? !openingTime.equals(place.openingTime) : place.openingTime != null) return false;
-        return closingTime != null ? closingTime.equals(place.closingTime) : place.closingTime == null;
+        return address != null ? address.equals(place.address) : place.address == null;
     }
 
     @Override
@@ -120,14 +86,11 @@ public class Place {
         long temp;
         result = id;
         result = 31 * result + (title != null ? title.hashCode() : 0);
-        result = 31 * result + (area != null ? area.hashCode() : 0);
         result = 31 * result + (address != null ? address.hashCode() : 0);
         temp = Double.doubleToLongBits(longitude);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         temp = Double.doubleToLongBits(latitude);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result + (openingTime != null ? openingTime.hashCode() : 0);
-        result = 31 * result + (closingTime != null ? closingTime.hashCode() : 0);
         return result;
     }
 
