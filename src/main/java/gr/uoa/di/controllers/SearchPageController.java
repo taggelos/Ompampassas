@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 public class SearchPageController {
 
@@ -21,20 +24,29 @@ public class SearchPageController {
     }
 
     @GetMapping("/search")
-    public String getIndex(@RequestParam(value = "area") String area,
+    public ModelAndView getIndex(@RequestParam(value = "area") String area,
                            @RequestParam(value = "keyword") String keyword,
                            @RequestParam(value = "datetimepick") String datetime,
                            @RequestParam(value = "nofk") Integer kids,
                            @RequestParam(value = "nofa") Integer adults){
-        System.out.println(area);
-        System.out.println(keyword);
-        System.out.println(datetime);
-        System.out.println(kids);
-        System.out.println(adults);
 
-        //List<Event> event = mEventService.findByCategoryOrTitleOrDescription(keyword,keyword,keyword);
+        List<Event> event=new ArrayList<>();//= mEventService.findByCategoryOrTitleOrDescription(keyword,keyword,keyword);
 
-        return "search";
+        List<Event> allevents = mEventService.findAll();
+        for (Event e: allevents) {
+            if((e.getCategory().contains(keyword) || e.getCategory().contains(keyword.toUpperCase())|| e.getCategory().contains(keyword.toLowerCase())
+                    || e.getTitle().contains(keyword)  || e.getTitle().contains(keyword.toUpperCase())|| e.getTitle().contains(keyword.toLowerCase())
+                    || e.getDescription().contains(keyword) || e.getDescription().contains(keyword.toUpperCase())|| e.getDescription().contains(keyword.toLowerCase()) ) ){
+                event.add(e);
+            }
+
+        }
+
+
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("search");
+        mav.addObject("events", event);
+        return mav;
     }
 
 

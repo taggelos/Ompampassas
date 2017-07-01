@@ -22,4 +22,8 @@ public class EventServiceImpl implements EventService {
         return mEventRepository.findByCategoryOrTitleOrDescription(category, title, description) ;
     }
 
+    public List<Event> findAll(){
+        return mEventRepository.findAll();
+    }
+
 }

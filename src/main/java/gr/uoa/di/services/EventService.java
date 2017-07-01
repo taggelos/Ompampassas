@@ -9,4 +9,5 @@ public interface EventService {
 
     List<Event> findByCategoryOrTitleOrDescription(String category, String title, String description);
 
+    List<Event> findAll();
 }

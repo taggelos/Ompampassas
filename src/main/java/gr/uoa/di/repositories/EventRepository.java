@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface EventRepository extends CrudRepository<Event, Long> {
     List<Event> findByCategoryOrTitleOrDescription(String category, String title, String description);
+    List<Event> findAll();
 }
