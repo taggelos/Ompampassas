@@ -14,6 +14,7 @@ public class Event {
     private Timestamp endTime;
     private int numberOfTickets;
     private int price;
+    private Collection<Comment> commentsById;
     private Place placeByPlaceId;
     private ProviderMetadata providerMetadataByProviderId;
     private Collection<Ticket> ticketsById;
@@ -108,6 +109,7 @@ public class Event {
 
         if (id != event.id) return false;
         if (numberOfTickets != event.numberOfTickets) return false;
+        if (price != event.price) return false;
         if (title != null ? !title.equals(event.title) : event.title != null) return false;
         if (description != null ? !description.equals(event.description) : event.description != null) return false;
         if (category != null ? !category.equals(event.category) : event.category != null) return false;
@@ -124,7 +126,17 @@ public class Event {
         result = 31 * result + (startTime != null ? startTime.hashCode() : 0);
         result = 31 * result + (endTime != null ? endTime.hashCode() : 0);
         result = 31 * result + numberOfTickets;
+        result = 31 * result + price;
         return result;
+    }
+
+    @OneToMany(mappedBy = "eventByEventId")
+    public Collection<Comment> getCommentsById() {
+        return commentsById;
+    }
+
+    public void setCommentsById(Collection<Comment> commentsById) {
+        this.commentsById = commentsById;
     }
 
     @ManyToOne

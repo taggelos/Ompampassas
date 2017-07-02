@@ -18,11 +18,11 @@ public class ProviderMetadata {
     private String city;
     private String latitude;
     private String longitude;
+    private int rating;
+    private int numberOfRatings;
     private Collection<Event> eventsByUserId;
     private User userByUserId;
     private TaxOffice taxOfficesByTaxOfficeId;
-    private int rating;
-    private int number_of_ratings;
 
     @Id
     @Column(name = "user_id")
@@ -145,16 +145,6 @@ public class ProviderMetadata {
     }
 
     @Basic
-    @Column(name = "number_of_ratings")
-    public int getNumberOfRatings() {
-        return number_of_ratings;
-    }
-
-    public void setNumberOfRatings(int number_of_ratings) {
-        this.number_of_ratings = number_of_ratings;
-    }
-
-    @Basic
     @Column(name = "rating")
     public int getRating() {
         return rating;
@@ -162,6 +152,16 @@ public class ProviderMetadata {
 
     public void setRating(int rating) {
         this.rating = rating;
+    }
+
+    @Basic
+    @Column(name = "number_of_ratings")
+    public int getNumberOfRatings() {
+        return numberOfRatings;
+    }
+
+    public void setNumberOfRatings(int numberOfRatings) {
+        this.numberOfRatings = numberOfRatings;
     }
 
     @Override
@@ -172,6 +172,8 @@ public class ProviderMetadata {
         ProviderMetadata that = (ProviderMetadata) o;
 
         if (userId != that.userId) return false;
+        if (rating != that.rating) return false;
+        if (numberOfRatings != that.numberOfRatings) return false;
         if (title != null ? !title.equals(that.title) : that.title != null) return false;
         if (companyName != null ? !companyName.equals(that.companyName) : that.companyName != null) return false;
         if (vatNumber != null ? !vatNumber.equals(that.vatNumber) : that.vatNumber != null) return false;
@@ -199,6 +201,8 @@ public class ProviderMetadata {
         result = 31 * result + (city != null ? city.hashCode() : 0);
         result = 31 * result + (latitude != null ? latitude.hashCode() : 0);
         result = 31 * result + (longitude != null ? longitude.hashCode() : 0);
+        result = 31 * result + rating;
+        result = 31 * result + numberOfRatings;
         return result;
     }
 

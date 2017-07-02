@@ -14,6 +14,7 @@
         <mapping class="gr.uoa.di.entities.TaxOffice"/>
         <mapping class="gr.uoa.di.entities.Ticket"/>
         <mapping class="gr.uoa.di.entities.User"/>
+        <mapping class="gr.uoa.di.entities.Comment"/>
         <!-- <property name="connection.username"/> -->
         <!-- <property name="connection.password"/> -->
 

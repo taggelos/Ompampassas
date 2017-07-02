@@ -10,6 +10,7 @@ public class ParentMetadata {
     private String firstName;
     private String lastName;
     private String phone;
+    private Collection<Comment> commentsByUserId;
     private User userByUserId;
     private Collection<Ticket> ticketsByUserId;
 
@@ -73,6 +74,15 @@ public class ParentMetadata {
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
         result = 31 * result + (phone != null ? phone.hashCode() : 0);
         return result;
+    }
+
+    @OneToMany(mappedBy = "parentMetadataByParentId")
+    public Collection<Comment> getCommentsByUserId() {
+        return commentsByUserId;
+    }
+
+    public void setCommentsByUserId(Collection<Comment> commentsByUserId) {
+        this.commentsByUserId = commentsByUserId;
     }
 
     @OneToOne

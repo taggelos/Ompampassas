@@ -1,11 +1,13 @@
 package gr.uoa.di.entities;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 
 @Entity
-public class Ticket {
+public class Comment {
     private int id;
-    private int numOfTickets;
+    private String message;
+    private Timestamp timestamp;
     private ParentMetadata parentMetadataByParentId;
     private Event eventByEventId;
 
@@ -21,13 +23,23 @@ public class Ticket {
     }
 
     @Basic
-    @Column(name = "num_of_tickets")
-    public int getNumOfTickets() {
-        return numOfTickets;
+    @Column(name = "message")
+    public String getMessage() {
+        return message;
     }
 
-    public void setNumOfTickets(int numOfTickets) {
-        this.numOfTickets = numOfTickets;
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    @Basic
+    @Column(name = "timestamp")
+    public Timestamp getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
     }
 
     @Override
@@ -35,16 +47,18 @@ public class Ticket {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Ticket ticket = (Ticket) o;
+        Comment comment = (Comment) o;
 
-        if (id != ticket.id) return false;
-        return numOfTickets == ticket.numOfTickets;
+        if (id != comment.id) return false;
+        if (message != null ? !message.equals(comment.message) : comment.message != null) return false;
+        return timestamp != null ? timestamp.equals(comment.timestamp) : comment.timestamp == null;
     }
 
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + numOfTickets;
+        result = 31 * result + (message != null ? message.hashCode() : 0);
+        result = 31 * result + (timestamp != null ? timestamp.hashCode() : 0);
         return result;
     }
 
