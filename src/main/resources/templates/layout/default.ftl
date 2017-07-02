@@ -85,6 +85,7 @@
     </div>
 </nav>
 
+<script src="/assets/js/Chart.js"></script>
 <div id="main-content" class="container">
     <@content/>
 </div>
@@ -109,7 +110,7 @@
 <script src="/assets/js/bootstrap.min.js"></script>
 <script src="/assets/vendor/slick/slick.js"></script>
 <script src="/assets/js/google-maps-autocomplete.js"></script>
-<script src="/assets/js/Chart.js"></script>
+
 
 <script src="/assets/js/scripts.js"></script>
 

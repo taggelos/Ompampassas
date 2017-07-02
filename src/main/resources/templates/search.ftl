@@ -79,8 +79,9 @@
                 <div class="results-search-container2">
                     <div class="items-in-list">
                         <div class="thumbnail">
-                            <img src="assets/images/www.jpg">
+                            <img src="/assets/images/www.jpg">
                             <div class="caption">
+                                <a href="/provider/${ev.getProviderMetadataByProviderId().getUserByUserId().getEmail()}">${ev.getProviderMetadataByProviderId().getCompanyName()}</a>
                                 <h4 class="pull-right">${ev.getPrice()} euro</h4>
                                 <h4><a href="/info/${ev.getTitle()}">${ev.getTitle()}</a></h4>
                                 <p>${ev.getDescription()}.</p>
