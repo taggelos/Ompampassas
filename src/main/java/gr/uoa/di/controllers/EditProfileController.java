@@ -51,10 +51,8 @@ public class EditProfileController {
         user.setSurname(surname);
         if (!password.equals(""))
             user.setPassword(mBCryptPasswordEncoder.encode(password));
-
         user.setEmail(email);
         mUserService.update(user);
-
         mav.setViewName("profile");
         mav.addObject("user", user);
         return mav;

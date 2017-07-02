@@ -27,7 +27,6 @@ public class AdminController {
 
     @PostMapping("admin")
     public ModelAndView admin(@RequestParam(value = "tables") String tables, @ModelAttribute("model") ModelMap model) {
-        //System.out.println(tables + " sdjsadjasjdjasjasdAJAJAJAJAJAJJAJ");
         List<User> userList = new ArrayList<>();
         String resTable = null;
         if (tables.equals("all")) {
@@ -49,11 +48,9 @@ public class AdminController {
             });
             resTable = "Γονείς";
         }
-        //System.out.println("ΗΕrΕ "+ resTable);
         if (userList.isEmpty()) {
             resTable = "Δεν υπάρχουν \"" + resTable + "\"";
         }
-        //for (User u: userList){System.out.println(u.getEmail());}
         model.addAttribute("userList", userList);
         ModelAndView mav = new ModelAndView();
         mav.setViewName("admin/admin");
@@ -81,14 +78,29 @@ public class AdminController {
         return "admin/statistics";
     }
 
-    @GetMapping("features")
-    public String features() {
-        return "admin/features";
+    @GetMapping("search_user")
+    public String search_user() {
+        return "admin/search_user";
     }
 
-    @PostMapping("features")
-    public String features(@RequestParam(value = "email") String email) {
-        System.out.println(email + "sdjsadjasjdjasjasdAJAJAJAJAJAJJAJ");
-        return "admin/features";
+    @PostMapping("search_user")
+    public ModelAndView search_user(@RequestParam(value = "keyword") String keyword) {
+        List<User> userList = new ArrayList<>();
+        String result = null;
+        mUserRepository.findAll().forEach(user -> {
+            if (user.getEmail().toUpperCase().contains(keyword.toUpperCase()) || user.getName().toUpperCase().contains(keyword.toUpperCase())
+                    || user.getSurname().toUpperCase().contains(keyword.toUpperCase()))
+                userList.add(user);
+        });
+        ModelAndView mav = new ModelAndView();
+        if (userList.isEmpty()) {
+            result = "Δεν υπάρχουν \"" + keyword + "\"";
+        } else {
+            result = "Αποτελέσματα για \"" + keyword + "\"";
+        }
+        mav.addObject("result", result);
+        mav.addObject("userList", userList);
+        mav.setViewName("admin/search_user");
+        return mav;
     }
 }

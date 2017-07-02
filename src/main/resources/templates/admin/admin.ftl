@@ -43,7 +43,6 @@
     <#else>
         <h2> Δεν έχει επιλεχθεί πίνακας! </h2>
     </#if>
-
     <!--img src="assets/images/deletebtn.png"-->
 </div>
 </#macro>

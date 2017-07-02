@@ -60,7 +60,7 @@
                 <li class="active"><a href="/">Αρχική</a></li>
                 <#if currentUser?? && currentUser.getRole() == "ROLE_ADMIN">
                     <li><a href="/admin"><span class="fa fa-address-book"></span> Πίνακες </a></li>
-                    <li><a href="/features"><span class="fa fa-android"></span> Ρυθμίσεις </a></li>
+                    <li><a href="/search_user"><span class="fa fa-search"></span> Αναζήτηση Χρήστη </a></li>
                     <li><a href="/statistics"><span class="fa fa-cloud"></span> Στατιστικά </a></li>
                     <li><a href="/"><span class="fa fa-signal"></span> Πλοήγηση </a></li>
                 </#if>

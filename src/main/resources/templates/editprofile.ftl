@@ -5,26 +5,14 @@
     <h1>Edit Profile</h1>
     <hr>
     <div class="row">
-        <div class="col-md-3">
-            <div class="text-center">
-                <img src="//placehold.it/100" class="avatar img-circle" alt="avatar">
-                <h6>Upload a different photo...</h6>
-
-                <input type="file" class="form-control">
+        <#if currentUser.getRole()=="ROLE_ADMIN">
+            <div class="col-md-8">
+                <a class="btn btn-primary" href="/editroles/${user.getEmail()}">Επιπλέον Τροποποιήσεις...</a>
             </div>
-        </div>
-
-        <!-- edit form column -->
-
-        <div class="col-md-9 personal-info">
-            <div class="alert alert-info alert-dismissable">
-                <a class="panel-close close" data-dismiss="alert">×</a>
-                <i class="fa fa-coffee"></i>
-                Use this to <strong>Edit</strong> your account.
-            </div>
-            <h3>Personal info</h3>
-
-            <form class="form-horizontal" method="POST">
+        </#if>
+        <form class="form-horizontal" method="POST">
+            <div class="col-md-9 personal-info">
+                <h3>Personal info</h3>
                 <#include "partials/csrf_token.ftl">
                 <div class="form-group">
                     <label class="col-lg-3 control-label">First name:</label>
@@ -64,9 +52,9 @@
                         <input type="reset" class="btn btn-default" value="Cancel">
                     </div>
                 </div>
-            </form>
-        </div>
+        </form>
     </div>
+</div>
 </div>
 <hr>
 </#macro>
