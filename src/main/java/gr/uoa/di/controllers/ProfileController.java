@@ -31,9 +31,17 @@ public class ProfileController {
             Authentication auth = SecurityContextHolder.getContext().getAuthentication();
             urlname = auth.getName(); //get logged in username
         }
+        File theDir = new File(imagedir + urlname);
+        Integer avatar = null;
+        if (theDir.exists()) {
+            for (File image : theDir.listFiles()) {
+                avatar = Integer.parseInt(image.getName());
+            }
+        }
         User user = mUserService.findByUsername(urlname);
         mav.setViewName("profile");
         mav.addObject("user", user);
+        if (avatar != null) mav.addObject("avatar", avatar);
         return mav;
     }
 
@@ -45,24 +53,30 @@ public class ProfileController {
     }*/
 
     @PostMapping({"/uploadpic", "/uploadpic/{urlname:.+}"})
-    public String uploadingImg(@PathVariable(required = false) String urlname, @RequestParam("uploadingImgs") MultipartFile[] uploadingImgs) throws IOException {
+    public String uploadingImg(@PathVariable(required = false) String urlname, @RequestParam("uploadingImgs") MultipartFile[] uploadingImgs) {
         // if the directory does not exist, create it
         if (urlname == null) {
             Authentication auth = SecurityContextHolder.getContext().getAuthentication();
             urlname = auth.getName(); //get logged in username
         }
         File theDir = new File(imagedir + urlname);
+        Integer avatar = 0;
         if (!theDir.exists()) {
-            try {
-                theDir.mkdir();
-            } catch (SecurityException se) {
-                System.out.println("Problem Creating Directory: " + theDir.getName());
+            theDir.mkdir();
+        } else {
+            for (File image : theDir.listFiles()) {
+                avatar = Integer.parseInt(image.getName()) + 1;
+                image.delete();
             }
         }
         for (MultipartFile uploadedFile : uploadingImgs) {
             //uploadedFile.getOriginalFilename()
-            File file = new File(imagedir + urlname + "/" + "avatar");
-            uploadedFile.transferTo(file);
+            File file = new File(imagedir + urlname + "/" + avatar);
+            try {
+                uploadedFile.transferTo(file);
+            } catch (IOException ignored) {
+
+            }
         }
         //config.setTemplateUpdateDelayMilliseconds(0);
         return "redirect:/profile/" + urlname;
@@ -75,8 +89,15 @@ public class ProfileController {
         if (urlname == null) {
             urlname = auth.getName(); //get logged in username
         }
-        File file = new File(imagedir + urlname + "/" + "avatar");
-        file.delete();
+
+        File theDir = new File(imagedir + urlname);
+        if (theDir.exists()) {
+            for (File image : theDir.listFiles()) {
+                image.delete();
+            }
+        }
+        theDir.delete();
+
         return "redirect:/profile/" + urlname;
     }
 

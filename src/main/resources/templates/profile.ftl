@@ -1,7 +1,7 @@
 <#include "layout/default.ftl">
 
 <#macro content>
-    <#if user?? && (currentUser.getEmail() == user.getEmail() || currentUser.getRole() == "ROLE_ADMIN")>
+    <#if user?? && currentUser?? && (currentUser.getEmail() == user.getEmail() || currentUser.getRole() == "ROLE_ADMIN")>
 <body class="mybody">
 <div class="container">
     <h1>Προφίλ</h1>
@@ -10,9 +10,8 @@
         <div class="col-md-3">
             <div class="text-center">
             <#--img src="//placehold.it/100" class="avatar img-circle" alt="avatar"-->
-                <#assign x = "avatar">
-                <#if x??>
-                    <img src="/assets/imagedir/${user.getEmail()}/${x}" style="width: 100%; height: auto;"/>
+                <#if avatar??>
+                    <img src="/assets/imagedir/${user.getEmail()}/${avatar}" style="width: 100%; height: auto;"/>
                 <#else>
                     <img src="/assets/images/defaultprof.png" style="width: 100%; height: auto;"/>
                 </#if>
@@ -35,7 +34,7 @@
                         </tr>
                     </table>
                 </form>
-                <#if x??>
+                <#if avatar??>
                     <form method="POST" enctype="multipart/form-data" action="/deletepic/${user.getEmail()}">
                         <#include "partials/csrf_token.ftl">
                         <input class="btn btn-danger" type="submit" value="Διαγραφή Εικόνας">
