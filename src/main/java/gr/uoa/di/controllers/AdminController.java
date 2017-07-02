@@ -1,6 +1,8 @@
 package gr.uoa.di.controllers;
 
+import gr.uoa.di.entities.ProviderMetadata;
 import gr.uoa.di.entities.User;
+import gr.uoa.di.repositories.ProviderMetadataRepository;
 import gr.uoa.di.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,9 @@ import java.util.List;
 public class AdminController {
     @Autowired
     private UserRepository mUserRepository;
+
+    @Autowired
+    private ProviderMetadataRepository mProviderRepository;
 
     //private List<User> userList;
     @GetMapping("admin")
@@ -63,24 +68,14 @@ public class AdminController {
         return mav;
     }
 
-    @GetMapping("/add")
-    public String add(@ModelAttribute("user") String user) {
-
-        //if (null != user && null != user.getFirstname()
-        //        && null != user.getLastname() && !user.getFirstname().isEmpty()
-        //       && !user.getLastname().isEmpty()) {
-
-        //  synchronized (userList) {
-        //    userList.add(user);
-        // }
-
-        // }
-        return "redirect:admin";
-    }
-
     @GetMapping("statistics")
-    public String stats() {
-        return "admin/statistics";
+    public ModelAndView stats() {
+        List<ProviderMetadata> providerList = new ArrayList<>();
+        mProviderRepository.findAll().forEach(providerList::add);
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("providerList", providerList);
+        mav.setViewName("admin/statistics");
+        return mav;
     }
 
     @GetMapping("search_user")

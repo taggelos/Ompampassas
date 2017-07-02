@@ -6,7 +6,7 @@
     <form class="form-horizontal" method="POST">
         <#include "../partials/csrf_token.ftl">
         <label class="sr-only" for="keyword">Διεύθυνση ηλεκτρονικής επικοινωνίας:</label>
-        <input style="width:200px" type="keyword" class="form-control" id="keyword" name="keyword">
+        <input style="width:200px" class="form-control" id="keyword" name="keyword">
         <button type="submit" class="btn btn-default"> Αναζήτηση</button>
         <br>
         <#if result??>
