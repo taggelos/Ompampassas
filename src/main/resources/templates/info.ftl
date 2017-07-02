@@ -60,7 +60,10 @@
     <script>
 
         function init_map() {
-            var var_location = new google.maps.LatLng(38.035152, 23.670934);
+
+            var long =${event.getPlaceByPlaceId().getLongitude()};
+            var lat =${event.getPlaceByPlaceId().getLatitude()};
+            var var_location = new google.maps.LatLng(lat, long);
 
             var var_mapoptions = {
                 center: var_location,
