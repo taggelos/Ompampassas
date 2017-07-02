@@ -145,3 +145,7 @@ li.user_comment {
 .chosen-container-single .chosen-single div {
     top: 6px;
 }
+
+.profile-img {
+    max-width: 100%;
+}
