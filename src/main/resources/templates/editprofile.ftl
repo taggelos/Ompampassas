@@ -2,7 +2,7 @@
 
 <#macro content>
 <div class="container" style="background-color:lightskyblue;">
-    <h1>Edit Profile</h1>
+    <h1>Αλλαγή Στοιχείων</h1>
     <hr>
     <div class="row">
         <#if currentUser.getRole()=="ROLE_ADMIN">
@@ -12,34 +12,34 @@
         </#if>
         <form class="form-horizontal" method="POST">
             <div class="col-md-9 personal-info">
-                <h3>Personal info</h3>
+                <h3>Στοιχεία Προφίλ</h3>
                 <#include "partials/csrf_token.ftl">
                 <div class="form-group">
-                    <label class="col-lg-3 control-label">First name:</label>
+                    <label class="col-lg-3 control-label">Όνομα: </label>
                     <div class="col-lg-8">
                         <input class="form-control" type="text" name="name" value="${user.getName()}">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-3 control-label">Last name:</label>
+                    <label class="col-lg-3 control-label">Επώνυμο: </label>
                     <div class="col-lg-8">
                         <input class="form-control" type="text" name="surname" value="${user.getSurname()}">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-3 control-label">Email:</label>
+                    <label class="col-lg-3 control-label">Email: </label>
                     <div class="col-lg-8">
                         <input class="form-control" type="text" name="email" value="${user.getEmail()}">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-3 control-label">Password:</label>
+                    <label class="col-md-3 control-label">Κωδικός Πρόσβασης: </label>
                     <div class="col-md-8">
                         <input class="form-control" type="password" name="password">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-3 control-label">Confirm password:</label>
+                    <label class="col-md-3 control-label">Επιβεβαίωση Κωδικού: </label>
                     <div class="col-md-8">
                         <input class="form-control" type="password" name="conf_password">
                     </div>
@@ -47,9 +47,9 @@
                 <div class="form-group">
                     <label class="col-md-3 control-label"></label>
                     <div class="col-md-8">
-                        <input type="submit" class="btn btn-primary" value="Save Changes">
+                        <input type="submit" class="btn btn-primary" value="Αποθήκευση Αλλαγών">
                         <span></span>
-                        <input type="reset" class="btn btn-default" value="Cancel">
+                        <input type="reset" class="btn btn-default" value="Ακύρωση">
                     </div>
                 </div>
         </form>

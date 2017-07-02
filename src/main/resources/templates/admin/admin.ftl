@@ -23,8 +23,8 @@
                 <thead>
                 <tr class="warning">
                     <th>Email</th>
-                    <th>Firstname</th>
-                    <th>Lastname</th>
+                    <th>Όνομα</th>
+                    <th>Επώνυμο</th>
                 </tr>
                 <tbody>
                     <#list model["userList"] as user>

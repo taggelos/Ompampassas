@@ -37,42 +37,43 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-4 well well-sm">
-            <legend><i class="glyphicon glyphicon-globe"></i> Event</legend>
+            <legend><i class="glyphicon glyphicon-globe"></i> Εκδήλωση</legend>
             <form method="Post">
                 <#include "partials/csrf_token.ftl">
-                <input type="text" class="form-control" name="area" placeholder="Area" id="gautofill"
+                <input type="text" class="form-control" name="area" placeholder="Περιοχή" id="gautofill"
                        onchange="AdressInfo();"/>
                 <input class="form-control" name="place_title" placeholder="Place Title" type="text"/>
-                <input class="form-control" name="title" placeholder="Event Title" type="text"/>
-                <input class="form-control" name="category" placeholder="Category" type="text"/>
+                <input class="form-control" name="title" placeholder="Όνομα Εκδήλωσης" type="text"/>
+                <input class="form-control" name="category" placeholder="Κατηγορία Εκδήλωσης" type="text"/>
                 <input class="form-control" id="longitude" name="longitude" value="" type="hidden"/>
                 <input class="form-control" id="latitude" name="latitude" value="" type="hidden"/>
                 <textarea name="description" id="Description" class="form-control" rows="9" cols="25"
-                          required="required" placeholder="Description"></textarea>
+                          required="required" placeholder="Περιγραφή Εκδήλωσης"></textarea>
 
-                <label for="">Starting </label>
+                <label for="">Έναρξη Εκδήλωσης </label>
                 <div class="form-group has-feedback">
                     <input type="datetime-local" name="start" class="form-control">
                     <i class="glyphicon glyphicon-hourglass form-control-feedback"></i>
                 </div>
-                <label for="">Ending </label>
+                <label for="">Λήξη Εκδήλωσης </label>
                 <div class="form-group has-feedback">
                     <input type="datetime-local" name="end" class="form-control">
                     <i class="glyphicon glyphicon-hourglass form-control-feedback"></i>
                 </div>
-                <label for="">Price</label>
+                <label for="">Τιμή Εισιτηρίου </label>
                 <div class="form-group has-feedback">
                     <input name="price" type="number" min="1" max="500" class="form-control" data-toggle="tooltip"
-                           title="Price">
-                    <i class="glyphicon glyphicon-star form-control-feedback"></i>
+                           title="Τιμή Εισιτηρίου">
+                    <i class="glyphicon glyphicon-euro form-control-feedback"></i>
                 </div>
+                <label for="">Αριθμός Εισιτηρίων </label>
                 <div class="form-group has-feedback">
-                    <input name="notickets" type="number" min="1" max="500" class="form-control" data-toggle="tooltip"
-                           title="Number Of Tickets">
-                    <i class="glyphicon glyphicon-star form-control-feedback"></i>
+                    <input name="notickets" type="number" min="1" max="10000" class="form-control" data-toggle="tooltip"
+                           title="Αριθμός Εισιτηρίων">
+                    <i class="glyphicon glyphicon-tags form-control-feedback " aria-hidden="true"></i>
                 </div>
                 <button class="btn btn-large btn-primary btn-block" type="submit">
-                    Create Event
+                    Δημιουργία Εκδήλωσης
                 </button>
             </form>
         </div>

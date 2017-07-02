@@ -33,8 +33,6 @@ public class Place {
         this.title = title;
     }
 
-
-
     @Basic
     @Column(name = "address")
     public String getAddress() {

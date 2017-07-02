@@ -17,7 +17,7 @@ public class AdminEdit {
     @Autowired
     private UserService mUserService;
 
-    @GetMapping({"/adminedit", "/adminedit/{urlname:.+}"})
+    @GetMapping({"/editroles", "/editroles/{urlname:.+}"})
     public ModelAndView getAdmin(@PathVariable(required = false) String urlname) {
         ModelAndView mav = new ModelAndView();
         if (urlname == null) {
@@ -25,12 +25,12 @@ public class AdminEdit {
             urlname = auth.getName(); //get logged in username
         }
         User user = mUserService.findByUsername(urlname);
-        mav.setViewName("adminedit");
+        mav.setViewName("editroles");
         mav.addObject("user", user);
         return mav;
     }
 
-    @PostMapping({"/adminedit", "/adminedit/{urlname:.+}"})
+    @PostMapping({"/editroles", "/editroles/{urlname:.+}"})
     public ModelAndView postAdmin(@RequestParam(value = "enable", required = false) String enable,
                                   @RequestParam(value = "roles", required = false) String roles,
                                   @PathVariable(required = false) String urlname) {
@@ -48,7 +48,7 @@ public class AdminEdit {
 
         System.out.println(user.isEnabled() + " - " + roles + " - " + user.getRole());
         ModelAndView mav = new ModelAndView();
-        mav.setViewName("adminedit");
+        mav.setViewName("editroles");
         mav.addObject("user", user);
         return mav;
     }
