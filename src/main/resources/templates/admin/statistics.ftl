@@ -1,4 +1,4 @@
-<#assign pageName = "index">
+<#assign pageName = "statistics">
 <#include "../layout/default.ftl">
 <#macro content>
 <div style="width: 100%; height: auto;">
@@ -31,7 +31,11 @@
         }
     });
 </script>
-
+    <#if currentUser.getRole()=="ROLE_PROVIDER">
+    <a class="btn btn-primary" href="/profile">
+        <i class="fa fa-chevron-left"></i> Επιστροφή
+    </a>
+    </#if>
 </#macro>
 
 <@display_page/>

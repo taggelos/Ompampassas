@@ -51,6 +51,9 @@
                             <a class="btn btn-primary" href="/create_event">
                                 <i class="fa fa-plus"></i> Δημιουργία Εκδήλωσης
                             </a>
+                            <a class="btn btn-primary" href="/statistics">
+                                <i class="fa fa-bar-chart"></i> Στατιστικά Παρόχων
+                            </a>
                         </#if>
                     </div>
                 </div>

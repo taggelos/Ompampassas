@@ -1,4 +1,4 @@
-<#assign pageName = "index">
+<#assign pageName = "confirmation">
 <#include "layout/default.ftl">
 
 <#macro content>

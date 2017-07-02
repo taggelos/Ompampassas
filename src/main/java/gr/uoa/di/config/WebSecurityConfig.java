@@ -37,7 +37,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/confirmation").access("hasRole('PARENT') or hasRole('PROVIDER') or hasRole('ADMIN')")
                 .antMatchers("/admin").access("hasRole('ADMIN')")
                 .antMatchers("/search_user").access("hasRole('ADMIN')")
-                .antMatchers("/statistics").access("hasRole('ADMIN')")
+                .antMatchers("/statistics").access("hasRole('PROVIDER') or hasRole('ADMIN')")
                 .and().formLogin().loginPage("/login").successHandler(mCustomSuccessHandler).usernameParameter("email").passwordParameter("password")
                 .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).deleteCookies("remember-me").logoutSuccessUrl("/").permitAll()
                 .and().rememberMe().rememberMeParameter("remember")

@@ -1,4 +1,4 @@
-<#assign pageName = "index">
+<#assign pageName = "profile">
 <#include "layout/default.ftl">
 
 <#macro content>
