@@ -5,7 +5,7 @@
 <div class="jumbotron_info">
     <div class="info-container">
         <div class="event-basics">
-            <h1>Event 1</h1>
+            <h1>${event.getTitle()}</h1>
             <h2>
                 <span class="glyphicon glyphicon-star"></span>
                 <span class="glyphicon glyphicon-star"></span>
@@ -13,7 +13,7 @@
                 <span class="glyphicon glyphicon-star"></span>
                 <span class="glyphicon glyphicon-star"></span>
             </h2>
-            <p> Place 102,City Y</p>
+            <p> ${event.getPlaceByPlaceId().getAddress()}</p>
             <h3><a href="#comment_section">User comments & ratings</a>
 
         </div>
@@ -21,11 +21,7 @@
 </div>
 <div class="panel panel-success">
     <h1>Information</h1>
-    <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula
-        porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-        ut fermentum massa justo sit amet risus Duis aute irure
-        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>${event.getDescription()}</p>
 </div>
 
 <style>
@@ -43,7 +39,7 @@
                     <div class="form-group has-feedback">
                         <p>Number of Tickets<i class="fa fa-ticket" aria-hidden="true"></i>
                         <input type="number" min="1" max="100" title="Number of Tickets"
-                               onchange="updateTextInput2(this.value,3);">
+                               onchange="updateTextInput2(this.value,${event.getPrice()});">
                         </p>
                         <label>Price
                         <p id="tickets">0 $</p>

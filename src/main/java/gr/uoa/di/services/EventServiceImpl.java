@@ -26,4 +26,9 @@ public class EventServiceImpl implements EventService {
         return mEventRepository.findAll();
     }
 
+    @Override
+    public Event findByTitle(String title) {
+        return mEventRepository.findByTitle(title);
+    }
+
 }

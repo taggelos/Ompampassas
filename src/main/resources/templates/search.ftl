@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="filter-container">
-                    <h2>Filters</h2>
+                    <h2>Φίλτρα</h2>
                     <div class="panel panel-search-primary">
                         <div class="panel-heading">Δραστηριοτητες</div>
                         <div class="panel-body">
@@ -64,12 +64,12 @@
 
             <div class="sortby-container">
                 <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Sort By
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Ταξινόμηση Κατα
                         <span class="caret"></span></button>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Price(Lower First)</a></li>
-                        <li><a href="#">Price(Higher First)</a></li>
-                        <li><a href="#">Rating</a></li>
+                        <li><a href="#">Τιμή(Χαμηλότερα πρώτα)</a></li>
+                        <li><a href="#">Τιμή(Υψηλότερα πρώτα)</a></li>
+                        <li><a href="#">Αξιολόγηση</a></li>
                     </ul>
                 </div>
             </div>
@@ -82,7 +82,7 @@
                             <img src="assets/images/www.jpg">
                             <div class="caption">
                                 <h4 class="pull-right">${ev.getPrice()} euro</h4>
-                                <h4><a href="#">${ev.getTitle()}</a></h4>
+                                <h4><a href="/info/${ev.getTitle()}">${ev.getTitle()}</a></h4>
                                 <p>${ev.getDescription()}.</p>
                             </div>
                             <div class="ratings">
