@@ -8,8 +8,6 @@ public class User {
     private String email;
     private String password;
     private String role;
-    private String name;
-    private String surname;
     private boolean enabled;
     private ParentMetadata parentMetadataById;
     private ProviderMetadata providerMetadataById;
@@ -56,26 +54,6 @@ public class User {
     }
 
     @Basic
-    @Column(name = "name")
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Basic
-    @Column(name = "surname")
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    @Basic
     @Column(name = "enabled")
     public boolean isEnabled() {
         return enabled;
@@ -96,9 +74,7 @@ public class User {
         if (enabled != user.enabled) return false;
         if (email != null ? !email.equals(user.email) : user.email != null) return false;
         if (password != null ? !password.equals(user.password) : user.password != null) return false;
-        if (role != null ? !role.equals(user.role) : user.role != null) return false;
-        if (name != null ? !name.equals(user.name) : user.name != null) return false;
-        return surname != null ? surname.equals(user.surname) : user.surname == null;
+        return role != null ? role.equals(user.role) : user.role == null;
     }
 
     @Override
@@ -107,8 +83,6 @@ public class User {
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (password != null ? password.hashCode() : 0);
         result = 31 * result + (role != null ? role.hashCode() : 0);
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (surname != null ? surname.hashCode() : 0);
         result = 31 * result + (enabled ? 1 : 0);
         return result;
     }

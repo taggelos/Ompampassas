@@ -1,79 +1,37 @@
 package gr.uoa.di.forms.auth;
 
-import gr.uoa.di.utils.constraints.EmailUniqueConstraint;
-import gr.uoa.di.utils.constraints.PasswordsMatchConstraint;
-import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.Size;
 
-@PasswordsMatchConstraint(message = "Ο Κωδικός Πρόσβασης και η Επιβεβαίωση Κωδικού Πρόσβασης πρέπει να ταυτίζονται.")
-@EmailUniqueConstraint(message = "Το Email που εισάγατε χρησιμοποιείται ήδη. Παρακαλούμε επιλέξτε κάποιο άλλο.")
-
-public class ParentRegisterForm {
-    @NotEmpty(message = "Το Email είναι υποχρεωτικό.")
-    @Email(message = "Το Email που εισάγατε δεν είναι έγκυρο.")
-    @Size(max = 255, message = "Το Email δεν πρέπει να υπερβαίνει τους {max} χαρακτήρες.")
-    private String mEmail;
-
-    @NotEmpty(message = "O Κωδικός Πρόσβασης είναι υποχρεωτικός.")
-    @Size(min = 6, max = 30, message = "Ο Κωδικός Πρόσβασης θα πρέπει να αποτελείται από 6 μέχρι 30 χαρακτήρες.")
-    private String mPassword;
-
-    @NotEmpty(message = "Η Επιβεβαίωση Κωδικού Πρόσβασης είναι υποχρεωτική.")
-    @Size(min = 6, max = 30, message = "Η Επιβεβαίωση Κωδικού Πρόσβασης θα πρέπει να αποτελείται από 6 μέχρι 30 χαρακτήρες.")
-    private String mPasswordConfirmation;
+public class ParentRegisterForm extends UserRegisterForm {
 
     @NotEmpty(message = "Το Όνομα είναι υποχρεωτικό.")
     @Size(max = 255, message = "Το Όνομα δεν πρέπει να υπερβαίνει τους {max} χαρακτήρες.")
-    private String mName;
+    private String name;
 
     @NotEmpty(message = "Το Επώνυμο είναι υποχρεωτικό.")
     @Size(max = 255, message = "Το Επώνυμο δεν πρέπει να υπερβαίνει τους {max} χαρακτήρες.")
-    private String mSurname;
+    private String surname;
 
     @NotEmpty(message = "Το Τηλέφωνο Επικοινωνίας είναι υποχρεωτικό.")
     @Size(max = 255, message = "Το Τηλέφωνο Επικοινωνίας δεν πρέπει να υπερβαίνει τους {max} χαρακτήρες.")
     private String mPhone;
 
-    public String getEmail() {
-        return mEmail;
-    }
-
-    public void setEmail(String email) {
-        mEmail = email;
-    }
-
-    public String getPassword() {
-        return mPassword;
-    }
-
-    public void setPassword(String password) {
-        mPassword = password;
-    }
-
-    public String getPasswordConfirmation() {
-        return mPasswordConfirmation;
-    }
-
-    public void setPasswordConfirmation(String passwordConfirmation) {
-        mPasswordConfirmation = passwordConfirmation;
-    }
-
     public String getName() {
-        return mName;
+        return name;
     }
 
     public void setName(String name) {
-        mName = name;
+        this.name = name;
     }
 
     public String getSurname() {
-        return mSurname;
+        return surname;
     }
 
     public void setSurname(String surname) {
-        mSurname = surname;
+        this.surname = surname;
     }
 
     public String getPhone() {
@@ -83,4 +41,5 @@ public class ParentRegisterForm {
     public void setPhone(String phone) {
         mPhone = phone;
     }
+
 }

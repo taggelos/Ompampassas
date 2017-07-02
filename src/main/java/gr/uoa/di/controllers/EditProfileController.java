@@ -41,18 +41,20 @@ public class EditProfileController {
                                         @RequestParam(value = "conf_password") String conf_password,
                                         @PathVariable(required = false) String urlname) {
 
-        ModelAndView mav = new ModelAndView();
         if (urlname == null) {
             Authentication auth = SecurityContextHolder.getContext().getAuthentication();
             urlname = auth.getName(); //get logged in username
         }
         User user = mUserService.findByUsername(urlname);
-        user.setName(name);
-        user.setSurname(surname);
-        if (!password.equals(""))
+        //TODO: user.setName(name);
+        //TODO: user.setSurname(surname);
+        if (!password.equals("")) {
             user.setPassword(mBCryptPasswordEncoder.encode(password));
+        }
         user.setEmail(email);
         mUserService.update(user);
+
+        ModelAndView mav = new ModelAndView();
         mav.setViewName("profile");
         mav.addObject("user", user);
         return mav;

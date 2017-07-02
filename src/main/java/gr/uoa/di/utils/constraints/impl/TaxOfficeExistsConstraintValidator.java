@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-public class TaxOfficeExistsConstraintValidator implements ConstraintValidator<TaxOfficeExistsConstraint, Object> {
+public class TaxOfficeExistsConstraintValidator implements ConstraintValidator<TaxOfficeExistsConstraint, ProviderRegisterForm> {
     @Autowired
     TaxOfficeRepository taxOfficeRepository;
 
@@ -36,13 +36,12 @@ public class TaxOfficeExistsConstraintValidator implements ConstraintValidator<T
      * This method can be accessed concurrently, thread-safety must be ensured
      * by the implementation.
      *
-     * @param value   object to validate
+     * @param form    object to validate
      * @param context context in which the constraint is evaluated
      * @return {@code false} if {@code value} does not pass the constraint
      */
     @Override
-    public boolean isValid(Object value, ConstraintValidatorContext context) {
-        ProviderRegisterForm form = (ProviderRegisterForm) value;
+    public boolean isValid(ProviderRegisterForm form, ConstraintValidatorContext context) {
         TaxOffice taxOffice = taxOfficeRepository.findOne(form.getTaxOfficeId());
         return taxOffice != null;
     }

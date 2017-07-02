@@ -4,5 +4,7 @@ import gr.uoa.di.entities.ProviderMetadata;
 import org.springframework.data.repository.CrudRepository;
 
 public interface ProviderMetadataRepository extends CrudRepository<ProviderMetadata, Long> {
+    boolean existsByCompanyName(String name);
 
+    boolean existsByVatNumber(String vat);
 }

@@ -5,13 +5,16 @@
 <div id="content" xmlns="http://www.w3.org/1999/html">
     <form method="POST">
         <#include "../partials/csrf_token.ftl">
-        <select class="btn btn-success" name="tables" onchange="this.form.submit()">
-            <option class="btn btn-warning" selected disabled>Πίνακες:</option>
-            <option class="btn btn-info" value="all">Όλοι οι χρήστες</option>
-            <option class="btn btn-info" value="admins">Διαχειριστές</option>
-            <option class="btn btn-info" value="providers">Πάροχοι</option>
-            <option class="btn btn-info" value="parents">Γονείς</option>
-        </select>
+        <label>
+            Πίνακες:
+            <select class="btn btn-success" name="tables" onchange="this.form.submit()">
+                <option class="btn btn-warning" selected disabled></option>
+                <option class="btn btn-info" value="all">Όλοι οι χρήστες</option>
+                <option class="btn btn-info" value="admins">Διαχειριστές</option>
+                <option class="btn btn-info" value="providers">Πάροχοι</option>
+                <option class="btn btn-info" value="parents">Γονείς</option>
+            </select>
+        </label>
     </form>
     <br>
     <#if resTable?? || model["userList"]?? >
@@ -31,8 +34,16 @@
                     <#list model["userList"] as user>
                     <tr class="success">
                         <td><a href="/profile/${user.getEmail()}">${user.getEmail()}</a></td>
-                        <td>${user.getName()}</td>
-                        <td>${user.getSurname()}</td>
+                        <#if user.getRole() == "ROLE_PARENT">
+                            <td>${user.getParentMetadataById().getFirstName()}</td>
+                            <td>${user.getParentMetadataById().getLastName()}</td>
+                        <#elseif user.getRole() == "ROLE_PROVIDER">
+                            <td>${user.getProviderMetadataById().getTitle()}</td>
+                            <td>${user.getProviderMetadataById().getCompanyName()}</td>
+                        <#else>
+                            <td></td>
+                            <td></td>
+                        </#if>
                     <#--td>
                         <form class="form-horizontal" method="POST"><#include "partials/csrf_token.ftl"><input type="submit" class="deletebtn"></form>
                     </td-->

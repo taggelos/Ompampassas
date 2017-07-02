@@ -1,9 +1,9 @@
 package gr.uoa.di.controllers.auth;
 
+import gr.uoa.di.application.Auth;
 import gr.uoa.di.entities.ParentMetadata;
 import gr.uoa.di.entities.User;
 import gr.uoa.di.forms.auth.ParentRegisterForm;
-import gr.uoa.di.repositories.UserRepository;
 import gr.uoa.di.services.ParentMetadataService;
 import gr.uoa.di.services.SecurityService;
 import gr.uoa.di.services.UserService;
@@ -52,14 +52,7 @@ public class ParentRegisterController {
             return mav;
         }
 
-        User user = new User();
-        user.setEmail(registerForm.getEmail());
-        user.setPassword(registerForm.getPassword());
-        user.setName(registerForm.getName());
-        user.setSurname(registerForm.getSurname());
-        user.setEnabled(true);
-        user.setRole("ROLE_PARENT");
-        user = mUserService.save(user);
+        User user = Auth.createUser(mUserService, registerForm, "ROLE_PARENT");
 
         ParentMetadata metadata = new ParentMetadata();
         metadata.setUserId(user.getId());

@@ -1,13 +1,12 @@
 package gr.uoa.di.utils.constraints.impl;
 
-import gr.uoa.di.forms.auth.ParentRegisterForm;
-import gr.uoa.di.forms.auth.ProviderRegisterForm;
+import gr.uoa.di.forms.auth.UserRegisterForm;
 import gr.uoa.di.utils.constraints.PasswordsMatchConstraint;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-public class PasswordsMatchConstraintValidator implements ConstraintValidator<PasswordsMatchConstraint, Object> {
+public class PasswordsMatchConstraintValidator implements ConstraintValidator<PasswordsMatchConstraint, UserRegisterForm> {
     /**
      * Initializes the validator in preparation for
      * {@link #isValid(Object, ConstraintValidatorContext)} calls.
@@ -31,21 +30,12 @@ public class PasswordsMatchConstraintValidator implements ConstraintValidator<Pa
      * This method can be accessed concurrently, thread-safety must be ensured
      * by the implementation.
      *
-     * @param value   object to validate
+     * @param form    object to validate
      * @param context context in which the constraint is evaluated
      * @return {@code false} if {@code value} does not pass the constraint
      */
     @Override
-    public boolean isValid(Object value, ConstraintValidatorContext context) {
-        if (value instanceof ProviderRegisterForm) {
-            ProviderRegisterForm form = (ProviderRegisterForm) value;
-            return form.getPassword().equals(form.getPasswordConfirmation());
-        }
-        else if (value instanceof ParentRegisterForm) {
-            ParentRegisterForm form = (ParentRegisterForm) value;
-            return form.getPassword().equals(form.getPasswordConfirmation());
-        }
-
-        return false;
+    public boolean isValid(UserRegisterForm form, ConstraintValidatorContext context) {
+        return form.getPassword().equals(form.getPasswordConfirmation());
     }
 }

@@ -87,8 +87,10 @@ public class AdminController {
     public ModelAndView search_user(@RequestParam(value = "keyword") String keyword) {
         List<User> userList = new ArrayList<>();
         mUserRepository.findAll().forEach(user -> {
-            if (user.getEmail().toUpperCase().contains(keyword.toUpperCase()) || user.getName().toUpperCase().contains(keyword.toUpperCase())
-                    || user.getSurname().toUpperCase().contains(keyword.toUpperCase())) {
+            if (user.getEmail().toUpperCase().contains(keyword.toUpperCase())
+                //TODO: || user.getName().toUpperCase().contains(keyword.toUpperCase())
+                //TODO: || user.getSurname().toUpperCase().contains(keyword.toUpperCase())
+                    ) {
                 userList.add(user);
             }
         });

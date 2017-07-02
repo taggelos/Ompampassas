@@ -1,19 +1,17 @@
 package gr.uoa.di.utils.constraints.impl;
 
 import gr.uoa.di.entities.User;
-import gr.uoa.di.forms.auth.ParentRegisterForm;
-import gr.uoa.di.forms.auth.ProviderRegisterForm;
+import gr.uoa.di.forms.auth.UserRegisterForm;
 import gr.uoa.di.repositories.UserRepository;
 import gr.uoa.di.utils.constraints.EmailUniqueConstraint;
-import javafx.scene.Parent;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-public class EmailUniqueConstraintValidator implements ConstraintValidator<EmailUniqueConstraint, Object> {
+public class EmailUniqueConstraintValidator implements ConstraintValidator<EmailUniqueConstraint, UserRegisterForm> {
     @Autowired
-    UserRepository mUserRepository;
+    private UserRepository mUserRepository;
 
     /**
      * Initializes the validator in preparation for
@@ -38,25 +36,14 @@ public class EmailUniqueConstraintValidator implements ConstraintValidator<Email
      * This method can be accessed concurrently, thread-safety must be ensured
      * by the implementation.
      *
-     * @param value   object to validate
+     * @param form    object to validate
      * @param context context in which the constraint is evaluated
      * @return {@code false} if {@code value} does not pass the constraint
      */
     @Override
-    public boolean isValid(Object value, ConstraintValidatorContext context) {
-        if (value instanceof ProviderRegisterForm) {
-            ProviderRegisterForm form = (ProviderRegisterForm) value;
-            String email = form.getEmail();
-            User user = mUserRepository.findByEmail(email);
-            return user == null;
-        }
-        else if (value instanceof ParentRegisterForm) {
-            ParentRegisterForm form = (ParentRegisterForm) value;
-            String email = form.getEmail();
-            User user = mUserRepository.findByEmail(email);
-            return user == null;
-        }
-
-        return false;
+    public boolean isValid(UserRegisterForm form, ConstraintValidatorContext context) {
+        String email = form.getEmail();
+        User user = mUserRepository.findByEmail(email);
+        return user == null;
     }
 }

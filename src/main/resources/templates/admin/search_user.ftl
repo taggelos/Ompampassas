@@ -27,8 +27,16 @@
                     <#list userList as user>
                     <tr class="success">
                         <td><a href="/profile/${user.getEmail()}">${user.getEmail()}</a></td>
-                        <td>${user.getName()}</td>
-                        <td>${user.getSurname()}</td>
+                        <#if user.getRole() == "ROLE_PARENT">
+                            <td>${user.getParentMetadataById().getFirstName()}</td>
+                            <td>${user.getParentMetadataById().getLastName()}</td>
+                        <#elseif user.getRole() == "ROLE_PROVIDER">
+                            <td>${user.getProviderMetadataById().getTitle()}</td>
+                            <td>${user.getProviderMetadataById().getCompanyName()}</td>
+                        <#else>
+                            <td></td>
+                            <td></td>
+                        </#if>
                     </tr>
                     </#list>
                 </tbody>

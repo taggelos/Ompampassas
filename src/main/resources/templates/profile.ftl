@@ -59,13 +59,15 @@
 
                 <div class="form-horizontal">
                     <div class="row">
+                        <#if user.getRole() == "ROLE_PARENT">
+                            <#assign metadata = user.getParentMetadataById()>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <div class="col-md-4">
                                     <label class="control-label">Όνομα:</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <div class="form-control-static">${user.getName()}</div>
+                                    <div class="form-control-static">${metadata.getFirstName()}</div>
                                 </div>
                             </div>
 
@@ -74,10 +76,40 @@
                                     <label class="control-label">Επώνυμο:</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <div class="form-control-static">${user.getSurname()}</div>
+                                    <div class="form-control-static">${metadata.getLastName()}</div>
+                                </div>
+                            </div>
+                        <#elseif user.getRole() == "ROLE_PROVIDER">
+                            <#assign metadata = user.getProviderMetadataById()>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label class="control-label">Τίτλος:</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-control-static">${metadata.getTitle()}</div>
                                 </div>
                             </div>
 
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label class="control-label">Όνομα Παρόχου:</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-control-static">${metadata.getCompanyName()}</div>
+                                </div>
+                            </div>
+                        </#if>
+                        <#if metadata??>
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label class="control-label">Τηλέφωνο:</label>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-control-static">${metadata.getPhone()}</div>
+                            </div>
+                        </#if>
+                    </div>
                             <div class="form-group">
                                 <div class="col-md-4">
                                     <label class="control-label">Email:</label>
@@ -91,7 +123,6 @@
                 </div>
             </div>
         </div>
-    </div>
     </#if>
 </#macro>
 <@display_page/>

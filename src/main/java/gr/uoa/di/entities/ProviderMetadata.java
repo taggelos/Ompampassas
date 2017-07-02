@@ -3,8 +3,11 @@ package gr.uoa.di.entities;
 import javax.persistence.*;
 import java.util.Collection;
 
+/**
+ * Created by karat on 7/3/2017.
+ */
 @Entity
-@Table(name = "provider_metadata", schema = "ompampassas")
+@Table(name = "provider_metadata", schema = "ompampassas", catalog = "")
 public class ProviderMetadata {
     private int userId;
     private String title;
