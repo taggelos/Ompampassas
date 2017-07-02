@@ -94,8 +94,8 @@
                                 <div class="form-group">
                                     <label for="taxOfficeId" class="col-sm-4 control-label">ΔΟΥ</label>
                                     <div class="col-sm-8">
-                                        <select name="taxOfficeId" id="taxOfficeId" class="form-control">
-                                            <option value="">Επιλέξτε ΔΟΥ...</option>
+                                        <select name="taxOfficeId" id="taxOfficeId" class="form-control chosen-select">
+                                            <option value=""></option>
                                             <#list taxOffices as taxOffice>
                                                 <option value="${taxOffice.getId()?c}" ${(registerForm.getTaxOfficeId() == taxOffice.getId())?then("selected","")}>
                                                 ${taxOffice.getName()}

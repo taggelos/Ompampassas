@@ -132,8 +132,16 @@ li.user_comment {
     margin-bottom: 15px;
 }
 
-#providers-map {
-    height: 600px;
-    width: 100%;
-    margin-bottom: 50px;
+.chosen-container {
+    height: 34px;
+    font-size: 14px;
+}
+
+.chosen-container-single .chosen-single {
+    padding: 6px 12px;
+    height: 34px;
+}
+
+.chosen-container-single .chosen-single div {
+    top: 6px;
 }

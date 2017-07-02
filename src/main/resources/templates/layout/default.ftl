@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="/assets/css/ie10-viewport-bug-workaround.css">
     <link rel="stylesheet" href="/assets/vendor/slick/slick.css"/>
     <link rel="stylesheet" href="/assets/vendor/slick/slick-theme.css"/>
+    <link rel="stylesheet" href="/assets/css/chosen.css"/>
 
     <link rel="stylesheet" href="/assets/css/style.css">
 
@@ -137,6 +138,7 @@
 <script src="/assets/vendor/slick/slick.js"></script>
 <script src="/assets/js/google-maps-autocomplete.js"></script>
 <script src="/assets/js/Chart.js"></script>
+<script src="/assets/js/chosen.jquery.min.js"></script>
 
 <script src="/assets/js/scripts.js"></script>
 

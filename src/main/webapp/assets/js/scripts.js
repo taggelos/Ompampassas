@@ -1,6 +1,16 @@
 $(function () {
     initializeSlick();
+    initializeChosen();
 });
+
+function initializeChosen() {
+    $(".chosen-select").chosen({
+        disable_search_threshold: 10,
+        no_results_text: "Δε βρέθηκαν αποτελέσματα",
+        placeholder_text_single: "Πληκτρολογήστε εδώ...",
+        search_contains: true
+    });
+}
 
 function initializeTooltips() {
     $('[data-toggle="tooltip"]').tooltip();
