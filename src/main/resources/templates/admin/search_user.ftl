@@ -1,5 +1,5 @@
 <#ftl output_format="HTML">
-<#assign pageName = "index">
+<#assign pageName = "search_user">
 <#include "../layout/default.ftl">
 <#macro content>
 <div class="form-group">

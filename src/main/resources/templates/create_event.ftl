@@ -1,4 +1,4 @@
-<#assign pageName = "index">
+<#assign pageName = "create_event">
 <#include "layout/default.ftl">
 
 <#macro content>
