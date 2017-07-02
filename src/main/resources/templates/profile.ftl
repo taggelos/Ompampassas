@@ -3,89 +3,95 @@
 
 <#macro content>
     <#if user?? && currentUser?? && (currentUser.getEmail() == user.getEmail() || currentUser.getRole() == "ROLE_ADMIN")>
-    <body class="mybody">
     <div class="container">
         <h1>Προφίλ</h1>
         <hr>
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="text-center">
-                <#--img src="//placehold.it/100" class="avatar img-circle" alt="avatar"-->
                     <#if avatar??>
-                        <img src="/assets/imagedir/${user.getEmail()}/${avatar}" style="width: 100%; height: auto;"/>
+                        <img class="profile-img" src="/assets/imagedir/${user.getEmail()}/${avatar}"/>
                     <#else>
-                        <img src="/assets/images/defaultprof.png" style="width: 100%; height: auto;"/>
+                        <img class="profile-img" src="/assets/images/defaultprof.png"/>
                     </#if>
                     <h6>Ανεβάστε διαφορετική φωτογραφία...</h6>
                     <h6>Πατήστε Shift+f5 για επαναφόρτωση</h6>
-                    <form method="POST" enctype="multipart/form-data" action="/uploadpic/${user.getEmail()}">
+                    <form class="form-horizontal" method="POST" enctype="multipart/form-data"
+                          action="/uploadpic/${user.getEmail()}">
                         <#include "partials/csrf_token.ftl">
-                        <table>
-                            <tr>
-                                <td></td>
-                                <td>
-                                    <p>
-                                        <input class="btn btn-warning" id="fileInput" type="file" name="uploadingImgs"
-                                               multiple>
-                                    </p>
-                                    <p>
-                                        <input class="btn btn-warning" type="submit" value="Ανέβασμα Εικόνας">
-                                    </p>
-                                </td>
-                            </tr>
-                        </table>
+                        <div class="form-group">
+                            <input class="btn btn-warning btn-block" id="fileInput" type="file" name="uploadingImgs"
+                                   multiple>
+                        </div>
+
+                        <div class="form-group">
+                            <input class="btn btn-warning btn-block" type="submit" value="Ανέβασμα Εικόνας">
+                        </div>
                     </form>
                     <#if avatar??>
-                        <form method="POST" enctype="multipart/form-data" action="/deletepic/${user.getEmail()}">
+                        <form class="form-horizontal" method="POST" enctype="multipart/form-data"
+                              action="/deletepic/${user.getEmail()}">
                             <#include "partials/csrf_token.ftl">
-                            <input class="btn btn-danger" type="submit" value="Διαγραφή Εικόνας">
+                            <div class="form-group">
+                                <input class="btn btn-danger btn-block" type="submit" value="Διαγραφή Εικόνας">
+                            </div>
                         </form>
                     </#if>
                 </div>
             </div>
 
-            <!-- edit form column -->
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <a class="btn btn-primary" href="/editprofile/${user.getEmail()}">
+                            <i class="fa fa-pencil"></i> Αλλαγή Στοιχείων
+                        </a>
 
-            <div class="col-md-9 personal-info">
+                        <#if currentUser.getRole()=="ROLE_PROVIDER">
+                            <a class="btn btn-primary" href="/create_event">
+                                <i class="fa fa-plus"></i> Δημιουργία Εκδήλωσης
+                            </a>
+                        </#if>
+                    </div>
+                </div>
+
                 <h3>Στοιχεία Χρήστη</h3>
-                <div class="col-md-9">
-                    <label class="col-lg-3 control-label">Όνομα: </label>
-                    <#if user.getName()??>
-                        <p class="col-lg-1 control-label"> ${user.getName()}</p>
-                    </#if>
-                </div>
 
-                <div class="col-md-9">
-                    <label class="col-lg-3 control-label">Επώνυμο: </label>
-                    <#if user.getSurname()??>
-                        <p class="col-lg-1 control-label"> ${user.getSurname()}</p>
-                    </#if>
-                </div>
-                <div class="col-md-9">
-                    <label class="col-lg-3 control-label">Email: </label>
-                    <#if user.getEmail()??>
-                        <p class="col-lg-1 control-label"> ${user.getEmail()}</p>
-                    </#if>
-                </div>
-                <div class="form-group">
-                    <label class="col-md-3 control-label"></label>
-                    <div class="col-md-8">
-                        <a class="btn btn-primary" href="/editprofile/${user.getEmail()}">Αλλαγή Στοιχείων </a>
+                <div class="form-horizontal">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label class="control-label">Όνομα:</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-control-static">${user.getName()}</div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label class="control-label">Επώνυμο:</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-control-static">${user.getSurname()}</div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label class="control-label">Email:</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-control-static">${user.getEmail()}</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <#if currentUser.getRole()=="ROLE_PROVIDER">
-                <div class="form-group">
-                    <label class="col-md-3 control-label"></label>
-                    <div class="col-md-8">
-                        <a class="btn btn-primary" href="create_event">Δημιουργία Εκδήλωσης</a>
-                    </div>
-                </div>
-            </#if>
         </div>
     </div>
-    </body>
-    <hr>
     </#if>
 </#macro>
 <@display_page/>
