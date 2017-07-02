@@ -13,6 +13,9 @@ public class Event {
     private Timestamp startTime;
     private Timestamp endTime;
     private int numberOfTickets;
+    private int price;
+    private int rating;
+    private int no_ratings;
     private Place placeByPlaceId;
     private ProviderMetadata providerMetadataByProviderId;
     private Collection<Ticket> ticketsById;
@@ -87,6 +90,42 @@ public class Event {
     public void setNumberOfTickets(int numberOfTickets) {
         this.numberOfTickets = numberOfTickets;
     }
+
+    @Basic
+    @Column(name = "price")
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    @Basic
+    @Column(name = "rating")
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+
+    @Basic
+    @Column(name = "number_of_rates")
+    public int getNor() {
+        return no_ratings;
+    }
+
+    public void setNor(int no_ratings) {
+        this.no_ratings = no_ratings;
+    }
+
+
+
+
+
+
 
     @Override
     public boolean equals(Object o) {

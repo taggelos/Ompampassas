@@ -62,6 +62,7 @@ public class EventController {
 
         event.setProviderMetadataByProviderId(user.getProviderMetadataById());
         event.setTitle(title);
+        event.setPrice(price);
         event.setDescription(description);
         event.setCategory(category);
         event.setNumberOfTickets(notickets);
