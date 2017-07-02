@@ -10,8 +10,6 @@ public class ProviderMetadata {
     private String title;
     private String companyName;
     private String vatNumber;
-    private String fullName;
-    private String jobPosition;
     private String phone;
     private String fax;
     private String address;
@@ -23,6 +21,8 @@ public class ProviderMetadata {
     private Collection<Event> eventsByUserId;
     private User userByUserId;
     private TaxOffice taxOfficesByTaxOfficeId;
+    private int rating;
+    private int number_of_ratings;
 
     @Id
     @Column(name = "user_id")
@@ -62,26 +62,6 @@ public class ProviderMetadata {
 
     public void setVatNumber(String vatNumber) {
         this.vatNumber = vatNumber;
-    }
-
-    @Basic
-    @Column(name = "full_name")
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    @Basic
-    @Column(name = "job_position")
-    public String getJobPosition() {
-        return jobPosition;
-    }
-
-    public void setJobPosition(String jobPosition) {
-        this.jobPosition = jobPosition;
     }
 
     @Basic
@@ -164,6 +144,26 @@ public class ProviderMetadata {
         this.longitude = longitude;
     }
 
+    @Basic
+    @Column(name = "number_of_ratings")
+    public int getNumberOfRatings() {
+        return number_of_ratings;
+    }
+
+    public void setNumberOfRatings(int number_of_ratings) {
+        this.number_of_ratings = number_of_ratings;
+    }
+
+    @Basic
+    @Column(name = "rating")
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -175,8 +175,6 @@ public class ProviderMetadata {
         if (title != null ? !title.equals(that.title) : that.title != null) return false;
         if (companyName != null ? !companyName.equals(that.companyName) : that.companyName != null) return false;
         if (vatNumber != null ? !vatNumber.equals(that.vatNumber) : that.vatNumber != null) return false;
-        if (fullName != null ? !fullName.equals(that.fullName) : that.fullName != null) return false;
-        if (jobPosition != null ? !jobPosition.equals(that.jobPosition) : that.jobPosition != null) return false;
         if (phone != null ? !phone.equals(that.phone) : that.phone != null) return false;
         if (fax != null ? !fax.equals(that.fax) : that.fax != null) return false;
         if (address != null ? !address.equals(that.address) : that.address != null) return false;
@@ -193,8 +191,6 @@ public class ProviderMetadata {
         result = 31 * result + (title != null ? title.hashCode() : 0);
         result = 31 * result + (companyName != null ? companyName.hashCode() : 0);
         result = 31 * result + (vatNumber != null ? vatNumber.hashCode() : 0);
-        result = 31 * result + (fullName != null ? fullName.hashCode() : 0);
-        result = 31 * result + (jobPosition != null ? jobPosition.hashCode() : 0);
         result = 31 * result + (phone != null ? phone.hashCode() : 0);
         result = 31 * result + (fax != null ? fax.hashCode() : 0);
         result = 31 * result + (address != null ? address.hashCode() : 0);
