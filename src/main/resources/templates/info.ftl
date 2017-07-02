@@ -39,7 +39,7 @@
     <div class="row">
         <div class="col-md-3">
             <div class="form-group has-feedback">
-                <form class="form-inline">
+                <form class="form-inline" method="get" action="/confirmation">
                     <div class="form-group has-feedback">
                         <p>Number of Tickets<i class="fa fa-ticket" aria-hidden="true"></i>
                         <input type="number" min="1" max="100" title="Number of Tickets"
@@ -60,10 +60,6 @@
     </div>
 
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <script src="https://maps.google.com/maps/api/js?key=AIzaSyCnA7it801_F6RDT7TvIxTxATpEh_A9DGI&js?sensor=false"></script>
     <script>
 
