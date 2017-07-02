@@ -1,3 +1,4 @@
+<#assign pageName = "index">
 <#include "layout/default.ftl">
 
 <#macro content>

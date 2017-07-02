@@ -1,6 +1,10 @@
+<#assign pageName = "index">
 <#include "../layout/default.ftl">
 <#macro content>
-<canvas id="myChart" width="400" height="400"></canvas>
+<div class="container">
+    <canvas id="myChart" width="400" height="400"></canvas>
+</div>
+
 <script>
     var ctx = document.getElementById("myChart");
     var myChart = new Chart(ctx, {
@@ -33,14 +37,13 @@
             scales: {
                 yAxes: [{
                     ticks: {
-                        beginAtZero:true
+                        beginAtZero: true
                     }
                 }]
             }
         }
     });
 </script>
-
 </#macro>
 
 <@display_page/>

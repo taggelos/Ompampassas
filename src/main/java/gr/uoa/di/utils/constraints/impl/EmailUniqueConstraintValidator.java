@@ -1,9 +1,11 @@
 package gr.uoa.di.utils.constraints.impl;
 
 import gr.uoa.di.entities.User;
-import gr.uoa.di.forms.auth.RegisterForm;
+import gr.uoa.di.forms.auth.ParentRegisterForm;
+import gr.uoa.di.forms.auth.ProviderRegisterForm;
 import gr.uoa.di.repositories.UserRepository;
 import gr.uoa.di.utils.constraints.EmailUniqueConstraint;
+import javafx.scene.Parent;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.validation.ConstraintValidator;
@@ -42,9 +44,19 @@ public class EmailUniqueConstraintValidator implements ConstraintValidator<Email
      */
     @Override
     public boolean isValid(Object value, ConstraintValidatorContext context) {
-        RegisterForm form = (RegisterForm) value;
-        String email = form.getEmail();
-        User user = mUserRepository.findByEmail(email);
-        return user == null;
+        if (value instanceof ProviderRegisterForm) {
+            ProviderRegisterForm form = (ProviderRegisterForm) value;
+            String email = form.getEmail();
+            User user = mUserRepository.findByEmail(email);
+            return user == null;
+        }
+        else if (value instanceof ParentRegisterForm) {
+            ParentRegisterForm form = (ParentRegisterForm) value;
+            String email = form.getEmail();
+            User user = mUserRepository.findByEmail(email);
+            return user == null;
+        }
+
+        return false;
     }
 }

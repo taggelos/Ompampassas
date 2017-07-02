@@ -37,6 +37,8 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 
 <body>
@@ -57,12 +59,30 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/">Αρχική</a></li>
+                <li class="${(pageName == "index")?then("active","")}">
+                    <a href="/">Αρχική</a>
+                </li>
                 <#if currentUser?? && currentUser.getRole() == "ROLE_ADMIN">
-                    <li><a href="/admin"><span class="fa fa-address-book"></span> Πίνακες </a></li>
-                    <li><a href="/search_user"><span class="fa fa-search"></span> Αναζήτηση Χρήστη </a></li>
-                    <li><a href="/statistics"><span class="fa fa-cloud"></span> Στατιστικά </a></li>
-                    <li><a href="/"><span class="fa fa-signal"></span> Πλοήγηση </a></li>
+                    <li class="${(pageName == "admin.tables")?then("active","")}">
+                        <a href="/admin">
+                            <span class="fa fa-address-book"></span> Πίνακες
+                        </a>
+                    </li>
+                    <li class="${(pageName == "admin.search_user")?then("active","")}">
+                        <a href="/search_user">
+                            <span class="fa fa-search"></span> Αναζήτηση Χρήστη
+                        </a>
+                    </li>
+                    <li class="${(pageName == "admin.statistics")?then("active","")}">
+                        <a href="/statistics">
+                            <span class="fa fa-cloud"></span> Στατιστικά
+                        </a>
+                    </li>
+                    <li class="${(pageName == "admin.navigation")?then("active","")}">
+                        <a href="/">
+                            <span class="fa fa-signal"></span> Πλοήγηση
+                        </a>
+                    </li>
                 </#if>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -71,22 +91,29 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false">${currentUser.getEmail()} <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/profile">Προφίλ</a></li>
+                            <li class="${(pageName == "profile")?then("active","")}">
+                                <a href="/profile">Προφίλ</a>
+                            </li>
                             <li role="separator" class="divider"></li>
-                            <li><a href=/logout>Αποσύνδεση</a></li>
+                            <li>
+                                <a href=/logout>Αποσύνδεση</a>
+                            </li>
                         </ul>
                     </li>
                 <#else>
-                    <li><a href="/login">Σύνδεση</a></li>
-                    <li><a href="/register/parent">Εγγραφή</a></li>
+                    <li class="${(pageName == "login")?then("active","")}">
+                        <a href="/login">Σύνδεση</a>
+                    </li>
+                    <li class="${(pageName == "register")?then("active","")}">
+                        <a href="/register/parent">Εγγραφή</a>
+                    </li>
                 </#if>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div>
 </nav>
 
-<script src="/assets/js/Chart.js"></script>
-<div id="main-content" class="container">
+<div id="main-content">
     <@content/>
 </div>
 
@@ -100,7 +127,6 @@
                     <p>Contact us @ ${contactus}</p>
                 </#if>
             </div>
-
         </div>
     </div>
 </footer>
@@ -110,7 +136,7 @@
 <script src="/assets/js/bootstrap.min.js"></script>
 <script src="/assets/vendor/slick/slick.js"></script>
 <script src="/assets/js/google-maps-autocomplete.js"></script>
-
+<script src="/assets/js/Chart.js"></script>
 
 <script src="/assets/js/scripts.js"></script>
 

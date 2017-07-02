@@ -1,13 +1,18 @@
 package gr.uoa.di.utils.constraints.impl;
 
-import gr.uoa.di.forms.auth.ParentRegisterForm;
+import gr.uoa.di.entities.TaxOffice;
 import gr.uoa.di.forms.auth.ProviderRegisterForm;
-import gr.uoa.di.utils.constraints.PasswordsMatchConstraint;
+import gr.uoa.di.repositories.TaxOfficeRepository;
+import gr.uoa.di.utils.constraints.TaxOfficeExistsConstraint;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-public class PasswordsMatchConstraintValidator implements ConstraintValidator<PasswordsMatchConstraint, Object> {
+public class TaxOfficeExistsConstraintValidator implements ConstraintValidator<TaxOfficeExistsConstraint, Object> {
+    @Autowired
+    TaxOfficeRepository taxOfficeRepository;
+
     /**
      * Initializes the validator in preparation for
      * {@link #isValid(Object, ConstraintValidatorContext)} calls.
@@ -20,7 +25,7 @@ public class PasswordsMatchConstraintValidator implements ConstraintValidator<Pa
      * @param constraintAnnotation annotation instance for a given constraint declaration
      */
     @Override
-    public void initialize(PasswordsMatchConstraint constraintAnnotation) {
+    public void initialize(TaxOfficeExistsConstraint constraintAnnotation) {
 
     }
 
@@ -37,15 +42,8 @@ public class PasswordsMatchConstraintValidator implements ConstraintValidator<Pa
      */
     @Override
     public boolean isValid(Object value, ConstraintValidatorContext context) {
-        if (value instanceof ProviderRegisterForm) {
-            ProviderRegisterForm form = (ProviderRegisterForm) value;
-            return form.getPassword().equals(form.getPasswordConfirmation());
-        }
-        else if (value instanceof ParentRegisterForm) {
-            ParentRegisterForm form = (ParentRegisterForm) value;
-            return form.getPassword().equals(form.getPasswordConfirmation());
-        }
-
-        return false;
+        ProviderRegisterForm form = (ProviderRegisterForm) value;
+        TaxOffice taxOffice = taxOfficeRepository.findOne(form.getTaxOfficeId());
+        return taxOffice != null;
     }
 }

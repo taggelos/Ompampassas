@@ -1,4 +1,5 @@
 <#ftl output_format="HTML">
+<#assign pageName = "index">
 <#include "../layout/default.ftl">
 <#macro content>
 <div class="form-group">

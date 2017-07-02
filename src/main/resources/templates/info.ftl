@@ -1,3 +1,4 @@
+<#assign pageName = "index">
 <#include "layout/default.ftl">
 
 <#macro content>
@@ -38,11 +39,11 @@
                 <form class="form-inline" method="get" action="/confirmation">
                     <div class="form-group has-feedback">
                         <p>Number of Tickets<i class="fa fa-ticket" aria-hidden="true"></i>
-                        <input type="number" min="1" max="100" title="Number of Tickets"
-                               onchange="updateTextInput2(this.value,${event.getPrice()});">
+                            <input type="number" min="1" max="100" title="Number of Tickets"
+                                   onchange="updateTextInput2(this.value,${event.getPrice()});">
                         </p>
                         <label>Price
-                        <p id="tickets">0 $</p>
+                            <p id="tickets">0 $</p>
                         </label>
                     </div>
                     <br>

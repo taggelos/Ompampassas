@@ -8,11 +8,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class ProviderMetadataServiceImpl implements ProviderMetadataService {
     @Autowired
-    private ProviderMetadataRepository mProviderMetadataRepository;
+    private ProviderMetadataRepository providerMetadataRepository;
 
     @Override
     public ProviderMetadata save(ProviderMetadata metadata) {
-        return mProviderMetadataRepository.save(metadata);
+        return providerMetadataRepository.save(metadata);
     }
-
 }

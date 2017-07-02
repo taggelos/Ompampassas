@@ -26,9 +26,6 @@ public class ParentRegisterController {
     private UserService mUserService;
 
     @Autowired
-    private UserRepository repo;
-
-    @Autowired
     private ParentMetadataService mParentMetadataService;
 
     @Autowired
@@ -75,7 +72,6 @@ public class ParentRegisterController {
         String password = registerForm.getPassword();
         mSecurityService.autologin(user.getEmail(), password);
 
-        // registered = 1? Is registered ever 0?
-        return new ModelAndView("redirect:/?registered=1");
+        return new ModelAndView("redirect:/");
     }
 }
