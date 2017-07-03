@@ -9,6 +9,9 @@ import gr.uoa.di.repositories.TaxOfficeRepository;
 import gr.uoa.di.services.ProviderMetadataService;
 import gr.uoa.di.services.SecurityService;
 import gr.uoa.di.services.UserService;
+import gr.uoa.di.utils.DatabaseUtils;
+import org.hibernate.Query;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +25,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
+import java.util.List;
 import java.util.Set;
 
 @Controller
@@ -43,6 +47,9 @@ public class ProviderRegisterController {
 
     @GetMapping("/register/provider")
     public ModelAndView getRegister(Model model) {
+        Session session = DatabaseUtils.getSession();
+        Query query = session.createQuery("from TaxOffice order by name asc");
+        List<TaxOffice> taxOffices = (List<TaxOffice>) query.list();
 
         ProviderRegisterForm registerForm;
         // If we have flashed data (ie. from a failed validation), pass them into the view.
@@ -53,7 +60,7 @@ public class ProviderRegisterController {
 
         ModelAndView mav = new ModelAndView("auth/register_provider");
         mav.addObject("registerForm", registerForm);
-        mav.addObject("taxOffices", taxOfficeRepository.findAll());
+        mav.addObject("taxOffices", taxOffices);
         return mav;
     }
 
