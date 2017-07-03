@@ -17,8 +17,6 @@ public class ProviderMetadata {
     private String zipCode;
     private String region;
     private String city;
-    private String latitude;
-    private String longitude;
     private int rating;
     private int numberOfRatings;
     private Collection<Event> eventsByUserId;
@@ -126,26 +124,6 @@ public class ProviderMetadata {
     }
 
     @Basic
-    @Column(name = "latitude")
-    public String getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(String latitude) {
-        this.latitude = latitude;
-    }
-
-    @Basic
-    @Column(name = "longitude")
-    public String getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(String longitude) {
-        this.longitude = longitude;
-    }
-
-    @Basic
     @Column(name = "rating")
     public int getRating() {
         return rating;
@@ -183,9 +161,7 @@ public class ProviderMetadata {
         if (address != null ? !address.equals(that.address) : that.address != null) return false;
         if (zipCode != null ? !zipCode.equals(that.zipCode) : that.zipCode != null) return false;
         if (region != null ? !region.equals(that.region) : that.region != null) return false;
-        if (city != null ? !city.equals(that.city) : that.city != null) return false;
-        if (latitude != null ? !latitude.equals(that.latitude) : that.latitude != null) return false;
-        return longitude != null ? longitude.equals(that.longitude) : that.longitude == null;
+        return city != null ? !city.equals(that.city) : that.city != null;
     }
 
     @Override
@@ -200,8 +176,6 @@ public class ProviderMetadata {
         result = 31 * result + (zipCode != null ? zipCode.hashCode() : 0);
         result = 31 * result + (region != null ? region.hashCode() : 0);
         result = 31 * result + (city != null ? city.hashCode() : 0);
-        result = 31 * result + (latitude != null ? latitude.hashCode() : 0);
-        result = 31 * result + (longitude != null ? longitude.hashCode() : 0);
         result = 31 * result + rating;
         result = 31 * result + numberOfRatings;
         return result;

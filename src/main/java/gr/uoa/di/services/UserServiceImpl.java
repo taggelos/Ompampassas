@@ -94,8 +94,6 @@ public class UserServiceImpl implements UserService {
         metadata.setZipCode(registerForm.getZipCode());
         metadata.setRegion(registerForm.getRegion());
         metadata.setCity(registerForm.getCity());
-        metadata.setLatitude("");
-        metadata.setLongitude("");
         providerMetadataService.save(metadata);
 
         return metadata;
