@@ -29,7 +29,7 @@ public class PointsController {
         String urlname = auth.getName();
         User user = mUserService.findByUsername(urlname);
         user.getParentMetadataById().setUserPoints(user.getParentMetadataById().getUserPoints() + Integer.parseInt(points));
-        mUserService.save(user);
+        mUserService.update(user);
         return "redirect:/";
     }
 }

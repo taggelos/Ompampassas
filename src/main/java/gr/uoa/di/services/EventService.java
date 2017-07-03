@@ -12,4 +12,6 @@ public interface EventService {
     List<Event> findAll();
 
     Event findByTitle(String title);
+
+    Event findById(String id);
 }
