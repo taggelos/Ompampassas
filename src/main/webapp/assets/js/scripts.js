@@ -41,8 +41,7 @@ function updateTextInput3(val, price) {
 }
 /* -------------------------------------------------- */
 
-function printStars(count1, count2) {
-    var stars = count1 / count2;
+function printStars(stars, divname) {
     var i, _results;
     _results = "";
 
@@ -54,7 +53,7 @@ function printStars(count1, count2) {
         _results += "<span class='glyphicon glyphicon-star-empty'></span>";
     }
 
-    $("#printstars").html(_results);
+    $(divname).html(_results);
 }
 
 var __slice = [].slice;

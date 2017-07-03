@@ -14,13 +14,13 @@
                 <#else>
                     <img class="profile-img" src="/assets/images/defaultprof.png"/>
                 </#if>
-                <h6>Ανεβάστε διαφορετική φωτογραφία...</h6>
-                <h6>Πατήστε Shift+f5 για επαναφόρτωση</h6>
+                <h6 style="color: darkblue">Ανεβάστε διαφορετική φωτογραφία...</h6>
                 <form class="form-horizontal" method="POST" enctype="multipart/form-data"
                       action="/uploadpic/${user.getEmail()}">
                     <#include "partials/csrf_token.ftl">
                     <div class="form-group">
                         <input class="btn btn-warning btn-block" id="fileInput" type="file" name="uploadingImgs"
+                               required
                                multiple>
                     </div>
 

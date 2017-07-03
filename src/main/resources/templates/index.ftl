@@ -24,8 +24,7 @@
                         </div>
                         <div class="form-group has-feedback ">
                             <label for="datetimepicker">Datetime:</label>
-                            <input type="datetime-local" class="form-control" name="datetimepick" id="datetimepicker"
-                                   name="event_date"/>
+                            <input type="datetime-local" class="form-control" name="datetimepick" id="datetimepicker"/>
                             <!--i class="glyphicon glyphicon-calendar form-control-feedback"></i-->
                         </div>
                         <!--div class="form-group has-feedback">
@@ -63,37 +62,30 @@
 
 <div class="container">
     <!-- Example row of columns -->
+    <h2>Δημοφιλεστεροι πάροχοι:</h2>
     <div class="slickClass slider">
-        <div>
-            <img src="/assets/${provider1}"/>
-            <div class="panel panel-success">
-                <h2>Rating ${rating1}</h2>
-                <p><a class="btn btn-default" href="/provider/${linkprovider1}" role="button">Δείτε Τώρα &raquo;</a></p>
+        <#list attributes as info>
+            <div>
+                <img src="/assets/${info.getFinalPic()}"/>
+                <div class="panel panel-success">
+                    <h3>${info.getTitle()}</h3>
+                    <div name="${info.getProviderRating()}"></div>
+                    <h4>${info.getNumOfRatings()} ψήφοι</h4>
+                    <p><a class="btn btn-default" href="/provider/${info.getProviderName()}" role="button">Δείτε Τώρα
+                        &raquo;</a></p>
+                </div>
             </div>
-        </div>
-        <div>
-            <img src="/assets/${provider2}"/>
-            <div class="panel panel-success">
-                <h2>Rating ${rating2}</h2>
-                <p><a class="btn btn-default" href="/provider/${linkprovider2}" role="button">Δείτε Τώρα &raquo;</a></p>
-            </div>
-        </div>
-        <div>
-            <img src="/assets/${provider3}"/>
-            <div class="panel panel-success">
-                <h2>Rating ${rating3}</h2>
-                <p><a class="btn btn-default" href="/provider/${linkprovider3}" role="button">Δείτε Τώρα &raquo;</a></p>
-            </div>
-        </div>
-        <div>
-            <img src="/assets/${provider4}"/>
-            <div class="panel panel-success">
-                <h2>Rating ${rating4}</h2>
-                <p><a class="btn btn-default" href="/provider/${linkprovider4}" role="button">Δείτε Τώρα &raquo;</a></p>
-            </div>
-        </div>
+        </#list>
     </div>
 </div>
+</#macro>
+
+<#macro end_of_body>
+<script>
+        <#list attributes as info>
+        printStars(${info.getProviderRating()}, "[name='${info.getProviderRating()}']");
+        </#list>
+</script>
 </#macro>
 
 <@display_page/>

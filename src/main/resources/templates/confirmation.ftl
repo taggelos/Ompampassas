@@ -47,7 +47,6 @@
                                                                 style="color:green;">${tickets*event.getPrice()}</span>
                                                         </h3>
                                                         <input type="hidden" name="tickets" value="${tickets}">
-                                                        <input type="hidden" name="eventid" value="${event.getId()}">
                                                     </div>
                                                 </div>
                                             </div>

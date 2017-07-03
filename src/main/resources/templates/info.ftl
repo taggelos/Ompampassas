@@ -202,7 +202,11 @@
 
 <#macro end_of_body>
 <script>
-    printStars(${event.getProviderMetadataByProviderId().getRating()}, ${event.getProviderMetadataByProviderId().getNumberOfRatings()});
+        <#assign provider=event.getProviderMetadataByProviderId()>
+
+    var count1 = ${provider.getRating()};
+    var count2 = ${provider.getNumberOfRatings()};
+    printStars(count1 / count2, "#printstars");
 </script>
 </#macro>
 

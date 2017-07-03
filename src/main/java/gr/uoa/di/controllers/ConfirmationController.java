@@ -26,7 +26,7 @@ import java.io.FileInputStream;
 
 @Controller
 public class ConfirmationController {
-    private static final String receiptdir = System.getProperty("user.dir") + "/src/main/resources/assets/receipts/";
+    private static final String receiptdir = System.getProperty("user.dir") + "/src/main/webapp/assets/receipts/";
 
     @Autowired
     private EventService mEventService;
@@ -74,44 +74,42 @@ public class ConfirmationController {
             respHeaders.setContentLength(file.length());
             respHeaders.setContentDispositionFormData("attachment", file.getName());
             InputStreamResource isr = new InputStreamResource(new FileInputStream(file));
-            return new ResponseEntity<InputStreamResource>(isr, respHeaders, HttpStatus.OK);
+            return new ResponseEntity<>(isr, respHeaders, HttpStatus.OK);
         } catch (Exception e) {
-            //String message = "Errore nel download del file "+idForm+".csv; "+e.getMessage();
-            //logger.error(message, e);
-            return new ResponseEntity<InputStreamResource>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-}
+    class RunnableOperation implements Runnable {
+        private Thread t;
+        private String threadName;
 
-class RunnableOperation implements Runnable {
-    private Thread t;
-    private String threadName;
+        RunnableOperation(String name) {
+            threadName = name;
+            System.out.println("Creating " + threadName);
+        }
 
-    RunnableOperation(String name) {
-        threadName = name;
-        System.out.println("Creating " + threadName);
-    }
-
-    public void run() {
-        System.out.println("Running " + threadName);
-        try {
-            for (int i = 4; i > 0; i--) {
-                System.out.println("Thread: " + threadName + ", " + i);
-                // Let the thread sleep for a while.
-                Thread.sleep(50);
+        public void run() {
+            System.out.println("Running " + threadName);
+            try {
+                for (int i = 4; i > 0; i--) {
+                    System.out.println("Thread: " + threadName + ", " + i);
+                    // Let the thread sleep for a while.
+                    Thread.sleep(50);
+                }
+            } catch (InterruptedException e) {
+                System.out.println("Thread " + threadName + " interrupted.");
             }
-        } catch (InterruptedException e) {
-            System.out.println("Thread " + threadName + " interrupted.");
+            System.out.println("Thread " + threadName + " exiting.");
         }
-        System.out.println("Thread " + threadName + " exiting.");
+
+        public void start() {
+            System.out.println("Starting " + threadName);
+            if (t == null) {
+                t = new Thread(this, threadName);
+                t.start();
+            }
+        }
     }
 
-    public void start() {
-        System.out.println("Starting " + threadName);
-        if (t == null) {
-            t = new Thread(this, threadName);
-            t.start();
-        }
-    }
 }
