@@ -41,16 +41,17 @@ function updateTextInput2(val, price) {
 function printStars(count1, count2) {
     var stars = count1 / count2;
     var i, _results;
-    _results = [];
+    _results = "";
+
     for (i = 0; i < stars; i++) {
-        _results.push(this.$el.append("<span class='glyphicon .glyphicon-star'></span>"));
+        _results += "<span class='glyphicon glyphicon-star'></span>";
     }
 
     for (; i < 5; i++) {
-        _results.push(this.$el.append("<span class='glyphicon .glyphicon-star-empty'></span>"));
+        _results += "<span class='glyphicon glyphicon-star-empty'></span>";
     }
 
-    document.getElementById('printstars').innerHTML = _results.toString();
+    $("#printstars").html(_results);
 }
 
 var __slice = [].slice;

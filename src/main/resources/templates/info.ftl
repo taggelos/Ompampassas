@@ -8,9 +8,7 @@
         <div class="event-basics">
             <h1>${event.getTitle()}</h1>
 
-            <script>
-                printStars(${event.getProviderMetadataByProviderId().getRating()}, ${event.getProviderMetadataByProviderId().getNumberOfRatings()});
-            </script>
+            <div id="printstars"></div>
 
             <p> ${event.getPlaceByPlaceId().getAddress()}</p>
             <h3><a href="#comment_section">Σχόλια και Αξιολογήσεις</a>
@@ -197,11 +195,14 @@
             </div>
         </li>
     </ul>
-
-
 </div>
 
+</#macro>
 
+<#macro end_of_body>
+<script>
+    printStars(${event.getProviderMetadataByProviderId().getRating()}, ${event.getProviderMetadataByProviderId().getNumberOfRatings()});
+</script>
 </#macro>
 
 <@display_page/>

@@ -66,7 +66,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/">Αρχική</a></li>
+                <li class="${(pageName == "index")?then("active","")}"><a href="/">Αρχική</a></li>
                 <#if currentUser?? && currentUser.getRole() == "ROLE_ADMIN">
                     <li><a href="/admin"><span class="fa fa-address-book"></span> Πίνακες </a></li>
                     <li><a href="/search_user"><span class="fa fa-search"></span> Αναζήτηση Χρήστη </a></li>
