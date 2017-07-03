@@ -44,7 +44,7 @@ public class AdminEdit {
             if (roles.equals("provider")) user.setRole("ROLE_PROVIDER");
             else if (roles.equals("admin")) user.setRole("ROLE_ADMIN");
             else if (roles.equals("parent")) user.setRole("ROLE_PARENT");
-        mUserService.update(user);
+        user = mUserService.update(user);
 
         System.out.println(user.isEnabled() + " - " + roles + " - " + user.getRole());
         ModelAndView mav = new ModelAndView();

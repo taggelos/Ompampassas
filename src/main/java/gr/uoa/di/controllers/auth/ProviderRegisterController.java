@@ -1,12 +1,8 @@
 package gr.uoa.di.controllers.auth;
 
-import gr.uoa.di.application.Auth;
-import gr.uoa.di.entities.ProviderMetadata;
 import gr.uoa.di.entities.TaxOffice;
 import gr.uoa.di.entities.User;
 import gr.uoa.di.forms.auth.ProviderRegisterForm;
-import gr.uoa.di.repositories.TaxOfficeRepository;
-import gr.uoa.di.services.ProviderMetadataService;
 import gr.uoa.di.services.SecurityService;
 import gr.uoa.di.services.UserService;
 import gr.uoa.di.utils.DatabaseUtils;
@@ -31,16 +27,10 @@ import java.util.Set;
 @Controller
 public class ProviderRegisterController {
     @Autowired
-    private SecurityService securityService;
-
-    @Autowired
     private UserService userService;
 
     @Autowired
-    private ProviderMetadataService providerMetadataService;
-
-    @Autowired
-    private TaxOfficeRepository taxOfficeRepository;
+    private SecurityService securityService;
 
     @Autowired
     private Validator validator;
@@ -75,25 +65,7 @@ public class ProviderRegisterController {
             return "redirect:/register/provider";
         }
 
-        User user = Auth.createUser(userService, registerForm, "ROLE_PROVIDER");
-
-        TaxOffice taxOffice = taxOfficeRepository.findOne(registerForm.getTaxOfficeId());
-
-        ProviderMetadata metadata = new ProviderMetadata();
-        metadata.setUserId(user.getId());
-        metadata.setTitle(registerForm.getTitle());
-        metadata.setCompanyName(registerForm.getCompanyName());
-        metadata.setVatNumber(registerForm.getVatNumber());
-        metadata.setTaxOfficesByTaxOfficeId(taxOffice);
-        metadata.setPhone(registerForm.getPhone());
-        metadata.setFax(registerForm.getFax());
-        metadata.setAddress(registerForm.getAddress());
-        metadata.setZipCode(registerForm.getZipCode());
-        metadata.setRegion(registerForm.getRegion());
-        metadata.setCity(registerForm.getCity());
-        metadata.setLatitude("");
-        metadata.setLongitude("");
-        providerMetadataService.save(metadata);
+        User user = userService.createProvider(registerForm);
 
         // To autologin, we need to pass the password in plain text.
         String password = registerForm.getPassword();

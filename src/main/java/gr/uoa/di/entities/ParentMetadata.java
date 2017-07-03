@@ -58,7 +58,7 @@ public class ParentMetadata {
     @Basic
     @Column(name = "points")
     public int getUserPoints() {
-        return userId;
+        return points;
     }
 
     public void setUserPoints(int points) {

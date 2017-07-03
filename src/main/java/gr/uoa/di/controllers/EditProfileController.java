@@ -52,7 +52,7 @@ public class EditProfileController {
             user.setPassword(mBCryptPasswordEncoder.encode(password));
         }
         user.setEmail(email);
-        mUserService.update(user);
+        user = mUserService.update(user);
 
         ModelAndView mav = new ModelAndView();
         mav.setViewName("profile");

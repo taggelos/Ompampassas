@@ -16,7 +16,7 @@ import java.io.FileInputStream;
 
 @Controller
 public class ConfirmationController {
-    public static final String receiptdir = System.getProperty("user.dir") + "/src/main/resources/assets/receipts/";
+    private static final String receiptdir = System.getProperty("user.dir") + "/src/main/resources/assets/receipts/";
 
     @GetMapping("/confirmation")
     public String getConfirmation() {
