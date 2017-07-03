@@ -5,16 +5,13 @@
 <div id="content" xmlns="http://www.w3.org/1999/html">
     <form method="POST">
         <#include "../partials/csrf_token.ftl">
-        <label>
-            Πίνακες:
-            <select class="btn btn-success" name="tables" onchange="this.form.submit()">
-                <option class="btn btn-warning" selected disabled></option>
-                <option class="btn btn-info" value="all">Όλοι οι χρήστες</option>
-                <option class="btn btn-info" value="admins">Διαχειριστές</option>
-                <option class="btn btn-info" value="providers">Πάροχοι</option>
-                <option class="btn btn-info" value="parents">Γονείς</option>
-            </select>
-        </label>
+        <select class="btn btn-success" name="tables" onchange="this.form.submit()">
+            <option class="btn btn-warning" selected disabled>Πίνακες:</option>
+            <option class="btn btn-info" value="all">Όλοι οι χρήστες</option>
+            <option class="btn btn-info" value="admins">Διαχειριστές</option>
+            <option class="btn btn-info" value="providers">Πάροχοι</option>
+            <option class="btn btn-info" value="parents">Γονείς</option>
+        </select>
     </form>
     <br>
     <#if resTable?? || model["userList"]?? >
@@ -28,7 +25,7 @@
                 <tr class="warning">
                     <th>Email</th>
                     <th>Όνομα</th>
-                    <th>Επώνυμο</th>
+                    <th>Επώνυμο/Τίτλος</th>
                 </tr>
                 <tbody>
                     <#list model["userList"] as user>
@@ -41,8 +38,8 @@
                             <td>${user.getProviderMetadataById().getTitle()}</td>
                             <td>${user.getProviderMetadataById().getCompanyName()}</td>
                         <#else>
-                            <td></td>
-                            <td></td>
+                            <td>-</td>
+                            <td>-</td>
                         </#if>
                     <#--td>
                         <form class="form-horizontal" method="POST"><#include "partials/csrf_token.ftl"><input type="submit" class="deletebtn"></form>

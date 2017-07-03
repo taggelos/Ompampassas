@@ -39,7 +39,7 @@
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-4 well well-sm">
             <legend><i class="glyphicon glyphicon-globe"></i> Εκδήλωση</legend>
-            <form method="Post">
+            <form method="POST">
                 <#include "partials/csrf_token.ftl">
                 <input type="text" class="form-control" name="area" placeholder="Περιοχή" id="gautofill"
                        onchange="AdressInfo();"/>

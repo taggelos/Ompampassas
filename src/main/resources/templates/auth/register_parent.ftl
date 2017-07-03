@@ -13,7 +13,7 @@
                     <#assign registerType = "parent">
                     <#include "../partials/register_picker.ftl">
 
-                    <form class="form-horizontal" method="POST">
+                    <form id='secure-form' class="form-horizontal" method="POST">
                         <#include "../partials/message_container.ftl">
 
                         <#include "../partials/csrf_token.ftl">
@@ -87,7 +87,10 @@
 
                         <div class="form-group">
                             <div class="col-sm-offset-4 col-sm-8">
-                                <button type="submit" class="btn btn-primary">Εγγραφή</button>
+                                <button type="submit" class="g-recaptcha btn btn-primary"
+                                        data-sitekey="6LccsCcUAAAAAM6rPRzEQShJxJOVd5GqQYFV8XvK"
+                                        data-callback='onSubmit'>Εγγραφή
+                                </button>
                             </div>
                         </div>
                     </form>

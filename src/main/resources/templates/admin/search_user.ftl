@@ -22,6 +22,7 @@
                     <th>Email</th>
                     <th>Όνομα</th>
                     <th>Επώνυμο</th>
+                    <th>Ιδιότητα</th>
                 </tr>
                 <tbody>
                     <#list userList as user>
@@ -30,12 +31,15 @@
                         <#if user.getRole() == "ROLE_PARENT">
                             <td>${user.getParentMetadataById().getFirstName()}</td>
                             <td>${user.getParentMetadataById().getLastName()}</td>
+                            <td>Γονέας</td>
                         <#elseif user.getRole() == "ROLE_PROVIDER">
                             <td>${user.getProviderMetadataById().getTitle()}</td>
                             <td>${user.getProviderMetadataById().getCompanyName()}</td>
+                            <td>Πάροχος</td>
                         <#else>
-                            <td></td>
-                            <td></td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>Διαχειριστής</td>
                         </#if>
                     </tr>
                     </#list>

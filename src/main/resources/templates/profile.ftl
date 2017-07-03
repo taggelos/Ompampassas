@@ -1,6 +1,6 @@
+<#ftl output_format="HTML">
 <#assign pageName = "profile">
 <#include "layout/default.ftl">
-
 <#macro content>
     <#if user?? && currentUser?? && (currentUser.getEmail() == user.getEmail() || currentUser.getRole() == "ROLE_ADMIN")>
     <div class="container">

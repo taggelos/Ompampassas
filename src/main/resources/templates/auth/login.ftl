@@ -11,7 +11,7 @@
                     Σύνδεση
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST">
+                    <form id='secure-form' class="form-horizontal" method="POST">
                         <#include "../partials/csrf_token.ftl">
 
                         <#if error??>
@@ -69,7 +69,10 @@
 
                         <div class="form-group">
                             <div class="col-sm-offset-4 col-sm-8">
-                                <button type="submit" class="btn btn-primary">Σύνδεση</button>
+                                <button class="g-recaptcha btn btn-primary"
+                                        data-sitekey="6LccsCcUAAAAAM6rPRzEQShJxJOVd5GqQYFV8XvK" data-callback='onSubmit'
+                                        type="submit">Σύνδεση
+                                </button>
                             </div>
                         </div>
                     </form>

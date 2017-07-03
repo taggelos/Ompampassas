@@ -18,7 +18,6 @@ public class HomeController {
                 request.getParameter("registered").equals("1"))
             mav.addObject("registered", true);
         // ???
-
         String contactus = "axne@gmail.com";//δυναμικα
         mav.addObject("contactus", contactus);
         return mav;

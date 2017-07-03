@@ -24,7 +24,6 @@ public class AdminController {
     @Autowired
     private ProviderMetadataRepository mProviderRepository;
 
-    //private List<User> userList;
     @GetMapping("admin")
     public String index(@ModelAttribute("model") ModelMap model) {
         return "admin/admin";
@@ -87,12 +86,20 @@ public class AdminController {
     public ModelAndView search_user(@RequestParam(value = "keyword") String keyword) {
         List<User> userList = new ArrayList<>();
         mUserRepository.findAll().forEach(user -> {
-            if (user.getEmail().toUpperCase().contains(keyword.toUpperCase())
-                //TODO: || user.getName().toUpperCase().contains(keyword.toUpperCase())
-                //TODO: || user.getSurname().toUpperCase().contains(keyword.toUpperCase())
-                    ) {
-                userList.add(user);
+            switch (user.getRole()) {
+                case "ROLE_PARENT":
+                    if (user.getParentMetadataById().getFirstName().toUpperCase().contains(keyword.toUpperCase())
+                            || user.getParentMetadataById().getLastName().toUpperCase().contains(keyword.toUpperCase()))
+                        userList.add(user);
+                    break;
+                case "ROLE_PROVIDER":
+                    if (user.getProviderMetadataById().getCompanyName().toUpperCase().contains(keyword.toUpperCase())
+                            || user.getProviderMetadataById().getTitle().toUpperCase().contains(keyword.toUpperCase()))
+                        userList.add(user);
+                    break;
             }
+            if (user.getEmail().toUpperCase().contains(keyword.toUpperCase()))
+                userList.add(user);
         });
         String result;
         if (userList.isEmpty()) {
