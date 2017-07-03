@@ -5,8 +5,27 @@
 
 <div class="panel panel-success">
     <h1>${provider.getCompanyName()}</h1>
+    <div class="container">
+        <#if currentUser.getRole()=="ROLE_PARENT">
+            <form method="POST" action="#">
+                <#include "partials/csrf_token.ftl">
+
+                <div class="row">
+                    <h2>Αξιολόγηση:</h2>
+                </div>
+                <input type="hidden" id="inputstars" name="stars" value="">
+                <div class="row lead">
+                    <div id="stars" class="starrr"></div>
+                    Η Αξιολόγηση σας: <span id="count">0</span> αστέρια
+                </div>
+
+                <input type="submit" class="btn btn-primary" value="Υποβολή Αξιολόγησης">
+            </form>
+        </#if>
+    </div>
 </div>
 
+<h2>Εκδηλώσεις</h2>
 <div class="container">
     <#list events as ev>
         <div class="col-md-9">
@@ -36,7 +55,6 @@
     </#list>
 
 </div>
-
 
 </#macro>
 

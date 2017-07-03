@@ -7,13 +7,11 @@
     <div class="info-container">
         <div class="event-basics">
             <h1>${event.getTitle()}</h1>
-            <h2>
-                <span class="glyphicon glyphicon-star"></span>
-                <span class="glyphicon glyphicon-star"></span>
-                <span class="glyphicon glyphicon-star"></span>
-                <span class="glyphicon glyphicon-star"></span>
-                <span class="glyphicon glyphicon-star"></span>
-            </h2>
+
+            <script>
+                printStars(${event.getProviderMetadataByProviderId().getRating()}, ${event.getProviderMetadataByProviderId().getNumberOfRatings()});
+            </script>
+
             <p> ${event.getPlaceByPlaceId().getAddress()}</p>
             <h3><a href="#comment_section">Σχόλια και Αξιολογήσεις</a>
 
@@ -35,21 +33,23 @@
 <div class="container">
     <div class="row">
         <div class="col-md-3">
-            <div class="form-group has-feedback">
-                <form class="form-inline" method="get" action="/confirmation">
-                    <div class="form-group has-feedback">
-                        <p>Αριθμός Εισιτηρίων:
-                            <input type="number" min="1" max="100" title="Αριθμός Εισιτηρίων"
-                                   onchange="updateTextInput2(this.value,${event.getPrice()});">
-                        </p>
-                        <label>Τιμή Εισιτηρίων:
-                            <p id="tickets">0 πόντοι</p>
-                        </label>
-                    </div>
-                    <br>
-                    <button type="submit" class="btn btn-success  btn-lg"> Δημιουργία Κράτησης &raquo</button>
-                </form>
-            </div>
+            <#if currentUser.getRole()=="ROLE_PARENT">
+                <div class="form-group has-feedback">
+                    <form class="form-inline" method="get" action="/confirmation">
+                        <div class="form-group has-feedback">
+                            <p>Αριθμός Εισιτηρίων:
+                                <input type="number" min="1" max="100" title="Αριθμός Εισιτηρίων"
+                                       onchange="updateTextInput2(this.value,${event.getPrice()});">
+                            </p>
+                            <label>Τιμή Εισιτηρίων:
+                                <p id="tickets">0 πόντοι</p>
+                            </label>
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-success  btn-lg"> Δημιουργία Κράτησης &raquo</button>
+                    </form>
+                </div>
+            </#if>
         </div>
         <div class="col-md-9">
             <div id="map-container" class="col-md-9"></div>
