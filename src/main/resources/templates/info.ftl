@@ -2,7 +2,7 @@
 <#include "layout/default.ftl">
 
 <#macro content>
-<body>
+<body xmlns="http://www.w3.org/1999/html">
 <div class="jumbotron_info">
     <div class="info-container">
         <div class="event-basics">
@@ -15,13 +15,13 @@
                 <span class="glyphicon glyphicon-star"></span>
             </h2>
             <p> ${event.getPlaceByPlaceId().getAddress()}</p>
-            <h3><a href="#comment_section">User comments & ratings</a>
+            <h3><a href="#comment_section">Σχόλια και Αξιολογήσεις</a>
 
         </div>
     </div>
 </div>
 <div class="panel panel-success">
-    <h1>Information</h1>
+    <h1>Πληροφορίες</h1>
     <p>${event.getDescription()}</p>
 </div>
 
@@ -38,16 +38,16 @@
             <div class="form-group has-feedback">
                 <form class="form-inline" method="get" action="/confirmation">
                     <div class="form-group has-feedback">
-                        <p>Number of Tickets<i class="fa fa-ticket" aria-hidden="true"></i>
-                            <input type="number" min="1" max="100" title="Number of Tickets"
+                        <p>Αριθμός Εισιτηρίων:
+                            <input type="number" min="1" max="100" title="Αριθμός Εισιτηρίων"
                                    onchange="updateTextInput2(this.value,${event.getPrice()});">
                         </p>
-                        <label>Price
-                            <p id="tickets">0 $</p>
+                        <label>Τιμή Εισιτηρίων:
+                            <p id="tickets">0 πόντοι</p>
                         </label>
                     </div>
                     <br>
-                    <button type="submit" class="btn btn-success  btn-lg"> Make Reservation &raquo</button>
+                    <button type="submit" class="btn btn-success  btn-lg"> Δημιουργία Κράτησης &raquo</button>
                 </form>
             </div>
         </div>

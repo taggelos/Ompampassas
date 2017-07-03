@@ -13,6 +13,7 @@ public class ParentMetadata {
     private Collection<Comment> commentsByUserId;
     private User userByUserId;
     private Collection<Ticket> ticketsByUserId;
+    private int points;
 
     @Id
     @Column(name = "user_id")
@@ -52,6 +53,16 @@ public class ParentMetadata {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    @Basic
+    @Column(name = "points")
+    public int getUserPoints() {
+        return userId;
+    }
+
+    public void setUserPoints(int points) {
+        this.points = points;
     }
 
     @Override
