@@ -48,10 +48,10 @@ public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
         }
 
         if (isAdmin(roles)) {
-            url = "/profile";
+            url = "/";
         }
         else if (isParent(roles)) {
-            url = "/profile";
+            url = "/";
         }
         else if (isProvider(roles)) {
             url = "/profile";

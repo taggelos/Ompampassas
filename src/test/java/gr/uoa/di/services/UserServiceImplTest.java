@@ -17,7 +17,7 @@ public class UserServiceImplTest {
         test.setEmail("testEmail");
         test.setPassword("testPass");
         test.setRole("ROLE_USER");
-        test.setSurname("testSur");
+        //test.setSurname("testSur");
         System.out.println("BEFORE");
     }
 

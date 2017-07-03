@@ -20,7 +20,6 @@ import java.util.List;
 public class AdminController {
     @Autowired
     private UserRepository mUserRepository;
-
     @Autowired
     private ProviderMetadataRepository mProviderRepository;
 
@@ -70,9 +69,19 @@ public class AdminController {
     @GetMapping("statistics")
     public ModelAndView stats() {
         List<ProviderMetadata> providerList = new ArrayList<>();
+        int num_parents = 0, num_admins = 0, num_all = 0;
         mProviderRepository.findAll().forEach(providerList::add);
+        for (User user : mUserRepository.findAll()) {
+            if (user.getRole().equals("ROLE_PARENT")) num_parents++;
+            num_all++;
+        }
+        num_admins = num_all - num_parents - providerList.size();
         ModelAndView mav = new ModelAndView();
         mav.addObject("providerList", providerList);
+        mav.addObject("num_providers", providerList.size());
+        mav.addObject("num_parents", num_parents);
+        mav.addObject("num_all", num_all);
+        mav.addObject("num_admins", num_admins);
         mav.setViewName("admin/statistics");
         return mav;
     }
