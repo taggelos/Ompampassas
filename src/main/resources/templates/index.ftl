@@ -65,71 +65,32 @@
     <!-- Example row of columns -->
     <div class="slickClass slider">
         <div>
-            <img src="/assets/images/slider/aaa.jpg"/>
+            <img src="/assets/${provider1}"/>
             <div class="panel panel-success">
-                <h2>Heading</h2>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-                    mauris
-                    condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis
-                    euismod. Donec sed odio dui. </p>
-                <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+                <h2>Rating ${rating1}</h2>
+                <p><a class="btn btn-default" href="/provider/${linkprovider1}" role="button">Δείτε Τώρα &raquo;</a></p>
             </div>
         </div>
         <div>
-            <img src="/assets/images/slider/ccc.jpg"/>
+            <img src="/assets/${provider2}"/>
             <div class="panel panel-success">
-                <h2>Heading</h2>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-                    mauris
-                    condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis
-                    euismod. Donec sed odio dui. </p>
-                <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+                <h2>Rating ${rating2}</h2>
+                <p><a class="btn btn-default" href="/provider/${linkprovider2}" role="button">Δείτε Τώρα &raquo;</a></p>
             </div>
         </div>
         <div>
-            <img src="/assets/images/slider/ddd.jpg"/>
+            <img src="/assets/${provider3}"/>
             <div class="panel panel-success">
-                <h2>Heading</h2>
-                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula
-                    porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-                    ut
-                    fermentum massa justo sit amet risus.</p>
-                <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+                <h2>Rating ${rating3}</h2>
+                <p><a class="btn btn-default" href="/provider/${linkprovider3}" role="button">Δείτε Τώρα &raquo;</a></p>
             </div>
         </div>
-        <div><img src="/assets/images/slider/eee.jpg"/>
+        <div>
+            <img src="/assets/${provider4}"/>
             <div class="panel panel-success">
-                <h2>Heading</h2>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-                    mauris
-                    condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis
-                    euismod. Donec sed odio dui. </p>
-                <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+                <h2>Rating ${rating4}</h2>
+                <p><a class="btn btn-default" href="/provider/${linkprovider4}" role="button">Δείτε Τώρα &raquo;</a></p>
             </div>
-        </div>
-        <div><img src="/assets/images/slider/sss.jpg"/>
-            <div class="panel panel-success">
-                <h2>Heading</h2>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-                    mauris
-                    condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis
-                    euismod. Donec sed odio dui. </p>
-                <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-            </div>
-        </div>
-        <div><img src="/assets/images/slider/ttt.jpg"/>
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-                condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis
-                euismod. Donec sed odio dui. </p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div>
-        <div><img src="/assets/images/slider/zzz.jpg"/>
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-                condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis
-                euismod. Donec sed odio dui. </p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
         </div>
     </div>
 </div>

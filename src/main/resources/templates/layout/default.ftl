@@ -46,6 +46,7 @@
             document.getElementById("secure-form").submit();
         }
     </script>
+    <script src="/assets/js/Chart.js"></script>
 </head>
 
 <body>
@@ -119,7 +120,6 @@
 <script src="/assets/vendor/slick/slick.js"></script>
 <script src="/assets/js/google-maps-autocomplete.js"></script>
 <script src="/assets/js/chosen.jquery.min.js"></script>
-<script src="/assets/js/Chart.js"></script>
 
 <script src="/assets/js/scripts.js"></script>
     <@end_of_body/>
