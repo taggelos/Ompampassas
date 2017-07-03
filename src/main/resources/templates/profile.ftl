@@ -47,12 +47,17 @@
                         <i class="fa fa-pencil"></i> Αλλαγή Στοιχείων
                     </a>
 
-                    <#if currentUser.getRole()=="ROLE_PROVIDER">
+                    <#if user.getRole()=="ROLE_PROVIDER" &&(currentUser.getEmail() == user.getEmail())>
                         <a class="btn btn-primary" href="/create_event">
                             <i class="fa fa-plus"></i> Δημιουργία Εκδήλωσης
                         </a>
                         <a class="btn btn-primary" href="/statistics">
                             <i class="fa fa-bar-chart"></i> Στατιστικά Παρόχων
+                        </a>
+                    </#if>
+                    <#if user.getRole()=="ROLE_PARENT">
+                        <a class="btn btn-primary" href="/points">
+                            <i class="fa fa-plus"></i> Προσθήκη πόντων
                         </a>
                     </#if>
                 </div>

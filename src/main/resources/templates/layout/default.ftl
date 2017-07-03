@@ -77,6 +77,10 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <#if currentUser??>
+                    <#if  currentUser.getRole() == "ROLE_PARENT">
+                        <li><a href="/points"><span class="fa fa-trophy"></span>
+                        ${currentUser.getParentMetadataById().getUserPoints()} Πόντοι </a></li>
+                    </#if>
                     <li class="dropdown ${(pageName == "profile")?then("active","")}">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false">${currentUser.getEmail()} <span class="caret"></span></a>

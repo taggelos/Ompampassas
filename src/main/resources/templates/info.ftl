@@ -31,12 +31,13 @@
 <div class="container">
     <div class="row">
         <div class="col-md-3">
-            <#if currentUser.getRole()=="ROLE_PARENT">
+            <#if currentUser?? && currentUser.getRole()=="ROLE_PARENT">
                 <div class="form-group has-feedback">
                     <form class="form-inline" method="get" action="/confirmation">
+                        <input type="hidden" name="eventid" id="eventid" value="${event.getId()}">
                         <div class="form-group has-feedback">
                             <p>Αριθμός Εισιτηρίων:
-                                <input type="number" min="1" max="100" title="Αριθμός Εισιτηρίων"
+                                <input type="number" min="1" max="100" title="Αριθμός Εισιτηρίων" name="point"
                                        onchange="updateTextInput2(this.value,${event.getPrice()});">
                             </p>
                             <label>Τιμή Εισιτηρίων:

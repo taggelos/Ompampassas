@@ -6,7 +6,7 @@
 <div class="panel panel-success">
     <h1>${provider.getCompanyName()}</h1>
     <div class="container">
-        <#if currentUser.getRole()=="ROLE_PARENT">
+        <#if currentUser?? && currentUser.getRole()=="ROLE_PARENT">
             <form method="POST" action="#">
                 <#include "partials/csrf_token.ftl">
 

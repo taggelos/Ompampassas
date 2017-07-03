@@ -34,8 +34,8 @@
                                                                 </ul>
                                                             </td>
                                                             <td>
-                                                                <li>15 Πόντοι</li>
-                                                                <li>3</li>
+                                                                <li>${event.getPrice()}</li>
+                                                                <li>${tickets}</li>
                                                             </td>
                                                         </tr>
                                                     </table>
@@ -43,7 +43,11 @@
                                                 <div class="col-md-3">
                                                     <div style="text-align: center;">
                                                         <h3>Συνολίκο Κόστος</h3>
-                                                        <h3><span style="color:green;">45 Πόντοι</span></h3>
+                                                        <h3><span
+                                                                style="color:green;">${tickets*event.getPrice()}</span>
+                                                        </h3>
+                                                        <input type="hidden" name="tickets" value="${tickets}">
+                                                        <input type="hidden" name="eventid" value="${event.getId()}">
                                                     </div>
                                                 </div>
                                             </div>
