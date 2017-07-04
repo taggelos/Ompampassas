@@ -10,9 +10,10 @@ import org.springframework.web.servlet.ModelAndView;
 import java.io.File;
 import java.util.List;
 
+import static gr.uoa.di.Application.imagedir;
+
 @Controller
 public class HomeController {
-    private static final String imagedir = System.getProperty("user.dir") + "/src/main/webapp/assets/imagedir/";
     final private static int topProviders = 4;
 
     @Autowired

@@ -77,14 +77,13 @@ public class ConfirmationController {
         ticket.setEventByEventId(event);
         ticket.setParentMetadataByParentId(parent);
         ticket.setNumOfTickets(notickets);
-        mTicketService.save(ticket);
+        ticket = mTicketService.save(ticket);
         event.setNumberOfTickets(event.getNumberOfTickets() - notickets);
         mEventService.save(event);
 
         ModelAndView mav = new ModelAndView();
         mav.setViewName("receipt/receipt");
         mav.addObject("ticket", ticket);
-        mav.addObject("event", event);
         return mav;
     }
 

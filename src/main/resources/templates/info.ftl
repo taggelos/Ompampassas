@@ -3,6 +3,10 @@
 
 <#macro content>
 <body xmlns="http://www.w3.org/1999/html">
+    <#if currentUser.id == event.providerMetadataByProviderId.userId>
+    <a href="/provider_tickets/${event.id}">Δείτε τις αποδείξεις</a>
+    </#if>
+
 <div class="jumbotron_info">
     <div class="info-container">
         <div class="event-basics">

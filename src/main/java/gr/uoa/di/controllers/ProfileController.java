@@ -16,10 +16,12 @@ import org.springframework.web.servlet.ModelAndView;
 import java.io.File;
 import java.io.IOException;
 
+import static gr.uoa.di.Application.imagedir;
+
+
 @Controller
 
 public class ProfileController {
-    public static final String imagedir = System.getProperty("user.dir") + "/src/main/webapp/assets/imagedir/";
 
     @Autowired
     private UserService mUserService;

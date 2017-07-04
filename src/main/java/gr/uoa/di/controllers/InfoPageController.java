@@ -20,9 +20,10 @@ import java.io.File;
 import java.sql.Timestamp;
 import java.util.Date;
 
+import static gr.uoa.di.Application.imagedir;
+
 @Controller
 public class InfoPageController {
-    public static final String imagedir = System.getProperty("user.dir") + "/src/main/webapp/assets/imagedir/";
 
     @Autowired
     private EventService mEventService;

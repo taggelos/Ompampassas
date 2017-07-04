@@ -9,6 +9,10 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+<#assign event=ticket.eventByEventId>
+<#assign place=event.placeByPlaceId>
+<#assign provider=event.providerMetadataByProviderId>
+<#assign parent=ticket.parentMetadataByParentId>
 <div bgcolor='#e4e4e4' text='#ff6633' link='#666666' vlink='#666666' alink='#ff6633'
      style='margin:0;font-family:Arial,Helvetica,sans-serif;border-bottom:1'>
     <table background='' bgcolor='#e4e4e4' width='100%' style='padding:20px 0 20px 0' cellspacing='0' border='0'
@@ -50,7 +54,7 @@
                                                 <td valign='top'
                                                     style='color:#404041;font-size:12px;padding:5px 5px 0px 20px'>
                                                     <p>
-                                                        <a href='mailto:info@preview.co.za'>${event.getProviderMetadataByProviderId().getUserByUserId().getEmail()}</a><br>
+                                                        <a href='mailto:${provider.userByUserId.getEmail()}'>${provider.userByUserId.getEmail()}</a><br>
                                                     </p>
                                                 </td>
                                             </tr>
@@ -71,8 +75,8 @@
                                                 <td valign='top'
                                                     style='color:#404041;font-size:12px;padding:0px 5px 0px 5px'>
                                                     <p>
-                                                    ${event.getPlaceByPlaceId().getTitle()}<br>
-                                                    ${event.getPlaceByPlaceId().getAddress()}<br>
+                                                    ${place.getTitle()}<br>
+                                                    ${place.getAddress()}<br>
                                                     </p>
                                                 </td>
                                             </tr>
@@ -87,8 +91,8 @@
                                                 <td valign='top'
                                                     style='color:#404041;font-size:12px;padding:0px 5px 0px 5px'>
                                                     <p>
-                                                        <a href='tel:${event.getProviderMetadataByProviderId().getPhone()}'
-                                                           target='_blank'>${event.getProviderMetadataByProviderId().getPhone()}</a><br>
+                                                        <a href='tel:${provider.getPhone()}'
+                                                           target='_blank'>${provider.getPhone()}</a><br>
                                                     </p>
                                                 </td>
                                             </tr>
@@ -108,8 +112,8 @@
                                                 <td valign='top'
                                                     style='color:#404041;font-size:12px;padding:0px 5px 0px 5px'>
                                                     <p>
-                                                    ${currentUser.parentMetadataById.firstName}<br>
-                                                    ${currentUser.parentMetadataById.lastName}<br>
+                                                    ${parent.firstName}<br>
+                                                    ${parent.lastName}<br>
                                                         <br>
                                                     </p>
                                                 </td>
@@ -143,8 +147,8 @@
                             </p>
                             <p>
                                 Ευχαριστούμε για την συνεργασία σας με την <a
-                                    href='/profile/${event.getProviderMetadataByProviderId().getUserByUserId().getEmail()}'
-                                    target='_blank'>${event.getProviderMetadataByProviderId().getCompanyName()}</a>.<br>
+                                    href='/profile/${provider.getUserByUserId().getEmail()}'
+                                    target='_blank'>${provider.getCompanyName()}</a>.<br>
                                 <br>Λάβαμε την παραγγελία σας και θα σας ενημερώσουμε μόλις λάβουμε την πληρωμή σας.
                             </p>
                         </td>
@@ -200,8 +204,8 @@
                                                 </td>
                                                 <td colspan='4' align='left' valign='top' width='115'
                                                     style='color:#ff6600;font-size:12px;padding:10px 5px 0px 5px'>
-                                                    <a href='/profile/${event.getProviderMetadataByProviderId().getUserByUserId().getEmail()}'
-                                                       target='_blank'>${event.getProviderMetadataByProviderId().getCompanyName()}</a>
+                                                    <a href='/profile/${provider.userByUserId.getEmail()}'
+                                                       target='_blank'>${provider.getCompanyName()}</a>
                                                 </td>
                                             </tr>
                                             <tr>
