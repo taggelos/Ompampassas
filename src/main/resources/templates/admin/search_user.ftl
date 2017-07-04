@@ -24,6 +24,7 @@
                     <th>Επώνυμο</th>
                     <th>Ιδιότητα</th>
                 </tr>
+                </thead>
                 <tbody>
                     <#list userList as user>
                     <tr class="success">
