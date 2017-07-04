@@ -87,7 +87,7 @@ public class UserServiceImpl implements UserService {
         metadata.setTitle(registerForm.getTitle());
         metadata.setCompanyName(registerForm.getCompanyName());
         metadata.setVatNumber(registerForm.getVatNumber());
-        metadata.setTaxOfficesByTaxOfficeId(taxOffice);
+        metadata.setTaxOfficeByTaxOfficeId(taxOffice);
         metadata.setPhone(registerForm.getPhone());
         metadata.setFax(registerForm.getFax());
         metadata.setAddress(registerForm.getAddress());

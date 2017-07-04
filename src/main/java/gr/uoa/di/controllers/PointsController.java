@@ -28,7 +28,7 @@ public class PointsController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String urlname = auth.getName();
         User user = mUserService.findByUsername(urlname);
-        user.getParentMetadataById().setUserPoints(user.getParentMetadataById().getUserPoints() + Integer.parseInt(points));
+        user.getParentMetadataById().setPoints(user.getParentMetadataById().getPoints() + Integer.parseInt(points));
         mUserService.update(user);
         return "redirect:/";
     }

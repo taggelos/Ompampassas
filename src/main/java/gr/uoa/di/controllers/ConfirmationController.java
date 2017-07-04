@@ -46,7 +46,7 @@ public class ConfirmationController {
         ParentMetadata parent = user.getParentMetadataById();
         Integer notickets = Integer.parseInt(tickets);
 
-        if (parent.getUserPoints() < notickets * event.getPrice())
+        if (parent.getPoints() < notickets * event.getPrice())
             mav.addObject("error", "Δεν έχετε αρκετούς πόντους για αυτή την αγορά.");
         else if (event.getNumberOfTickets() < notickets)
             mav.addObject("error", "Δεν υπάρχουν αρκετές θέσεις για αυτή την αγορά.");
@@ -71,7 +71,7 @@ public class ConfirmationController {
         ParentMetadata parent = user.getParentMetadataById();
         Integer notickets = Integer.parseInt(tickets);
 
-        parent.setUserPoints(parent.getUserPoints() - notickets * event.getPrice());
+        parent.setPoints(parent.getPoints() - notickets * event.getPrice());
         mParentmetadataService.save(parent);
         Ticket ticket = new Ticket();
         ticket.setEventByEventId(event);
