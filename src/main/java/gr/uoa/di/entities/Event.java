@@ -130,6 +130,7 @@ public class Event {
         return result;
     }
 
+    @OrderBy("timestamp DESC")
     @OneToMany(mappedBy = "eventByEventId")
     public Collection<Comment> getCommentsById() {
         return commentsById;
