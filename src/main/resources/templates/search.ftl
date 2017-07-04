@@ -10,7 +10,7 @@
         <div class="filter-container">
             <h2>Φίλτρα</h2>
             <div class="panel panel-search-primary">
-                <div class="panel-heading">Δραστηριοτητες</div>
+                <div class="panel-heading">Δραστηριότητες</div>
                 <div class="panel-body">
                     <div class="activity-checkbox-filter">
                         <input type="checkbox"/> This is checkbox <br/>
@@ -25,7 +25,7 @@
                         <input type="checkbox"/> This is checkbox <br/>
                     </div>
                 </div>
-                <div class="panel-heading">Ημερομηνια & Ωρα</div>
+                <div class="panel-heading">Ημερομηνία & Ώρα</div>
                 <div class="panel-body">
                     <div class="Date-filter">
                         <input type="date" class="form-control" name="event_date" min="2016-12-31">
@@ -36,7 +36,7 @@
                         <i class="glyphicon glyphicon-hourglass form-control-feedback"></i>
                     </div>
                 </div>
-                <div class="panel-heading">Αξιολογησεις</div>
+                <div class="panel-heading">Αξιολογήσεις</div>
                 <div class="panel-body">
                     <div class="rating-radio-filter">
                         <form>
@@ -46,14 +46,14 @@
                         </form>
                     </div>
                 </div>
-                <div class="panel-heading">Ευρος Τιμής</div>
+                <div class="panel-heading">Εύρος Τιμής</div>
                 <div class="panel-body">
                     <form class="form-inline">
                         <div class="Price-filter-form-group">
                             <input type="text" class="form-control" id="price-min" placeholder="Από" name="price-min">
                         </div>
                         <div class="Price-filter-form-group">
-                            <input type="text" class="form-control" id="price-max" placeholder="Εως" name="price-max">
+                            <input type="text" class="form-control" id="price-max" placeholder="Έως" name="price-max">
                         </div>
                         <button type="submit" class="btn btn-default-Price-filter"> ></button>
                     </form>
@@ -65,7 +65,7 @@
 
     <div class="sortby-container">
         <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Ταξινόμηση Κατα
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Ταξινόμηση Κατά
                 <span class="caret"></span></button>
             <ul class="dropdown-menu">
                 <li><a href="#">Τιμή(Χαμηλότερα πρώτα)</a></li>

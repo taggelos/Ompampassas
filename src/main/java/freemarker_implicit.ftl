@@ -1,5 +1,6 @@
 [#ftl]
 [#-- @implicitly included --]
+[#-- @ftlvariable name="ticket" type="gr.uoa.di.entities.Ticket" file="templates/receipt/receipt.ftl" --]
 [#-- @ftlvariable name="result" type="java.lang.String" file="templates/admin/search_user.ftl" --]
 [#-- @ftlvariable name="userList" type="gr.uoa.di.entities.User[]" --]
 [#-- @ftlvariable name="providerList" type="gr.uoa.di.entities.ProviderMetadata[]" file="templates/admin/statistics.ftl" --]

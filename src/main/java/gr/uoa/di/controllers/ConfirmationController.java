@@ -9,11 +9,6 @@ import gr.uoa.di.services.ParentMetadataService;
 import gr.uoa.di.services.TicketService;
 import gr.uoa.di.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.InputStreamResource;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -21,9 +16,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.io.File;
-import java.io.FileInputStream;
 
 
 @Controller
@@ -67,41 +59,33 @@ public class ConfirmationController {
     }
 
     @PostMapping("/confirmation")
-    public ResponseEntity<InputStreamResource> downloadPdf(@RequestParam(value = "tickets") String tickets, @RequestParam(value = "eventid") String eventid) {
+    public ModelAndView downloadPdf(@RequestParam(value = "tickets") String tickets, @RequestParam(value = "eventid") String eventid) {
 
         RunnableOperation R1 = new RunnableOperation("Thread-1");
         R1.start();
-        try {
-            //mav.addObject("user", user);
 
-            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-            String urlname = auth.getName(); //get logged in username
-            User user = mUserService.findByUsername(urlname);
-            Event event = mEventService.findById(eventid);
-            ParentMetadata parent = user.getParentMetadataById();
-            Integer notickets = Integer.parseInt(tickets);
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String urlname = auth.getName(); //get logged in username
+        User user = mUserService.findByUsername(urlname);
+        Event event = mEventService.findById(eventid);
+        ParentMetadata parent = user.getParentMetadataById();
+        Integer notickets = Integer.parseInt(tickets);
 
-            parent.setUserPoints(parent.getUserPoints() - notickets * event.getPrice());
-            mParentmetadataService.save(parent);
-            Ticket ticket = new Ticket();
-            ticket.setEventByEventId(event);
-            ticket.setParentMetadataByParentId(parent);
-            ticket.setNumOfTickets(notickets);
-            mTicketService.save(ticket);
-            event.setNumberOfTickets(event.getNumberOfTickets() - notickets);
-            mEventService.save(event);
+        parent.setUserPoints(parent.getUserPoints() - notickets * event.getPrice());
+        mParentmetadataService.save(parent);
+        Ticket ticket = new Ticket();
+        ticket.setEventByEventId(event);
+        ticket.setParentMetadataByParentId(parent);
+        ticket.setNumOfTickets(notickets);
+        mTicketService.save(ticket);
+        event.setNumberOfTickets(event.getNumberOfTickets() - notickets);
+        mEventService.save(event);
 
-            File file = new File(String.valueOf(receiptdir + "test.pdf"));
-            HttpHeaders respHeaders = new HttpHeaders();
-            MediaType mediaType = MediaType.parseMediaType("application/pdf");
-            respHeaders.setContentType(mediaType);
-            respHeaders.setContentLength(file.length());
-            respHeaders.setContentDispositionFormData("attachment", file.getName());
-            InputStreamResource isr = new InputStreamResource(new FileInputStream(file));
-            return new ResponseEntity<>(isr, respHeaders, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("receipt/receipt");
+        mav.addObject("ticket", ticket);
+        mav.addObject("event", event);
+        return mav;
     }
 
     class RunnableOperation implements Runnable {

@@ -40,7 +40,7 @@ public class HomeController {
             }
             String image;
             File provDir = new File(folder, email);
-            if (provDir.exists()) {
+            if (provDir.exists() && provDir.listFiles().length != 0) {
                 File[] provimage = provDir.listFiles();
                 image = "imagedir/" + email + "/" + provimage[0].getName();
             } else {

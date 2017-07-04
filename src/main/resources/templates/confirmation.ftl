@@ -48,8 +48,10 @@
                                                                 </ul>
                                                             </td>
                                                             <td>
-                                                                <li>${event.getPrice()}</li>
-                                                                <li>${tickets}</li>
+                                                                <ul style="list-style-type: none">
+                                                                    <li>${event.getPrice()}</li>
+                                                                    <li>${tickets}</li>
+                                                                </ul>
                                                             </td>
                                                         </tr>
                                                     </table>
@@ -70,15 +72,17 @@
                                         <button type="submit" class="btn btn-success btn-lg"
                                                 style="width:100%;">Αγορά
                                         </button>
+                                        <br/>
+                                        <div style="text-align: left;"><br/>
+                                            Υποβάλλοντας αυτήν την παραγγελία συμφωνείτε με την καθολική μας
+                                             συμφωνία χρέωσης και τους όρους παροχής υπηρεσιών.
+                                             Αν έχετε ερωτήσεις σχετικά με τα προϊόντα ή τις υπηρεσίες μας,
+                                            επικοινωνήστε
+                                            μαζί μας στο ompampassas [at] ompampassas [dot] com πριν προχωρήσετε σε
+                                            αυτήν την
+                                            παραγγελία.
+                                        </div>
                                     </#if>
-                                    <br/>
-                                    <div style="text-align: left;"><br/>
-                                        Υποβάλλοντας αυτήν την παραγγελία συμφωνείτε με την καθολική μας
-                                         συμφωνία χρέωσης και τους όρους παροχής υπηρεσιών.
-                                         Αν έχετε ερωτήσεις σχετικά με τα προϊόντα ή τις υπηρεσίες μας, επικοινωνήστε
-                                        μαζί μας στο ompampassas [at] ompampassas.com πριν προχωρήσετε σε αυτήν την
-                                        παραγγελία.
-                                    </div>
                                 </div>
                             </div>
                         </form>

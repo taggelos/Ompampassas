@@ -44,9 +44,8 @@
                         </p>
                         <li class="active">
                             <a>
-                            <span class="badge pull-right"><span
-                                    class="glyphicon glyphicon-usd"></span><p id="money">0</p>
-                        </span>Ποσό Πληρωμής</a>
+                                <span id="money" class="badge pull-right">0€</span>
+                                Ποσό Πληρωμής</a>
                         </li>
                     </ul>
                     <br/>

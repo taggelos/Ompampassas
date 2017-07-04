@@ -36,7 +36,7 @@ function updateTextInput2(val, price) {
     document.getElementById('tickets').innerHTML = (val * price).toString() + " πόντοι";
 }
 function updateTextInput3(val, price) {
-    document.getElementById('money').innerHTML = (val * price).toString() + "$";
+    document.getElementById('money').innerHTML = (val * price).toString() + "€";
     $('#points').val((val * price).toString());
 }
 /* -------------------------------------------------- */

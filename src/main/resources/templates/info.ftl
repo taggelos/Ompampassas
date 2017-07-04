@@ -39,7 +39,7 @@
                         <div class="form-group has-feedback">
                             <p>Αριθμός Εισιτηρίων:
                                 <input type="number" min="1" max="100" title="Αριθμός Εισιτηρίων" name="point" required
-                                       onchange="updateTextInput2(this.value,${event.getPrice()});">
+                                       value="0" onchange="updateTextInput2(this.value,${event.getPrice()});">
                             </p>
                             <label>Τιμή Εισιτηρίων:
                                 <p id="tickets">0 πόντοι</p>

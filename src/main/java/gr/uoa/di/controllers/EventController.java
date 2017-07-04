@@ -86,8 +86,7 @@ public class EventController {
         event.setPlaceByPlaceId(place);
         mEventService.save(event);
         ModelAndView mav = new ModelAndView();
-        mav.setViewName("profile");
-        mav.addObject("user", user);
+        mav.setViewName("redirect:/profile");
         return mav;
     }
 
