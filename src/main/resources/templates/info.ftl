@@ -24,8 +24,7 @@
 
 <style>
     #map-container {
-        height: 300px;
-        float: right
+        height: 300px
     }
 </style>
 
