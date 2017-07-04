@@ -35,7 +35,7 @@
                         <img src="/assets/images/www.jpg">
                         <div class="caption">
                             <h4 class="pull-right">${ev.getPrice()} Πόντοι</h4>
-                            <h4><a href="/info/${ev.getTitle()}">${ev.getTitle()}</a></h4>
+                            <h4><a href="/info/${ev.getId()}">${ev.getTitle()}</a></h4>
                             <p>${ev.getDescription()}.</p>
                         </div>
                         <div class="ratings">

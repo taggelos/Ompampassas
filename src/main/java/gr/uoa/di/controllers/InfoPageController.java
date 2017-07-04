@@ -18,7 +18,7 @@ public class InfoPageController {
     @GetMapping({"/info", "/info/{urlname:.+}"})
     public ModelAndView getInfoPage(@PathVariable(required = false) String urlname){
         ModelAndView mav1 = new ModelAndView();
-        Event eve = mEventService.findByTitle(urlname);
+        Event eve = mEventService.findById(urlname);
         mav1.setViewName("info");
         mav1.addObject("event", eve);
         return mav1;
