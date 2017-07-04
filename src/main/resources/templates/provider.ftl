@@ -7,7 +7,11 @@
     <h1>${provider.getCompanyName()}</h1>
     <div>
         <#list 1..5 as x>
-            <span class='glyphicon glyphicon-star${(x > (provider.getRating()/provider.getNumberOfRatings()))?then('-empty','')}'></span>
+            <#if provider.getNumberOfRatings() == 0>
+                <span class='glyphicon glyphicon-star-empty'></span>
+            <#else>
+                <span class='glyphicon glyphicon-star${(x > (provider.getRating()/provider.getNumberOfRatings()))?then('-empty','')}'></span>
+            </#if>
         </#list>
     </div>
     <div class="container">

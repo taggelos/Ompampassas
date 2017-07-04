@@ -8,7 +8,14 @@
         <div class="event-basics">
             <h1>${event.getTitle()}</h1>
 
-            <div id="printstars"></div>
+            <#assign provider = event.getProviderMetadataByProviderId()>
+            <#list 1..5 as x>
+                <#if provider.getNumberOfRatings() == 0>
+                    <span class='glyphicon glyphicon-star-empty'></span>
+                <#else>
+                    <span class='glyphicon glyphicon-star${(x > (provider.getRating()/provider.getNumberOfRatings()))?then('-empty','')}'></span>
+                </#if>
+            </#list>
 
             <p> ${event.getPlaceByPlaceId().getAddress()}</p>
             <h3><a href="#comment_section">Σχόλια και Αξιολογήσεις</a>
@@ -158,7 +165,10 @@
 
     var count1 = ${provider.getRating()};
     var count2 = ${provider.getNumberOfRatings()};
-    printStars(count1 / count2, "#printstars");
+    if (count2 === 0) {
+        printStars(0, "#printstars");
+    } else printStars(count1 / count2, "#printstars");
+
 </script>
 </#macro>
 

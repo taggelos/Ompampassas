@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
@@ -23,13 +24,28 @@ public class PointsController {
     }
 
     @PostMapping("/points")
-    public String postPoints(@RequestParam(value = "points") String points) {
+    public ModelAndView postPoints(@RequestParam(value = "points") String points,
+                                   @RequestParam(value = "cardNumber") String cardNumber,
+                                   @RequestParam(value = "cvvCode") String cvvCode) {
 
+        ModelAndView mav = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String urlname = auth.getName();
         User user = mUserService.findByUsername(urlname);
-        user.getParentMetadataById().setPoints(user.getParentMetadataById().getPoints() + Integer.parseInt(points));
+        Integer p = Integer.parseInt(points);
+        p = p * 2;
+        user.getParentMetadataById().setPoints(user.getParentMetadataById().getPoints() + p);
         mUserService.update(user);
-        return "redirect:/";
+        mav.setViewName("redirect:/");
+        if (cardNumber.matches(".*[a-zA-Z].*")) {
+            mav.addObject("error", "Λάθος αριθμός κάρτας.");
+            mav.setViewName("/points");
+        }
+        if (cvvCode.matches(".*[a-zA-Z].*")) {
+            mav.addObject("error2", "Λάθος αριθμός CVV.");
+            mav.setViewName("/points");
+        }
+
+        return mav;
     }
 }

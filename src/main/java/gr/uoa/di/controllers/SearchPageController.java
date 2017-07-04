@@ -26,17 +26,18 @@ public class SearchPageController {
 
     @GetMapping("/search/{urlname:.+}")
     public ModelAndView getSearchbyFilters(@PathVariable(required = true) String urlname,
-                                           @RequestParam(value = "rating") Integer rating,
-                                           @RequestParam(value = "category_checkbox") String[] checkbox,
+                                           @RequestParam(value = "rating",required = false) Integer rating,
+                                           @RequestParam(value = "category_checkbox",required = false) String[] checkbox,
                                            @RequestParam(value = "hiddn") String hidden,
-                                           @RequestParam(value = "price-min") Integer price_min,
-                                           @RequestParam(value = "price-max") Integer price_max,
-                                           @RequestParam(value = "datetimepick_filter") String datetime_filter) {
+                                           @RequestParam(value = "price-min",required = false) Integer price_min,
+                                           @RequestParam(value = "price-max",required = false) Integer price_max,
+                                           @RequestParam(value = "datetimepick_filter",required = false) String datetime_filter) {
 
         ModelAndView mav2 = new ModelAndView();
         List<Event> filtered_events=new ArrayList<>();
         List<Event> all_events = mEventService.findAll();
         List<String> all_categories = new ArrayList<>();
+
 
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm");
         Timestamp cur=null;
@@ -55,20 +56,97 @@ public class SearchPageController {
             }
         }
 
-
-        if(checkbox!=null && rating!=0 && price_min!=0 && price_max!=0 && !datetime_filter.isEmpty()  ){
+        if(checkbox!=null){
             for (Event ev: all_events) {
-                if(ev.getProviderMetadataByProviderId().getRating()>=rating && ev.getPrice()>price_min && ev.getPrice()<price_max && cur.after(ev.getStartTime()) && cur.before(ev.getEndTime())){
-                    System.out.println("ok");
-                    for(String str: checkbox) {
-                        if(str.equals(ev.getCategory())) {
-                            System.out.println(str);
+                for (String str : checkbox) {
+                    if (str.contains(ev.getCategory())) {
+                        if (!filtered_events.contains(ev)) {
                             filtered_events.add(ev);
                         }
                     }
                 }
             }
         }
+        else if(rating!=null){
+            for (Event ev: all_events) {
+                if (ev.getProviderMetadataByProviderId().getRating()>=rating) {
+                    if (!filtered_events.contains(ev)) {
+                        filtered_events.add(ev);
+                    }
+                }
+            }
+        }
+        else if(price_min!=null){
+            for (Event ev: all_events) {
+                if (ev.getPrice()>=price_min) {
+                    if (!filtered_events.contains(ev)) {
+                        filtered_events.add(ev);
+                    }
+                }
+            }
+        }
+        else if(price_max!=null){
+            for (Event ev: all_events) {
+                if (ev.getPrice()<=price_max) {
+                    if (!filtered_events.contains(ev)) {
+                        filtered_events.add(ev);
+                    }
+                }
+            }
+        }
+        else if(!datetime_filter.isEmpty()){
+            for (Event ev: all_events) {
+                if (cur.after(ev.getStartTime()) && cur.before(ev.getEndTime())) {
+                    if (!filtered_events.contains(ev)) {
+                        filtered_events.add(ev);
+                    }
+                }
+            }
+        }
+        else{
+            System.out.println("empty filters");
+        }
+
+        if(rating!=null){
+            for (Event fev: all_events) {
+                if (fev.getProviderMetadataByProviderId().getRating()<rating) {
+                    if (filtered_events.contains(fev)) {
+                        filtered_events.remove(fev);
+                    }
+                }
+            }
+        }
+
+        if(price_min!=null){
+            for (Event fev: all_events) {
+                if (fev.getPrice()<price_min) {
+                    if (filtered_events.contains(fev)) {
+                        filtered_events.remove(fev);
+                    }
+                }
+            }
+        }
+
+        if(price_max!=null){
+            for (Event fev: all_events) {
+                if (fev.getPrice()>price_max) {
+                    if (filtered_events.contains(fev)) {
+                        filtered_events.remove(fev);
+                    }
+                }
+            }
+        }
+
+        if(!datetime_filter.isEmpty()){
+            for (Event fev: all_events) {
+                if (cur.before(fev.getStartTime()) || cur.after(fev.getEndTime())) {
+                    if (filtered_events.contains(fev)) {
+                        filtered_events.remove(fev);
+                    }
+                }
+            }
+        }
+
 
         mav2.setViewName("search");
         mav2.addObject("events", filtered_events);
