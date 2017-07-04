@@ -92,10 +92,19 @@
 <div class="comment-container" id="comment_section">
     <ul class="user_comments">
         <#list event.commentsById as comment>
+            <#assign user=comment.userByUserId>
+            <#if user.role == "ROLE_ADMIN">
+                <#assign name="Admin">
+            <#elseif user.role == "ROLE_PROVIDER">
+                <#assign name=user.providerMetadataById.title>
+            <#elseif user.role == "ROLE_PARENT">
+                <#assign name=user.parentMetadataById.firstName>
+            </#if>
+
             <li class="user_comment clearfix">
                 <div class="row">
                     <div class="col-md-3">
-                        <h3>${comment.parentMetadataByParentId.firstName}</h3>
+                        <h3>${name}</h3>
                         <p class="review_item_date">${comment.timestamp}</p>
                     </div>
                     <div class="col-md-8">
@@ -105,8 +114,7 @@
                                     <div class="row">
                                         <div class="col-md-7">
                                             <div class="reviewer_review_header_title">
-                                            <#--${comment.title}-->
-                                                Title
+                                                <h3>${comment.title}</h3>
                                             </div>
                                         </div>
                                     </div>
@@ -121,6 +129,7 @@
             </li>
         </#list>
     </ul>
+
 </div>
 
 </#macro>
