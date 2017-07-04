@@ -4,14 +4,13 @@ import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
-@Table(name = "tax_offices", schema = "ompampassas")
+@Table(name = "tax_office", schema = "ompampassas")
 public class TaxOffice {
     private int id;
     private String name;
     private Collection<ProviderMetadata> providerMetadataById;
 
     @Id
-    @GeneratedValue
     @Column(name = "id")
     public int getId() {
         return id;
@@ -36,10 +35,10 @@ public class TaxOffice {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        TaxOffice that = (TaxOffice) o;
+        TaxOffice taxOffice = (TaxOffice) o;
 
-        if (id != that.id) return false;
-        return name != null ? name.equals(that.name) : that.name == null;
+        if (id != taxOffice.id) return false;
+        return name != null ? name.equals(taxOffice.name) : taxOffice.name == null;
     }
 
     @Override
@@ -49,7 +48,7 @@ public class TaxOffice {
         return result;
     }
 
-    @OneToMany(mappedBy = "taxOfficesByTaxOfficeId")
+    @OneToMany(mappedBy = "taxOfficeByTaxOfficeId")
     public Collection<ProviderMetadata> getProviderMetadataById() {
         return providerMetadataById;
     }

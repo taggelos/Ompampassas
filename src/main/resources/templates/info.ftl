@@ -91,111 +91,35 @@
 
 <div class="comment-container" id="comment_section">
     <ul class="user_comments">
-        <li class="user_comment clearfix">
-            <div class="row">
-                <div class="col-md-3">
-                    <h3>Username</h3>
-                    <p class="review_item_date">2 Ιουνιου 2017</p>
-                </div>
-                <div class="col-md-8">
-                    <div class="reviewer_review">
-                        <div class="reviewer_review_container">
-                            <div class="reviewer_review_header">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <p>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                        </p>
-                                    </div>
-                                    <div class="col-md-7">
-                                        <div class="reviewer_review_header_title">
-                                            Excellent!
+        <#list event.commentsById as comment>
+            <li class="user_comment clearfix">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h3>${comment.parentMetadataByParentId.firstName}</h3>
+                        <p class="review_item_date">${comment.timestamp}</p>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="reviewer_review">
+                            <div class="reviewer_review_container">
+                                <div class="reviewer_review_header">
+                                    <div class="row">
+                                        <div class="col-md-7">
+                                            <div class="reviewer_review_header_title">
+                                            <#--${comment.title}-->
+                                                Title
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="reviewer_review_content">
-                                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+                                <div class="reviewer_review_content">
+                                    <p>${comment.message}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </li>
-        <li class="user_comment clearfix">
-            <div class="row">
-                <div class="col-md-3">
-                    <h3>Username</h3>
-                    <p class="review_item_date">1 Ιουνιου 2017</p>
-                </div>
-                <div class="col-md-8">
-                    <div class="reviewer_review">
-                        <div class="reviewer_review_container">
-                            <div class="reviewer_review_header">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <p>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                        </p>
-                                    </div>
-                                    <div class="col-md-7">
-                                        <div class="reviewer_review_header_title">
-                                            Excellent!
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="reviewer_review_content">
-                                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </li>
-        <li class="user_comment clearfix">
-            <div class="row">
-                <div class="col-md-3">
-                    <h3>Username</h3>
-                    <p class="review_item_date">4 Ιουνιου 2017</p>
-                </div>
-                <div class="col-md-8">
-                    <div class="reviewer_review">
-                        <div class="reviewer_review_container">
-                            <div class="reviewer_review_header">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <p>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                        </p>
-                                    </div>
-                                    <div class="col-md-7">
-                                        <div class="reviewer_review_header_title">
-                                            Mediocre!
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="reviewer_review_content">
-                                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </li>
+            </li>
+        </#list>
     </ul>
 </div>
 

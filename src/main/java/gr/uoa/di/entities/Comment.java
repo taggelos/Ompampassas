@@ -6,9 +6,10 @@ import java.sql.Timestamp;
 @Entity
 public class Comment {
     private int id;
+    private String title;
     private String message;
     private Timestamp timestamp;
-    private ParentMetadata parentMetadataByParentId;
+    private User userByUserId;
     private Event eventByEventId;
 
     @Id
@@ -20,6 +21,16 @@ public class Comment {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    @Basic
+    @Column(name = "title")
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     @Basic
@@ -50,6 +61,7 @@ public class Comment {
         Comment comment = (Comment) o;
 
         if (id != comment.id) return false;
+        if (title != null ? !title.equals(comment.title) : comment.title != null) return false;
         if (message != null ? !message.equals(comment.message) : comment.message != null) return false;
         return timestamp != null ? timestamp.equals(comment.timestamp) : comment.timestamp == null;
     }
@@ -57,19 +69,20 @@ public class Comment {
     @Override
     public int hashCode() {
         int result = id;
+        result = 31 * result + (title != null ? title.hashCode() : 0);
         result = 31 * result + (message != null ? message.hashCode() : 0);
         result = 31 * result + (timestamp != null ? timestamp.hashCode() : 0);
         return result;
     }
 
     @ManyToOne
-    @JoinColumn(name = "parent_id", referencedColumnName = "user_id", nullable = false)
-    public ParentMetadata getParentMetadataByParentId() {
-        return parentMetadataByParentId;
+    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
+    public User getUserByUserId() {
+        return userByUserId;
     }
 
-    public void setParentMetadataByParentId(ParentMetadata parentMetadataByParentId) {
-        this.parentMetadataByParentId = parentMetadataByParentId;
+    public void setUserByUserId(User userByUserId) {
+        this.userByUserId = userByUserId;
     }
 
     @ManyToOne

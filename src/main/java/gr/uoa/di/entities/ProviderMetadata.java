@@ -3,7 +3,6 @@ package gr.uoa.di.entities;
 import javax.persistence.*;
 import java.util.Collection;
 
-
 @Entity
 @Table(name = "provider_metadata", schema = "ompampassas")
 public class ProviderMetadata {
@@ -21,7 +20,7 @@ public class ProviderMetadata {
     private int numberOfRatings;
     private Collection<Event> eventsByUserId;
     private User userByUserId;
-    private TaxOffice taxOfficesByTaxOfficeId;
+    private TaxOffice taxOfficeByTaxOfficeId;
 
     @Id
     @Column(name = "user_id")
@@ -161,7 +160,7 @@ public class ProviderMetadata {
         if (address != null ? !address.equals(that.address) : that.address != null) return false;
         if (zipCode != null ? !zipCode.equals(that.zipCode) : that.zipCode != null) return false;
         if (region != null ? !region.equals(that.region) : that.region != null) return false;
-        return city != null ? !city.equals(that.city) : that.city != null;
+        return city != null ? city.equals(that.city) : that.city == null;
     }
 
     @Override
@@ -202,11 +201,11 @@ public class ProviderMetadata {
 
     @ManyToOne
     @JoinColumn(name = "tax_office_id", referencedColumnName = "id", nullable = false)
-    public TaxOffice getTaxOfficesByTaxOfficeId() {
-        return taxOfficesByTaxOfficeId;
+    public TaxOffice getTaxOfficeByTaxOfficeId() {
+        return taxOfficeByTaxOfficeId;
     }
 
-    public void setTaxOfficesByTaxOfficeId(TaxOffice taxOfficesByTaxOfficeId) {
-        this.taxOfficesByTaxOfficeId = taxOfficesByTaxOfficeId;
+    public void setTaxOfficeByTaxOfficeId(TaxOffice taxOfficeByTaxOfficeId) {
+        this.taxOfficeByTaxOfficeId = taxOfficeByTaxOfficeId;
     }
 }

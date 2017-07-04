@@ -10,10 +10,9 @@ public class ParentMetadata {
     private String firstName;
     private String lastName;
     private String phone;
-    private Collection<Comment> commentsByUserId;
+    private int points;
     private User userByUserId;
     private Collection<Ticket> ticketsByUserId;
-    private int points;
 
     @Id
     @Column(name = "user_id")
@@ -57,11 +56,11 @@ public class ParentMetadata {
 
     @Basic
     @Column(name = "points")
-    public int getUserPoints() {
+    public int getPoints() {
         return points;
     }
 
-    public void setUserPoints(int points) {
+    public void setPoints(int points) {
         this.points = points;
     }
 
@@ -70,12 +69,13 @@ public class ParentMetadata {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ParentMetadata that = (ParentMetadata) o;
+        ParentMetadata metadata = (ParentMetadata) o;
 
-        if (userId != that.userId) return false;
-        if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
-        if (lastName != null ? !lastName.equals(that.lastName) : that.lastName != null) return false;
-        return phone != null ? phone.equals(that.phone) : that.phone == null;
+        if (userId != metadata.userId) return false;
+        if (points != metadata.points) return false;
+        if (firstName != null ? !firstName.equals(metadata.firstName) : metadata.firstName != null) return false;
+        if (lastName != null ? !lastName.equals(metadata.lastName) : metadata.lastName != null) return false;
+        return phone != null ? phone.equals(metadata.phone) : metadata.phone == null;
     }
 
     @Override
@@ -84,16 +84,8 @@ public class ParentMetadata {
         result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
         result = 31 * result + (phone != null ? phone.hashCode() : 0);
+        result = 31 * result + points;
         return result;
-    }
-
-    @OneToMany(mappedBy = "parentMetadataByParentId")
-    public Collection<Comment> getCommentsByUserId() {
-        return commentsByUserId;
-    }
-
-    public void setCommentsByUserId(Collection<Comment> commentsByUserId) {
-        this.commentsByUserId = commentsByUserId;
     }
 
     @OneToOne

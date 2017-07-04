@@ -1,6 +1,7 @@
 package gr.uoa.di.entities;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 public class User {
@@ -9,6 +10,7 @@ public class User {
     private String password;
     private String role;
     private boolean enabled;
+    private Collection<Comment> commentsById;
     private ParentMetadata parentMetadataById;
     private ProviderMetadata providerMetadataById;
 
@@ -85,6 +87,15 @@ public class User {
         result = 31 * result + (role != null ? role.hashCode() : 0);
         result = 31 * result + (enabled ? 1 : 0);
         return result;
+    }
+
+    @OneToMany(mappedBy = "userByUserId")
+    public Collection<Comment> getCommentsById() {
+        return commentsById;
+    }
+
+    public void setCommentsById(Collection<Comment> commentsById) {
+        this.commentsById = commentsById;
     }
 
     @OneToOne(mappedBy = "userByUserId")
