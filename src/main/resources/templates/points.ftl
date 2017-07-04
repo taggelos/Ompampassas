@@ -56,7 +56,7 @@
                     <ul class="nav nav-pills nav-stacked">
                         <p>Αριθμός Πόντων:
                             <input type="number" min="1" max="300" title="Αριθμός Εισιτηρίων"
-                                   onchange="updateTextInput3(this.value,2);" required>
+                                   onchange="updateTextInput3(this.value,0.5);" required>
                         </p>
                         <li class="active">
                             <a>
