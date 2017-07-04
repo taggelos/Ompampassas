@@ -5,6 +5,11 @@
 
 <div class="panel panel-success">
     <h1>${provider.getCompanyName()}</h1>
+    <div>
+        <#list 1..5 as x>
+            <span class='glyphicon glyphicon-star${(x > (provider.getRating()/provider.getNumberOfRatings()))?then('-empty','')}'></span>
+        </#list>
+    </div>
     <div class="container">
         <#if currentUser?? && currentUser.getRole()=="ROLE_PARENT">
             <form method="POST" action="#">
@@ -37,16 +42,6 @@
                             <h4 class="pull-right">${ev.getPrice()} Πόντοι</h4>
                             <h4><a href="/info/${ev.getId()}">${ev.getTitle()}</a></h4>
                             <p>${ev.getDescription()}.</p>
-                        </div>
-                        <div class="ratings">
-                            <p class="pull-right">15 reviews</p>
-                            <p>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                            </p>
                         </div>
                     </div>
                 </div>

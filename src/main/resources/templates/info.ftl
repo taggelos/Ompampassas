@@ -130,6 +130,19 @@
         </#list>
     </ul>
 
+    <#if currentUser??>
+        <form action="" method="POST">
+            <#include "partials/csrf_token.ftl">
+            <input class="form-control" name="title" placeholder="Τίτλος" type="text"/>
+            <textarea class="form-control" name="description" rows="9" cols="25"
+                      required="required" placeholder="Σχόλιο"></textarea>
+
+            <button class="btn btn-large btn-primary btn-block" type="submit">
+                Post
+            </button>
+        </form>
+    </#if>
+
 </div>
 
 </#macro>
