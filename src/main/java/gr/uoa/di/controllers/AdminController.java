@@ -29,7 +29,7 @@ public class AdminController {
     }
 
     @PostMapping("admin")
-    public ModelAndView admin(@RequestParam(value = "tables") String tables, @ModelAttribute("model") ModelMap model) {
+    public ModelAndView admin(@RequestParam(value = "tables") String tables) {
         List<User> userList = new ArrayList<>();
         String resTable = null;
         switch (tables) {
@@ -59,9 +59,9 @@ public class AdminController {
         if (userList.isEmpty()) {
             resTable = "Δεν υπάρχουν \"" + resTable + "\"";
         }
-        model.addAttribute("userList", userList);
         ModelAndView mav = new ModelAndView();
         mav.setViewName("admin/admin");
+        mav.addObject("userList", userList);
         mav.addObject("resTable", resTable);
         return mav;
     }
@@ -69,7 +69,7 @@ public class AdminController {
     @GetMapping("statistics")
     public ModelAndView stats() {
         List<ProviderMetadata> providerList = new ArrayList<>();
-        int num_parents = 0, num_admins = 0, num_all = 0;
+        int num_parents = 0, num_admins, num_all = 0;
         mProviderRepository.findAll().forEach(providerList::add);
         for (User user : mUserRepository.findAll()) {
             if (user.getRole().equals("ROLE_PARENT")) num_parents++;

@@ -19,13 +19,17 @@
                             Διαχειριστής </#if></strong>
                     </p>
                 </div>
-                    <button type="submit" class="btn btn-warning" name="enable" value="<#if user.isEnabled()>disable">
-                Απενεργοποίηση
-                Χρήστη
-            </button>
-            <#else>enable"> Ενεργοποίηση Χρήστη</button>
 
-            </#if>
+                <#if user.isEnabled()>
+                    <button type="submit" class="btn btn-warning" name="enable" value="disable">
+                        Απενεργοποίηση Χρήστη
+                    </button>
+                <#else>
+                    <button type="submit" class="btn btn-warning" name="enable" value="enable">
+                        Ενεργοποίηση Χρήστη
+                    </button>
+                </#if>
+
                 <select class="btn btn-success" name="roles" onchange="this.form.submit()">
                     <option class="btn btn-warning" selected disabled>Διαθέσιμοι Ρόλοι:</option>
                     <#if user.getRole()=="ROLE_PARENT" || user.getRole()=="ROLE_PROVIDER">
@@ -38,7 +42,6 @@
                         <option class="btn btn-success" type="submit" name="button2" value="provider"> Εναλλαγή σε
                             Πάροχο
                         </option>
-
                     </#if>
                 </select>
             </div>

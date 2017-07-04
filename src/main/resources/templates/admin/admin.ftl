@@ -15,12 +15,12 @@
         </select>
     </form>
     <br>
-    <#if resTable?? || model["userList"]?? >
+    <#if resTable?? || userList?? >
         <#if resTable??>
             <h2> ${resTable}</h2>
             <hr>
         </#if>
-        <#if model["userList"]??>
+        <#if userList??>
             <table class="table">
                 <thead>
                 <tr class="warning">
@@ -29,7 +29,7 @@
                     <th>Επώνυμο/Τίτλος</th>
                 </tr>
                 <tbody>
-                    <#list model["userList"] as user>
+                    <#list userList as user>
                     <tr class="success">
                         <td><a href="/profile/${user.getEmail()}">${user.getEmail()}</a></td>
                         <#if user.getRole() == "ROLE_PARENT">

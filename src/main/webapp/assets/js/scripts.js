@@ -141,7 +141,8 @@ var __slice = [].slice;
         starrr: function () {
             var args, option;
 
-            option = arguments[0], args = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
+            option = arguments[0];
+            args = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
             return this.each(function () {
                 var data;
 

@@ -43,7 +43,8 @@ public class SearchPageController {
 
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm");
 
-        Timestamp cur=null;
+        //TODO: Check this code
+        Timestamp cur = new Timestamp(0);
         if(!datetime.isEmpty()) {
             try {
                 Date d = df.parse(datetime);

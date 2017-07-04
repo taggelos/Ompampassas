@@ -69,7 +69,11 @@
                 <img src="/assets/${info.getFinalPic()}"/>
                 <div class="panel panel-success">
                     <h3>${info.getTitle()}</h3>
-                    <div name="${info.getProviderRating()}"></div>
+                    <div>
+                        <#list 1..5 as x>
+                            <span class='glyphicon glyphicon-star${(x > info.providerRating)?then('-empty','')}'></span>
+                        </#list>
+                    </div>
                     <h4>${info.getNumOfRatings()} ψήφοι</h4>
                     <p><a class="btn btn-default" href="/provider/${info.getProviderName()}" role="button">Δείτε Τώρα
                         &raquo;</a></p>
@@ -78,14 +82,6 @@
         </#list>
     </div>
 </div>
-</#macro>
-
-<#macro end_of_body>
-<script>
-        <#list attributes as info>
-        printStars(${info.getProviderRating()}, "[name='${info.getProviderRating()}']");
-        </#list>
-</script>
 </#macro>
 
 <@display_page/>
