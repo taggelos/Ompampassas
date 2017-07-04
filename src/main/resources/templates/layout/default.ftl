@@ -61,24 +61,31 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Ompampassas</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="${(pageName == "index")?then("active","")}"><a href="/">Αρχική</a></li>
                 <#if currentUser?? && currentUser.getRole() == "ROLE_ADMIN">
-                    <li><a href="/admin"><span class="fa fa-address-book"></span> Πίνακες </a></li>
-                    <li><a href="/search_user"><span class="fa fa-search"></span> Αναζήτηση Χρήστη </a></li>
-                    <li><a href="/statistics"><span class="fa fa-cloud"></span> Στατιστικά </a></li>
-                    <li><a href="/"><span class="fa fa-signal"></span> Πλοήγηση </a></li>
+                    <li class="${(pageName == "index")?then("active","")}"><a href="/"><span
+                            class="fa fa-signal"></span> Πλοήγηση </a></li>
+                    <li class="${(pageName == "admin")?then("active","")}"><a href="/admin"><span
+                            class="fa fa-address-book"></span> Πίνακες </a></li>
+                    <li class="${(pageName == "search_user")?then("active","")}"><a href="/search_user"><span
+                            class="fa fa-search"></span> Αναζήτηση Χρήστη </a></li>
+                    <li class="${(pageName == "statistics")?then("active","")}"><a href="/statistics"><span
+                            class="fa fa-cloud"></span> Στατιστικά </a></li>
+                <#else>
+                    <li class="${(pageName == "index")?then("active","")}"><a href="/"><span class="fa fa-home"></span>
+                        Ompampassas</a></li>
                 </#if>
+
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <#if currentUser??>
                     <#if  currentUser.getRole() == "ROLE_PARENT">
-                        <li><a href="/points"><span class="fa fa-trophy"></span>
+                        <li class="${(pageName == "points")?then("active","")}"><a href="/points"><span
+                                class="fa fa-trophy"></span>
                         ${currentUser.getParentMetadataById().getPoints()} Πόντοι </a></li>
                     </#if>
                     <li class="dropdown ${(pageName == "profile")?then("active","")}">
@@ -86,13 +93,14 @@
                            aria-expanded="false">${currentUser.getEmail()} <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="/profile">Προφίλ</a></li>
-                            <li role="separator" class="divider"></li>
+                            <li role="separator" class="divider ${(pageName == "points")?then("active","")}"></li>
                             <li><a href=/logout>Αποσύνδεση</a></li>
                         </ul>
                     </li>
                 <#else>
-                    <li><a href="/login">Σύνδεση</a></li>
-                    <li><a href="/register/parent">Εγγραφή</a></li>
+                    <li class="${(pageName == "login")?then("active","")}"><a href="/login">Σύνδεση</a></li>
+                    <li class="${(pageName == "register")?then("active","")}"><a href="/register/parent">Εγγραφή</a>
+                    </li>
                 </#if>
             </ul>
         </div><!-- /.navbar-collapse -->
