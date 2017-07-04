@@ -17,8 +17,16 @@
                         <div class="form-group">
                             <label for="cardNumber">
                                 Αριθμός Κάρτας</label>
+                            <#if error??>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="alert alert-danger alert-dismissible">${error}</div>
+                                    </div>
+                                </div>
+                            </#if>
                             <div class="input-group">
-                                <input type="text" class="form-control" id="cardNumber" placeholder="Αριθμός Κάρτας"
+                                <input type="text" class="form-control" id="cardNumber" name="cardNumber"
+                                       placeholder="Αριθμός Κάρτας"
                                        required autofocus/>
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
                             </div>
@@ -28,7 +36,15 @@
                                 <div class="form-group">
                                     <label for="cvCode">
                                         CV CODE</label>
-                                    <input type="password" class="form-control" id="cvCode" placeholder="CV"
+                                    <#if error2??>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="alert alert-danger alert-dismissible">${error2}</div>
+                                            </div>
+                                        </div>
+                                    </#if>
+                                    <input type="password" class="form-control" id="cvvCode" name="cvvCode"
+                                           placeholder="CVV"
                                            required/>
                                 </div>
                             </div>
@@ -40,7 +56,7 @@
                     <ul class="nav nav-pills nav-stacked">
                         <p>Αριθμός Πόντων:
                             <input type="number" min="1" max="300" title="Αριθμός Εισιτηρίων"
-                                   onchange="updateTextInput3(this.value,2);">
+                                   onchange="updateTextInput3(this.value,2);" required>
                         </p>
                         <li class="active">
                             <a>
