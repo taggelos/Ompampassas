@@ -14,4 +14,9 @@ public class ProviderMetadataServiceImpl implements ProviderMetadataService {
     public ProviderMetadata save(ProviderMetadata metadata) {
         return providerMetadataRepository.save(metadata);
     }
+
+    @Override
+    public ProviderMetadata update(ProviderMetadata metadata) {
+        return providerMetadataRepository.save(metadata);
+    }
 }

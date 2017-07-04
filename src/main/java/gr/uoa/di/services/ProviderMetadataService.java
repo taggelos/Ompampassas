@@ -4,4 +4,6 @@ import gr.uoa.di.entities.ProviderMetadata;
 
 public interface ProviderMetadataService {
     ProviderMetadata save(ProviderMetadata metadata);
+
+    ProviderMetadata update(ProviderMetadata metadata);
 }

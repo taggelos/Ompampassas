@@ -6,6 +6,7 @@ import gr.uoa.di.services.SecurityService;
 import gr.uoa.di.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -30,14 +31,23 @@ public class ParentRegisterController {
     private Validator mValidator;
 
     @GetMapping("/register/parent")
-    public ModelAndView getRegister() {
+    public ModelAndView getRegister(Model model) {
+        ParentRegisterForm registerForm;
+        // If we have flashed data (ie. from a failed validation), pass them into the view.
+        if (model.asMap().get("registerForm") != null)
+            registerForm = (ParentRegisterForm) model.asMap().get("registerForm");
+        else
+            registerForm = new ParentRegisterForm();
+
         ModelAndView mav = new ModelAndView("auth/register_parent");
-        mav.addObject("registerForm", new ParentRegisterForm());
+        mav.addObject("registerForm", registerForm);
         return mav;
     }
 
     @PostMapping("/register/parent")
-    public String postRegister(@ModelAttribute("registerForm") ParentRegisterForm registerForm, BindingResult bindingResult, HttpServletRequest request,
+    public String postRegister(@ModelAttribute("registerForm") ParentRegisterForm registerForm,
+                               BindingResult bindingResult,
+                               HttpServletRequest request,
                                final RedirectAttributes redirectAttributes) {
         Set<ConstraintViolation<ParentRegisterForm>> errors = mValidator.validate(registerForm);
 

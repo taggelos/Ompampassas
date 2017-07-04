@@ -4,4 +4,6 @@ import gr.uoa.di.entities.ParentMetadata;
 
 public interface ParentMetadataService {
     ParentMetadata save(ParentMetadata metadata);
+
+    ParentMetadata update(ParentMetadata metadata);
 }

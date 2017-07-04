@@ -74,7 +74,7 @@
             <div class="form-horizontal">
                 <div class="row">
                     <#if user.getRole() == "ROLE_PARENT">
-                        <#assign metadata = user.getParentMetadataById()>
+                            <#assign metadata = user.getParentMetadataById()>
                     <div class="col-md-6">
                         <div class="form-group">
                             <div class="col-md-4">
