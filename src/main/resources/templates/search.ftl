@@ -53,46 +53,74 @@
         </div>
     </div>
 
-    <div class="sortby-container">
-        <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Ταξινόμηση Κατά
-                <span class="caret"></span></button>
-            <ul class="dropdown-menu">
-                <li><a href="#">Τιμή(Χαμηλότερα πρώτα)</a></li>
-                <li><a href="#">Τιμή(Υψηλότερα πρώτα)</a></li>
-                <li><a href="#">Αξιολόγηση</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <#list events as ev>
-        <div class="col-md-9">
-            <div class="results-search-container2">
-                <div class="items-in-list">
-                    <div class="thumbnail">
-                        <img src="/assets/images/www.jpg">
-                        <div class="caption">
-                            <a href="/provider/${ev.getProviderMetadataByProviderId().getUserByUserId().getEmail()}">${ev.getProviderMetadataByProviderId().getCompanyName()}</a>
-                            <h4 class="pull-right">${ev.getPrice()} euro</h4>
-                            <h4><a href="/info/${ev.getId()}">${ev.getTitle()}</a></h4>
-                            <p>${ev.getDescription()}.</p>
-                        </div>
-                        <div class="ratings">
-                            <p class="pull-right">${ev.getProviderMetadataByProviderId().getNumberOfRatings()} Ψήφοι</p>
-                            <#assign provider = ev.getProviderMetadataByProviderId()>
-                            <#list 1..5 as x>
-                                <#if provider.getNumberOfRatings() == 0>
-                                    <span class='glyphicon glyphicon-star-empty'></span>
-                                <#else>
-                                    <span class='glyphicon glyphicon-star${(x > (provider.getRating()/provider.getNumberOfRatings()))?then('-empty','')}'></span>
-                                </#if>
-                            </#list>
+    <#if events?has_content>
+        <ul class="list-group" id="search_list">
+            <#list events as ev>
+                <li class="list-group-item">
+                    <div class="row-md-9">
+                        <div class="results-search-container2">
+                            <div class="items-in-list">
+                                <div class="thumbnail">
+                                    <img src="/assets/images/www.jpg">
+                                    <div class="caption">
+                                        <a href="/provider/${ev.getProviderMetadataByProviderId().getUserByUserId().getEmail()}">${ev.getProviderMetadataByProviderId().getCompanyName()}</a>
+                                        <h4 class="pull-right">${ev.getPrice()} euro</h4>
+                                        <h4><a href="/info/${ev.getId()}">${ev.getTitle()}</a></h4>
+                                        <p>${ev.getDescription()}.</p>
+                                    </div>
+                                    <div class="ratings">
+                                        <p class="pull-right">${ev.getProviderMetadataByProviderId().getNumberOfRatings()} Ψήφοι</p>
+                                        <#assign provider = ev.getProviderMetadataByProviderId()>
+                                        <#list 1..5 as x>
+                                            <#if provider.getNumberOfRatings() == 0>
+                                                <span class='glyphicon glyphicon-star-empty'></span>
+                                            <#else>
+                                                <span class='glyphicon glyphicon-star${(x > (provider.getRating()/provider.getNumberOfRatings()))?then('-empty','')}'></span>
+                                            </#if>
+                                        </#list>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </#list>
+                </li>
+            </#list>
+        </ul>
+    <#else>
+        <ul class="list-group" id="search_list">
+            <#list allevents as ev1>
+                <li class="list-group-item">
+                    <div class="row-md-9">
+                        <div class="results-search-container2">
+                            <div class="items-in-list">
+                                <div class="thumbnail">
+                                    <img src="/assets/images/www.jpg">
+                                    <div class="caption">
+                                        <a href="/provider/${ev1.getProviderMetadataByProviderId().getUserByUserId().getEmail()}">${ev1.getProviderMetadataByProviderId().getCompanyName()}</a>
+                                        <h4 class="pull-right">${ev1.getPrice()} euro</h4>
+                                        <h4><a href="/info/${ev1.getId()}">${ev1.getTitle()}</a></h4>
+                                        <p>${ev1.getDescription()}.</p>
+                                    </div>
+                                    <div class="ratings">
+                                        <p class="pull-right">${ev1.getProviderMetadataByProviderId().getNumberOfRatings()} Ψήφοι</p>
+                                        <#assign provider = ev1.getProviderMetadataByProviderId()>
+                                        <#list 1..5 as x>
+                                            <#if provider.getNumberOfRatings() == 0>
+                                                <span class='glyphicon glyphicon-star-empty'></span>
+                                            <#else>
+                                                <span class='glyphicon glyphicon-star${(x > (provider.getRating()/provider.getNumberOfRatings()))?then('-empty','')}'></span>
+                                            </#if>
+                                        </#list>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </#list>
+        </ul>
+    </#if>
+
 
 </#macro>
 

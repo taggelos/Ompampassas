@@ -150,3 +150,11 @@ li.user_comment {
     max-width: 100%;
     width: 100%;
 }
+
+.list-group-item{
+    margin-left: 25%;
+    border: none;
+}
+.list-group{
+    margin-top: 5%;
+}

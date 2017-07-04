@@ -149,8 +149,10 @@ public class SearchPageController {
 
 
         mav2.setViewName("search");
+        System.out.println(filtered_events);
         mav2.addObject("events", filtered_events);
         mav2.addObject("allcategories", all_categories);
+        mav2.addObject("allevents", all_events);
         return mav2;
 
 
@@ -242,6 +244,7 @@ public class SearchPageController {
         mav.setViewName("search");
         mav.addObject("events", event);
         mav.addObject("allcategories", allcategories);
+        mav.addObject("allevents", allevents);
         return mav;
     }
 
