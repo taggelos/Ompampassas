@@ -5,6 +5,7 @@ import gr.uoa.di.services.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -23,9 +24,59 @@ public class SearchPageController {
     @Autowired
     private EventService mEventService;
 
-    @PostMapping("/search")
-    public String postsearch() {
-        return "search";
+    @GetMapping("/search/{urlname:.+}")
+    public ModelAndView getSearchbyFilters(@PathVariable(required = true) String urlname,
+                                           @RequestParam(value = "rating") Integer rating,
+                                           @RequestParam(value = "category_checkbox") String[] checkbox,
+                                           @RequestParam(value = "hiddn") String hidden,
+                                           @RequestParam(value = "price-min") Integer price_min,
+                                           @RequestParam(value = "price-max") Integer price_max,
+                                           @RequestParam(value = "datetimepick_filter") String datetime_filter) {
+
+        ModelAndView mav2 = new ModelAndView();
+        List<Event> filtered_events=new ArrayList<>();
+        List<Event> all_events = mEventService.findAll();
+        List<String> all_categories = new ArrayList<>();
+
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm");
+        Timestamp cur=null;
+        if(!datetime_filter.isEmpty()) {
+            try {
+                Date d = df.parse(datetime_filter);
+                cur = new Timestamp(d.getTime());
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+
+        for (Event ev: all_events) {
+            if(!all_categories.contains(ev.getCategory())) {
+                all_categories.add(ev.getCategory());
+            }
+        }
+
+
+        if(checkbox!=null && rating!=0 && price_min!=0 && price_max!=0 && !datetime_filter.isEmpty()  ){
+            for (Event ev: all_events) {
+                if(ev.getProviderMetadataByProviderId().getRating()>=rating && ev.getPrice()>price_min && ev.getPrice()<price_max && cur.after(ev.getStartTime()) && cur.before(ev.getEndTime())){
+                    System.out.println("ok");
+                    for(String str: checkbox) {
+                        if(str.equals(ev.getCategory())) {
+                            System.out.println(str);
+                            filtered_events.add(ev);
+                        }
+                    }
+                }
+            }
+        }
+
+        mav2.setViewName("search");
+        mav2.addObject("events", filtered_events);
+        mav2.addObject("allcategories", all_categories);
+        return mav2;
+
+
+
     }
 
     @GetMapping("/search")
@@ -37,9 +88,8 @@ public class SearchPageController {
 
         List<Event> event=new ArrayList<>();//= mEventService.findByCategoryOrTitleOrDescription(keyword,keyword,keyword);
         List<Event> allevents = mEventService.findAll();
+        List<String> allcategories = new ArrayList<>();
 
-        System.out.println(datetime);
-        System.out.println(area);
 
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm");
 
@@ -57,6 +107,10 @@ public class SearchPageController {
         String[] keyword_parts = keyword.split(" ");
 
         for (Event e: allevents) {
+            if(!allcategories.contains(e.getCategory())) {
+                allcategories.add(e.getCategory());
+            }
+
             for(String i :keyword_parts) {
                 if (( e.getCategory().toUpperCase().contains(i.toUpperCase()) ||  e.getTitle().toUpperCase().contains(i.toUpperCase()) || e.getDescription().toUpperCase().contains(i.toUpperCase()))
                         && !i.isEmpty()) {
@@ -109,6 +163,7 @@ public class SearchPageController {
         ModelAndView mav = new ModelAndView();
         mav.setViewName("search");
         mav.addObject("events", event);
+        mav.addObject("allcategories", allcategories);
         return mav;
     }
 

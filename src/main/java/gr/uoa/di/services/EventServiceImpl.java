@@ -35,4 +35,5 @@ public class EventServiceImpl implements EventService {
     public Event findById(String id) {
         return mEventRepository.findById(Integer.parseInt(id));
     }
+
 }

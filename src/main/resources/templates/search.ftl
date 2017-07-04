@@ -9,57 +9,47 @@
     <div class="col-md-3">
         <div class="filter-container">
             <h2>Φίλτρα</h2>
-            <div class="panel panel-search-primary">
-                <div class="panel-heading">Δραστηριότητες</div>
-                <div class="panel-body">
-                    <div class="activity-checkbox-filter">
-                        <input type="checkbox"/> This is checkbox <br/>
-                        <input type="checkbox"/> This is checkbox <br/>
-                        <input type="checkbox"/> This is checkbox <br/>
-                        <input type="checkbox"/> This is checkbox <br/>
-                        <input type="checkbox"/> This is checkbox <br/>
-                        <input type="checkbox"/> This is checkbox <br/>
-                        <input type="checkbox"/> This is checkbox <br/>
-                        <input type="checkbox"/> This is checkbox <br/>
-                        <input type="checkbox"/> This is checkbox <br/>
-                        <input type="checkbox"/> This is checkbox <br/>
-                    </div>
-                </div>
-                <div class="panel-heading">Ημερομηνία & Ώρα</div>
-                <div class="panel-body">
-                    <div class="Date-filter">
-                        <input type="date" class="form-control" name="event_date" min="2016-12-31">
-                        <i class="glyphicon glyphicon-calendar form-control-feedback"></i>
-                    </div>
-                    <div class="Time-filter">
-                        <input type="time" name="time" class="form-control" min="2016-12-31">
-                        <i class="glyphicon glyphicon-hourglass form-control-feedback"></i>
-                    </div>
-                </div>
-                <div class="panel-heading">Αξιολογήσεις</div>
-                <div class="panel-body">
-                    <div class="rating-radio-filter">
-                        <form>
-                            <input type="radio" name="rating" value="4"> τουλάχιστον 4 αστέρια <br>
-                            <input type="radio" name="rating" value="3"> τουλάχιστον 3 αστέρια <br>
-                            <input type="radio" name="rating" value="2"> τουλάχιστον 2 αστέρια <br>
-                        </form>
-                    </div>
-                </div>
-                <div class="panel-heading">Εύρος Τιμής</div>
-                <div class="panel-body">
-                    <form class="form-inline">
-                        <div class="Price-filter-form-group">
-                            <input type="text" class="form-control" id="price-min" placeholder="Από" name="price-min">
+            <form method="GET" action="/search/filtered">
+                <div class="panel panel-search-primary">
+                    <div class="panel-heading">Δραστηριότητες</div>
+                    <div class="panel-body">
+                        <div class="activity-checkbox-filter">
+                            <#list allcategories as allca>
+                                <input type="checkbox" name="category_checkbox" value=${allca}/> ${allca} <br/>
+                            </#list>
                         </div>
-                        <div class="Price-filter-form-group">
-                            <input type="text" class="form-control" id="price-max" placeholder="Έως" name="price-max">
+                    </div>
+                    <div class="panel-heading">Ημερομηνία & Ώρα</div>
+                    <div class="panel-body">
+                        <div class="Date-filter">
+                            <input type="datetime-local" class="form-control" name="datetimepick_filter" id="datetimepicker"
+                                   name="event_date"/>
+                            <i class="glyphicon glyphicon-calendar form-control-feedback"></i>
                         </div>
-                        <button type="submit" class="btn btn-default-Price-filter"> ></button>
-                    </form>
+                    </div>
+                    <div class="panel-heading">Αξιολογήσεις</div>
+                    <div class="panel-body">
+                        <div class="rating-radio-filter">
+                            <form>
+                                <input type="radio" name="rating" value="4"> τουλάχιστον 4 αστέρια <br>
+                                <input type="radio" name="rating" value="3"> τουλάχιστον 3 αστέρια <br>
+                                <input type="radio" name="rating" value="2"> τουλάχιστον 2 αστέρια <br>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="panel-heading">Έυρος Τιμής</div>
+                    <div class="panel-body">
+                        <div class="Price-filter">
+                            <input type="text" class="price" id="price-min" placeholder="Από" name="price-min">
+                        </div>
+                        <div class="Price-filter">
+                            <input type="text" class="price" id="price-max" placeholder="Εως" name="price-max">
+                        </div>
+                    </div>
+                    <input type="hidden" name="hiddn" value="1">
+                    <input type="submit" class="btn btn-default btn-md pull-right" value="Apply Filters &raquo"/>
                 </div>
-
-            </div>
+            </form>
         </div>
     </div>
 
