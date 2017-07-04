@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#macro content>
 
 </#macro>
@@ -76,8 +77,8 @@
                     <li class="${(pageName == "statistics")?then("active","")}"><a href="/statistics"><span
                             class="fa fa-cloud"></span> Στατιστικά </a></li>
                 <#else>
-                    <li class="${(pageName == "index")?then("active","")}"><a href="/"><span class="fa fa-home"></span>
-                        Ompampassas</a></li>
+                    <li class="${(pageName == "index")?then("active","")}"><a class="navbar-brand" href="/"><span
+                            class="fa fa-home"></span> Ompampassas</a></li>
                 </#if>
 
             </ul>

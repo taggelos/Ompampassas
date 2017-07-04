@@ -1,5 +1,6 @@
 [#ftl]
 [#-- @implicitly included --]
+[#-- @ftlvariable name="pageName" type="java.lang.String" --]
 [#-- @ftlvariable name="parent" type="gr.uoa.di.entities.ParentMetadata" --]
 [#-- @ftlvariable name="tickets" type="gr.uoa.di.entities.Ticket[]" --]
 [#-- @ftlvariable name="ticket" type="gr.uoa.di.entities.Ticket" file="templates/receipt/receipt.ftl" --]

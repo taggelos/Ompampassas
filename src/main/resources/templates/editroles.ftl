@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#assign pageName = "editroles">
 <#include "layout/default.ftl">
 

@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#assign pageName = "login">
 <#include "../layout/default.ftl">
 

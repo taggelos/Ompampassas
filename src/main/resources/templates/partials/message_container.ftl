@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#if errors??>
 <div class="row">
     <div class="col-sm-12">

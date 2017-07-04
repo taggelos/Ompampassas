@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#assign pageName = "create_event">
 <#include "layout/default.ftl">
 

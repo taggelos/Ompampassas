@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#assign pageName = "info">
 <#include "layout/default.ftl">
 

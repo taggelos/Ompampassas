@@ -1,9 +1,10 @@
+<#ftl output_format="HTML">
 <#assign pageName = "info">
 <#include "layout/default.ftl">
 
 <#macro content>
 <body xmlns="http://www.w3.org/1999/html">
-    <#if currentUser.id == event.providerMetadataByProviderId.userId>
+    <#if currentUser?? && currentUser.id == event.providerMetadataByProviderId.userId>
     <a href="/provider_tickets/${event.id}">Δείτε τις αποδείξεις</a>
     </#if>
 
@@ -13,12 +14,13 @@
             <h1>${event.getTitle()}</h1>
 
             <#assign provider = event.getProviderMetadataByProviderId()>
+            <#if provider.getNumberOfRatings() == 0>
+                <#assign stars = 0>
+            <#else>
+                <#assign stars = provider.getRating()/provider.getNumberOfRatings()>
+            </#if>
             <#list 1..5 as x>
-                <#if provider.getNumberOfRatings() == 0>
-                    <span class='glyphicon glyphicon-star-empty'></span>
-                <#else>
-                    <span class='glyphicon glyphicon-star${(x > (provider.getRating()/provider.getNumberOfRatings()))?then('-empty','')}'></span>
-                </#if>
+                <span class='glyphicon glyphicon-star${(x > stars)?then('-empty','')}'></span>
             </#list>
 
             <p> ${event.getPlaceByPlaceId().getAddress()}</p>

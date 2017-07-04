@@ -1,3 +1,4 @@
+<#ftl output_format="HTML">
 <#assign pageName = "register">
 <#include "../layout/default.ftl">
 

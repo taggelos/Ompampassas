@@ -68,9 +68,8 @@ public class AdminController {
 
     @GetMapping("statistics")
     public ModelAndView stats() {
-        List<ProviderMetadata> providerList = new ArrayList<>();
+        List<ProviderMetadata> providerList = mProviderRepository.findAll();
         int num_parents = 0, num_admins, num_all = 0;
-        mProviderRepository.findAll().forEach(providerList::add);
         for (User user : mUserRepository.findAll()) {
             if (user.getRole().equals("ROLE_PARENT")) num_parents++;
             num_all++;

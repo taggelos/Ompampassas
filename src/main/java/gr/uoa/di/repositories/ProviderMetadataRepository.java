@@ -13,4 +13,6 @@ public interface ProviderMetadataRepository extends CrudRepository<ProviderMetad
     List<ProviderMetadata> findAllByOrderByNumberOfRatingsDesc();
 
     List<ProviderMetadata> findTop4ByOrderByNumberOfRatingsDesc();
+
+    List<ProviderMetadata> findAll();
 }
