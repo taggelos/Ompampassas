@@ -84,7 +84,7 @@ public class EventController {
         event.setStartTime(x);
         event.setEndTime(y);
         event.setPlaceByPlaceId(place);
-        mEventService.save(event);
+        event = mEventService.save(event);
         ModelAndView mav = new ModelAndView();
         mav.setViewName("redirect:/info/" + event.getId());
         return mav;
