@@ -78,14 +78,15 @@
                             <p>${ev.getDescription()}.</p>
                         </div>
                         <div class="ratings">
-                            <p class="pull-right">15 reviews</p>
-                            <p>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                            </p>
+                            <p class="pull-right">${ev.getProviderMetadataByProviderId().getNumberOfRatings()} Ψήφοι</p>
+                            <#assign provider = ev.getProviderMetadataByProviderId()>
+                            <#list 1..5 as x>
+                                <#if provider.getNumberOfRatings() == 0>
+                                    <span class='glyphicon glyphicon-star-empty'></span>
+                                <#else>
+                                    <span class='glyphicon glyphicon-star${(x > (provider.getRating()/provider.getNumberOfRatings()))?then('-empty','')}'></span>
+                                </#if>
+                            </#list>
                         </div>
                     </div>
                 </div>
