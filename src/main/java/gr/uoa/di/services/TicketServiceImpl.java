@@ -21,4 +21,10 @@ public class TicketServiceImpl implements TicketService {
     public Ticket findById(String id) {
         return mTicketRepository.findById(Integer.parseInt(id));
     }
+
+    @Override
+    public void delete(String id) {
+        mTicketRepository.delete(Integer.parseInt(id));
+    }
+
 }

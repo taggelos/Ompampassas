@@ -54,10 +54,16 @@
                         <a class="btn btn-primary" href="/statistics">
                             <i class="fa fa-bar-chart"></i> Στατιστικά Παρόχων
                         </a>
+                        <a class="btn btn-primary" href="/provider/${user.getEmail()}">
+                            <i class="fa fa-calendar"></i> Προβολή τρέχωντων εκδηλώσεων
+                        </a>
                     </#if>
                     <#if user.getRole()=="ROLE_PARENT">
                         <a class="btn btn-primary" href="/points">
                             <i class="fa fa-plus"></i> Προσθήκη πόντων
+                        </a>
+                        <a class="btn btn-primary" href="/parent/${user.getEmail()}">
+                            <i class="fa fa-calendar"></i> Προβολή κρατήσεων
                         </a>
                     </#if>
                 </div>
