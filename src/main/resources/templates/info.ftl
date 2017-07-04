@@ -19,6 +19,7 @@
 <div class="panel panel-success">
     <h1>Πληροφορίες</h1>
     <p>${event.getDescription()}</p>
+    <p>Διαθέσιμες Θέσεις : ${event.getNumberOfTickets()}</p>
 </div>
 
 <style>
@@ -37,7 +38,7 @@
                         <input type="hidden" name="eventid" id="eventid" value="${event.getId()}">
                         <div class="form-group has-feedback">
                             <p>Αριθμός Εισιτηρίων:
-                                <input type="number" min="1" max="100" title="Αριθμός Εισιτηρίων" name="point"
+                                <input type="number" min="1" max="100" title="Αριθμός Εισιτηρίων" name="point" required
                                        onchange="updateTextInput2(this.value,${event.getPrice()});">
                             </p>
                             <label>Τιμή Εισιτηρίων:

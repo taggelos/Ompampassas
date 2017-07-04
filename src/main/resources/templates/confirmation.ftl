@@ -22,6 +22,20 @@
                                         </h4>
                                     </div>
                                     <div id="collapseOne" class="panel-collapse collapse in">
+                                        <#if error??>
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <div class="alert alert-danger alert-dismissible">${error}</div>
+                                                </div>
+                                            </div>
+                                        </#if>
+                                        <#if message??>
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <div class="alert alert-info alert-dismissible">${message}</div>
+                                                </div>
+                                            </div>
+                                        </#if>
                                         <div class="panel-body">
                                             <div class="items">
                                                 <div class="col-md-9">
@@ -52,9 +66,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-success btn-lg"
-                                            style="width:100%;">Αγορά
-                                    </button>
+                                    <#if message??>
+                                        <button type="submit" class="btn btn-success btn-lg"
+                                                style="width:100%;">Αγορά
+                                        </button>
+                                    </#if>
                                     <br/>
                                     <div style="text-align: left;"><br/>
                                         Υποβάλλοντας αυτήν την παραγγελία συμφωνείτε με την καθολική μας

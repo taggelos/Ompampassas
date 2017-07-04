@@ -39,7 +39,7 @@
                     <input type="hidden" name="points" id="points" value="">
                     <ul class="nav nav-pills nav-stacked">
                         <p>Αριθμός Πόντων:
-                            <input type="number" min="1" max="100" title="Αριθμός Εισιτηρίων"
+                            <input type="number" min="1" max="300" title="Αριθμός Εισιτηρίων"
                                    onchange="updateTextInput3(this.value,2);">
                         </p>
                         <li class="active">

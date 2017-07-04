@@ -2,9 +2,11 @@ package gr.uoa.di.controllers;
 
 import gr.uoa.di.entities.Event;
 import gr.uoa.di.entities.ParentMetadata;
+import gr.uoa.di.entities.Ticket;
 import gr.uoa.di.entities.User;
 import gr.uoa.di.services.EventService;
 import gr.uoa.di.services.ParentMetadataService;
+import gr.uoa.di.services.TicketService;
 import gr.uoa.di.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
@@ -35,6 +37,9 @@ public class ConfirmationController {
     private UserService mUserService;
 
     @Autowired
+    private TicketService mTicketService;
+
+    @Autowired
     private ParentMetadataService mParentmetadataService;
 
     @GetMapping("/confirmation")
@@ -42,7 +47,20 @@ public class ConfirmationController {
 
         ModelAndView mav = new ModelAndView();
         mav.setViewName("confirmation");
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String urlname = auth.getName(); //get logged in username
+        User user = mUserService.findByUsername(urlname);
         Event event = mEventService.findById(eventid);
+        ParentMetadata parent = user.getParentMetadataById();
+        Integer notickets = Integer.parseInt(tickets);
+
+        if (parent.getUserPoints() < notickets * event.getPrice())
+            mav.addObject("error", "Δεν έχετε αρκετούς πόντους για αυτή την αγορά.");
+        else if (event.getNumberOfTickets() < notickets)
+            mav.addObject("error", "Δεν υπάρχουν αρκετές θέσεις για αυτή την αγορά.");
+        else
+            mav.addObject("message", "Μπορείτε να ολοκληρώσετε την αγοράς σας.");
+
         mav.addObject("event", event);
         mav.addObject("tickets", Integer.parseInt(tickets));
         return mav;
@@ -62,10 +80,16 @@ public class ConfirmationController {
             Event event = mEventService.findById(eventid);
             ParentMetadata parent = user.getParentMetadataById();
             Integer notickets = Integer.parseInt(tickets);
-            if (parent.getUserPoints() >= notickets * event.getPrice()) {
-                parent.setUserPoints(parent.getUserPoints() - notickets * event.getPrice());
-                //mParentmetadataService.update(parent);
-            }
+
+            parent.setUserPoints(parent.getUserPoints() - notickets * event.getPrice());
+            mParentmetadataService.save(parent);
+            Ticket ticket = new Ticket();
+            ticket.setEventByEventId(event);
+            ticket.setParentMetadataByParentId(parent);
+            ticket.setNumOfTickets(notickets);
+            mTicketService.save(ticket);
+            event.setNumberOfTickets(event.getNumberOfTickets() - notickets);
+            mEventService.save(event);
 
             File file = new File(String.valueOf(receiptdir + "test.pdf"));
             HttpHeaders respHeaders = new HttpHeaders();
