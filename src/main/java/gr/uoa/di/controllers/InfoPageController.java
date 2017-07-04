@@ -16,11 +16,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.io.File;
 import java.sql.Timestamp;
 import java.util.Date;
 
 @Controller
 public class InfoPageController {
+    public static final String imagedir = System.getProperty("user.dir") + "/src/main/webapp/assets/imagedir/";
 
     @Autowired
     private EventService mEventService;
@@ -36,6 +38,17 @@ public class InfoPageController {
         Event eve = mEventService.findById(urlname);
         mav1.setViewName("info");
         mav1.addObject("event", eve);
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        File theDir = new File(imagedir + auth.getName());
+        Integer avatar = null;
+        if (theDir.exists()) {
+            for (File image : theDir.listFiles()) {
+                avatar = Integer.parseInt(image.getName());
+            }
+        }
+        if (avatar != null) mav1.addObject("avatar", avatar);
+
         return mav1;
     }
 

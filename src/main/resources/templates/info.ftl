@@ -87,8 +87,28 @@
 
     </script>
 </div>
-
+<br>
 <div class="comment-container" id="comment_section">
+    <#if currentUser??>
+        <br>
+        <hr>
+        <#if avatar??>
+            <img src="/assets/imagedir/${currentUser.getEmail()}/${avatar}" width="50" height="50">
+        <#else>
+            <img src="/assets/images/defaultprof.png" width="50" height="50"/>
+        </#if>
+        <form action="" method="POST">
+            <#include "partials/csrf_token.ftl">
+            <input class="form-control" name="title" placeholder="Τίτλος" type="text"/>
+            <textarea class="form-control" name="description" rows="9" cols="25"
+                      required="required" placeholder="Σχόλιο"></textarea>
+
+            <button class="btn btn-large btn-primary btn-block" type="submit">
+                Post
+            </button>
+        </form>
+    </#if>
+    <hr>
     <ul class="user_comments">
         <#list event.commentsById as comment>
             <#assign user=comment.userByUserId>
@@ -128,20 +148,6 @@
             </li>
         </#list>
     </ul>
-
-    <#if currentUser??>
-        <form action="" method="POST">
-            <#include "partials/csrf_token.ftl">
-            <input class="form-control" name="title" placeholder="Τίτλος" type="text"/>
-            <textarea class="form-control" name="description" rows="9" cols="25"
-                      required="required" placeholder="Σχόλιο"></textarea>
-
-            <button class="btn btn-large btn-primary btn-block" type="submit">
-                Post
-            </button>
-        </form>
-    </#if>
-
 </div>
 
 </#macro>
