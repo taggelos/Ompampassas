@@ -32,7 +32,9 @@ public class PointsController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String urlname = auth.getName();
         User user = mUserService.findByUsername(urlname);
-        user.getParentMetadataById().setPoints(user.getParentMetadataById().getPoints() + Integer.parseInt(points));
+        Integer p = Integer.parseInt(points);
+        p = p * 2;
+        user.getParentMetadataById().setPoints(user.getParentMetadataById().getPoints() + p);
         mUserService.update(user);
         mav.setViewName("redirect:/");
         if (cardNumber.matches(".*[a-zA-Z].*")) {
