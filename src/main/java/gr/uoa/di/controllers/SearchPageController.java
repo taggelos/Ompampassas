@@ -164,8 +164,8 @@ public class SearchPageController {
     @GetMapping("/search")
     public ModelAndView getIndex(@RequestParam(value = "area") String area,
                                  @RequestParam(value = "keyword") String keyword,
-                                 @RequestParam(value = "longitude") Double longitude,
-                                 @RequestParam(value = "latitude") Double latitude,
+                                 @RequestParam(value = "longitude") String longitude,
+                                 @RequestParam(value = "latitude") String latitude,
                                  @RequestParam(value = "datetimepick") String datetime) {
 
         List<Event> events = new ArrayList<>();
@@ -197,7 +197,7 @@ public class SearchPageController {
 
             if (!longitude.equals("")) {
                 Place place = e.getPlaceByPlaceId();
-                if (distFrom(place.getLatitude(), place.getLongitude(), latitude, longitude) > 10)
+                if (distFrom(place.getLatitude(), place.getLongitude(), Double.parseDouble(latitude), Double.parseDouble(longitude)) > 5)
                     continue;
             }
             if (cur.after(e.getStartTime())) {

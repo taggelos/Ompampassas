@@ -80,7 +80,7 @@
         <#list attributes as info>
             <div>
                 <img src="/assets/${info.getFinalPic()}"/>
-                <div class="panel panel-success ">
+                <div class="panel panel-success">
                     <h3>${info.getTitle()}</h3>
                     <div>
                         <#list 1..5 as x>
