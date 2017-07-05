@@ -60,6 +60,8 @@
                             <label for="gautofill" style="color: whitesmoke">Περιοχή:</label>
                             <input type="text" class="form-control" name="area" id="gautofill" placeholder="π.χ. Ζωγράφου"
                                    onchange="AdressInfo();"/>
+                            <input id="longitude" name="longitude" type="hidden"/>
+                            <input id="latitude" name="latitude" type="hidden"/>
                             <i class="form-control-feedback glyphicon glyphicon-map-marker "></i>
                         </div>
                     </div>
@@ -78,7 +80,7 @@
         <#list attributes as info>
             <div>
                 <img src="/assets/${info.getFinalPic()}"/>
-                <div class="panel panel-success">
+                <div class="panel panel-success ">
                     <h3>${info.getTitle()}</h3>
                     <div>
                         <#list 1..5 as x>
