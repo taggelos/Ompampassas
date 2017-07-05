@@ -1,5 +1,6 @@
 package gr.uoa.di.controllers;
 
+
 import gr.uoa.di.entities.User;
 import gr.uoa.di.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,8 @@ public class PointsController {
         User user = mUserService.findByUsername(urlname);
         Integer p = Integer.parseInt(points);
         p = p * 2;
+
+
         user.getParentMetadataById().setPoints(user.getParentMetadataById().getPoints() + p);
         mUserService.update(user);
         mav.setViewName("redirect:/");
