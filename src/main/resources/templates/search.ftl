@@ -3,13 +3,14 @@
 <#include "layout/default.ftl">
 
 <#macro content>
+
 <div class="search-container">
 
 <div class="row">
     <div class="col-md-3">
         <div class="filter-container">
             <h2>Φίλτρα</h2>
-            <form method="GET" action="/search/filtered">
+            <form method="GET" action="/search/${searchingfor}">
                 <div class="panel panel-search-primary">
                     <div class="panel-heading">Δραστηριότητες</div>
                     <div class="panel-body">
@@ -56,6 +57,9 @@
     <#else>
         <#assign todisplay = allevents>
     </#if>
+
+
+    <h2>${searchingfor} (${sum} προιόντα)</h2>
     <ul class="list-group" id="search_list">
         <#list todisplay as ev>
             <li class="list-group-item">

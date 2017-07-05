@@ -136,11 +136,15 @@ public class SearchPageController {
                 }
             }
         }
+        int sum;
+        sum= filtered_events.size();
 
         mav.setViewName("search");
         mav.addObject("events", filtered_events);
         mav.addObject("allcategories", all_categories);
         mav.addObject("allevents", all_events);
+        mav.addObject("sum", sum);
+        mav.addObject("searchingfor", urlname);
         return mav;
     }
 
@@ -152,6 +156,7 @@ public class SearchPageController {
         List<Event> events = new ArrayList<>();
         List<Event> allevents = mEventService.findAll();
         Set<String> allcategories = new HashSet<>();
+        Integer sum=0;
 
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm");
 
@@ -219,11 +224,14 @@ public class SearchPageController {
             }
         }
 
+        sum= events.size();
         ModelAndView mav = new ModelAndView();
         mav.setViewName("search");
         mav.addObject("events", events);
         mav.addObject("allcategories", allcategories);
         mav.addObject("allevents", allevents);
+        mav.addObject("sum", sum);
+        mav.addObject("searchingfor", keyword);
         return mav;
     }
 
