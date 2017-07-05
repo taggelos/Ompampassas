@@ -4,7 +4,7 @@
 
 <#macro content>
 
-    <#if currentUser?? && currentUser.getId()==parent.getUserId()>
+    <#if (currentUser?? && currentUser.getId()==parent.getUserId()) ||  currentUser.getRole()=="ROLE_ADMIN">
 
     <div class="panel panel-success">
         <h1>${parent.getFirstName()}  ${parent.getLastName()}</h1>

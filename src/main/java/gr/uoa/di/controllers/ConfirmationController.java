@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Controller
 public class ConfirmationController {
@@ -70,6 +73,12 @@ public class ConfirmationController {
         Event event = mEventService.findById(eventid);
         ParentMetadata parent = user.getParentMetadataById();
         Integer notickets = Integer.parseInt(tickets);
+
+        List<Ticket> tic = new ArrayList<>();
+        tic.addAll(parent.getTicketsByUserId());
+
+        if (tic.size() % 9 == 0)
+            parent.setPoints(parent.getPoints() + 10);
 
         parent.setPoints(parent.getPoints() - notickets * event.getPrice());
         mParentmetadataService.save(parent);
