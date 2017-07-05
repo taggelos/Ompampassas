@@ -1,7 +1,10 @@
 package gr.uoa.di.controllers;
 
+import gr.uoa.di.entities.ParentMetadata;
 import gr.uoa.di.entities.ProviderMetadata;
+import gr.uoa.di.entities.Ticket;
 import gr.uoa.di.entities.User;
+import gr.uoa.di.repositories.ParentMetadataRepository;
 import gr.uoa.di.repositories.ProviderMetadataRepository;
 import gr.uoa.di.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 
 @Controller
@@ -22,6 +27,8 @@ public class AdminController {
     private UserRepository mUserRepository;
     @Autowired
     private ProviderMetadataRepository mProviderRepository;
+    @Autowired
+    private ParentMetadataRepository mParentRepository;
 
     @GetMapping("admin")
     public String index(@ModelAttribute("model") ModelMap model) {
@@ -74,6 +81,16 @@ public class AdminController {
             if (user.getRole().equals("ROLE_PARENT")) num_parents++;
             num_all++;
         }
+        HashMap<ParentMetadata, Integer> hpars = new HashMap<>();
+        int actives = 0, total = 0;
+        for (ParentMetadata par : mParentRepository.findAll()) {
+            Collection<Ticket> tickets = par.getTicketsByUserId();
+            int sum = tickets.stream().mapToInt(ticket -> (ticket.getEventByEventId().getPrice()) * ticket.getNumOfTickets()).sum();
+            hpars.put(par, sum);
+            if (sum != 0) actives++;
+            total += sum;
+        }
+
         num_admins = num_all - num_parents - providerList.size();
         ModelAndView mav = new ModelAndView();
         mav.addObject("providerList", providerList);
@@ -81,6 +98,9 @@ public class AdminController {
         mav.addObject("num_parents", num_parents);
         mav.addObject("num_all", num_all);
         mav.addObject("num_admins", num_admins);
+        mav.addObject("actives", actives);
+        mav.addObject("hpars", hpars);
+        mav.addObject("totalsum", total);
         mav.setViewName("admin/statistics");
         return mav;
     }
