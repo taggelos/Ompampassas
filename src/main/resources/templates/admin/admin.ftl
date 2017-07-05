@@ -42,9 +42,6 @@
                             <td>-</td>
                             <td>-</td>
                         </#if>
-                    <#--td>
-                        <form class="form-horizontal" method="POST"><#include "partials/csrf_token.ftl"><input type="submit" class="deletebtn"></form>
-                    </td-->
                     </tr>
                     </#list>
                 </tbody>
@@ -53,7 +50,6 @@
     <#else>
         <h2> Δεν έχει επιλεχθεί πίνακας! </h2>
     </#if>
-    <!--img src="assets/images/deletebtn.png"-->
 </div>
 </#macro>
 <@display_page/>
