@@ -60,6 +60,8 @@
                             <label for="gautofill" style="color: whitesmoke">Περιοχή:</label>
                             <input type="text" class="form-control" name="area" id="gautofill" placeholder="π.χ. Ζωγράφου"
                                    onchange="AdressInfo();"/>
+                            <input id="longitude" name="longitude" type="hidden"/>
+                            <input id="latitude" name="latitude" type="hidden"/>
                             <i class="form-control-feedback glyphicon glyphicon-map-marker "></i>
                         </div>
                     </div>

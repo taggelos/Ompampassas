@@ -1,6 +1,7 @@
 package gr.uoa.di.controllers;
 
 import gr.uoa.di.entities.Event;
+import gr.uoa.di.entities.Place;
 import gr.uoa.di.services.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,18 @@ public class SearchPageController {
 
     @Autowired
     private EventService mEventService;
+
+    private static double distFrom(double lat1, double lng1, double lat2, double lng2) {
+        double earthRadius = 6371;
+        double dLat = Math.toRadians(lat2 - lat1);
+        double dLng = Math.toRadians(lng2 - lng1);
+        double a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) *
+                        Math.sin(dLng / 2) * Math.sin(dLng / 2);
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+        return (earthRadius * c);
+    }
 
     @GetMapping("/search/{urlname:.+}")
     public ModelAndView getSearchbyFilters(@PathVariable(required = true) String urlname,
@@ -151,6 +164,8 @@ public class SearchPageController {
     @GetMapping("/search")
     public ModelAndView getIndex(@RequestParam(value = "area") String area,
                                  @RequestParam(value = "keyword") String keyword,
+                                 @RequestParam(value = "longitude") String longitude,
+                                 @RequestParam(value = "latitude") String latitude,
                                  @RequestParam(value = "datetimepick") String datetime) {
 
         List<Event> events = new ArrayList<>();
@@ -158,9 +173,10 @@ public class SearchPageController {
         Set<String> allcategories = new HashSet<>();
         Integer sum=0;
 
+
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm");
 
-        Timestamp cur = new Timestamp(0);
+        Timestamp cur = new Timestamp(new Date().getTime());
         if(!datetime.isEmpty()) {
             try {
                 Date d = df.parse(datetime);
@@ -170,58 +186,35 @@ public class SearchPageController {
             }
         }
 
-        String[] keyword_parts = keyword.split(" ");
+        String[] keyword_parts;
+        if (keyword.trim().length() > 0)
+            keyword_parts = keyword.split(" ");
+        else
+            keyword_parts = new String[0];
 
-        for (Event e: allevents) {
+        for (Event e : allevents) {
             allcategories.add(e.getCategory());
 
-            for(String i :keyword_parts) {
-                if (( e.getCategory().toUpperCase().contains(i.toUpperCase()) ||  e.getTitle().toUpperCase().contains(i.toUpperCase()) || e.getDescription().toUpperCase().contains(i.toUpperCase()))
-                        && !i.isEmpty()) {
-                    if (!area.isEmpty()){
-                        if (!datetime.isEmpty()) {
-                            if (cur.after(e.getStartTime()) && cur.before(e.getEndTime())) {
-                                if (e.getPlaceByPlaceId().getAddress().contains(area)) {
-                                    events.add(e);
-                                }
-                            }
-                        }
-                        else{
-                            if (e.getPlaceByPlaceId().getAddress().contains(area)) {
-                                events.add(e);
-                            }
-                        }
-                    }
-                    else if(!datetime.isEmpty()){
-                        if (cur.after(e.getStartTime()) && cur.before(e.getEndTime())) {
-                            events.add(e);
-                        }
-                    }
-                    else{
-                        events.add(e);
-                    }
-                }
-                else if(!area.isEmpty()){
-                    if (!datetime.isEmpty()) {
-                        if (cur.after(e.getStartTime()) && cur.before(e.getEndTime())) {
-                            if (e.getPlaceByPlaceId().getAddress().contains(area)) {
-                                events.add(e);
-                            }
-                        }
-                    }
-                    else{
-                        if (e.getPlaceByPlaceId().getAddress().contains(area)) {
-                            events.add(e);
-                        }
-                    }
-                }
-                else if(!datetime.isEmpty()){
-                    if (cur.after(e.getStartTime()) && cur.before(e.getEndTime())) {
-                        events.add(e);
-                    }
-                }
-
+            if (!longitude.equals("")) {
+                Place place = e.getPlaceByPlaceId();
+                if (distFrom(place.getLatitude(), place.getLongitude(), Double.parseDouble(latitude), Double.parseDouble(longitude)) > 5)
+                    continue;
             }
+            if (cur.after(e.getStartTime())) {
+                continue;
+            }
+
+            if (keyword_parts.length > 0) {
+                for (String i : keyword_parts) {
+                    if ((e.getCategory().toUpperCase().contains(i.toUpperCase()) || e.getTitle().toUpperCase().contains(i.toUpperCase()) || e.getDescription().toUpperCase().contains(i.toUpperCase()))
+                            && !i.isEmpty()) {
+                        events.add(e);
+                        break;
+                    }
+                }
+            } else
+                events.add(e);
+
         }
 
         sum= events.size();
