@@ -396,10 +396,10 @@
                                 <tr>
                                     <td style='color:#404041;font-size:12px;line-height:16px;padding:15px 5px 5px 10px'>
                                         Για περισσότερες πληροφορίες σχετικά με την παραγγελία σας επικοινωνήστε μαζί
-                                        μας στο <strong> <a href='tel:694 822 9368' value='+694 822 9368'
-                                                            target='_blank'>694 822 9368</a></strong>, ή στείλτε μας
+                                        μας στο <strong> <a href='tel:694 822 9368' target='_blank'>694 822
+                                        9368</a></strong>, ή στείλτε μας
                                         email στο
-                                        <a href='mailto:ompampassas@ompampassas.com'>ompampassas@ompampassas.com</a>
+                                        <a href='mailto:${realcontactus}'>${realcontactus}</a>
                                     </td>
                                 </tr>
                                 </tbody>

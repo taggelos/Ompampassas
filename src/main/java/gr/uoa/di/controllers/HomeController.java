@@ -24,9 +24,6 @@ public class HomeController {
         ModelAndView mav = new ModelAndView("index");
         List<ProviderMetadata> provs = mProviderRepository.findTop4ByOrderByNumberOfRatingsDesc();
 
-        String contactus = "ompampassas@ompampassas.com";//δυναμικα
-        mav.addObject("contactus", contactus);
-
         //store topProviders provider emails + ratings + image paths
         Info[] attributes = new Info[topProviders];
 

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 @ControllerAdvice
 public class CurrentUserControllerAdvice {
     @Autowired
-    UserRepository mUserRepository;
+    private UserRepository mUserRepository;
 
     @ModelAttribute("currentUser")
     public User getCurrentUser(Authentication authentication) {
@@ -21,5 +21,15 @@ public class CurrentUserControllerAdvice {
         UserDetails details = (UserDetails) authentication.getPrincipal();
 
         return mUserRepository.findByEmail(details.getUsername());
+    }
+
+    @ModelAttribute("contactus")
+    public String getContactUs() {
+        return getRealContactUs().replace("@", "[at]").replace(".", "[dot]");
+    }
+
+    @ModelAttribute("realcontactus")
+    public String getRealContactUs() {
+        return "ompampassas@ompampassas.com";
     }
 }

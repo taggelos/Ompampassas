@@ -109,7 +109,11 @@
 </nav>
 
 <div id="main-content" class="container">
-    <@content/>
+    <#if currentUser?? && !currentUser.isEnabled()>
+        <h2>Δεν επιτρέπεται αυτή η δραστηριότητα.</h2>
+    <#else>
+        <@content/>
+    </#if>
 </div>
 
 <footer>
@@ -118,11 +122,8 @@
         <div class="row">
             <div class="col-sm-12">
                 <p>&copy; 2017 Ompampassas, Inc.</p>
-                <#if contactus??>
-                    <p>Contact us @ ${contactus}</p>
-                </#if>
+                <p>Contact us ${contactus}</p>
             </div>
-
         </div>
     </div>
 </footer>

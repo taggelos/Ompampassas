@@ -48,12 +48,12 @@ public class ParentController {
         List<Ticket> tickets = new ArrayList<>();
         Ticket ticket;
         Event event;
-        int diffInDays;
+        long diffInDays;
         tickets.addAll(parent.getTicketsByUserId());
         for (Iterator<Ticket> iterator = tickets.iterator(); iterator.hasNext(); ) {
             ticket = iterator.next();
             event = ticket.getEventByEventId();
-            diffInDays = (int) ((event.getStartTime().getTime() - t.getTime()) / (1000 * 60 * 60 * 24));
+            diffInDays = (event.getStartTime().getTime() - t.getTime()) / (1000 * 60 * 60 * 24);
             if (diffInDays < 3) {
                 iterator.remove();
             }

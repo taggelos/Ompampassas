@@ -34,10 +34,8 @@ body {
 
 .jumbotron {
     background: url('../images/background.jpg');
-    padding-top: 75px;
-    height: 400px;
-    width: 100%;
     background-size: cover;
+    width: 100%;
 }
 
 .panel-heading {
@@ -92,7 +90,6 @@ body {
 
 .panel-success {
     background-color: rgba(0, 0, 0, 0);
-    font-size: 120%;
     border: none;
     outline: none;
     margin-bottom: 50px;

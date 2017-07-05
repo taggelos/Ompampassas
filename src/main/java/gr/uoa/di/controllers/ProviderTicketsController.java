@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.sql.Timestamp;
+import java.util.Date;
+
 
 @Controller
 public class ProviderTicketsController {
@@ -28,13 +31,22 @@ public class ProviderTicketsController {
     public ModelAndView getTickets(@PathVariable String eventid) {
         Event event = mEventService.findById(eventid);
 
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String temp = auth.getName();
+        Timestamp t = new Timestamp(new Date().getTime());
+        long diffInDays = (event.getStartTime().getTime() - t.getTime()) / (1000 * 60 * 60 * 24);
+
         ModelAndView mav = new ModelAndView();
         mav.setViewName("provider_tickets");
-        if (temp.equals(event.getProviderMetadataByProviderId().getUserByUserId().getEmail())) {
-            mav.addObject("tickets", event.getTicketsById());
-        } else {
+
+        boolean flag = true;
+        if (diffInDays < 3) {
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            String temp = auth.getName();
+            if (temp.equals(event.getProviderMetadataByProviderId().getUserByUserId().getEmail())) {
+                mav.addObject("tickets", event.getTicketsById());
+                flag = false;
+            }
+        }
+        if (flag) {
             mav.addObject("tickets", null);
         }
         return mav;

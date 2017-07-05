@@ -35,7 +35,7 @@ public class AdminEdit {
                                   @RequestParam(value = "roles", required = false) String roles,
                                   @PathVariable(required = false) String urlname) {
         User user = mUserService.findByUsername(urlname);
-        System.out.println(enable + " - " + roles + " - " + user.getRole());
+        //System.out.println(enable + " - " + roles + " - " + user.getRole());
         if (enable != null)
             if (enable.equals("enable")) user.setEnabled(true);
             else if (enable.equals("disable")) user.setEnabled(false);
@@ -46,7 +46,7 @@ public class AdminEdit {
             else if (roles.equals("parent")) user.setRole("ROLE_PARENT");
         user = mUserService.update(user);
 
-        System.out.println(user.isEnabled() + " - " + roles + " - " + user.getRole());
+        //System.out.println(user.isEnabled() + " - " + roles + " - " + user.getRole());
         ModelAndView mav = new ModelAndView();
         mav.setViewName("editroles");
         mav.addObject("user", user);

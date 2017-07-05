@@ -3,9 +3,11 @@
 <#include "layout/default.ftl">
 
 <#macro content>
-<body xmlns="http://www.w3.org/1999/html">
+<body xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
     <#if currentUser?? && currentUser.id == event.providerMetadataByProviderId.userId>
-    <a href="/provider_tickets/${event.id}">Δείτε τις αποδείξεις</a>
+    <div style="width:100%;" class="btn btn-success btn-lg">
+        <a href="/provider_tickets/${event.id}">Δείτε τις αποδείξεις</a>
+    </div>
     </#if>
 
 <div class="jumbotron_info">

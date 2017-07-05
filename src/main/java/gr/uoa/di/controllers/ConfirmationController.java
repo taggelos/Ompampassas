@@ -61,8 +61,8 @@ public class ConfirmationController {
     @PostMapping("/confirmation")
     public ModelAndView downloadPdf(@RequestParam(value = "tickets") String tickets, @RequestParam(value = "eventid") String eventid) {
 
-        RunnableOperation R1 = new RunnableOperation("Thread-1");
-        R1.start();
+//        RunnableOperation R1 = new RunnableOperation("Thread-1");
+//        R1.start();
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String urlname = auth.getName(); //get logged in username
@@ -86,7 +86,7 @@ public class ConfirmationController {
         mav.addObject("ticket", ticket);
         return mav;
     }
-
+/*
     class RunnableOperation implements Runnable {
         private Thread t;
         private String threadName;
@@ -118,5 +118,5 @@ public class ConfirmationController {
             }
         }
     }
-
+*/
 }
