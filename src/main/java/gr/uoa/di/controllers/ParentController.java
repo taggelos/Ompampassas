@@ -41,7 +41,6 @@ public class ParentController {
 
         ModelAndView mav = new ModelAndView();
         ParentMetadata parent = mUserService.findByUsername(urlname).getParentMetadataById();
-        System.out.println(parent.getUserId());
         mav.setViewName("parent");
         mav.addObject("parent", parent);
 
