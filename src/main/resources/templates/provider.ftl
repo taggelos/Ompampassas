@@ -23,7 +23,7 @@
                 <div class="row">
                     <h2>Αξιολόγηση:</h2>
                 </div>
-                <input type="hidden" id="inputstars" name="stars" value="">
+                <input type="hidden" id="inputstars" name="stars" value="0">
                 <div class="row lead">
                     <div id="stars" class="starrr"></div>
                     Η Αξιολόγηση σας: <span id="count">0</span> αστέρια
