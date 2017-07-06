@@ -39,7 +39,7 @@
 
 <div class="jumbotron">
     <div class="search_bar_container">
-        <form method="GET" action="/search">
+        <form method="GET" action="search">
             <div class="container">
                 <h2 style="color: whitesmoke"><i>Αναζητήστε Δραστηριότητες</i></h2>
                 <div class="panel panel-success">
@@ -79,7 +79,7 @@
     <div class="slickClass slider">
         <#list attributes as info>
             <div>
-                <img src="/assets/${info.getFinalPic()}"/>
+                <img src="assets/${info.getFinalPic()}"/>
                 <div class="panel panel-success">
                     <h3>${info.getTitle()}</h3>
                     <div>
@@ -88,7 +88,7 @@
                         </#list>
                     </div>
                     <h4>${info.getNumOfRatings()} ψήφοι</h4>
-                    <p><a class="btn btn-default" href="/provider/${info.getProviderName()}" role="button">Δείτε Τώρα
+                    <p><a class="btn btn-default" href="provider/${info.getProviderName()}" role="button">Δείτε Τώρα
                         &raquo;</a></p>
                 </div>
             </div>

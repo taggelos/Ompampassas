@@ -34,7 +34,7 @@
 </script>
 <hr>
     <#if currentUser.getRole()=="ROLE_PROVIDER">
-    <a class="btn btn-primary" href="/profile">
+    <a class="btn btn-primary" href="profile">
         <i class="fa fa-chevron-left"></i> Επιστροφή
     </a>
     </#if>

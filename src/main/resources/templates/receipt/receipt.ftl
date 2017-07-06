@@ -148,7 +148,7 @@
                             </p>
                             <p>
                                 Ευχαριστούμε για την συνεργασία σας με την <a
-                                    href='/profile/${provider.getUserByUserId().getEmail()}'
+                                    href='profile/${provider.getUserByUserId().getEmail()}'
                                     target='_blank'>${provider.getCompanyName()}</a>.<br>
                                 <br>Λάβαμε την παραγγελία σας και θα σας ενημερώσουμε μόλις λάβουμε την πληρωμή σας.
                             </p>
@@ -205,7 +205,7 @@
                                                 </td>
                                                 <td colspan='4' align='left' valign='top' width='115'
                                                     style='color:#ff6600;font-size:12px;padding:10px 5px 0px 5px'>
-                                                    <a href='/profile/${provider.userByUserId.getEmail()}'
+                                                    <a href='profile/${provider.userByUserId.getEmail()}'
                                                        target='_blank'>${provider.getCompanyName()}</a>
                                                 </td>
                                             </tr>

@@ -80,7 +80,7 @@
                 </div>
                 <div class="panel-footer">
                     <p class="form-control-static">
-                        Δεν έχετε λογαριασμό; <a href="/register">Εγγραφείτε εδώ.</a>
+                        Δεν έχετε λογαριασμό; <a href="register">Εγγραφείτε εδώ.</a>
                     </p>
                 </div>
             </div>

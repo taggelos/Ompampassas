@@ -180,7 +180,7 @@
                 </div>
                 <div class="panel-footer">
                     <p class="form-control-static">
-                        Έχετε ήδη λογαριασμό; <a href="/login">Συνδεθείτε εδώ.</a>
+                        Έχετε ήδη λογαριασμό; <a href="login">Συνδεθείτε εδώ.</a>
                     </p>
                 </div>
             </div>

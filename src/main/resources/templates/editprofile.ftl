@@ -23,7 +23,7 @@
     <#if currentUser.getRole()=="ROLE_ADMIN">
         <div class="row">
             <div class="col-md-12">
-                <a class="btn btn-primary" href="/editroles/${user.getEmail()}">Επιπλέον Τροποποιήσεις...</a>
+                <a class="btn btn-primary" href="editroles/${user.getEmail()}">Επιπλέον Τροποποιήσεις...</a>
             </div>
         </div>
     </#if>
@@ -58,7 +58,7 @@
                     </div>
 
                     <#if user.getRole() == "ROLE_PARENT">
-                        <form class="form-horizontal" method="POST" action="/editprofile/${user.getEmail()}/parent">
+                        <form class="form-horizontal" method="POST" action="editprofile/${user.getEmail()}/parent">
                             <div class="form-group">
                                 <div class="col-md-12">
                                     <button type="submit" class="btn btn-primary pull-right">
@@ -105,7 +105,7 @@
                         </form>
                     <#elseif user.getRole() == "ROLE_PROVIDER">
                         <form class="form-horizontal" method="POST"
-                              action="/editprofile/${user.getEmail()}/provider">
+                              action="editprofile/${user.getEmail()}/provider">
                             <div class="form-group">
                                 <div class="col-md-12">
                                     <button type="submit" class="btn btn-primary pull-right">
@@ -227,7 +227,7 @@
                 </div>
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST"
-                          action="/profile/change_password/${user.getEmail()}">
+                          action="profile/change_password/${user.getEmail()}">
                         <#if passwordErrors??>
                             <div class="row">
                                 <div class="col-sm-12">

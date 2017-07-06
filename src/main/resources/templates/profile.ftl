@@ -10,13 +10,13 @@
         <div class="col-md-4">
             <div class="text-center">
                 <#if avatar??>
-                    <img class="profile-img" src="/assets/imagedir/${user.getEmail()}/${avatar}"/>
+                    <img class="profile-img" src="assets/imagedir/${user.getEmail()}/${avatar}"/>
                 <#else>
-                    <img class="profile-img" src="/assets/images/defaultprof.png"/>
+                    <img class="profile-img" src="assets/images/defaultprof.png"/>
                 </#if>
                 <h6 style="color: darkblue">Ανεβάστε διαφορετική φωτογραφία...</h6>
                 <form class="form-horizontal" method="POST" enctype="multipart/form-data"
-                      action="/uploadpic/${user.getEmail()}">
+                      action="uploadpic/${user.getEmail()}">
                     <#include "partials/csrf_token.ftl">
                     <div class="form-group">
                         <input class="btn btn-warning btn-block" id="fileInput" type="file" name="uploadingImgs"
@@ -30,7 +30,7 @@
                 </form>
                 <#if avatar??>
                     <form class="form-horizontal" method="POST" enctype="multipart/form-data"
-                          action="/deletepic/${user.getEmail()}">
+                          action="deletepic/${user.getEmail()}">
                         <#include "partials/csrf_token.ftl">
                         <div class="form-group">
                             <input class="btn btn-danger btn-block" type="submit" value="Διαγραφή Εικόνας">
@@ -43,28 +43,28 @@
         <div class="col-md-8">
             <div class="row">
                 <div class="col-sm-12">
-                    <a class="btn btn-primary" href="/editprofile/${user.getEmail()}">
+                    <a class="btn btn-primary" href="editprofile/${user.getEmail()}">
                         <i class="fa fa-pencil"></i> Αλλαγή Στοιχείων
                     </a>
 
                     <#if user.getRole()=="ROLE_PROVIDER" &&(currentUser.getEmail() == user.getEmail())>
-                        <a class="btn btn-primary" href="/create_event">
+                        <a class="btn btn-primary" href="create_event">
                             <i class="fa fa-plus"></i> Δημιουργία Εκδήλωσης
                         </a>
-                        <a class="btn btn-primary" href="/statistics">
+                        <a class="btn btn-primary" href="statistics">
                             <i class="fa fa-bar-chart"></i> Στατιστικά Παρόχων
                         </a>
-                        <a class="btn btn-primary" href="/provider/${user.getEmail()}">
+                        <a class="btn btn-primary" href="provider/${user.getEmail()}">
                             <i class="fa fa-calendar"></i> Προβολή τρέχωντων εκδηλώσεων
                         </a>
                     </#if>
                     <#if currentUser.getRole()=="ROLE_PARENT">
-                        <a class="btn btn-primary" href="/points">
+                        <a class="btn btn-primary" href="points">
                             <i class="fa fa-plus"></i> Προσθήκη πόντων
                         </a>
                     </#if>
                     <#if user.getRole()=="ROLE_PARENT">
-                        <a class="btn btn-primary" href="/parent/${user.getEmail()}">
+                        <a class="btn btn-primary" href="parent/${user.getEmail()}">
                             <i class="fa fa-calendar"></i> Προβολή κρατήσεων
                         </a>
                     </#if>

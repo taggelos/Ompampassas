@@ -23,7 +23,7 @@
                         ${ticket.numOfTickets * ticket.eventByEventId.price} €
                         </td>
                         <td>
-                            <form action="/provider_tickets" method="post">
+                            <form action="provider_tickets" method="post">
                                 <#include "partials/csrf_token.ftl">
                                 <input type="hidden" name="ticketid" value="${ticket.id}">
                                 <input type="submit" value="View"/>

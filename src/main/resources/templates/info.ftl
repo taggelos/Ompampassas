@@ -6,7 +6,7 @@
 <body xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
     <#if currentUser?? && currentUser.id == event.providerMetadataByProviderId.userId>
     <div style="width:100%;" class="btn btn-success btn-lg">
-        <a href="/provider_tickets/${event.id}">Δείτε τις αποδείξεις</a>
+        <a href="provider_tickets/${event.id}">Δείτε τις αποδείξεις</a>
     </div>
     </#if>
 
@@ -48,7 +48,7 @@
         <div class="col-md-3">
             <#if currentUser?? && currentUser.getRole()=="ROLE_PARENT">
                 <div class="form-group has-feedback">
-                    <form class="form-inline" method="get" action="/confirmation">
+                    <form class="form-inline" method="get" action="confirmation">
                         <input type="hidden" name="eventid" id="eventid" value="${event.getId()}">
                         <div class="form-group has-feedback">
                             <p>Αριθμός Εισιτηρίων:
@@ -108,9 +108,9 @@
         <br>
         <hr>
         <#if avatar??>
-            <img src="/assets/imagedir/${currentUser.getEmail()}/${avatar}" width="50" height="50">
+            <img src="assets/imagedir/${currentUser.getEmail()}/${avatar}" width="50" height="50">
         <#else>
-            <img src="/assets/images/defaultprof.png" width="50" height="50"/>
+            <img src="assets/images/defaultprof.png" width="50" height="50"/>
         </#if>
         <form action="" method="POST">
             <#include "partials/csrf_token.ftl">

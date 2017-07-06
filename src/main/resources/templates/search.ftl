@@ -10,7 +10,7 @@
     <div class="col-md-3">
         <div class="filter-container">
             <h2>Φίλτρα</h2>
-            <form method="GET" action="/search">
+            <form method="GET" action="search">
                 <div class="panel panel-search-primary">
                     <div class="panel-heading">Δραστηριότητες</div>
                     <div class="panel-body">
@@ -66,11 +66,11 @@
                     <div class="results-search-container2">
                         <div class="items-in-list">
                             <div class="thumbnail">
-                                <img src="/assets/images/www.jpg">
+                                <img src="assets/images/www.jpg">
                                 <div class="caption">
-                                    <a href="/provider/${ev.getProviderMetadataByProviderId().getUserByUserId().getEmail()}">${ev.getProviderMetadataByProviderId().getCompanyName()}</a>
+                                    <a href="provider/${ev.getProviderMetadataByProviderId().getUserByUserId().getEmail()}">${ev.getProviderMetadataByProviderId().getCompanyName()}</a>
                                     <h4 class="pull-right">${ev.getPrice()} €</h4>
-                                    <h4><a href="/info/${ev.getId()}">${ev.getTitle()}</a></h4>
+                                    <h4><a href="info/${ev.getId()}">${ev.getTitle()}</a></h4>
                                     <p>${ev.getDescription()}.</p>
                                 </div>
                                 <div class="ratings">

@@ -28,7 +28,7 @@
                 <tbody>
                     <#list userList as user>
                     <tr class="success">
-                        <td><a href="/profile/${user.getEmail()}">${user.getEmail()}</a></td>
+                        <td><a href="profile/${user.getEmail()}">${user.getEmail()}</a></td>
                         <#if user.getRole() == "ROLE_PARENT">
                             <td>${user.getParentMetadataById().getFirstName()}</td>
                             <td>${user.getParentMetadataById().getLastName()}</td>

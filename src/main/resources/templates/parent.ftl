@@ -26,7 +26,7 @@
                         <div class="thumbnail">
                             <div class="caption">
                                 <#assign event = ticket.getEventByEventId()>
-                                <h4><a href="/info/${event.getId()}">${event.getTitle()}</a></h4>
+                                <h4><a href="info/${event.getId()}">${event.getTitle()}</a></h4>
                                 <p>Εισιτήρια : ${ticket.getNumOfTickets()}</p>
                                 <p>Ώρα Έναρξης : ${event.getStartTime()}</p>
                                 <form method="POST" action="#">
