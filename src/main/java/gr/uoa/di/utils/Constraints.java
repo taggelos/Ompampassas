@@ -7,6 +7,7 @@ import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -15,11 +16,11 @@ interface Checker {
     boolean pass(Event e);
 }
 
-public class Contstraints {
+public class Constraints {
 
     private List<Checker> constraints;
 
-    public Contstraints(Integer rating, String[] checkbox, Integer price_min, Integer price_max, String datetime, String keyword, String longitude, String latitude) {
+    public Constraints(Integer rating, String[] checkbox, Integer price_min, Integer price_max, String datetime, String keyword, String longitude, String latitude) {
 
         constraints = new LinkedList<>();
 
@@ -49,13 +50,9 @@ public class Contstraints {
     }
 
     public boolean passAll(Event e) {
-        for (Checker constraint : constraints) {
-            if (!constraint.pass(e)) {
-                return false;
-            }
-        }
-        return true;
+        return constraints.stream().filter(checker -> !checker.pass(e)).findAny().orElse(null) == null;
     }
+
 }
 
 class RatingChecker implements Checker {
@@ -80,12 +77,7 @@ class CategoryChecker implements Checker {
 
     @Override
     public boolean pass(Event e) {
-        for (String str : checkbox) {
-            if (str.toUpperCase().equals(e.getCategory().toUpperCase())) {
-                return true;
-            }
-        }
-        return false;
+        return Arrays.stream(checkbox).filter(category -> category.toUpperCase().equals(e.getCategory().toUpperCase())).findAny().orElse(null) != null;
     }
 }
 
@@ -146,12 +138,7 @@ class FreeTextChecker implements Checker {
 
     @Override
     public boolean pass(Event e) {
-        for (String key : keyword_parts) {
-            if (!key.isEmpty() && freeTextLOL(e, key.toUpperCase())) {
-                return true;
-            }
-        }
-        return false;
+        return Arrays.stream(keyword_parts).filter(key -> !key.isEmpty() && freeTextLOL(e, key.toUpperCase())).findAny().orElse(null) != null;
     }
 
     private boolean freeTextLOL(Event e, String key) {

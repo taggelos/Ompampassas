@@ -2,17 +2,17 @@ package gr.uoa.di.controllers;
 
 import gr.uoa.di.entities.Event;
 import gr.uoa.di.services.EventService;
-import gr.uoa.di.utils.Contstraints;
+import gr.uoa.di.utils.Constraints;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Controller
 public class SearchPageController {
@@ -30,21 +30,19 @@ public class SearchPageController {
                                            @RequestParam(value = "longitude", required = false) String longitude,
                                            @RequestParam(value = "latitude", required = false) String latitude) {
 
-        ModelAndView mav = new ModelAndView();
-        List<Event> filtered_events = new ArrayList<>();
+        List<Event> filtered_events;
         List<Event> all_events = mEventService.findAll();
         Set<String> all_categories = new HashSet<>();
 
-        Contstraints constraints = new Contstraints(rating, checkbox, price_min, price_max, datetime, keyword, longitude, latitude);
+        Constraints constraints = new Constraints(rating, checkbox, price_min, price_max, datetime, keyword, longitude, latitude);
 
-        for (Event e : all_events) {
-            all_categories.add(e.getCategory());
-
-            if (constraints.passAll(e))
-                filtered_events.add(e);
-        }
+        filtered_events = all_events.stream()
+                .peek(event -> all_categories.add(event.getCategory()))
+                .filter(constraints::passAll)
+                .collect(Collectors.toList());
 
         int sum = filtered_events.size();
+        ModelAndView mav = new ModelAndView();
         mav.setViewName("search");
         if (sum > 0)
             mav.addObject("events", filtered_events);
