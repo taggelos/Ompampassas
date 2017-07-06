@@ -49,6 +49,8 @@ public class SearchPageController {
         else
             mav.addObject("events", all_events);
         mav.addObject("allcategories", all_categories);
+        if (keyword != null && !keyword.trim().isEmpty())
+            mav.addObject("keyword", keyword.trim());
         mav.addObject("sum", sum);
         return mav;
     }

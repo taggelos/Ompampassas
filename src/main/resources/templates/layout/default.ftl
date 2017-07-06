@@ -134,7 +134,6 @@
 <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="assets/vendor/slick/slick.js"></script>
-<script src="assets/js/google-maps-autocomplete.js"></script>
 <script src="assets/js/chosen.jquery.min.js"></script>
 
 <script src="assets/js/scripts.js"></script>

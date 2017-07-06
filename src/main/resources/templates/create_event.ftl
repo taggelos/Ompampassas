@@ -4,38 +4,6 @@
 
 <#macro content>
 
-<script type="text/javascript">
-    function initAutocomplete() {
-        // Create the autocomplete object, restricting the search to geographical
-        // location types.
-        var autocomplete = new google.maps.places.Autocomplete(
-                /** @type {!HTMLInputElement} */(document.getElementById('gautofill')),
-                {types: ['geocode']});
-
-        autocomplete.addListener('place_changed', fillInAddress);
-    }
-    function fillInAddress() {
-        // Get the place details from the autocomplete object.
-        var place = autocomplete.getPlace();
-    }
-</script>
-<script type="text/javascript">
-
-    function AdressInfo() {
-        var geocoder = new google.maps.Geocoder();
-        var address = document.getElementById('gautofill').value;
-        geocoder.geocode({'address': address}, function (results, status) {
-            if (status === google.maps.GeocoderStatus.OK) {
-                var latitude = results[0].geometry.location.lat();
-                var longitude = results[0].geometry.location.lng();
-                document.getElementById('longitude').value = longitude;
-                document.getElementById('latitude').value = latitude;
-            }
-        });
-    }
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3WqcVF0nlc5jIAw7iAXuNT7K45wA8RVs&libraries=places&callback=initAutocomplete"
-        async defer></script>
 <div class="container">
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-4 well well-sm">
@@ -81,6 +49,12 @@
         </div>
     </div>
 </div>
+</#macro>
+
+<#macro end_of_body>
+<script src="assets/js/google-maps-autocomplete.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3WqcVF0nlc5jIAw7iAXuNT7K45wA8RVs&libraries=places&callback=initAutocomplete"
+        async defer></script>
 </#macro>
 
 <@display_page/>
