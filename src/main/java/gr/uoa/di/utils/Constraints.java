@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 interface Checker {
     boolean pass(Event e);
@@ -69,15 +70,15 @@ class RatingChecker implements Checker {
 }
 
 class CategoryChecker implements Checker {
-    private final String[] checkbox;
+    private final List<String> checkbox;
 
     CategoryChecker(String[] checkbox) {
-        this.checkbox = checkbox;
+        this.checkbox = Arrays.asList(checkbox);
     }
 
     @Override
     public boolean pass(Event e) {
-        return Arrays.stream(checkbox).filter(category -> category.toUpperCase().equals(e.getCategory().toUpperCase())).findAny().orElse(null) != null;
+        return checkbox.contains(e.getCategory());
     }
 }
 
@@ -130,24 +131,23 @@ class TimeChecker implements Checker {
 
 class FreeTextChecker implements Checker {
 
-    private final String[] keyword_parts;
+    private final List<String> keyword_parts;
 
     FreeTextChecker(String keyword) {
-        keyword_parts = keyword.split(" ");
+        keyword_parts = Arrays.stream(keyword.split(" ")).filter(key -> !key.isEmpty()).map(String::toUpperCase).collect(Collectors.toList());
     }
 
     @Override
     public boolean pass(Event e) {
-        return Arrays.stream(keyword_parts).filter(key -> !key.isEmpty() && freeTextLOL(e, key.toUpperCase())).findAny().orElse(null) != null;
+        return keyword_parts.stream().filter(key -> freeTextSearch(e, key)).findAny().orElse(null) != null;
     }
 
-    private boolean freeTextLOL(Event e, String key) {
+    private boolean freeTextSearch(Event e, String key) {
         return e.getCategory().toUpperCase().contains(key) ||
                 e.getTitle().toUpperCase().contains(key) ||
                 e.getDescription().toUpperCase().contains(key);
     }
 }
-
 
 class LocationChecker implements Checker {
     private Double latitude;

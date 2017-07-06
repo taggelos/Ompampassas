@@ -52,12 +52,13 @@
         </div>
     </div>
 
+    <#assign keyword=(keyword??)?then(' για "${keyword}"','')>
     <#if sum==0>
-        <h2>Δεν βρέθηκαν αποτελέσματα :(</h2>
+        <h2>Δεν βρέθηκαν αποτελέσματα${keyword} :(</h2>
     <#elseif sum==1>
-        <h2>Βρέθηκε ${sum} αποτέλεσμα!</h2>
+        <h2>Βρέθηκε ${sum} αποτέλεσμα${keyword}!</h2>
     <#else>
-        <h2>Βρέθηκαν ${sum} αποτελέσματα!</h2>
+        <h2>Βρέθηκαν ${sum} αποτελέσματα${keyword}!</h2>
     </#if>
     <ul class="list-group" id="search_list">
         <#list events as ev>
