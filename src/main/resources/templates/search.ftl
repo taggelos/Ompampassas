@@ -10,7 +10,7 @@
     <div class="col-md-3">
         <div class="filter-container">
             <h2>Φίλτρα</h2>
-            <form method="GET" action="/search/${searchingfor}">
+            <form method="GET" action="/search">
                 <div class="panel panel-search-primary">
                     <div class="panel-heading">Δραστηριότητες</div>
                     <div class="panel-body">
@@ -23,7 +23,7 @@
                     <div class="panel-heading">Ημερομηνία & Ώρα</div>
                     <div class="panel-body">
                         <div class="Date-filter">
-                            <input type="datetime-local" class="form-control" name="datetimepick_filter"
+                            <input type="datetime-local" class="form-control" name="datetimepicker"
                                    id="datetimepicker"/>
                         </div>
                     </div>
@@ -40,10 +40,10 @@
                     <div class="panel-heading">Έυρος Τιμής</div>
                     <div class="panel-body">
                         <div class="Price-filter">
-                            <input type="text" class="form-control" id="price-min" placeholder="Από" name="price-min">
+                            <input type="number" class="form-control" id="price-min" placeholder="Από" name="price-min">
                         </div>
                         <div class="Price-filter">
-                            <input type="text" class="form-control" id="price-max" placeholder="Εως" name="price-max">
+                            <input type="number" class="form-control" id="price-max" placeholder="Εως" name="price-max">
                         </div>
                     </div>
                     <input type="submit" class="btn btn-default btn-md pull-right" value="Apply Filters &raquo"/>
@@ -52,16 +52,8 @@
         </div>
     </div>
 
-    <#if events?has_content>
-        <#assign todisplay = events>
-    <#else>
-        <#assign todisplay = allevents>
-    </#if>
-
-
-    <h2>${searchingfor} (${sum} προιόντα)</h2>
     <ul class="list-group" id="search_list">
-        <#list todisplay as ev>
+        <#list events as ev>
             <li class="list-group-item">
                 <div class="row-md-9">
                     <div class="results-search-container2">

@@ -52,13 +52,13 @@
                         </div>
                         <div class="form-group has-feedback">
                             <label for="datetimepicker" style="color: whitesmoke">Ημερομηνία:</label>
-                            <input type="datetime-local" class="form-control" name="datetimepick"
+                            <input type="datetime-local" class="form-control" name="datetimepicker"
                                    id="datetimepicker"/>
                             <i class="glyphicon glyphicon-calendar form-control-feedback"></i>
                         </div>
                         <div class="form-group has-feedback">
                             <label for="gautofill" style="color: whitesmoke">Περιοχή:</label>
-                            <input type="text" class="form-control" name="area" id="gautofill" placeholder="π.χ. Ζωγράφου"
+                            <input type="text" class="form-control" id="gautofill" placeholder="π.χ. Ζωγράφου"
                                    onchange="AdressInfo();"/>
                             <input id="longitude" name="longitude" type="hidden"/>
                             <input id="latitude" name="latitude" type="hidden"/>
