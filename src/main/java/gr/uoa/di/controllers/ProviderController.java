@@ -23,8 +23,8 @@ public class ProviderController {
     @Autowired
     private UserService mUserService;
 
-    @GetMapping({"/provider", "/provider/{urlname:.+}"})
-    public ModelAndView getProvider(@PathVariable(required = false) String urlname) {
+    @GetMapping("/provider/{urlname:.+}")
+    public ModelAndView getProvider(@PathVariable String urlname) {
 
         ModelAndView mav = new ModelAndView();
         ProviderMetadata provider = mUserService.findByUsername(urlname).getProviderMetadataById();
@@ -40,7 +40,7 @@ public class ProviderController {
         return mav;
     }
 
-    @PostMapping({"/provider", "/provider/{urlname:.+}"})
+    @PostMapping("/provider/{urlname:.+}")
     public String postProvider(@RequestParam(value = "stars") String stars,
                                @PathVariable(required = false) String urlname) {
 

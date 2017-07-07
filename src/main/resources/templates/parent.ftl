@@ -29,7 +29,7 @@
                                 <h4><a href="info/${event.getId()}">${event.getTitle()}</a></h4>
                                 <p>Εισιτήρια : ${ticket.getNumOfTickets()}</p>
                                 <p>Ώρα Έναρξης : ${event.getStartTime()}</p>
-                                <form method="POST" action="#">
+                                <form method="POST" action="parent/${currentUser.email}">
                                     <#include "partials/csrf_token.ftl">
                                     <input type="hidden" id="event_id" name="event_id" value="${event.getId()}">
                                     <input type="hidden" id="ticket_id" name="ticket_id" value="${ticket.getId()}">

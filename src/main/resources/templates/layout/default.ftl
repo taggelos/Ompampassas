@@ -92,7 +92,7 @@
                         ${currentUser.getParentMetadataById().getPoints()} Πόντοι </a></li>
                     </#if>
                     <li class="dropdown ${(pageName == "profile")?then("active","")}">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false">${currentUser.getEmail()} <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="profile">Προφίλ</a></li>
@@ -124,7 +124,6 @@
         <div class="row">
             <div class="col-sm-12">
                 <p>&copy; 2017 Ompampassas, Inc.</p>
-                <p>Contact us ${contactus}</p>
             </div>
         </div>
     </div>

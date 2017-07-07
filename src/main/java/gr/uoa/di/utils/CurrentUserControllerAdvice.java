@@ -23,13 +23,4 @@ public class CurrentUserControllerAdvice {
         return mUserRepository.findByEmail(details.getUsername());
     }
 
-    @ModelAttribute("contactus")
-    public String getContactUs() {
-        return getRealContactUs().replace("@", "[at]").replace(".", "[dot]");
-    }
-
-    @ModelAttribute("realcontactus")
-    public String getRealContactUs() {
-        return "ompampassas@ompampassas.com";
-    }
 }

@@ -36,8 +36,8 @@ public class ParentController {
     @Autowired
     private TicketService mTicketService;
 
-    @GetMapping({"/parent", "/parent/{urlname:.+}"})
-    public ModelAndView getParent(@PathVariable(required = false) String urlname) {
+    @GetMapping("/parent/{urlname:.+}")
+    public ModelAndView getParent(@PathVariable String urlname) {
 
         ModelAndView mav = new ModelAndView();
         ParentMetadata parent = mUserService.findByUsername(urlname).getParentMetadataById();
@@ -65,12 +65,11 @@ public class ParentController {
         return mav;
     }
 
-    @PostMapping({"/parent", "/parent/{urlname:.+}"})
+    @PostMapping("/parent/{urlname:.+}")
     public String postParent(@RequestParam(value = "event_id") String event_id,
                              @RequestParam(value = "ticket_id") String ticket_id,
-                             @PathVariable(required = false) String urlname) {
+                             @PathVariable String urlname) {
 
-        ParentMetadata parent = mUserService.findByUsername(urlname).getParentMetadataById();
         Event event = mEventService.findById(event_id);
         Ticket ticket = mTicketService.findById(ticket_id);
 

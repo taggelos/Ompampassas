@@ -12,8 +12,9 @@
                         Σύνοψη Πληρωμής
                     </h2>
                     <div class="shopping_cart">
-                        <form class="form-horizontal" role="form" action="#" method="post" id="payment-form">
+                        <form class="form-horizontal" role="form" action="confirmation" method="post" id="payment-form">
                             <#include "partials/csrf_token.ftl">
+                            <input type="hidden" name="eventid" value="${event.id}"/>
                             <div class="panel-group" id="accordion">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">

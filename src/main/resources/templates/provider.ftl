@@ -17,7 +17,7 @@
     </div>
     <div class="container">
         <#if currentUser?? && currentUser.getRole()=="ROLE_PARENT">
-            <form method="POST" action="#">
+            <form method="POST" action="provider/${provider.userByUserId.email}">
                 <#include "partials/csrf_token.ftl">
 
                 <div class="row">

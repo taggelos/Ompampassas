@@ -399,7 +399,7 @@
                                         μας στο <strong> <a href='tel:694 822 9368' target='_blank'>694 822
                                         9368</a></strong>, ή στείλτε μας
                                         email στο
-                                        <a href='mailto:${realcontactus}'>${realcontactus}</a>
+                                        <a href='mailto:ompampassas@ompampassas.com'>ompampassas@ompampassas.com</a>
                                     </td>
                                 </tr>
                                 </tbody>
@@ -414,7 +414,7 @@
                                     <td style='color:#404041;font-size:12px;line-height:16px;padding:5px 15px 10px 10px'>
                                         <p>
                                             Με εκτίμηση,<br>
-                                            <strong> <a href='#' target='_blank'>Ompampassas</a></strong>
+                                            <strong> <a href='.' target='_blank'>Ompampassas</a></strong>
                                         </p>
                                     </td>
                                 </tr>
