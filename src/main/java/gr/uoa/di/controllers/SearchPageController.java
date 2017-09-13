@@ -1,6 +1,7 @@
 package gr.uoa.di.controllers;
 
 import gr.uoa.di.entities.Event;
+import gr.uoa.di.entities.Place;
 import gr.uoa.di.services.EventService;
 import gr.uoa.di.utils.Constraints;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +10,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Controller
@@ -34,7 +36,28 @@ public class SearchPageController {
         List<Event> all_events = mEventService.findAll();
         Set<String> all_categories = new HashSet<>();
 
-        Constraints constraints = new Constraints(rating, checkbox, price_min, price_max, datetime, keyword, longitude, latitude);
+        Timestamp cur = new Timestamp(new Date().getTime());
+        try {
+            DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm");
+            Date d = df.parse(datetime);
+            cur = new Timestamp(d.getTime());
+        } catch (Exception ignored) {
+        }
+
+        if (keyword == null) keyword = "";
+        List<String> keyword_parts = Arrays.stream(keyword.split(" ")).filter(key -> !key.isEmpty()).map(String::toUpperCase).collect(Collectors.toList());
+
+        Place location;
+
+        try {
+            location = new Place();
+            location.setLatitude(Double.parseDouble(latitude));
+            location.setLongitude(Double.parseDouble(longitude));
+        } catch (Exception ignored) {
+            location = null;
+        }
+
+        Constraints constraints = new Constraints(rating, Arrays.asList(checkbox), price_min, price_max, cur, keyword_parts, location);
 
         filtered_events = all_events.stream()
                 .peek(event -> all_categories.add(event.getCategory()))
@@ -49,7 +72,7 @@ public class SearchPageController {
         else
             mav.addObject("events", all_events);
         mav.addObject("allcategories", all_categories);
-        if (keyword != null && !keyword.trim().isEmpty())
+        if (!keyword.trim().isEmpty())
             mav.addObject("keyword", keyword.trim());
         mav.addObject("sum", sum);
         return mav;

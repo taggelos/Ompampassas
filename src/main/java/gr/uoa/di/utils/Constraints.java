@@ -4,14 +4,8 @@ import gr.uoa.di.entities.Event;
 import gr.uoa.di.entities.Place;
 
 import java.sql.Timestamp;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 interface Checker {
     boolean pass(Event e);
@@ -21,33 +15,30 @@ public class Constraints {
 
     private List<Checker> constraints;
 
-    public Constraints(Integer rating, String[] checkbox, Integer price_min, Integer price_max, String datetime, String keyword, String longitude, String latitude) {
+    public Constraints(Integer rating, List<String> checkbox, Integer price_min, Integer price_max, Timestamp cur, List<String> keyword_parts, Place location) {
 
         constraints = new LinkedList<>();
 
         if (rating != null) {
-            constraints.add(new RatingChecker(rating));
+            constraints.add(e -> e.getProviderMetadataByProviderId().getRating() >= rating);
         }
         if (checkbox != null) {
-            constraints.add(new CategoryChecker(checkbox));
+            constraints.add(e -> checkbox.contains(e.getCategory()));
         }
         if (price_min != null) {
-            constraints.add(new MinPriceChecker(price_min));
+            constraints.add(e -> e.getPrice() > price_min);
         }
         if (price_max != null) {
-            constraints.add(new MaxPriceChecker(price_max));
+            constraints.add(e -> e.getPrice() < price_max);
         }
-        if (longitude != null && !longitude.equals("")) {
-            try {
-                constraints.add(new LocationChecker(latitude, longitude));
-            } catch (Exception ignored) {
-            }
+        if (location != null) {
+            constraints.add(e -> LocationDistance.distance(e.getPlaceByPlaceId(), location) < 5);
         }
-        if (keyword != null && keyword.trim().length() > 0) {
-            constraints.add(new FreeTextChecker(keyword));
+        if (keyword_parts != null) {
+            constraints.add(e -> FreeTextSearch.check(e, keyword_parts));
         }
 
-        constraints.add(new TimeChecker(datetime));
+        constraints.add(e -> cur.before(e.getStartTime()));
     }
 
     public boolean passAll(Event e) {
@@ -56,121 +47,31 @@ public class Constraints {
 
 }
 
-class RatingChecker implements Checker {
-    private final Integer rating;
+class FreeTextSearch {
 
-    RatingChecker(Integer rating) {
-        this.rating = rating;
+    static boolean check(Event e, List<String> keyword_parts) {
+        return keyword_parts.stream().filter(key -> FreeTextSearch.matches(e, key)).findAny().orElse(null) != null;
     }
 
-    @Override
-    public boolean pass(Event e) {
-        return e.getProviderMetadataByProviderId().getRating() >= rating;
-    }
-}
-
-class CategoryChecker implements Checker {
-    private final List<String> checkbox;
-
-    CategoryChecker(String[] checkbox) {
-        this.checkbox = Arrays.asList(checkbox);
-    }
-
-    @Override
-    public boolean pass(Event e) {
-        return checkbox.contains(e.getCategory());
-    }
-}
-
-class MinPriceChecker implements Checker {
-    private Integer price_min;
-
-    MinPriceChecker(Integer price_min) {
-        this.price_min = price_min;
-    }
-
-    @Override
-    public boolean pass(Event e) {
-        return e.getPrice() > price_min;
-    }
-}
-
-class MaxPriceChecker implements Checker {
-    private Integer price_max;
-
-    MaxPriceChecker(Integer price_max) {
-        this.price_max = price_max;
-    }
-
-    @Override
-    public boolean pass(Event e) {
-        return e.getPrice() < price_max;
-    }
-}
-
-class TimeChecker implements Checker {
-    private Timestamp cur;
-
-    TimeChecker(String datetime) {
-        cur = new Timestamp(new Date().getTime());
-        if (datetime != null && !datetime.isEmpty()) {
-            try {
-                DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm");
-                Date d = df.parse(datetime);
-                cur = new Timestamp(d.getTime());
-            } catch (ParseException ignored) {
-            }
-        }
-    }
-
-    @Override
-    public boolean pass(Event e) {
-        return cur.before(e.getStartTime());
-    }
-}
-
-class FreeTextChecker implements Checker {
-
-    private final List<String> keyword_parts;
-
-    FreeTextChecker(String keyword) {
-        keyword_parts = Arrays.stream(keyword.split(" ")).filter(key -> !key.isEmpty()).map(String::toUpperCase).collect(Collectors.toList());
-    }
-
-    @Override
-    public boolean pass(Event e) {
-        return keyword_parts.stream().filter(key -> freeTextSearch(e, key)).findAny().orElse(null) != null;
-    }
-
-    private boolean freeTextSearch(Event e, String key) {
+    private static boolean matches(Event e, String key) {
         return e.getCategory().toUpperCase().contains(key) ||
                 e.getTitle().toUpperCase().contains(key) ||
                 e.getDescription().toUpperCase().contains(key);
     }
+
 }
 
-class LocationChecker implements Checker {
-    private Double latitude;
-    private Double longitude;
+class LocationDistance {
+    static double distance(Place a, Place b) {
 
-    LocationChecker(String latitude, String longitude) {
-        this.latitude = Double.parseDouble(latitude);
-        this.longitude = Double.parseDouble(longitude);
-    }
-
-    @Override
-    public boolean pass(Event e) {
-        Place place = e.getPlaceByPlaceId();
-        double lat1 = place.getLatitude();
-        double lng1 = place.getLongitude();
-        double dLat = Math.toRadians(latitude - lat1);
-        double dLng = Math.toRadians(longitude - lng1);
-        double a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-                Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(latitude)) *
+        double dLat = Math.toRadians(b.getLatitude() - a.getLatitude());
+        double dLng = Math.toRadians(b.getLongitude() - a.getLongitude());
+        double x = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(Math.toRadians(a.getLatitude())) * Math.cos(Math.toRadians(b.getLatitude())) *
                         Math.sin(dLng / 2) * Math.sin(dLng / 2);
-        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        double c = 2 * Math.atan2(Math.sqrt(x), Math.sqrt(1 - x));
 
-        return (6371 * c) < 5;
+        return (6371 * c);
     }
 
 }
